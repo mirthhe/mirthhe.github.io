@@ -1,0 +1,23 @@
+# Future planning
+
+_As part of assignment 3 from the [DSFB2 Workflows course](https://lesmaterialen.rstudio.hu.nl/workflows-reader/#course-introduction)._
+
+----
+
+In class we often focused on creating an image of what we want our future to look like. At points we are so busy studying, we lose track of why we are studying and what we are working towards. In this assignment I answered a few questions given by the teachers. With these questions I tried to look ahead and take concrete steps towards my future.
+
+#### Where do I want to be in ~2 years time? {-}
+
+In two years I will have finished my studies. Which means I completed the specialisation I'm doing currently, a minor at the professorship and a graduationproject/internship outside of school. I hope to have also started my first job in the field of Data Science or Bioinformatics, with a focus on one of my interests. This is where it gets tricky because I have a lot of interests (maybe too many for my own good). The first ones that come to mind are systembiology, structural biology, biocomplexity, statistics, forensic research and I could go on but will try to keep it short. I would also like my work to reduce the need for animaltesting. 
+
+#### How am I doing now with respect to this goal? {-}
+
+Aside from specializing in Data Science I am trying to filter my interests. I can't do all the things at once so I want to start narrowing my view when it comes to my career. This is very difficult for me. Luckily, the teachers are a great help and I'm getting a clearer picture of the best route to take. In my minor I'll be focusing on applying a probabilistic approach to the risk-evaluation of toxins within an existing pipeline. Right now I think my graduationproject will focus on something along the lines of structural biochemistry. 
+
+#### What would be the next skill to learn? {-}
+
+Something about how software is used to describe protein structure and folding. Bas van Gestel suggested I look at [AlphaFold](https://alphafold.ebi.ac.uk/). They have the open source code available on github and it would be useful to learn more about it. 
+
+#### Make a planning on how to start learning this new skill. {-}
+
+I have blocked out a couple of days before winterbreak which I will use to work on this assignment. I will dive into the code and see if I can replicate some of it. The result of this can be seen under chapter 9 'Free Assignment'. 

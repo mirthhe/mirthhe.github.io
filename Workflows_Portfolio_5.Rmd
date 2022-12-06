@@ -1,0 +1,33 @@
+# Groupproject
+
+_As part of assignment 5 from the [DSFB2 Workflows course](https://lesmaterialen.rstudio.hu.nl/workflows-reader/#course-introduction)._
+
+----
+
+Alongside the subject of Workflows we will be working in groups of three students on a project. With this project we will learn about agile methods of collaboration, apply our data science skills, create a working product and present this product. In our case we are working on a project revolving around [ONTOX](https://ontox-project.eu/) with Marc Teunis as our cliënt. 
+
+## Technology against animaltesting
+
+A goal I have with my career is the reduction of animaltesting. Important points of focus within the field of animaltesting are the three R's. These are replacement, reduction and refinement, as described by @simmondsBioethicsAnimalUse2018.
+
+Replacement used to focus on insentient material but also included animal species "lower" on the pylogenic scale. In recent years the use of computer software as a replacement is becoming more and more relevant. 
+
+Reduction focuses on properly designed research to minimize the need for more animals than initially expected. This becomes complicated when using more animals to start with may decrease the chance of needing more animals later on, for example when needing repetitive studies. Using technology to support this would not only reduce the amount of testanimals, it would also create easier options for reproduction of the research. 
+
+The third R, refinement, is all about reducing the amount of discomfort the animals go through. This can include training the animals to get used to the treatment with positive reinforcement or the use of anesthesia. This takes more time and resources which can be prevented by using computer software.
+
+## ONTOX
+
+In their own words "The vision of the ONTOX consortium is to provide a functional and sustainable solution for advancing human risk assessment of chemicals without the use of animals in line with the principles of 21st century toxicity testing and next generation risk assessment". One of the ways to achieve this is by collecting and combining existing data to be used in the risk assessment. Platforms like SysRev are able to extract useful data from articles. This data consists of metabolic pathways and interactions between compounds. To make the data useful for computerbased analysis it is formatted into what is called an SBtab file. This file, in turn, can be used to create visualisations of the metabolic pathways or it can be turned into other formats like SBML. Different apps and functions have been created to execute these possibilities. One of those apps is Phymdos.
+
+## Phymdos
+
+The app Phymdos was created by D. Roodzant for University of Applied Sciences Utrecht. It can take SBtab files, SBML files or extract them directly from SysRev. It allows the user to create SBML style physiological maps in the desired format. This app demonstrates the range of possiblities with this type of data.
+
+## The Goal
+
+One downside of the current proces of extracting and analysing SBtab files is how it is only applicable to single files. Looking ahead, ONTOX strives to improve human risk assessment as a general goal. In order to use this existing process for the bigger picture, it should be combining data instead of looking at one particular set. This is why Marc Teunis asked use to make a package with the following functions:
+1. Extract the SBtab data from SysRev for one or more articles.
+2. Merge multiple SBtab files into one new file.
+3. Create a graph, visualizing the data based on the merged SBtab file. 
+4. Convert the SBtab file to another format like SBML.

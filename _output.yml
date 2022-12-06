@@ -1,0 +1,21 @@
+title: "Portfolio"
+author: "Mirthe Klaassen (1735556)"
+date: "`r Sys.Date()`"
+output:
+  bookdown::gitbook:
+    css: trial.css
+    highlight: tango
+    number_sections: true
+    anchor_sections: false
+    split_bib: true
+    split_by: rmd
+    config:
+        sharing:
+          facebook: false
+          twitter: false
+        toc:
+            collapse: section
+            scroll_highlight: yes
+            before: <li class="toc-logo"><h2 class=".paddingtitel ">Portfolio of Mirthe Klaassen</h2></li>
+        edit: https://github.com/mirthhe/mirthhe.github.io/edit/main/%s
+        download: ["pdf", "epub"]

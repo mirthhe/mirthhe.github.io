@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 1 Reproducible Research | portfolio_book.knit</title>
+  <meta name="description" content="" />
+  <meta name="generator" content="bookdown 0.30 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 1 Reproducible Research | portfolio_book.knit" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 1 Reproducible Research | portfolio_book.knit" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="Workflows_Portfolio_2.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="trial.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="toc-logo"><h2 class=".paddingtitel ">Portfolio of Mirthe Klaassen</h2></li>
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Curriculum Vitae</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#contact"><i class="fa fa-check"></i>Contact</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#profile"><i class="fa fa-check"></i>Profile</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#job-experience"><i class="fa fa-check"></i>Job experience</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#education"><i class="fa fa-check"></i>Education</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#skills"><i class="fa fa-check"></i>Skills</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#volunteering"><i class="fa fa-check"></i>Volunteering</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#languages"><i class="fa fa-check"></i>Languages</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="Workflows_Portfolio_1.html"><a href="Workflows_Portfolio_1.html"><i class="fa fa-check"></i><b>1</b> Reproducible Research</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="Workflows_Portfolio_1.html"><a href="Workflows_Portfolio_1.html#excels-downsides"><i class="fa fa-check"></i><b>1.1</b> Excel’s downsides</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="Workflows_Portfolio_1.html"><a href="Workflows_Portfolio_1.html#inspecting-an-excel-file"><i class="fa fa-check"></i><b>1.1.1</b> Inspecting an Excel file</a></li>
+<li class="chapter" data-level="1.1.2" data-path="Workflows_Portfolio_1.html"><a href="Workflows_Portfolio_1.html#creating-the-scatterplot"><i class="fa fa-check"></i><b>1.1.2</b> Creating the scatterplot</a></li>
+<li class="chapter" data-level="1.1.3" data-path="Workflows_Portfolio_1.html"><a href="Workflows_Portfolio_1.html#normalize-for-the-negative-control"><i class="fa fa-check"></i><b>1.1.3</b> Normalize for the negative control</a></li>
+<li class="chapter" data-level="1.1.4" data-path="Workflows_Portfolio_1.html"><a href="Workflows_Portfolio_1.html#statistical-analysis"><i class="fa fa-check"></i><b>1.1.4</b> Statistical analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="Workflows_Portfolio_1.html"><a href="Workflows_Portfolio_1.html#repita-criteria"><i class="fa fa-check"></i><b>1.2</b> Repita criteria</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="Workflows_Portfolio_1.html"><a href="Workflows_Portfolio_1.html#criteria-for-reproducibility"><i class="fa fa-check"></i><b>1.2.1</b> Criteria for reproducibility</a></li>
+<li class="chapter" data-level="1.2.2" data-path="Workflows_Portfolio_1.html"><a href="Workflows_Portfolio_1.html#the-article"><i class="fa fa-check"></i><b>1.2.2</b> The article</a></li>
+<li class="chapter" data-level="1.2.3" data-path="Workflows_Portfolio_1.html"><a href="Workflows_Portfolio_1.html#the-reproducibility"><i class="fa fa-check"></i><b>1.2.3</b> The reproducibility</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="Workflows_Portfolio_1.html"><a href="Workflows_Portfolio_1.html#open-source-code"><i class="fa fa-check"></i><b>1.3</b> Open source code</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="Workflows_Portfolio_1.html"><a href="Workflows_Portfolio_1.html#the-article-1"><i class="fa fa-check"></i><b>1.3.1</b> The article</a></li>
+<li class="chapter" data-level="1.3.2" data-path="Workflows_Portfolio_1.html"><a href="Workflows_Portfolio_1.html#the-code"><i class="fa fa-check"></i><b>1.3.2</b> The code</a></li>
+<li class="chapter" data-level="1.3.3" data-path="Workflows_Portfolio_1.html"><a href="Workflows_Portfolio_1.html#excuting-the-code"><i class="fa fa-check"></i><b>1.3.3</b> Excuting the code</a></li>
+<li class="chapter" data-level="1.3.4" data-path="Workflows_Portfolio_1.html"><a href="Workflows_Portfolio_1.html#effort-scoring"><i class="fa fa-check"></i><b>1.3.4</b> Effort scoring</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="Workflows_Portfolio_2.html"><a href="Workflows_Portfolio_2.html"><i class="fa fa-check"></i><b>2</b> Datamanagement</a></li>
+<li class="chapter" data-level="3" data-path="Workflows_Portfolio_3.html"><a href="Workflows_Portfolio_3.html"><i class="fa fa-check"></i><b>3</b> Future planning</a></li>
+<li class="chapter" data-level="4" data-path="Workflows_Portfolio_5.html"><a href="Workflows_Portfolio_5.html"><i class="fa fa-check"></i><b>4</b> Groupproject</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="Workflows_Portfolio_5.html"><a href="Workflows_Portfolio_5.html#technology-against-animaltesting"><i class="fa fa-check"></i><b>4.1</b> Technology against animaltesting</a></li>
+<li class="chapter" data-level="4.2" data-path="Workflows_Portfolio_5.html"><a href="Workflows_Portfolio_5.html#ontox"><i class="fa fa-check"></i><b>4.2</b> ONTOX</a></li>
+<li class="chapter" data-level="4.3" data-path="Workflows_Portfolio_5.html"><a href="Workflows_Portfolio_5.html#phymdos"><i class="fa fa-check"></i><b>4.3</b> Phymdos</a></li>
+<li class="chapter" data-level="4.4" data-path="Workflows_Portfolio_5.html"><a href="Workflows_Portfolio_5.html#the-goal"><i class="fa fa-check"></i><b>4.4</b> The Goal</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="Workflows_Portfolio_7.html"><a href="Workflows_Portfolio_7.html"><i class="fa fa-check"></i><b>5</b> Relational data</a></li>
+<li class="chapter" data-level="6" data-path="Workflows_Portfolio_8.html"><a href="Workflows_Portfolio_8.html"><i class="fa fa-check"></i><b>6</b> R packages</a></li>
+<li class="chapter" data-level="7" data-path="Workflows_Portfolio_9.html"><a href="Workflows_Portfolio_9.html"><i class="fa fa-check"></i><b>7</b> Parameters</a></li>
+<li class="chapter" data-level="8" data-path="Workflows_Portfolio_Free.html"><a href="Workflows_Portfolio_Free.html"><i class="fa fa-check"></i><b>8</b> Free assignment</a></li>
+<li class="chapter" data-level="9" data-path="Workflows_Portfolio_References.html"><a href="Workflows_Portfolio_References.html"><i class="fa fa-check"></i><b>9</b> References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="reproducible-research" class="section level1" number="1">
+<h1><span class="header-section-number">Chapter 1</span> Reproducible Research</h1>
+<p><em>As part of assignment 1 from the <a href="https://lesmaterialen.rstudio.hu.nl/workflows-reader/#course-introduction">DSFB2 Workflows course</a>.</em></p>
+<hr />
+<div id="excels-downsides" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> Excel’s downsides</h2>
+<div id="inspecting-an-excel-file" class="section level3" number="1.1.1">
+<h3><span class="header-section-number">1.1.1</span> Inspecting an Excel file</h3>
+<p>As part of assignment 1.1 I was asked to review <a href="https://github.com/DataScienceILC/tlsc-dsfb26v-20_workflows/raw/main/data/CE.LIQ.FLOW.062_Tidydata.xlsx">this file</a>, by opening the file in Excel. The experimental condition ‘ControlVehicleA’ stood out to me. It appears to be the same as the ControlPositive but with less Ethanol. I’m guessing this shows the experimental conditions without the experimental compounds which would mean the compounds have been diluted in ethanol. There are also extra sheets with lists of inputs, logs of changes and input examples. I’m not sure what the difference in purpose is between the ExpLookup sheet and the Input example sheet. Aside from that three compounds have been tested, 2,6-diisopropylnaphthalene, decane and naphthalene. The positive control for this experiment uses <em>1.5% ethanol in S-medium.</em>. The negative control for this experiment uses <em>just S-medium without an added compound.</em></p>
+<p>Next up, the file was opened in R and the data types per column were checked, these seemed to differ from the expectations.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="Workflows_Portfolio_1.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the excel file</span></span>
+<span id="cb1-2"><a href="Workflows_Portfolio_1.html#cb1-2" aria-hidden="true" tabindex="-1"></a>CE.LIQ.FLOW<span class="fl">.062</span>_Tidydata <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(</span>
+<span id="cb1-3"><a href="Workflows_Portfolio_1.html#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;data-raw/data011/CE.LIQ.FLOW.062_Tidydata.xlsx&quot;</span>)</span></code></pre></div>
+<p>RawData was double while I’d expect an integer, compName was character while I expected a factor and compConcentration was character while it should be a double. It had not been assigned correctly. For further analysis the types were changed to the correct ones.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="Workflows_Portfolio_1.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The compConcentration has to be turned into a numeric value</span></span>
+<span id="cb2-2"><a href="Workflows_Portfolio_1.html#cb2-2" aria-hidden="true" tabindex="-1"></a>CE.LIQ.FLOW<span class="fl">.062</span>_Tidydata<span class="sc">$</span>compConcentration <span class="ot">&lt;-</span> </span>
+<span id="cb2-3"><a href="Workflows_Portfolio_1.html#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.double</span>(CE.LIQ.FLOW<span class="fl">.062</span>_Tidydata<span class="sc">$</span>compConcentration)</span>
+<span id="cb2-4"><a href="Workflows_Portfolio_1.html#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="Workflows_Portfolio_1.html#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># The RawData has to be turned into an integer</span></span>
+<span id="cb2-6"><a href="Workflows_Portfolio_1.html#cb2-6" aria-hidden="true" tabindex="-1"></a>CE.LIQ.FLOW<span class="fl">.062</span>_Tidydata<span class="sc">$</span>RawData <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(CE.LIQ.FLOW<span class="fl">.062</span>_Tidydata<span class="sc">$</span>RawData)</span>
+<span id="cb2-7"><a href="Workflows_Portfolio_1.html#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="Workflows_Portfolio_1.html#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Turn the data into a tibble</span></span>
+<span id="cb2-9"><a href="Workflows_Portfolio_1.html#cb2-9" aria-hidden="true" tabindex="-1"></a>CE.LIQ.FLOW<span class="fl">.062</span>_tbl <span class="ot">&lt;-</span> <span class="fu">as.tibble</span>(CE.LIQ.FLOW<span class="fl">.062</span>_Tidydata)</span>
+<span id="cb2-10"><a href="Workflows_Portfolio_1.html#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="Workflows_Portfolio_1.html#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># The compName&#39;s have to be turned into a factor</span></span>
+<span id="cb2-12"><a href="Workflows_Portfolio_1.html#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a vector with the levels</span></span>
+<span id="cb2-13"><a href="Workflows_Portfolio_1.html#cb2-13" aria-hidden="true" tabindex="-1"></a>compName_factor <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;2,6-diisopropylnaphthalene&quot;</span>, <span class="st">&quot;decane&quot;</span>, <span class="st">&quot;naphthalene&quot;</span>,</span>
+<span id="cb2-14"><a href="Workflows_Portfolio_1.html#cb2-14" aria-hidden="true" tabindex="-1"></a>                     <span class="st">&quot;Ethanol&quot;</span>, <span class="st">&quot;S-medium&quot;</span>)</span>
+<span id="cb2-15"><a href="Workflows_Portfolio_1.html#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the levels to create the factor</span></span>
+<span id="cb2-16"><a href="Workflows_Portfolio_1.html#cb2-16" aria-hidden="true" tabindex="-1"></a>CE.LIQ.FLOW<span class="fl">.062</span>_tbl<span class="sc">$</span>compName <span class="ot">&lt;-</span> <span class="fu">factor</span>(CE.LIQ.FLOW<span class="fl">.062</span>_tbl<span class="sc">$</span>compName, </span>
+<span id="cb2-17"><a href="Workflows_Portfolio_1.html#cb2-17" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">levels =</span> compName_factor)</span>
+<span id="cb2-18"><a href="Workflows_Portfolio_1.html#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="Workflows_Portfolio_1.html#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if it worked</span></span>
+<span id="cb2-20"><a href="Workflows_Portfolio_1.html#cb2-20" aria-hidden="true" tabindex="-1"></a>CE.LIQ.FLOW<span class="fl">.062</span>_tbl <span class="co"># it did!</span></span></code></pre></div>
+<pre><code>## # A tibble: 360 × 34
+##    plateRow plateCo…¹ vialNr dropC…² expType expRe…³ expName expDate            
+##    &lt;lgl&gt;    &lt;lgl&gt;      &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;   &lt;dttm&gt;             
+##  1 NA       NA             1 a       experi…       3 CE.LIQ… 2020-11-30 00:00:00
+##  2 NA       NA             1 b       experi…       3 CE.LIQ… 2020-11-30 00:00:00
+##  3 NA       NA             1 c       experi…       3 CE.LIQ… 2020-11-30 00:00:00
+##  4 NA       NA             1 d       experi…       3 CE.LIQ… 2020-11-30 00:00:00
+##  5 NA       NA             1 e       experi…       3 CE.LIQ… 2020-11-30 00:00:00
+##  6 NA       NA             2 a       experi…       3 CE.LIQ… 2020-11-30 00:00:00
+##  7 NA       NA             2 b       experi…       3 CE.LIQ… 2020-11-30 00:00:00
+##  8 NA       NA             2 c       experi…       3 CE.LIQ… 2020-11-30 00:00:00
+##  9 NA       NA             2 d       experi…       3 CE.LIQ… 2020-11-30 00:00:00
+## 10 NA       NA             2 e       experi…       3 CE.LIQ… 2020-11-30 00:00:00
+## # … with 350 more rows, 26 more variables: expResearcher &lt;chr&gt;, expTime &lt;dbl&gt;,
+## #   expUnit &lt;chr&gt;, expVolumeCounted &lt;dbl&gt;, RawData &lt;int&gt;, compCASRN &lt;chr&gt;,
+## #   compName &lt;fct&gt;, compConcentration &lt;dbl&gt;, compUnit &lt;chr&gt;,
+## #   compDelivery &lt;chr&gt;, compVehicle &lt;chr&gt;, elegansStrain &lt;chr&gt;,
+## #   elegansInput &lt;dbl&gt;, bacterialStrain &lt;chr&gt;, bacterialTreatment &lt;chr&gt;,
+## #   bacterialOD600 &lt;dbl&gt;, bacterialConcX &lt;dbl&gt;, bacterialVolume &lt;dbl&gt;,
+## #   bacterialVolUnit &lt;chr&gt;, incubationVial &lt;chr&gt;, incubationVolume &lt;dbl&gt;, …</code></pre>
+</div>
+<div id="creating-the-scatterplot" class="section level3" number="1.1.2">
+<h3><span class="header-section-number">1.1.2</span> Creating the scatterplot</h3>
+<p>Now that the types are correct the data can be used to create a scatterplot. The assignment asked to put the compConcentration on the x-axis, the DataRaw counts on the y-axis and to assign a colour to each level in compName. It also asked to assign a different symbol to each level in the expType variable. Since the compUnit of the controls are not nM but percentages, they have been added as dashed lines. This means the different shapes for expType variables are not neccessary since only “experiment” is shown as ExpType.</p>
+<p>In the assignment the initial scatterplot was followed by a question about the x-axis, <em>“When creating the plot under C), what happened with the ordering of the x-axis labels. Explain why this happens.”</em>. The compConcentration has already been changed to the correct type in the previous code chunk, so nothing went wrong when creating the scatterplot. Had the type not been changed beforehand, the x-axis would have been in random orders because they were seen as characters instead of doubles. The x-axis is also shown with a log10 transformation and slight jitter has been added for better readability.</p>
+<p>A few details were added outside of the given assignment. Each compound got it’s own colour, the stdev’s have been added as errorbars and the control values have been added as dashed lines for comparison. The resulting plot is shown in figure 1.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="Workflows_Portfolio_1.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the average counts per compound per concentration, keep the expType variable too</span></span>
+<span id="cb4-2"><a href="Workflows_Portfolio_1.html#cb4-2" aria-hidden="true" tabindex="-1"></a>CE.LIQ_summ <span class="ot">&lt;-</span> CE.LIQ.FLOW<span class="fl">.062</span>_tbl <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(compName, compConcentration, expType) <span class="sc">%&gt;%</span>                          </span>
+<span id="cb4-3"><a href="Workflows_Portfolio_1.html#cb4-3" aria-hidden="true" tabindex="-1"></a>                                 <span class="fu">summarize</span>(<span class="at">mean_counts =</span> <span class="fu">mean</span>(RawData, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb4-4"><a href="Workflows_Portfolio_1.html#cb4-4" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">stdev_counts =</span>  <span class="fu">sd</span>(RawData, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),)</span>
+<span id="cb4-5"><a href="Workflows_Portfolio_1.html#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="Workflows_Portfolio_1.html#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a tibble containing only the data used for the graph</span></span>
+<span id="cb4-7"><a href="Workflows_Portfolio_1.html#cb4-7" aria-hidden="true" tabindex="-1"></a>CE.LIQ_summ_exp <span class="ot">&lt;-</span> CE.LIQ_summ <span class="sc">%&gt;%</span> <span class="fu">filter</span>(expType <span class="sc">==</span> <span class="st">&quot;experiment&quot;</span>)</span>
+<span id="cb4-8"><a href="Workflows_Portfolio_1.html#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="Workflows_Portfolio_1.html#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the scatterplot</span></span>
+<span id="cb4-10"><a href="Workflows_Portfolio_1.html#cb4-10" aria-hidden="true" tabindex="-1"></a>CE.LIQ_summ_exp <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log10</span>(compConcentration) <span class="co"># log10 as suggested in question F</span></span>
+<span id="cb4-11"><a href="Workflows_Portfolio_1.html#cb4-11" aria-hidden="true" tabindex="-1"></a>                               , <span class="at">y =</span> mean_counts)) <span class="sc">+</span></span>
+<span id="cb4-12"><a href="Workflows_Portfolio_1.html#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">group=</span>compName, <span class="at">color =</span> compName), <span class="at">span=</span> .<span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb4-13"><a href="Workflows_Portfolio_1.html#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> compName), </span>
+<span id="cb4-14"><a href="Workflows_Portfolio_1.html#cb4-14" aria-hidden="true" tabindex="-1"></a>             <span class="at">position =</span> <span class="fu">position_jitter</span>(<span class="at">width =</span> <span class="fl">0.2</span>, <span class="at">height =</span> <span class="fl">0.2</span>, <span class="at">seed =</span> <span class="dv">123</span>)) <span class="sc">+</span></span>
+<span id="cb4-15"><a href="Workflows_Portfolio_1.html#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin=</span>mean_counts<span class="sc">-</span>stdev_counts, <span class="at">ymax=</span>mean_counts<span class="sc">+</span>stdev_counts, </span>
+<span id="cb4-16"><a href="Workflows_Portfolio_1.html#cb4-16" aria-hidden="true" tabindex="-1"></a>                    <span class="at">color =</span> compName), </span>
+<span id="cb4-17"><a href="Workflows_Portfolio_1.html#cb4-17" aria-hidden="true" tabindex="-1"></a>                <span class="at">width=</span>.<span class="dv">1</span>, <span class="at">position =</span> <span class="fu">position_jitter</span>(</span>
+<span id="cb4-18"><a href="Workflows_Portfolio_1.html#cb4-18" aria-hidden="true" tabindex="-1"></a>                  <span class="at">width =</span> <span class="fl">0.2</span>, <span class="at">height =</span> <span class="fl">0.2</span>, <span class="at">seed =</span> <span class="dv">123</span>)) <span class="sc">+</span></span>
+<span id="cb4-19"><a href="Workflows_Portfolio_1.html#cb4-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">str_wrap</span>(<span class="st">&quot;Mean offspring count of C. Elegans with added compounds </span></span>
+<span id="cb4-20"><a href="Workflows_Portfolio_1.html#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="st">                        in varying concentrations&quot;</span>, <span class="dv">70</span>),</span>
+<span id="cb4-21"><a href="Workflows_Portfolio_1.html#cb4-21" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Offspring count&quot;</span>,</span>
+<span id="cb4-22"><a href="Workflows_Portfolio_1.html#cb4-22" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Compound concentration in log10(nM)&quot;</span>,</span>
+<span id="cb4-23"><a href="Workflows_Portfolio_1.html#cb4-23" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="fu">str_wrap</span>(<span class="st">&quot;Figure 1. Scatterplot with trendlines showing the mean offspring </span></span>
+<span id="cb4-24"><a href="Workflows_Portfolio_1.html#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="st">                          count of C. Elegans with three different compounds at </span></span>
+<span id="cb4-25"><a href="Workflows_Portfolio_1.html#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="st">                          varying concentrations.&quot;</span>, <span class="dv">80</span>)) <span class="sc">+</span></span>
+<span id="cb4-26"><a href="Workflows_Portfolio_1.html#cb4-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fl">85.9</span>, <span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="at">size =</span> <span class="fl">0.2</span>) <span class="sc">+</span> <span class="co"># Shows control negative</span></span>
+<span id="cb4-27"><a href="Workflows_Portfolio_1.html#cb4-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="dv">0</span>,<span class="fl">85.9</span>, <span class="at">label =</span> <span class="st">&quot;Control negative&quot;</span>, <span class="at">vjust=</span><span class="sc">-</span><span class="fl">0.3</span>), <span class="at">size =</span> <span class="fl">3.5</span>) <span class="sc">+</span></span>
+<span id="cb4-28"><a href="Workflows_Portfolio_1.html#cb4-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fl">49.4</span>, <span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="at">size =</span> <span class="fl">0.2</span>) <span class="sc">+</span> <span class="co"># Shows control positive</span></span>
+<span id="cb4-29"><a href="Workflows_Portfolio_1.html#cb4-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="sc">-</span><span class="fl">3.5</span>,<span class="fl">49.4</span>, <span class="at">label =</span> <span class="st">&quot;Control positive&quot;</span>, <span class="at">vjust=</span><span class="sc">-</span><span class="fl">0.3</span>), <span class="at">size =</span> <span class="fl">3.5</span>) <span class="sc">+</span></span>
+<span id="cb4-30"><a href="Workflows_Portfolio_1.html#cb4-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="portfolio_book_files/figure-html/scatterplot-1.png" width="672" /></p>
+</div>
+<div id="normalize-for-the-negative-control" class="section level3" number="1.1.3">
+<h3><span class="header-section-number">1.1.3</span> Normalize for the negative control</h3>
+<p>In order to see how much the offspring count improved or decreased relatively to the negative control basline the data must be normalized. To do this we adjust the negative control to a value of 1 and adjust the other values in the same way. In this case that means dividing by 85.9. The scatterplot was created again with the new normalized data, further settings stayed the same, the result is shown in figure 2.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="Workflows_Portfolio_1.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the mean value of controlNegative</span></span>
+<span id="cb5-2"><a href="Workflows_Portfolio_1.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># view(CE.LIQ_summ) # It&#39;s 85.9</span></span>
+<span id="cb5-3"><a href="Workflows_Portfolio_1.html#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="Workflows_Portfolio_1.html#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Add the column with normalized average counts</span></span>
+<span id="cb5-5"><a href="Workflows_Portfolio_1.html#cb5-5" aria-hidden="true" tabindex="-1"></a>CE.LIQ_summ_norm <span class="ot">&lt;-</span> CE.LIQ_summ_exp <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">norm_counts =</span> mean_counts<span class="sc">/</span><span class="fl">85.9</span>, </span>
+<span id="cb5-6"><a href="Workflows_Portfolio_1.html#cb5-6" aria-hidden="true" tabindex="-1"></a>                                               <span class="at">norm_stdev =</span> stdev_counts<span class="sc">/</span><span class="fl">85.9</span>)</span>
+<span id="cb5-7"><a href="Workflows_Portfolio_1.html#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="Workflows_Portfolio_1.html#cb5-8" aria-hidden="true" tabindex="-1"></a>CE.LIQ_summ_norm <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log10</span>(compConcentration), <span class="co"># log10 as requested in question F</span></span>
+<span id="cb5-9"><a href="Workflows_Portfolio_1.html#cb5-9" aria-hidden="true" tabindex="-1"></a>                                <span class="at">y =</span> norm_counts)) <span class="sc">+</span></span>
+<span id="cb5-10"><a href="Workflows_Portfolio_1.html#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">group=</span>compName, <span class="at">color =</span> compName), <span class="at">span=</span> .<span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb5-11"><a href="Workflows_Portfolio_1.html#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> compName), </span>
+<span id="cb5-12"><a href="Workflows_Portfolio_1.html#cb5-12" aria-hidden="true" tabindex="-1"></a>             <span class="at">position =</span> <span class="fu">position_jitter</span>(<span class="at">width =</span> <span class="fl">0.15</span>, <span class="at">height =</span> <span class="fl">0.15</span>, <span class="at">seed =</span> <span class="dv">123</span>)) <span class="sc">+</span></span>
+<span id="cb5-13"><a href="Workflows_Portfolio_1.html#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin=</span>norm_counts<span class="sc">-</span>norm_stdev, <span class="at">ymax=</span>norm_counts<span class="sc">+</span>norm_stdev, <span class="at">color =</span> compName), </span>
+<span id="cb5-14"><a href="Workflows_Portfolio_1.html#cb5-14" aria-hidden="true" tabindex="-1"></a>                <span class="at">width=</span>.<span class="dv">1</span>, <span class="at">position =</span> <span class="fu">position_jitter</span>(<span class="at">width =</span> <span class="fl">0.15</span>, <span class="at">height =</span> <span class="fl">0.15</span>, <span class="at">seed =</span> <span class="dv">123</span>)) <span class="sc">+</span></span>
+<span id="cb5-15"><a href="Workflows_Portfolio_1.html#cb5-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">str_wrap</span>(<span class="st">&quot;Mean offspring count of C. Elegans with added compounds </span></span>
+<span id="cb5-16"><a href="Workflows_Portfolio_1.html#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="st">                        in varying concentrations&quot;</span>, <span class="dv">70</span>),</span>
+<span id="cb5-17"><a href="Workflows_Portfolio_1.html#cb5-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Offspring count relative to negative control&quot;</span>,</span>
+<span id="cb5-18"><a href="Workflows_Portfolio_1.html#cb5-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Compound concentration in log10(nM)&quot;</span>,</span>
+<span id="cb5-19"><a href="Workflows_Portfolio_1.html#cb5-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="fu">str_wrap</span>(<span class="st">&quot;Figure 2. Scatterplot with trendlines showing the mean offspring</span></span>
+<span id="cb5-20"><a href="Workflows_Portfolio_1.html#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="st">                          count of C. Elegans with three different compounds at varying </span></span>
+<span id="cb5-21"><a href="Workflows_Portfolio_1.html#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="st">                          concentrations. Normalized to negative control == 1.&quot;</span>, <span class="dv">70</span>)) <span class="sc">+</span></span>
+<span id="cb5-22"><a href="Workflows_Portfolio_1.html#cb5-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">1</span>, <span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="at">size =</span> <span class="fl">0.2</span>) <span class="sc">+</span> <span class="co"># Shows control negative</span></span>
+<span id="cb5-23"><a href="Workflows_Portfolio_1.html#cb5-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="dv">0</span>,<span class="dv">1</span>, <span class="at">label =</span> <span class="st">&quot;Control negative&quot;</span>, <span class="at">vjust=</span><span class="sc">-</span><span class="fl">0.3</span>), <span class="at">size =</span> <span class="fl">3.5</span>) <span class="sc">+</span></span>
+<span id="cb5-24"><a href="Workflows_Portfolio_1.html#cb5-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fl">0.57508731</span>, <span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="at">size =</span> <span class="fl">0.2</span>) <span class="sc">+</span> <span class="co"># Shows control positive</span></span>
+<span id="cb5-25"><a href="Workflows_Portfolio_1.html#cb5-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="sc">-</span><span class="fl">3.5</span>,<span class="fl">0.57508731</span>, <span class="at">label =</span> <span class="st">&quot;Control positive&quot;</span>, <span class="at">vjust=</span><span class="sc">-</span><span class="fl">0.3</span>), <span class="at">size =</span> <span class="fl">3.5</span>) <span class="sc">+</span></span>
+<span id="cb5-26"><a href="Workflows_Portfolio_1.html#cb5-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="portfolio_book_files/figure-html/normalizing%20for%20controlNegative-1.png" width="672" /></p>
+</div>
+<div id="statistical-analysis" class="section level3" number="1.1.4">
+<h3><span class="header-section-number">1.1.4</span> Statistical analysis</h3>
+<p>In order to learn wether there is indeed an effect of the different compounds a few tests need to be performed. Starting with the Shapiro-Wilk test to check the normality of the data. Followed by an ANOVA with the different concentrations as added variable. To see the actual difference, the analysis finished with a Post hoc test like Tukey.</p>
+<hr />
+</div>
+</div>
+<div id="repita-criteria" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> Repita criteria</h2>
+<div id="criteria-for-reproducibility" class="section level3" number="1.2.1">
+<h3><span class="header-section-number">1.2.1</span> Criteria for reproducibility</h3>
+<p>In this first part of assignment 1.2 we will look at ‘Repita’ criteria. The criteria are used to check for the reproducibility of scientific research articles. In table 1 the different criteria are shown with a definition and the type of response it calls for. In order to further understand and apply these criteria I will look for a research article and check if this article follows the ‘Repita’ guidelines as shown in table 1.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="Workflows_Portfolio_1.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the different variables needed for the repita criteria table</span></span>
+<span id="cb6-2"><a href="Workflows_Portfolio_1.html#cb6-2" aria-hidden="true" tabindex="-1"></a>Transparency_Criteria <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Study Purpose&quot;</span>, </span>
+<span id="cb6-3"><a href="Workflows_Portfolio_1.html#cb6-3" aria-hidden="true" tabindex="-1"></a>                           <span class="st">&quot;Data Availability Statement&quot;</span>, </span>
+<span id="cb6-4"><a href="Workflows_Portfolio_1.html#cb6-4" aria-hidden="true" tabindex="-1"></a>                           <span class="st">&quot;Data Location&quot;</span>, </span>
+<span id="cb6-5"><a href="Workflows_Portfolio_1.html#cb6-5" aria-hidden="true" tabindex="-1"></a>                           <span class="st">&quot;Study Location&quot;</span>, </span>
+<span id="cb6-6"><a href="Workflows_Portfolio_1.html#cb6-6" aria-hidden="true" tabindex="-1"></a>                           <span class="st">&quot;Author Review&quot;</span>, </span>
+<span id="cb6-7"><a href="Workflows_Portfolio_1.html#cb6-7" aria-hidden="true" tabindex="-1"></a>                           <span class="st">&quot;Ethics Statement&quot;</span>, </span>
+<span id="cb6-8"><a href="Workflows_Portfolio_1.html#cb6-8" aria-hidden="true" tabindex="-1"></a>                           <span class="st">&quot;Funding Statement&quot;</span>, </span>
+<span id="cb6-9"><a href="Workflows_Portfolio_1.html#cb6-9" aria-hidden="true" tabindex="-1"></a>                           <span class="st">&quot;Code Availability&quot;</span>)</span>
+<span id="cb6-10"><a href="Workflows_Portfolio_1.html#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="Workflows_Portfolio_1.html#cb6-11" aria-hidden="true" tabindex="-1"></a>Definition <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;A concise statement in the introduction of the article, often in the last paragraph, that establishes the reason the research was conducted. Also called the study objective.&quot;</span>,</span>
+<span id="cb6-12"><a href="Workflows_Portfolio_1.html#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;A statement, in an individual section offset from the main body of text, that explains how or if one can access a study’s data. The title of the section may vary, but it must explicitly mention data; it is therefore distinct from a supplementary materials section.&quot;</span>, </span>
+<span id="cb6-13"><a href="Workflows_Portfolio_1.html#cb6-13" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;Where the article’s data can be accessed, either raw or processed.&quot;</span>, </span>
+<span id="cb6-14"><a href="Workflows_Portfolio_1.html#cb6-14" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;Author has stated in the methods section where the study took place or the data’s country/region of origin.&quot;</span>, </span>
+<span id="cb6-15"><a href="Workflows_Portfolio_1.html#cb6-15" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;The professionalism of the contact information that the author has provided in the manuscript.&quot;</span>, </span>
+<span id="cb6-16"><a href="Workflows_Portfolio_1.html#cb6-16" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;A statement within the manuscript indicating any ethical concerns, including the presence of sensitive data.&quot;</span>, </span>
+<span id="cb6-17"><a href="Workflows_Portfolio_1.html#cb6-17" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;A statement within the manuscript indicating whether or not the authors received funding for their research.&quot;</span>, </span>
+<span id="cb6-18"><a href="Workflows_Portfolio_1.html#cb6-18" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;Authors have shared access to the most updated code that they used in their study, including code used for analysis.&quot;</span>)</span>
+<span id="cb6-19"><a href="Workflows_Portfolio_1.html#cb6-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-20"><a href="Workflows_Portfolio_1.html#cb6-20" aria-hidden="true" tabindex="-1"></a>Response_Type <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Binary&quot;</span>, </span>
+<span id="cb6-21"><a href="Workflows_Portfolio_1.html#cb6-21" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;Binary&quot;</span>, </span>
+<span id="cb6-22"><a href="Workflows_Portfolio_1.html#cb6-22" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;Found Value&quot;</span>, </span>
+<span id="cb6-23"><a href="Workflows_Portfolio_1.html#cb6-23" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;Binary;Found Value&quot;</span>, </span>
+<span id="cb6-24"><a href="Workflows_Portfolio_1.html#cb6-24" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;Found Value&quot;</span>, </span>
+<span id="cb6-25"><a href="Workflows_Portfolio_1.html#cb6-25" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;Binary&quot;</span>, </span>
+<span id="cb6-26"><a href="Workflows_Portfolio_1.html#cb6-26" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;Binary&quot;</span>, </span>
+<span id="cb6-27"><a href="Workflows_Portfolio_1.html#cb6-27" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;Binary&quot;</span>)</span>
+<span id="cb6-28"><a href="Workflows_Portfolio_1.html#cb6-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-29"><a href="Workflows_Portfolio_1.html#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Turn the variables into one dataframe</span></span>
+<span id="cb6-30"><a href="Workflows_Portfolio_1.html#cb6-30" aria-hidden="true" tabindex="-1"></a>repita_criteria <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(Transparency_Criteria, </span>
+<span id="cb6-31"><a href="Workflows_Portfolio_1.html#cb6-31" aria-hidden="true" tabindex="-1"></a>                              Definition, </span>
+<span id="cb6-32"><a href="Workflows_Portfolio_1.html#cb6-32" aria-hidden="true" tabindex="-1"></a>                              Response_Type)</span>
+<span id="cb6-33"><a href="Workflows_Portfolio_1.html#cb6-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-34"><a href="Workflows_Portfolio_1.html#cb6-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the dataframe to create the table</span></span>
+<span id="cb6-35"><a href="Workflows_Portfolio_1.html#cb6-35" aria-hidden="true" tabindex="-1"></a>repita_criteria <span class="sc">%&gt;%</span> <span class="fu">kable</span>(<span class="at">col.names =</span> <span class="fu">gsub</span>(<span class="st">&quot;_&quot;</span>, <span class="st">&quot; &quot;</span>, <span class="fu">names</span>(repita_criteria)), </span>
+<span id="cb6-36"><a href="Workflows_Portfolio_1.html#cb6-36" aria-hidden="true" tabindex="-1"></a>                          <span class="at">caption =</span> <span class="st">&quot;Table 1. The repita criteria as given in portfolio assignment 1.2 in [lesson 1 of the reader](https://lesmaterialen.rstudio.hu.nl/workflows-reader/represintro.html).&quot;</span>)</span></code></pre></div>
+<table>
+<caption>(#tab:repita criteria)Table 1. The repita criteria as given in portfolio assignment 1.2 in <a href="https://lesmaterialen.rstudio.hu.nl/workflows-reader/represintro.html">lesson 1 of the reader</a>.</caption>
+<colgroup>
+<col width="8%" />
+<col width="84%" />
+<col width="6%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Transparency Criteria</th>
+<th align="left">Definition</th>
+<th align="left">Response Type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Study Purpose</td>
+<td align="left">A concise statement in the introduction of the article, often in the last paragraph, that establishes the reason the research was conducted. Also called the study objective.</td>
+<td align="left">Binary</td>
+</tr>
+<tr class="even">
+<td align="left">Data Availability Statement</td>
+<td align="left">A statement, in an individual section offset from the main body of text, that explains how or if one can access a study’s data. The title of the section may vary, but it must explicitly mention data; it is therefore distinct from a supplementary materials section.</td>
+<td align="left">Binary</td>
+</tr>
+<tr class="odd">
+<td align="left">Data Location</td>
+<td align="left">Where the article’s data can be accessed, either raw or processed.</td>
+<td align="left">Found Value</td>
+</tr>
+<tr class="even">
+<td align="left">Study Location</td>
+<td align="left">Author has stated in the methods section where the study took place or the data’s country/region of origin.</td>
+<td align="left">Binary;Found Value</td>
+</tr>
+<tr class="odd">
+<td align="left">Author Review</td>
+<td align="left">The professionalism of the contact information that the author has provided in the manuscript.</td>
+<td align="left">Found Value</td>
+</tr>
+<tr class="even">
+<td align="left">Ethics Statement</td>
+<td align="left">A statement within the manuscript indicating any ethical concerns, including the presence of sensitive data.</td>
+<td align="left">Binary</td>
+</tr>
+<tr class="odd">
+<td align="left">Funding Statement</td>
+<td align="left">A statement within the manuscript indicating whether or not the authors received funding for their research.</td>
+<td align="left">Binary</td>
+</tr>
+<tr class="even">
+<td align="left">Code Availability</td>
+<td align="left">Authors have shared access to the most updated code that they used in their study, including code used for analysis.</td>
+<td align="left">Binary</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="the-article" class="section level3" number="1.2.2">
+<h3><span class="header-section-number">1.2.2</span> The article</h3>
+<p><a href="https://journals.plos.org/plosone/">Plosone</a> was used to find a suitable article. The found article is a primary article describing emperical scientific findings by <span class="citation">Bruckner et al. (2022)</span>. The focus is on how microbiotas play a role in developmental programs. Altered microbiota composition appears to be linked to neurodevelopmental conditions such as autism spectrum disorder. One of the findings described how the microbiota can influence forebrain neurons. Forebrain neurons are required for normal social behavior and localization of forebrain microglia.</p>
+<p>The study uses zebrafish which were kept at 28°C with a 14/10 light/dark cycle. For the controlgroup conventionalized (CVZ) fish were used. The experimental condition consisted of germ-free (GF) fish. These fish were made germ-free and therefore did not have their microbiota. When the fish were older (7 dpf) they were inoculated with normal microbiota (ex germ-free or XGF) and their optomotor respons was tested. Once the fish were adults (14 dpf) their social behavior was tested.</p>
+<p>The social behavior was assessed through a dyad assay for postflexion larval and adult zebrafish. For each condition a pair of siblings were placed in isolated tanks and allowed to interact for 10 minutes via transparent tank walls. Social interaction was defined as the average relative distance from the divider and the percentage of time spent orienting at 45° to 90°. These parameters were measured and analyzed using computer vision software written in Python (available at <a href="https://github.com/stednitzs/daniopen" class="uri">https://github.com/stednitzs/daniopen</a>). Compared to the CVZ siblings, the GF larvae spent significantly less time than in close proximity to and oriented at 45 to 90° to the stimulus fish. These results show that an intact microbiota is required early for later development of normal social behavior.</p>
+<p>Aside from the social behavior, the study also looked at optomotor responses. It is possible that the microbiota influences circuitry underlying the early vision and locomotion required for social behavior. To address this possibility, the vision and locomotion were assayed by comparing kinetics of the optomotor response to virtual motion in GF larvae and CVZ controls. Optomotor response was assessed using a “virtual reality” system for assessing zebrafish behavior, measuring swim response in larvae. A visual stimulus was projected on a screen underneath the dishes for 20 seconds and consisted of concentric rings moving toward the dish center, followed by a 20-second refractory period. Responses are the average of 46 to 59 stimulus trials per fish, presented over 1 hour. In this part of the study, no significant difference were found between the GF and CVZ fish. This suggests that the microbiota influences circuits specific to social behavior directly, rather than by modulating vision or locomotion.</p>
+<p>The results demonstrate that the microbiota influences zebrafish social behavior by stimulating microglial remodeling of forebrain circuits during early neurodevelopment. This conclusion suggests pathways for new interventions in multiple neurodevelopmental disorders.</p>
+</div>
+<div id="the-reproducibility" class="section level3" number="1.2.3">
+<h3><span class="header-section-number">1.2.3</span> The reproducibility</h3>
+<p>To better understand the criteria (table 1.) they will be applied to the found article. The results can be found in table 2. While answering this assignment I noticed how this is not as black and white as I thought. For example with the study location. At first I thought it was stated, because University of Oregon came back quite a few times, looking at it more closely it was not clear if that was the actual study location.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="Workflows_Portfolio_1.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the different variables needed for the article check table</span></span>
+<span id="cb7-2"><a href="Workflows_Portfolio_1.html#cb7-2" aria-hidden="true" tabindex="-1"></a>Score <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;TRUE&quot;</span>, </span>
+<span id="cb7-3"><a href="Workflows_Portfolio_1.html#cb7-3" aria-hidden="true" tabindex="-1"></a>           <span class="st">&quot;TRUE&quot;</span>, </span>
+<span id="cb7-4"><a href="Workflows_Portfolio_1.html#cb7-4" aria-hidden="true" tabindex="-1"></a>           <span class="st">&quot;[Link](https://figshare.com/projects/Bruckner_et_al_Data/136756)&quot;</span>, </span>
+<span id="cb7-5"><a href="Workflows_Portfolio_1.html#cb7-5" aria-hidden="true" tabindex="-1"></a>           <span class="st">&quot;FALSE&quot;</span>, </span>
+<span id="cb7-6"><a href="Workflows_Portfolio_1.html#cb7-6" aria-hidden="true" tabindex="-1"></a>           <span class="st">&quot;Non professional&quot;</span>, </span>
+<span id="cb7-7"><a href="Workflows_Portfolio_1.html#cb7-7" aria-hidden="true" tabindex="-1"></a>           <span class="st">&quot;TRUE&quot;</span>, </span>
+<span id="cb7-8"><a href="Workflows_Portfolio_1.html#cb7-8" aria-hidden="true" tabindex="-1"></a>           <span class="st">&quot;TRUE&quot;</span>, </span>
+<span id="cb7-9"><a href="Workflows_Portfolio_1.html#cb7-9" aria-hidden="true" tabindex="-1"></a>           <span class="st">&quot;FALSE&quot;</span>)</span>
+<span id="cb7-10"><a href="Workflows_Portfolio_1.html#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="Workflows_Portfolio_1.html#cb7-11" aria-hidden="true" tabindex="-1"></a>Explanation <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;In the second to last paragraph of the introduction the study objective is described.&quot;</span>, </span>
+<span id="cb7-12"><a href="Workflows_Portfolio_1.html#cb7-12" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&quot;On the left-hand side of the webpage the </span><span class="sc">\&quot;</span><span class="st">Accesibble Data</span><span class="sc">\&quot;</span><span class="st"> can be found&quot;</span>, </span>
+<span id="cb7-13"><a href="Workflows_Portfolio_1.html#cb7-13" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&quot;The data can be accessed through the given link, found under the </span><span class="sc">\&quot;</span><span class="st">Accesibble Data</span><span class="sc">\&quot;</span><span class="st"> header.&quot;</span>, </span>
+<span id="cb7-14"><a href="Workflows_Portfolio_1.html#cb7-14" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&quot;The origin of the zebrafish has been given. The workplace of the authors has also been given (University of Oregon) but the location where the research has been performed is not speficially stated anywhere in the article. &quot;</span>, </span>
+<span id="cb7-15"><a href="Workflows_Portfolio_1.html#cb7-15" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&quot;Only the email adresses of P. Washbourne and J.S. Eisen were given. Both were part of the funding acquisition. The contact information of the researchers has not been given.&quot;</span>, </span>
+<span id="cb7-16"><a href="Workflows_Portfolio_1.html#cb7-16" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&quot;There is an ethics statement in the methods paragraph.&quot;</span>, </span>
+<span id="cb7-17"><a href="Workflows_Portfolio_1.html#cb7-17" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&quot;The funding is stated under the abstract.&quot;</span>, </span>
+<span id="cb7-18"><a href="Workflows_Portfolio_1.html#cb7-18" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&quot;The data analysis is explained but the code has not been shared.&quot;</span>)</span>
+<span id="cb7-19"><a href="Workflows_Portfolio_1.html#cb7-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-20"><a href="Workflows_Portfolio_1.html#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Turn the variables into one dataframe</span></span>
+<span id="cb7-21"><a href="Workflows_Portfolio_1.html#cb7-21" aria-hidden="true" tabindex="-1"></a>article_repita_check <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(Transparency_Criteria, Score, Explanation)</span>
+<span id="cb7-22"><a href="Workflows_Portfolio_1.html#cb7-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-23"><a href="Workflows_Portfolio_1.html#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the dataframe to create the table</span></span>
+<span id="cb7-24"><a href="Workflows_Portfolio_1.html#cb7-24" aria-hidden="true" tabindex="-1"></a>article_repita_check <span class="sc">%&gt;%</span> <span class="fu">kable</span>(<span class="at">col.names =</span> <span class="fu">gsub</span>(<span class="st">&quot;_&quot;</span>, <span class="st">&quot; &quot;</span>, <span class="fu">names</span>(repita_criteria)), </span>
+<span id="cb7-25"><a href="Workflows_Portfolio_1.html#cb7-25" aria-hidden="true" tabindex="-1"></a>                               <span class="at">caption =</span> <span class="st">&quot;Table 2. The score for each repita criterium when looking at the research done by Bruckner et al.(2022)&quot;</span>)</span></code></pre></div>
+<table>
+<caption>(#tab:article check)Table 2. The score for each repita criterium when looking at the research done by Bruckner et al.(2022)</caption>
+<colgroup>
+<col width="10%" />
+<col width="6%" />
+<col width="83%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Transparency Criteria</th>
+<th align="left">Definition</th>
+<th align="left">Response Type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Study Purpose</td>
+<td align="left">TRUE</td>
+<td align="left">In the second to last paragraph of the introduction the study objective is described.</td>
+</tr>
+<tr class="even">
+<td align="left">Data Availability Statement</td>
+<td align="left">TRUE</td>
+<td align="left">On the left-hand side of the webpage the “Accesibble Data” can be found</td>
+</tr>
+<tr class="odd">
+<td align="left">Data Location</td>
+<td align="left"><a href="https://figshare.com/projects/Bruckner_et_al_Data/136756">Link</a></td>
+<td align="left">The data can be accessed through the given link, found under the “Accesibble Data” header.</td>
+</tr>
+<tr class="even">
+<td align="left">Study Location</td>
+<td align="left">FALSE</td>
+<td align="left">The origin of the zebrafish has been given. The workplace of the authors has also been given (University of Oregon) but the location where the research has been performed is not speficially stated anywhere in the article.</td>
+</tr>
+<tr class="odd">
+<td align="left">Author Review</td>
+<td align="left">Non professional</td>
+<td align="left">Only the email adresses of P. Washbourne and J.S. Eisen were given. Both were part of the funding acquisition. The contact information of the researchers has not been given.</td>
+</tr>
+<tr class="even">
+<td align="left">Ethics Statement</td>
+<td align="left">TRUE</td>
+<td align="left">There is an ethics statement in the methods paragraph.</td>
+</tr>
+<tr class="odd">
+<td align="left">Funding Statement</td>
+<td align="left">TRUE</td>
+<td align="left">The funding is stated under the abstract.</td>
+</tr>
+<tr class="even">
+<td align="left">Code Availability</td>
+<td align="left">FALSE</td>
+<td align="left">The data analysis is explained but the code has not been shared.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="open-source-code" class="section level2" number="1.3">
+<h2><span class="header-section-number">1.3</span> Open source code</h2>
+<p>In this second part of assignment 1.2 we’ll be looking at the code from an existing study. The focus will be on understanding the code, noting what it tries to achieve, the readability, reproducibility, fixing errors, etc.</p>
+<div id="the-article-1" class="section level3" number="1.3.1">
+<h3><span class="header-section-number">1.3.1</span> The article</h3>
+<p>The article used for this assignment had to live up to a few criteria. First up, the data had to be analysed using R code. This code and the dataset had to be available. The chosen article is <em>“Mental Health Impacts in Argentinean College Students During COVID-19 Quarantine”</em> by <span class="citation">López Steinmetz et al. (2021)</span>. The study aimed to analyze differences in mental health in college students from Argentina who were exposed to different spread-rates of COVID-19. They also wanted to analyze between group differences in mental health indicatores at four different quarantine sub-periods.</p>
+<p>To do this a cross-sectional design was used. The sample included 2687 college students and the data was collected online during the Argentinean quarantine. They used a one-way between-groups ANOVA with Tukey’s post hoc test for the analysis.</p>
+<p>The results showed that the center and most populated area only differed in psychological well-being and negative alcohol related consequences, but not in the other indicators. For the sub-periods there were differences in psychological well-being, social functioning and coping, psychological distress, and negative alcohol-related consequences. Negative alcohol-related consequences were the only MHS indicator improving over time. This worsened mean mental health suggests that quarantine and its extensions contribute to negative mental health impacts.</p>
+</div>
+<div id="the-code" class="section level3" number="1.3.2">
+<h3><span class="header-section-number">1.3.2</span> The code</h3>
+<p>The code, as well as the dataset, for the study were made available through OSF. The original can be found <a href="https://osf.io/zrx6t/">here</a> and the version with my adjustments can be found at the bottom of this page. The <a href="https://osf.io/bmwzq">dataset</a> and the <a href="https://osf.io/t523v">code</a> were added to the repository as well. After reading the code it appears to consist of a few parts.</p>
+<ol style="list-style-type: decimal">
+<li>Reference to the manuscript</li>
+<li>Loading the data and packages</li>
+<li>Methods in general
+<ul>
+<li>Sample size</li>
+<li>Distribution by sex, also noted in percentages</li>
+<li>Mean, median and stdev of the age of the students</li>
+<li>Distribution by province in percentages</li>
+</ul></li>
+<li>Methods for data analysis
+<ul>
+<li>Test of skewness per mental health indicator</li>
+<li>Test or Kurtosis per mental health indicator
+<ul>
+<li>with criteria and criteria reference</li>
+</ul></li>
+<li>Division based on region for first aim</li>
+<li>Division based on sub-periods for second aim</li>
+</ul></li>
+<li>Results for aim 1 (differences in MHS based on region)
+<ul>
+<li>Anova per mental health indicator
+<ul>
+<li>Summary</li>
+<li>Plot</li>
+<li>TukeyHSD test</li>
+<li>Plot of Tukey HSD</li>
+</ul></li>
+<li>Significant differences</li>
+<li>Mean and stdev for indicator per region</li>
+</ul></li>
+<li>Results for aim 2 (differences in MHS based on sub-period)
+<ul>
+<li>Anova per mental health indicator
+<ul>
+<li>Summary</li>
+<li>Plot</li>
+<li>TukeyHSD test</li>
+<li>Plot of Tukey HSD</li>
+</ul></li>
+<li>Significant differences</li>
+<li>Mean and stdev for indicator per sub-period</li>
+<li>Plot with means per sub-period and 95% confidence interval</li>
+</ul></li>
+</ol>
+<p>The code is used to make the data clear and tidy by first noting details like sample size, distributions in percentages and tests of skewness. Then it moves on to perform statistical tests for the two different aims of the study. It shows the significant differences and creates plots for the second aim.</p>
+<p>It was very easy to read the code, I would give it a 5/5 on readability. It was made especially easy by the clear headers and comments.</p>
+</div>
+<div id="excuting-the-code" class="section level3" number="1.3.3">
+<h3><span class="header-section-number">1.3.3</span> Excuting the code</h3>
+<p>To further inspect the code we will execute it on the dataset given by the study. To this we change one word in the data set in order to link the dataset as it is downloaded to the project. To this the word “clipboard” under comment “Load the dataset” will be changed into raw-data/data012/dataset.xlsx, the location of the downloaded dataset. Errors will be noted below the code and changed.</p>
+<div id="changes-and-errors-when-executing" class="section level4" number="1.3.3.1">
+<h4><span class="header-section-number">1.3.3.1</span> Changes and errors when executing</h4>
+<blockquote>
+<ol style="list-style-type: decimal">
+<li>The original code uses read.table and the clipboard to load the data. This can very quickly be done wrong. To fix this the readxl package was added and the excel file was added using table&lt;-read_excel(“data-raw/data012/dataset.xlsx”).</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="2" style="list-style-type: decimal">
+<li>“Error in model.frame.default(formula = table$PSYCH.WELLBEING ~ table$REGIONS,:invalid type (NULL) for variable ’table$PSYCH.WELLBEING_. In the table the column”PSYCH WELLBEING” uses a space instead of a period. This also happens for other column names. To change this colnames(table) &lt;- str_replace_all(colnames(table), ” “,”.”) was added before testing skewness.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="3" style="list-style-type: decimal">
+<li>The rest of the code stayed the same. To make the knitting of this rmarkdown easier the code has been adjusted to only look at “PSYCH.WELLBEING” as an example. All other indicators would have been analysed in the exact same manner.</li>
+</ol>
+</blockquote>
+</div>
+</div>
+<div id="effort-scoring" class="section level3" number="1.3.4">
+<h3><span class="header-section-number">1.3.4</span> Effort scoring</h3>
+<p>Thanks to the great readability and consistency of the code it was very easy to reproduce. The only issue was adjusting the columnnames to use periods instead of spaces which was easily fixed. Therefore the score is a 5/5 on reproducibility.</p>
+<details>
+<summary>
+Read the code including my adjustments
+</summary>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="Workflows_Portfolio_1.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># R Code for the manuscript entitled:</span></span>
+<span id="cb8-2"><a href="Workflows_Portfolio_1.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># &quot;Mental health impacts in Argentinean college students during COVID-19 quarantine&quot;.</span></span>
+<span id="cb8-3"><a href="Workflows_Portfolio_1.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># López Steinmetz L.C., Leyes C.A., Dutto Florio M.A., Fong S.B., López Steinmetz R.L. &amp; Godoy J.C.</span></span>
+<span id="cb8-4"><a href="Workflows_Portfolio_1.html#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="Workflows_Portfolio_1.html#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="do">##########################################################################</span></span>
+<span id="cb8-6"><a href="Workflows_Portfolio_1.html#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="do">################## LOAD THE DATASET &amp; PACKAGES ###########################</span></span>
+<span id="cb8-7"><a href="Workflows_Portfolio_1.html#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="do">##########################################################################</span></span>
+<span id="cb8-8"><a href="Workflows_Portfolio_1.html#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="Workflows_Portfolio_1.html#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the dataset</span></span>
+<span id="cb8-10"><a href="Workflows_Portfolio_1.html#cb8-10" aria-hidden="true" tabindex="-1"></a>table<span class="ot">&lt;-</span><span class="fu">read_excel</span>(<span class="st">&quot;data-raw/data012/dataset.xlsx&quot;</span>) <span class="co"># Changed by Mirthe Klaassen for this portfolio assignment</span></span>
+<span id="cb8-11"><a href="Workflows_Portfolio_1.html#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(table)</span></code></pre></div>
+<pre><code>##  SUB PERIODS IN PRE AND POST   REGIONS            PROVINCE        
+##  Length:2687                 Length:2687        Length:2687       
+##  Class :character            Class :character   Class :character  
+##  Mode  :character            Mode  :character   Mode  :character  
+##                                                                   
+##                                                                   
+##                                                                   
+##      SEX                 AGE        PSYCH WELLBEING SOC FUNC AND COPING
+##  Length:2687        Min.   :18.00   Min.   :0.000   Min.   :0.000      
+##  Class :character   1st Qu.:20.00   1st Qu.:2.000   1st Qu.:0.000      
+##  Mode  :character   Median :22.00   Median :3.000   Median :2.000      
+##                     Mean   :22.74   Mean   :3.086   Mean   :2.149      
+##                     3rd Qu.:24.00   3rd Qu.:5.000   3rd Qu.:4.000      
+##                     Max.   :39.00   Max.   :6.000   Max.   :6.000      
+##       K10            BDI         STAIR           YAACQ             ISO       
+##  Min.   :10.0   Min.   : 0   Min.   : 1.00   Min.   : 0.000   Min.   : 1.00  
+##  1st Qu.:19.0   1st Qu.:10   1st Qu.:21.00   1st Qu.: 0.000   1st Qu.:22.00  
+##  Median :25.0   Median :16   Median :29.00   Median : 3.000   Median :32.00  
+##  Mean   :25.5   Mean   :18   Mean   :29.24   Mean   : 3.699   Mean   :34.56  
+##  3rd Qu.:32.0   3rd Qu.:25   3rd Qu.:38.00   3rd Qu.: 6.000   3rd Qu.:46.00  
+##  Max.   :49.0   Max.   :57   Max.   :58.00   Max.   :21.000   Max.   :82.00</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="Workflows_Portfolio_1.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the packages:</span></span>
+<span id="cb10-2"><a href="Workflows_Portfolio_1.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moments)</span>
+<span id="cb10-3"><a href="Workflows_Portfolio_1.html#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gplots)</span>
+<span id="cb10-4"><a href="Workflows_Portfolio_1.html#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl) <span class="do">## Added by Mirthe Klaassen for this portfolio assignment</span></span>
+<span id="cb10-5"><a href="Workflows_Portfolio_1.html#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="Workflows_Portfolio_1.html#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="do">##########################################################################</span></span>
+<span id="cb10-7"><a href="Workflows_Portfolio_1.html#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="do">###################### METHODS ###########################################</span></span>
+<span id="cb10-8"><a href="Workflows_Portfolio_1.html#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="do">##########################################################################</span></span>
+<span id="cb10-9"><a href="Workflows_Portfolio_1.html#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="Workflows_Portfolio_1.html#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="do">###### SUB-TITLE: METHOD &gt; Sample and procedure</span></span>
+<span id="cb10-11"><a href="Workflows_Portfolio_1.html#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co"># SAMPLE N = 2687</span></span>
+<span id="cb10-12"><a href="Workflows_Portfolio_1.html#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="Workflows_Portfolio_1.html#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Distribution by sex:</span></span>
+<span id="cb10-14"><a href="Workflows_Portfolio_1.html#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(table<span class="sc">$</span>SEX)</span></code></pre></div>
+<pre><code>## 
+##   man other woman 
+##   473    22  2192</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="Workflows_Portfolio_1.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Absolute frequencies: Women = 2192, Men = 473, Other = 22</span></span>
+<span id="cb12-2"><a href="Workflows_Portfolio_1.html#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(table<span class="sc">$</span>SEX))<span class="sc">*</span><span class="dv">100</span></span></code></pre></div>
+<pre><code>## 
+##       man     other     woman 
+## 17.603275  0.818757 81.577968</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="Workflows_Portfolio_1.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Percentages: Women = 81.577968%, Men = 17.603275%, Other = 0.818757%</span></span>
+<span id="cb14-2"><a href="Workflows_Portfolio_1.html#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="Workflows_Portfolio_1.html#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Central tendency measures by age (total sample)</span></span>
+<span id="cb14-4"><a href="Workflows_Portfolio_1.html#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># mean</span></span>
+<span id="cb14-5"><a href="Workflows_Portfolio_1.html#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(table<span class="sc">$</span>AGE)</span></code></pre></div>
+<pre><code>## [1] 22.74023</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="Workflows_Portfolio_1.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mean age = 22.74023</span></span>
+<span id="cb16-2"><a href="Workflows_Portfolio_1.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># standard deviation</span></span>
+<span id="cb16-3"><a href="Workflows_Portfolio_1.html#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(table<span class="sc">$</span>AGE)</span></code></pre></div>
+<pre><code>## [1] 3.635612</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="Workflows_Portfolio_1.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sd age = 3.635612</span></span>
+<span id="cb18-2"><a href="Workflows_Portfolio_1.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># median</span></span>
+<span id="cb18-3"><a href="Workflows_Portfolio_1.html#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(table<span class="sc">$</span>AGE)</span></code></pre></div>
+<pre><code>## [1] 22</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="Workflows_Portfolio_1.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># median age = 22</span></span>
+<span id="cb20-2"><a href="Workflows_Portfolio_1.html#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="Workflows_Portfolio_1.html#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Distribution by provinces</span></span>
+<span id="cb20-4"><a href="Workflows_Portfolio_1.html#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(table<span class="sc">$</span>PROVINCE))<span class="sc">*</span><span class="dv">100</span></span></code></pre></div>
+<pre><code>## 
+##       CABA        CBA        JUJ      PCIAB        SAL      STACR      TDELF 
+## 11.9464086 39.0026051  6.6989207 31.9315221  7.1082992  0.9676219  2.3446223</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="Workflows_Portfolio_1.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># JUJ (JUJUY) = 6.6989207%</span></span>
+<span id="cb22-2"><a href="Workflows_Portfolio_1.html#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co"># SAL (SALTA) = 7.1082992%</span></span>
+<span id="cb22-3"><a href="Workflows_Portfolio_1.html#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># CBA (CÓRDOBA) = 39.0026051%</span></span>
+<span id="cb22-4"><a href="Workflows_Portfolio_1.html#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># STACR (SANTA CRUZ) = 0.9676219%</span></span>
+<span id="cb22-5"><a href="Workflows_Portfolio_1.html#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="co"># TDELF (TIERRA DEL FUEGO) = 2.3446223%</span></span>
+<span id="cb22-6"><a href="Workflows_Portfolio_1.html#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="co"># CABA (CIUDAD AUTÓNOMA DE BUENOS AIRES) = 11.9464086%</span></span>
+<span id="cb22-7"><a href="Workflows_Portfolio_1.html#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="co"># PCIAB (PROVINCIA DE BUENOS AIRES) = 31.9315221%</span></span>
+<span id="cb22-8"><a href="Workflows_Portfolio_1.html#cb22-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-9"><a href="Workflows_Portfolio_1.html#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="do">###### SUB-TITLE: METHOD &gt; Data analysis</span></span>
+<span id="cb22-10"><a href="Workflows_Portfolio_1.html#cb22-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-11"><a href="Workflows_Portfolio_1.html#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Adjustment of colnames to be the same as the names in the code == added by Mirthe Klaassen for this assignment</span></span>
+<span id="cb22-12"><a href="Workflows_Portfolio_1.html#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(table) <span class="ot">&lt;-</span> <span class="fu">str_replace_all</span>(<span class="fu">colnames</span>(table), <span class="st">&quot; &quot;</span>, <span class="st">&quot;.&quot;</span>)</span>
+<span id="cb22-13"><a href="Workflows_Portfolio_1.html#cb22-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-14"><a href="Workflows_Portfolio_1.html#cb22-14" aria-hidden="true" tabindex="-1"></a><span class="do">### To test Skewness and Kurtosis # Criteria: range of acceptable values or near to (-3 and +3; Brown, 2006).</span></span>
+<span id="cb22-15"><a href="Workflows_Portfolio_1.html#cb22-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Reference: Brown T.A. (2006). Confirmatory factor analysis for applied research. New York: Guilford Press.</span></span>
+<span id="cb22-16"><a href="Workflows_Portfolio_1.html#cb22-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-17"><a href="Workflows_Portfolio_1.html#cb22-17" aria-hidden="true" tabindex="-1"></a><span class="co"># PSYCH.WELLBEING</span></span>
+<span id="cb22-18"><a href="Workflows_Portfolio_1.html#cb22-18" aria-hidden="true" tabindex="-1"></a><span class="fu">skewness</span>(table<span class="sc">$</span>PSYCH.WELLBEING)</span></code></pre></div>
+<pre><code>## [1] -0.05214941</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="Workflows_Portfolio_1.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># skewness PSYCH.WELLBEING = -0.05214941</span></span>
+<span id="cb24-2"><a href="Workflows_Portfolio_1.html#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">kurtosis</span>(table<span class="sc">$</span>PSYCH.WELLBEING) </span></code></pre></div>
+<pre><code>## [1] 1.951112</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="Workflows_Portfolio_1.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># kurtosis PSYCH.WELLBEING = 1.951112</span></span>
+<span id="cb26-2"><a href="Workflows_Portfolio_1.html#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="Workflows_Portfolio_1.html#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="do">### For analyses corresponding to the first aim, we divided the entire sample into four groups: </span></span>
+<span id="cb26-4"><a href="Workflows_Portfolio_1.html#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(table<span class="sc">$</span>REGIONS)</span></code></pre></div>
+<pre><code>## 
+##         CENTER MOST POPULATED          NORTH          SOUTH 
+##           1048           1179            371             89</code></pre>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="Workflows_Portfolio_1.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># NORTH = 371</span></span>
+<span id="cb28-2"><a href="Workflows_Portfolio_1.html#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co"># CENTER = 1048</span></span>
+<span id="cb28-3"><a href="Workflows_Portfolio_1.html#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co"># SOUTH = 89</span></span>
+<span id="cb28-4"><a href="Workflows_Portfolio_1.html#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co"># MOST POPULATED = 1179</span></span>
+<span id="cb28-5"><a href="Workflows_Portfolio_1.html#cb28-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-6"><a href="Workflows_Portfolio_1.html#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="do">### For analyses corresponding to the second aim, we divided the entire sample into four groups: </span></span>
+<span id="cb28-7"><a href="Workflows_Portfolio_1.html#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(table<span class="sc">$</span>SUB.PERIODS.IN.PRE.AND.POST)</span></code></pre></div>
+<pre><code>## 
+##         1. ONE WEEK PRE         2. TWO WEEK PRE        3. ONE WEEK POST 
+##                    1508                     525                     364 
+## 4. REMAINING WEEKS POST 
+##                     290</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="Workflows_Portfolio_1.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># first week pre-quarantine extension (ONE WEEK PRE) = 1508</span></span>
+<span id="cb30-2"><a href="Workflows_Portfolio_1.html#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="co"># second week pre-quarantine extension (TWO WEEK PRE) = 525</span></span>
+<span id="cb30-3"><a href="Workflows_Portfolio_1.html#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co"># first week post-quarantine extension (ONE WEEK POST) = 364</span></span>
+<span id="cb30-4"><a href="Workflows_Portfolio_1.html#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co"># remaining weeks post-quarantine extension (REMAINING WEEKS POST) = 290</span></span>
+<span id="cb30-5"><a href="Workflows_Portfolio_1.html#cb30-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-6"><a href="Workflows_Portfolio_1.html#cb30-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-7"><a href="Workflows_Portfolio_1.html#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="do">##########################################################################</span></span>
+<span id="cb30-8"><a href="Workflows_Portfolio_1.html#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="do">###################### RESULTS ###########################################</span></span>
+<span id="cb30-9"><a href="Workflows_Portfolio_1.html#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="do">##########################################################################</span></span>
+<span id="cb30-10"><a href="Workflows_Portfolio_1.html#cb30-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-11"><a href="Workflows_Portfolio_1.html#cb30-11" aria-hidden="true" tabindex="-1"></a><span class="do">##########################################################################</span></span>
+<span id="cb30-12"><a href="Workflows_Portfolio_1.html#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="do">####################### AIM 1 ############################################</span></span>
+<span id="cb30-13"><a href="Workflows_Portfolio_1.html#cb30-13" aria-hidden="true" tabindex="-1"></a><span class="do">##########################################################################</span></span>
+<span id="cb30-14"><a href="Workflows_Portfolio_1.html#cb30-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-15"><a href="Workflows_Portfolio_1.html#cb30-15" aria-hidden="true" tabindex="-1"></a><span class="do">### Differences in mental health aspects (both general and specific) by four regions</span></span>
+<span id="cb30-16"><a href="Workflows_Portfolio_1.html#cb30-16" aria-hidden="true" tabindex="-1"></a>table<span class="sc">$</span>PSYCH.WELLBEING</span></code></pre></div>
+<pre><code>##    [1] 6 2 3 4 0 4 0 4 2 2 2 3 0 4 4 5 3 6 3 5 2 6 5 5 5 2 3 6 6 3 4 4 2 1 4 0 2
+##   [38] 5 0 1 4 5 4 1 6 3 5 5 0 5 5 6 3 3 5 4 3 4 0 6 4 1 5 2 2 1 5 2 3 4 4 4 1 2
+##   [75] 4 1 5 4 5 6 1 3 2 4 2 2 2 6 5 2 2 2 4 5 4 4 4 5 6 3 3 2 2 2 4 5 1 1 5 0 0
+##  [112] 5 2 2 5 3 3 1 0 4 4 2 6 1 6 4 1 2 3 4 4 4 6 1 2 0 1 3 6 2 6 6 5 2 6 4 4 2
+##  [149] 3 3 2 4 3 5 1 2 0 4 3 2 1 3 6 1 5 0 2 4 2 1 1 3 1 1 5 4 4 1 1 0 6 3 1 5 5
+##  [186] 0 1 3 3 0 3 6 1 0 1 3 1 3 4 2 4 2 3 0 3 4 5 1 4 2 3 5 2 2 6 5 1 1 1 1 5 1
+##  [223] 0 0 1 0 0 3 6 6 1 4 3 3 2 0 3 2 1 6 6 2 5 0 3 5 5 2 2 4 4 1 6 0 1 6 2 1 5
+##  [260] 1 0 0 4 5 2 4 5 6 6 5 3 5 1 1 5 5 5 4 1 1 1 2 3 6 5 1 0 6 3 1 1 1 3 2 4 6
+##  [297] 3 3 1 2 4 5 3 2 4 4 4 6 3 2 5 3 3 1 5 6 6 5 5 2 2 2 2 0 4 4 4 2 2 5 4 0 4
+##  [334] 4 0 1 0 5 1 3 0 0 4 6 2 4 0 1 4 3 4 2 1 3 5 4 2 6 0 0 4 1 5 6 3 0 2 5 2 6
+##  [371] 5 2 3 6 3 4 3 5 2 5 2 1 3 4 5 5 1 4 0 0 0 0 3 2 3 6 2 3 5 0 3 6 1 2 6 2 5
+##  [408] 4 2 4 1 4 6 2 3 4 2 1 4 2 2 2 6 3 3 0 4 1 0 0 0 4 5 2 2 1 5 0 4 3 4 1 4 3
+##  [445] 5 5 3 1 0 2 2 1 3 2 1 5 1 3 0 6 3 4 4 3 6 2 2 3 6 0 4 0 2 1 1 5 4 5 3 0 1
+##  [482] 3 6 4 1 4 4 2 6 6 5 3 4 2 0 6 0 0 5 0 0 5 0 3 1 3 2 0 3 2 1 4 1 2 4 3 2 6
+##  [519] 4 4 0 2 4 3 4 2 4 1 3 3 2 4 4 3 0 5 2 0 1 4 0 3 0 2 2 4 3 4 5 4 6 2 2 4 5
+##  [556] 2 2 2 6 2 2 4 3 6 6 4 6 5 1 1 4 3 0 1 4 4 1 2 4 0 4 1 2 6 0 2 1 3 1 4 0 1
+##  [593] 3 3 3 4 6 4 0 3 5 3 2 3 1 3 0 3 0 2 0 3 4 2 2 2 4 2 6 6 3 5 6 1 3 1 2 6 4
+##  [630] 0 3 0 2 3 5 2 4 0 5 6 4 3 4 5 4 2 2 1 0 1 6 1 4 2 4 2 5 4 3 6 3 2 3 1 5 2
+##  [667] 3 1 2 0 6 0 4 0 3 4 4 0 3 2 0 2 4 3 2 3 1 2 0 1 3 0 0 5 0 2 4 2 6 3 3 0 5
+##  [704] 0 5 3 2 3 4 1 2 1 5 4 5 4 5 2 4 5 5 6 4 5 3 0 5 4 4 4 6 6 6 3 6 3 4 3 3 6
+##  [741] 5 6 5 4 5 5 2 5 5 4 2 5 6 4 3 2 1 3 5 0 5 5 6 2 1 4 3 0 3 1 6 5 4 2 6 1 3
+##  [778] 3 1 4 1 4 3 4 6 2 2 5 5 4 3 0 4 3 2 3 2 0 5 2 0 4 1 0 2 1 6 2 1 5 0 3 5 4
+##  [815] 0 0 4 4 1 1 1 5 5 3 2 0 6 2 4 3 1 4 2 2 6 5 0 1 1 5 3 2 2 3 4 1 4 4 4 3 2
+##  [852] 4 2 2 5 6 6 6 3 0 5 4 4 1 5 0 5 6 1 2 3 2 3 6 2 5 1 2 3 4 2 5 4 2 4 3 1 0
+##  [889] 0 1 5 3 3 6 3 0 2 3 0 5 5 2 4 6 4 3 6 0 2 0 6 5 2 6 1 4 4 3 1 5 2 0 4 0 4
+##  [926] 4 1 4 2 4 5 0 3 3 4 3 6 4 4 3 1 3 6 5 1 0 3 5 1 2 2 3 1 1 1 1 3 4 5 0 1 0
+##  [963] 1 5 4 4 1 3 4 2 5 2 3 3 2 1 6 6 4 4 2 5 3 3 4 6 2 3 3 0 2 6 4 5 6 3 6 6 1
+## [1000] 5 2 4 1 1 5 1 3 2 5 3 1 0 5 1 5 3 5 4 2 1 2 2 6 0 3 0 4 6 4 3 0 3 3 3 1 1
+## [1037] 4 3 3 4 0 4 4 2 5 5 0 4 4 0 2 0 6 1 3 3 6 0 0 3 2 3 6 3 3 6 1 4 3 2 5 4 4
+## [1074] 1 5 2 3 2 2 5 5 5 4 5 6 3 3 4 3 6 2 6 5 5 1 0 3 3 1 6 2 4 5 5 3 4 4 0 3 0
+## [1111] 0 3 3 4 3 1 1 2 1 4 1 4 0 2 1 3 2 2 6 1 3 2 1 3 2 1 2 1 2 0 3 4 1 6 1 3 2
+## [1148] 5 2 4 1 3 1 0 0 2 1 3 4 0 0 4 1 5 4 3 2 4 5 4 5 5 3 3 6 1 0 4 2 3 4 2 2 0
+## [1185] 5 4 6 1 2 6 1 0 5 3 5 3 4 3 2 1 5 5 5 2 5 3 1 5 6 6 4 3 3 1 3 3 6 6 3 4 4
+## [1222] 2 3 0 4 2 0 4 4 1 2 2 2 3 1 0 1 6 5 1 5 3 6 6 1 4 1 6 4 1 1 4 2 2 3 5 0 1
+## [1259] 5 4 6 2 0 0 3 1 3 4 6 0 4 2 3 0 3 2 6 6 0 2 0 5 0 2 4 4 5 2 4 1 3 4 5 4 3
+## [1296] 6 3 4 0 3 4 4 2 0 4 2 5 3 5 1 0 6 0 0 2 6 2 0 1 1 3 1 0 4 5 3 1 2 4 3 2 1
+## [1333] 0 4 5 1 2 6 3 3 3 4 4 3 0 4 6 2 2 3 6 6 1 4 1 5 3 6 4 2 3 6 3 6 4 2 1 6 1
+## [1370] 3 2 1 1 4 3 1 4 4 5 3 6 0 5 1 4 5 0 0 1 3 2 0 1 2 2 3 5 3 4 3 6 2 4 0 0 0
+## [1407] 3 3 1 2 3 3 2 2 5 3 2 1 0 4 5 3 6 2 3 2 0 0 0 0 6 5 2 2 5 4 2 4 5 0 5 5 1
+## [1444] 2 1 2 6 2 4 0 6 0 3 4 3 6 0 2 3 2 4 1 4 0 2 5 1 4 4 2 2 2 4 3 0 6 3 0 3 5
+## [1481] 1 5 3 2 2 6 0 2 4 6 2 3 6 4 3 3 2 3 1 3 4 6 6 5 3 1 6 5 3 6 3 6 2 6 2 0 0
+## [1518] 4 2 1 2 3 1 0 5 2 2 3 3 6 4 1 5 3 2 3 2 5 1 6 3 1 0 3 6 2 2 4 6 6 4 0 1 5
+## [1555] 2 3 5 3 5 6 5 5 3 1 4 5 3 6 5 6 5 1 0 1 4 5 5 4 6 4 2 2 2 5 1 6 5 0 4 2 4
+## [1592] 5 4 3 3 4 0 3 2 0 3 1 4 0 6 4 2 5 2 1 3 2 2 3 1 4 1 1 5 6 6 5 5 3 6 1 0 3
+## [1629] 3 4 4 2 0 6 3 0 4 6 2 6 3 5 2 3 6 6 0 2 3 2 1 6 2 1 4 2 2 4 2 5 5 5 2 4 4
+## [1666] 5 1 0 2 3 5 4 2 6 2 4 1 3 2 2 4 1 3 5 3 3 4 5 6 3 6 4 1 1 4 6 3 2 5 3 3 0
+## [1703] 3 3 3 6 1 4 4 5 6 0 3 5 5 5 4 6 3 1 5 5 2 2 6 6 3 2 2 5 2 6 2 3 5 3 1 6 2
+## [1740] 6 5 5 6 1 6 1 2 3 1 3 4 5 4 1 4 3 2 5 5 3 3 1 1 2 3 5 6 2 4 4 4 1 1 6 2 4
+## [1777] 3 3 4 4 2 3 3 1 2 5 4 5 5 2 4 2 5 1 6 1 5 1 6 2 3 0 2 3 3 0 5 6 1 1 3 3 3
+## [1814] 3 4 4 2 5 3 4 4 2 5 2 0 2 6 0 5 5 6 1 4 5 0 5 5 5 5 1 3 1 2 4 5 4 2 6 3 4
+## [1851] 1 3 3 0 0 5 4 6 2 6 4 5 3 4 5 1 6 5 3 1 3 3 4 5 1 2 4 3 3 6 2 2 0 0 2 2 6
+## [1888] 3 6 3 6 4 0 4 5 3 3 1 0 5 4 2 4 4 2 4 4 0 4 5 4 0 2 1 2 1 1 2 0 3 0 6 2 0
+## [1925] 3 2 5 5 3 5 1 1 6 3 5 4 5 6 3 5 5 5 1 0 3 3 4 6 3 5 4 3 4 0 6 0 2 1 3 3 3
+## [1962] 3 4 2 0 4 4 6 5 1 3 0 2 3 5 3 2 3 3 1 4 5 3 3 2 3 6 4 2 1 6 0 4 2 0 4 5 2
+## [1999] 4 2 2 3 2 4 0 4 1 1 3 4 3 4 3 3 0 4 0 5 5 4 1 1 3 0 4 2 1 5 0 1 1 4 4 5 5
+## [2036] 4 3 1 5 3 1 6 4 5 4 0 5 3 2 6 2 6 6 5 1 1 0 3 2 2 4 2 0 3 3 3 5 3 1 5 6 3
+## [2073] 1 2 3 5 4 0 0 6 5 3 2 6 6 3 2 4 6 1 1 5 2 6 6 5 4 4 5 0 0 4 5 1 3 2 4 3 3
+## [2110] 4 6 6 3 0 2 4 6 0 1 0 5 1 5 0 3 3 6 5 4 6 5 5 3 5 2 1 6 0 3 0 4 6 4 2 2 2
+## [2147] 2 1 2 5 3 3 6 5 3 4 5 1 5 5 0 0 5 2 6 6 1 3 2 6 5 5 1 3 6 3 4 1 1 2 6 5 3
+## [2184] 2 5 4 5 4 4 1 5 5 6 6 6 5 2 2 3 3 6 2 1 1 5 3 5 0 3 6 4 3 0 5 5 1 5 6 1 6
+## [2221] 2 2 2 2 2 5 3 3 1 2 1 0 1 3 2 3 4 5 4 0 3 5 4 5 6 3 6 5 2 3 6 2 5 6 2 5 2
+## [2258] 4 5 6 5 3 2 0 0 6 2 1 1 5 6 4 4 6 3 1 5 6 2 2 5 4 3 2 6 0 2 4 1 0 4 6 3 5
+## [2295] 4 2 1 3 3 0 3 5 6 6 5 2 4 6 4 5 6 6 5 2 4 4 4 4 4 3 1 5 6 3 4 3 6 1 6 4 5
+## [2332] 1 3 5 3 2 3 2 3 3 3 5 0 4 4 4 6 6 5 3 0 4 2 1 5 4 5 3 5 4 5 6 0 4 2 5 2 5
+## [2369] 3 5 0 3 3 2 3 2 2 2 3 0 3 5 6 5 5 6 2 4 4 6 2 6 6 1 3 1 3 4 3 2 3 2 5 4 4
+## [2406] 6 4 5 2 3 6 1 2 2 5 1 1 6 3 4 2 5 5 4 4 2 3 0 5 2 5 1 1 1 2 6 1 1 4 5 3 3
+## [2443] 1 0 4 6 3 5 1 2 6 2 1 1 4 4 5 3 0 5 5 1 4 2 5 2 0 1 4 2 4 5 2 4 1 5 5 2 1
+## [2480] 6 1 6 1 3 1 2 4 5 0 3 4 5 3 5 1 4 0 0 6 4 5 6 0 4 4 2 5 4 2 4 6 3 2 2 2 0
+## [2517] 4 2 6 3 3 6 6 3 4 2 3 5 3 4 5 1 0 5 0 2 5 3 4 5 0 5 5 1 4 6 6 6 5 4 5 2 1
+## [2554] 5 1 0 4 5 4 4 6 3 3 6 2 4 5 2 6 2 2 6 2 4 3 6 1 3 3 4 6 2 5 5 6 0 2 2 5 3
+## [2591] 3 6 1 2 6 3 2 3 0 2 3 1 4 3 3 2 4 4 2 1 5 5 3 3 3 2 5 2 0 4 1 3 3 3 6 0 1
+## [2628] 1 4 1 2 1 2 6 6 2 2 3 5 2 2 1 4 2 5 4 4 6 4 4 0 4 5 4 5 5 5 6 5 5 5 3 5 3
+## [2665] 6 5 2 3 3 4 5 4 5 5 5 4 5 2 5 3 3 5 5 4 6 4 0</code></pre>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="Workflows_Portfolio_1.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># PSYCHOLOGICAL WELL-BEING/DISCOMFORT (OF GENERAL HEALTH)</span></span>
+<span id="cb32-2"><a href="Workflows_Portfolio_1.html#cb32-2" aria-hidden="true" tabindex="-1"></a>anovaregpsychwellbeing <span class="ot">&lt;-</span> <span class="fu">aov</span>(table<span class="sc">$</span>PSYCH.WELLBEING<span class="sc">~</span>table<span class="sc">$</span>REGIONS)</span>
+<span id="cb32-3"><a href="Workflows_Portfolio_1.html#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(anovaregpsychwellbeing)</span></code></pre></div>
+<pre><code>##                 Df Sum Sq Mean Sq F value  Pr(&gt;F)   
+## table$REGIONS    3     46  15.340   4.569 0.00338 **
+## Residuals     2683   9008   3.358                   
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="Workflows_Portfolio_1.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(anovaregpsychwellbeing)</span></code></pre></div>
+<p><img src="portfolio_book_files/figure-html/code%20from%20article-1.png" width="672" /><img src="portfolio_book_files/figure-html/code%20from%20article-2.png" width="672" /><img src="portfolio_book_files/figure-html/code%20from%20article-3.png" width="672" /><img src="portfolio_book_files/figure-html/code%20from%20article-4.png" width="672" /></p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="Workflows_Portfolio_1.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">TukeyHSD</span>(anovaregpsychwellbeing)</span></code></pre></div>
+<pre><code>##   Tukey multiple comparisons of means
+##     95% family-wise confidence level
+## 
+## Fit: aov(formula = table$PSYCH.WELLBEING ~ table$REGIONS)
+## 
+## $`table$REGIONS`
+##                              diff         lwr       upr     p adj
+## MOST POPULATED-CENTER  0.28148855  0.08151381 0.4814633 0.0017158
+## NORTH-CENTER           0.22902049 -0.05554103 0.5135820 0.1636105
+## SOUTH-CENTER           0.17650527 -0.34355917 0.6965697 0.8191275
+## NORTH-MOST POPULATED  -0.05246806 -0.33286583 0.2279297 0.9633105
+## SOUTH-MOST POPULATED  -0.10498327 -0.62278119 0.4128146 0.9540137
+## SOUTH-NORTH           -0.05251522 -0.60848288 0.5034524 0.9949688</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="Workflows_Portfolio_1.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">TukeyHSD</span>(anovaregpsychwellbeing))</span></code></pre></div>
+<p><img src="portfolio_book_files/figure-html/code%20from%20article-5.png" width="672" /></p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="Workflows_Portfolio_1.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># significant differences</span></span>
+<span id="cb38-2"><a href="Workflows_Portfolio_1.html#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="co"># MOST POPULATED-CENTER p adj 0.0017158 #### MOST POPULATED mean = 3.206107, CENTER mean = 2.924618</span></span>
+<span id="cb38-3"><a href="Workflows_Portfolio_1.html#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(table<span class="sc">$</span>PSYCH.WELLBEING,<span class="fu">factor</span>(table<span class="sc">$</span>REGIONS),mean)</span></code></pre></div>
+<pre><code>##         CENTER MOST POPULATED          NORTH          SOUTH 
+##       2.924618       3.206107       3.153639       3.101124</code></pre>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="Workflows_Portfolio_1.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(table<span class="sc">$</span>PSYCH.WELLBEING,<span class="fu">factor</span>(table<span class="sc">$</span>REGIONS),sd)</span></code></pre></div>
+<pre><code>##         CENTER MOST POPULATED          NORTH          SOUTH 
+##       1.836446       1.834613       1.838215       1.725774</code></pre>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="Workflows_Portfolio_1.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="do">##########################################################################</span></span>
+<span id="cb42-2"><a href="Workflows_Portfolio_1.html#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="do">####################### AIM 2 ############################################</span></span>
+<span id="cb42-3"><a href="Workflows_Portfolio_1.html#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="do">##########################################################################</span></span>
+<span id="cb42-4"><a href="Workflows_Portfolio_1.html#cb42-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-5"><a href="Workflows_Portfolio_1.html#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="do">### Differences in mental health aspects (both general and specific) by four sub-periods of quarantine</span></span>
+<span id="cb42-6"><a href="Workflows_Portfolio_1.html#cb42-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-7"><a href="Workflows_Portfolio_1.html#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="co"># PSYCHOLOGICAL WELL-BEING (OF GENERAL HEALTH)</span></span>
+<span id="cb42-8"><a href="Workflows_Portfolio_1.html#cb42-8" aria-hidden="true" tabindex="-1"></a>anovatemppsychwellbeing <span class="ot">&lt;-</span> <span class="fu">aov</span>(table<span class="sc">$</span>PSYCH.WELLBEING<span class="sc">~</span>table<span class="sc">$</span>SUB.PERIODS.IN.PRE.AND.POST)</span>
+<span id="cb42-9"><a href="Workflows_Portfolio_1.html#cb42-9" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(anovatemppsychwellbeing)</span></code></pre></div>
+<pre><code>##                                     Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+## table$SUB.PERIODS.IN.PRE.AND.POST    3     83  27.791   8.312 1.68e-05 ***
+## Residuals                         2683   8971   3.344                     
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="Workflows_Portfolio_1.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(anovatemppsychwellbeing)</span></code></pre></div>
+<p><img src="portfolio_book_files/figure-html/code%20from%20article-6.png" width="672" /><img src="portfolio_book_files/figure-html/code%20from%20article-7.png" width="672" /><img src="portfolio_book_files/figure-html/code%20from%20article-8.png" width="672" /><img src="portfolio_book_files/figure-html/code%20from%20article-9.png" width="672" /></p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="Workflows_Portfolio_1.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">TukeyHSD</span>(anovatemppsychwellbeing)</span></code></pre></div>
+<pre><code>##   Tukey multiple comparisons of means
+##     95% family-wise confidence level
+## 
+## Fit: aov(formula = table$PSYCH.WELLBEING ~ table$SUB.PERIODS.IN.PRE.AND.POST)
+## 
+## $`table$SUB.PERIODS.IN.PRE.AND.POST`
+##                                                diff         lwr       upr
+## 2. TWO WEEK PRE-1. ONE WEEK PRE          -0.1360136 -0.37421192 0.1021846
+## 3. ONE WEEK POST-1. ONE WEEK PRE          0.2031072 -0.07139874 0.4776132
+## 4. REMAINING WEEKS POST-1. ONE WEEK PRE   0.4771883  0.17578682 0.7785898
+## 3. ONE WEEK POST-2. TWO WEEK PRE          0.3391209  0.01851552 0.6597262
+## 4. REMAINING WEEKS POST-2. TWO WEEK PRE   0.6132020  0.26928754 0.9571164
+## 4. REMAINING WEEKS POST-3. ONE WEEK POST  0.2740811 -0.09590843 0.6440706
+##                                              p adj
+## 2. TWO WEEK PRE-1. ONE WEEK PRE          0.4571940
+## 3. ONE WEEK POST-1. ONE WEEK PRE         0.2273681
+## 4. REMAINING WEEKS POST-1. ONE WEEK PRE  0.0002823
+## 3. ONE WEEK POST-2. TWO WEEK PRE         0.0333276
+## 4. REMAINING WEEKS POST-2. TWO WEEK PRE  0.0000283
+## 4. REMAINING WEEKS POST-3. ONE WEEK POST 0.2264068</code></pre>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="Workflows_Portfolio_1.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">TukeyHSD</span>(anovatemppsychwellbeing))</span></code></pre></div>
+<p><img src="portfolio_book_files/figure-html/code%20from%20article-10.png" width="672" /></p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="Workflows_Portfolio_1.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># significant differences</span></span>
+<span id="cb48-2"><a href="Workflows_Portfolio_1.html#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. REMAINING WEEKS POST-1. ONE WEEK PRE p adj 0.0002823</span></span>
+<span id="cb48-3"><a href="Workflows_Portfolio_1.html#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. ONE WEEK POST-2. TWO WEEK PRE p adj 0.0333276</span></span>
+<span id="cb48-4"><a href="Workflows_Portfolio_1.html#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. REMAINING WEEKS POST-2. TWO WEEK PRE p adj 0.0000283</span></span>
+<span id="cb48-5"><a href="Workflows_Portfolio_1.html#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(table<span class="sc">$</span>PSYCH.WELLBEING,<span class="fu">factor</span>(table<span class="sc">$</span>SUB.PERIODS.IN.PRE.AND.POST),mean)</span></code></pre></div>
+<pre><code>##         1. ONE WEEK PRE         2. TWO WEEK PRE        3. ONE WEEK POST 
+##                3.033156                2.897143                3.236264 
+## 4. REMAINING WEEKS POST 
+##                3.510345</code></pre>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="Workflows_Portfolio_1.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(table<span class="sc">$</span>PSYCH.WELLBEING,<span class="fu">factor</span>(table<span class="sc">$</span>SUB.PERIODS.IN.PRE.AND.POST),sd)</span></code></pre></div>
+<pre><code>##         1. ONE WEEK PRE         2. TWO WEEK PRE        3. ONE WEEK POST 
+##                1.823743                1.819344                1.886359 
+## 4. REMAINING WEEKS POST 
+##                1.796256</code></pre>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="Workflows_Portfolio_1.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Figure S1:</span></span>
+<span id="cb52-2"><a href="Workflows_Portfolio_1.html#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotmeans</span>(table<span class="sc">$</span>PSYCH.WELLBEING<span class="sc">~</span>table<span class="sc">$</span>SUB.PERIODS.IN.PRE.AND.POST, <span class="at">main=</span><span class="st">&quot;Fig. S1: Psychological well-being/discomfort by quarantine sub-periods. Mean plot with 95% Confidence Interval&quot;</span>, <span class="at">cex.main =</span> <span class="fl">0.8</span>, <span class="at">ylab =</span> <span class="st">&quot;Psychological well-being/discomfort&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Quarantine&#39;s sub periods&quot;</span>)</span></code></pre></div>
+<p><img src="portfolio_book_files/figure-html/code%20from%20article-11.png" width="672" /></p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="Workflows_Portfolio_1.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="do">##########################################################################</span></span>
+<span id="cb53-2"><a href="Workflows_Portfolio_1.html#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="do">############################# THE </span><span class="re">END</span><span class="do"> ####################################</span></span>
+<span id="cb53-3"><a href="Workflows_Portfolio_1.html#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="do">##########################################################################</span></span></code></pre></div>
+</details>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="Workflows_Portfolio_2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/mirthhe/mirthhe.github.io/edit/main/Workflows_Portfolio_1.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["portfolio_book.pdf", "portfolio_book.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+</body>
+
+</html>
