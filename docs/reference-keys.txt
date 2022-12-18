@@ -17,9 +17,10 @@ effort-scoring
 datamanagement
 future-planning
 groupproject
-technology-against-animaltesting
+technology-to-reduce-animaltesting
 ontox
-phymdos
+sysrev
+sbtab-and-phymdos
 the-goal
 relational-data
 r-packages

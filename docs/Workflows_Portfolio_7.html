@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 Relational data | portfolio_book.knit</title>
+  <title>Chapter 5 Relational data | bookdown_site.knit</title>
   <meta name="description" content="" />
   <meta name="generator" content="bookdown 0.30 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 Relational data | portfolio_book.knit" />
+  <meta property="og:title" content="Chapter 5 Relational data | bookdown_site.knit" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Relational data | portfolio_book.knit" />
+  <meta name="twitter:title" content="Chapter 5 Relational data | bookdown_site.knit" />
   
   
   
@@ -188,10 +188,11 @@ div.csl-indent {
 <li class="chapter" data-level="3" data-path="Workflows_Portfolio_3.html"><a href="Workflows_Portfolio_3.html"><i class="fa fa-check"></i><b>3</b> Future planning</a></li>
 <li class="chapter" data-level="4" data-path="Workflows_Portfolio_5.html"><a href="Workflows_Portfolio_5.html"><i class="fa fa-check"></i><b>4</b> Groupproject</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="Workflows_Portfolio_5.html"><a href="Workflows_Portfolio_5.html#technology-against-animaltesting"><i class="fa fa-check"></i><b>4.1</b> Technology against animaltesting</a></li>
+<li class="chapter" data-level="4.1" data-path="Workflows_Portfolio_5.html"><a href="Workflows_Portfolio_5.html#technology-to-reduce-animaltesting"><i class="fa fa-check"></i><b>4.1</b> Technology to reduce animaltesting</a></li>
 <li class="chapter" data-level="4.2" data-path="Workflows_Portfolio_5.html"><a href="Workflows_Portfolio_5.html#ontox"><i class="fa fa-check"></i><b>4.2</b> ONTOX</a></li>
-<li class="chapter" data-level="4.3" data-path="Workflows_Portfolio_5.html"><a href="Workflows_Portfolio_5.html#phymdos"><i class="fa fa-check"></i><b>4.3</b> Phymdos</a></li>
-<li class="chapter" data-level="4.4" data-path="Workflows_Portfolio_5.html"><a href="Workflows_Portfolio_5.html#the-goal"><i class="fa fa-check"></i><b>4.4</b> The Goal</a></li>
+<li class="chapter" data-level="4.3" data-path="Workflows_Portfolio_5.html"><a href="Workflows_Portfolio_5.html#sysrev"><i class="fa fa-check"></i><b>4.3</b> SYSREV</a></li>
+<li class="chapter" data-level="4.4" data-path="Workflows_Portfolio_5.html"><a href="Workflows_Portfolio_5.html#sbtab-and-phymdos"><i class="fa fa-check"></i><b>4.4</b> SBtab and Phymdos</a></li>
+<li class="chapter" data-level="4.5" data-path="Workflows_Portfolio_5.html"><a href="Workflows_Portfolio_5.html#the-goal"><i class="fa fa-check"></i><b>4.5</b> The Goal</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="Workflows_Portfolio_7.html"><a href="Workflows_Portfolio_7.html"><i class="fa fa-check"></i><b>5</b> Relational data</a></li>
 <li class="chapter" data-level="6" data-path="Workflows_Portfolio_8.html"><a href="Workflows_Portfolio_8.html"><i class="fa fa-check"></i><b>6</b> R packages</a></li>
@@ -219,7 +220,59 @@ div.csl-indent {
 <h1><span class="header-section-number">Chapter 5</span> Relational data</h1>
 <p><em>As part of assignment 7 from the <a href="https://lesmaterialen.rstudio.hu.nl/workflows-reader/#course-introduction">DSFB2 Workflows course</a>.</em></p>
 <hr />
-<p>To be added.</p>
+<p>So far I have been working with R, BASH, HTML and CSS. Another important language to understand is SQL. With this assignment I’ll focus on learning the basics of SQL and applying it to relational data. We will start by creating three dataframes and making them tidy.</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="Workflows_Portfolio_7.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the flu dataframe</span></span>
+<span id="cb54-2"><a href="Workflows_Portfolio_7.html#cb54-2" aria-hidden="true" tabindex="-1"></a>flu_df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data-raw/data070/flu_data.csv&quot;</span>, <span class="at">skip=</span><span class="dv">11</span>) <span class="do">## First 11 rows are metadata</span></span>
+<span id="cb54-3"><a href="Workflows_Portfolio_7.html#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Making the flu dataframe tidy</span></span>
+<span id="cb54-4"><a href="Workflows_Portfolio_7.html#cb54-4" aria-hidden="true" tabindex="-1"></a>flu_df_tidy <span class="ot">&lt;-</span> flu_df <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="fu">ncol</span>(flu_df)), <span class="at">names_to =</span> <span class="st">&#39;country&#39;</span>, <span class="at">values_to =</span> <span class="st">&#39;cases&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>()</span>
+<span id="cb54-5"><a href="Workflows_Portfolio_7.html#cb54-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-6"><a href="Workflows_Portfolio_7.html#cb54-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the dengue dataframe</span></span>
+<span id="cb54-7"><a href="Workflows_Portfolio_7.html#cb54-7" aria-hidden="true" tabindex="-1"></a>dengue_df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data-raw/data070/dengue_data.csv&quot;</span>, <span class="at">skip=</span><span class="dv">11</span>) <span class="do">## First 11 rows are metadata</span></span>
+<span id="cb54-8"><a href="Workflows_Portfolio_7.html#cb54-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-9"><a href="Workflows_Portfolio_7.html#cb54-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Making the dengue dataframe tidy</span></span>
+<span id="cb54-10"><a href="Workflows_Portfolio_7.html#cb54-10" aria-hidden="true" tabindex="-1"></a>dengue_df_tidy <span class="ot">&lt;-</span> dengue_df <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="fu">ncol</span>(dengue_df)), <span class="at">names_to =</span> <span class="st">&#39;country&#39;</span>, <span class="at">values_to =</span> <span class="st">&#39;cases&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>()</span>
+<span id="cb54-11"><a href="Workflows_Portfolio_7.html#cb54-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-12"><a href="Workflows_Portfolio_7.html#cb54-12" aria-hidden="true" tabindex="-1"></a><span class="co"># The third dataframe is the gapminder dataframe from the dslabs package</span></span>
+<span id="cb54-13"><a href="Workflows_Portfolio_7.html#cb54-13" aria-hidden="true" tabindex="-1"></a><span class="co"># This dataframe is already tidy</span></span></code></pre></div>
+<p>To make the data more relational a couple things have to be changed. The columns describing the countries and dates should be comparable across the different dataframes. This was achieved with the following code.</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="Workflows_Portfolio_7.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># All &#39;country&#39; columns should be the same in type, class and values</span></span>
+<span id="cb55-2"><a href="Workflows_Portfolio_7.html#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="co"># For flu and dengue they&#39;re characters, for gapminder it&#39;s a factor</span></span>
+<span id="cb55-3"><a href="Workflows_Portfolio_7.html#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Turning the &#39;country&#39; column of both dengue and flu into a factor</span></span>
+<span id="cb55-4"><a href="Workflows_Portfolio_7.html#cb55-4" aria-hidden="true" tabindex="-1"></a>flu_df_tidy<span class="sc">$</span>country <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(flu_df_tidy<span class="sc">$</span>country)</span>
+<span id="cb55-5"><a href="Workflows_Portfolio_7.html#cb55-5" aria-hidden="true" tabindex="-1"></a>dengue_df_tidy<span class="sc">$</span>country <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(dengue_df_tidy<span class="sc">$</span>country)</span>
+<span id="cb55-6"><a href="Workflows_Portfolio_7.html#cb55-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-7"><a href="Workflows_Portfolio_7.html#cb55-7" aria-hidden="true" tabindex="-1"></a><span class="co"># All &#39;date&#39; columns should be the same in type, class and values</span></span>
+<span id="cb55-8"><a href="Workflows_Portfolio_7.html#cb55-8" aria-hidden="true" tabindex="-1"></a><span class="co"># For flu and dengue the dates are specified to the day instead of the year</span></span>
+<span id="cb55-9"><a href="Workflows_Portfolio_7.html#cb55-9" aria-hidden="true" tabindex="-1"></a><span class="co"># We&#39;ll create a new &#39;year&#39; column for both which matches the column of gapminder</span></span>
+<span id="cb55-10"><a href="Workflows_Portfolio_7.html#cb55-10" aria-hidden="true" tabindex="-1"></a>flu_df_tidy <span class="ot">&lt;-</span> flu_df_tidy <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">substr</span>(flu_df_tidy<span class="sc">$</span>Date, <span class="at">start=</span><span class="dv">1</span>, <span class="at">stop=</span><span class="dv">4</span>))</span>
+<span id="cb55-11"><a href="Workflows_Portfolio_7.html#cb55-11" aria-hidden="true" tabindex="-1"></a>dengue_df_tidy <span class="ot">&lt;-</span> dengue_df_tidy <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">substr</span>(dengue_df_tidy<span class="sc">$</span>Date, <span class="at">start=</span><span class="dv">1</span>, <span class="at">stop=</span><span class="dv">4</span>))</span>
+<span id="cb55-12"><a href="Workflows_Portfolio_7.html#cb55-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Now they&#39;re characters, they should be integers</span></span>
+<span id="cb55-13"><a href="Workflows_Portfolio_7.html#cb55-13" aria-hidden="true" tabindex="-1"></a>flu_df_tidy<span class="sc">$</span>year <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(flu_df_tidy<span class="sc">$</span>year)</span>
+<span id="cb55-14"><a href="Workflows_Portfolio_7.html#cb55-14" aria-hidden="true" tabindex="-1"></a>dengue_df_tidy<span class="sc">$</span>year <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(dengue_df_tidy<span class="sc">$</span>year)</span></code></pre></div>
+<p>We export the dataframes to .csv and .rds.</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="Workflows_Portfolio_7.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Export the three dataframes as csv</span></span>
+<span id="cb56-2"><a href="Workflows_Portfolio_7.html#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(flu_df_tidy, <span class="st">&quot;data/data070/flu.csv&quot;</span>, <span class="at">row.names=</span><span class="cn">FALSE</span>)</span>
+<span id="cb56-3"><a href="Workflows_Portfolio_7.html#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(dengue_df_tidy, <span class="st">&quot;data/data070/dengue.csv&quot;</span>, <span class="at">row.names=</span><span class="cn">FALSE</span>)</span>
+<span id="cb56-4"><a href="Workflows_Portfolio_7.html#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(gapminder, <span class="st">&quot;data/data070/gapminder.csv&quot;</span>, <span class="at">row.names=</span><span class="cn">FALSE</span>)</span>
+<span id="cb56-5"><a href="Workflows_Portfolio_7.html#cb56-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-6"><a href="Workflows_Portfolio_7.html#cb56-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Export the three dataframes as rds</span></span>
+<span id="cb56-7"><a href="Workflows_Portfolio_7.html#cb56-7" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(flu_df_tidy, <span class="at">file=</span><span class="st">&quot;data/data070/flu.rds&quot;</span>)</span>
+<span id="cb56-8"><a href="Workflows_Portfolio_7.html#cb56-8" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(dengue_df_tidy, <span class="at">file=</span><span class="st">&quot;data/data070/dengue.rds&quot;</span>)</span>
+<span id="cb56-9"><a href="Workflows_Portfolio_7.html#cb56-9" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(gapminder, <span class="at">file=</span><span class="st">&quot;data/data070/gapminder.rds&quot;</span>)</span></code></pre></div>
+<p>We now move from R to SQL (PostgreSQL). To do this we created a database in DBeaver called ‘workflowsdb’ and connected to it through R. We imported the three R dataframes to the database using RPostgreSQL.</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="Workflows_Portfolio_7.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using the DBI library</span></span>
+<span id="cb57-2"><a href="Workflows_Portfolio_7.html#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">&quot;gapminder&quot;</span>, gapminder)</span>
+<span id="cb57-3"><a href="Workflows_Portfolio_7.html#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">&quot;flu&quot;</span>, flu_df_tidy)</span>
+<span id="cb57-4"><a href="Workflows_Portfolio_7.html#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">&quot;dengue&quot;</span>, dengue_df_tidy)</span></code></pre></div>
+<p>In DBeaver a database was created called “workflowsdb”. The tables were inserted into this database.</p>
+<p>Inspect the contents of the tables with SQL (in DBeaver) and save the SQL script.</p>
+<p>Inspect the contents of the tables with dplyr (in R) and save a RMarkdown showing what you are doing.</p>
+<p>Load the gapminder data in R and change the dataframe in such as way that you could join it to dengue and flue.</p>
+<p>Save this clean gapminder data in the “workflowsdb” database</p>
+<p>Perform some joins (your choice) with SQL (can be done in DBeaver or with dplyr.</p>
+<p>Generate a joined table, and export this from the database to R.</p>
+<p>Show some descriptive statistics with this table, and at least 3 visualisations using ggplot2.</p>
+<p>Write a short report to show at least te actions listed in this assignment in a Rmd file for your portfolio. Include pictures and provide text explaining and showcasing your skills.</p>
 
 </div>
             </section>
@@ -270,7 +323,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["portfolio_book.pdf", "portfolio_book.epub"],
+"download": ["bookdown_site.pdf", "bookdown_site.epub"],
 "search": {
 "engine": "fuse",
 "options": null

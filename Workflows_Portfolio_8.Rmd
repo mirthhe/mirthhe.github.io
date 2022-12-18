@@ -1,7 +1,0 @@
-# R packages
-
-_As part of assignment 8 from the [DSFB2 Workflows course](https://lesmaterialen.rstudio.hu.nl/workflows-reader/#course-introduction)._
-
-----
-
-To be added.
