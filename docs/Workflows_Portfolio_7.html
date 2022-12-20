@@ -194,7 +194,18 @@ div.csl-indent {
 <li class="chapter" data-level="4.4" data-path="Workflows_Portfolio_5.html"><a href="Workflows_Portfolio_5.html#sbtab-and-phymdos"><i class="fa fa-check"></i><b>4.4</b> SBtab and Phymdos</a></li>
 <li class="chapter" data-level="4.5" data-path="Workflows_Portfolio_5.html"><a href="Workflows_Portfolio_5.html#the-goal"><i class="fa fa-check"></i><b>4.5</b> The Goal</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="Workflows_Portfolio_7.html"><a href="Workflows_Portfolio_7.html"><i class="fa fa-check"></i><b>5</b> Relational data</a></li>
+<li class="chapter" data-level="5" data-path="Workflows_Portfolio_7.html"><a href="Workflows_Portfolio_7.html"><i class="fa fa-check"></i><b>5</b> Relational data</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="Workflows_Portfolio_7.html"><a href="Workflows_Portfolio_7.html#connecting-to-dbeaver"><i class="fa fa-check"></i><b>5.1</b> Connecting to DBeaver</a></li>
+<li class="chapter" data-level="5.2" data-path="Workflows_Portfolio_7.html"><a href="Workflows_Portfolio_7.html#data-inspection"><i class="fa fa-check"></i><b>5.2</b> Data inspection</a></li>
+<li class="chapter" data-level="5.3" data-path="Workflows_Portfolio_7.html"><a href="Workflows_Portfolio_7.html#joining-datasets"><i class="fa fa-check"></i><b>5.3</b> Joining datasets</a></li>
+<li class="chapter" data-level="5.4" data-path="Workflows_Portfolio_7.html"><a href="Workflows_Portfolio_7.html#descriptive-statistics"><i class="fa fa-check"></i><b>5.4</b> Descriptive statistics</a></li>
+<li class="chapter" data-level="5.5" data-path="Workflows_Portfolio_7.html"><a href="Workflows_Portfolio_7.html#visualisations"><i class="fa fa-check"></i><b>5.5</b> Visualisations</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="Workflows_Portfolio_7.html"><a href="Workflows_Portfolio_7.html#dengue-cases"><i class="fa fa-check"></i><b>5.5.1</b> Dengue cases</a></li>
+<li class="chapter" data-level="5.5.2" data-path="Workflows_Portfolio_7.html"><a href="Workflows_Portfolio_7.html#flu-cases"><i class="fa fa-check"></i><b>5.5.2</b> Flu cases</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="6" data-path="Workflows_Portfolio_8.html"><a href="Workflows_Portfolio_8.html"><i class="fa fa-check"></i><b>6</b> R packages</a></li>
 <li class="chapter" data-level="7" data-path="Workflows_Portfolio_9.html"><a href="Workflows_Portfolio_9.html"><i class="fa fa-check"></i><b>7</b> Parameters</a></li>
 <li class="chapter" data-level="8" data-path="Workflows_Portfolio_Free.html"><a href="Workflows_Portfolio_Free.html"><i class="fa fa-check"></i><b>8</b> Free assignment</a></li>
@@ -220,60 +231,398 @@ div.csl-indent {
 <h1><span class="header-section-number">Chapter 5</span> Relational data</h1>
 <p><em>As part of assignment 7 from the <a href="https://lesmaterialen.rstudio.hu.nl/workflows-reader/#course-introduction">DSFB2 Workflows course</a>.</em></p>
 <hr />
-<p>So far I have been working with R, BASH, HTML and CSS. Another important language to understand is SQL. With this assignment I’ll focus on learning the basics of SQL and applying it to relational data. We will start by creating three dataframes and making them tidy.</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="Workflows_Portfolio_7.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the flu dataframe</span></span>
-<span id="cb54-2"><a href="Workflows_Portfolio_7.html#cb54-2" aria-hidden="true" tabindex="-1"></a>flu_df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data-raw/data070/flu_data.csv&quot;</span>, <span class="at">skip=</span><span class="dv">11</span>) <span class="do">## First 11 rows are metadata</span></span>
-<span id="cb54-3"><a href="Workflows_Portfolio_7.html#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Making the flu dataframe tidy</span></span>
-<span id="cb54-4"><a href="Workflows_Portfolio_7.html#cb54-4" aria-hidden="true" tabindex="-1"></a>flu_df_tidy <span class="ot">&lt;-</span> flu_df <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="fu">ncol</span>(flu_df)), <span class="at">names_to =</span> <span class="st">&#39;country&#39;</span>, <span class="at">values_to =</span> <span class="st">&#39;cases&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>()</span>
-<span id="cb54-5"><a href="Workflows_Portfolio_7.html#cb54-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-6"><a href="Workflows_Portfolio_7.html#cb54-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the dengue dataframe</span></span>
-<span id="cb54-7"><a href="Workflows_Portfolio_7.html#cb54-7" aria-hidden="true" tabindex="-1"></a>dengue_df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data-raw/data070/dengue_data.csv&quot;</span>, <span class="at">skip=</span><span class="dv">11</span>) <span class="do">## First 11 rows are metadata</span></span>
-<span id="cb54-8"><a href="Workflows_Portfolio_7.html#cb54-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-9"><a href="Workflows_Portfolio_7.html#cb54-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Making the dengue dataframe tidy</span></span>
-<span id="cb54-10"><a href="Workflows_Portfolio_7.html#cb54-10" aria-hidden="true" tabindex="-1"></a>dengue_df_tidy <span class="ot">&lt;-</span> dengue_df <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="fu">ncol</span>(dengue_df)), <span class="at">names_to =</span> <span class="st">&#39;country&#39;</span>, <span class="at">values_to =</span> <span class="st">&#39;cases&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>()</span>
-<span id="cb54-11"><a href="Workflows_Portfolio_7.html#cb54-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-12"><a href="Workflows_Portfolio_7.html#cb54-12" aria-hidden="true" tabindex="-1"></a><span class="co"># The third dataframe is the gapminder dataframe from the dslabs package</span></span>
-<span id="cb54-13"><a href="Workflows_Portfolio_7.html#cb54-13" aria-hidden="true" tabindex="-1"></a><span class="co"># This dataframe is already tidy</span></span></code></pre></div>
-<p>To make the data more relational a couple things have to be changed. The columns describing the countries and dates should be comparable across the different dataframes. This was achieved with the following code.</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="Workflows_Portfolio_7.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># All &#39;country&#39; columns should be the same in type, class and values</span></span>
-<span id="cb55-2"><a href="Workflows_Portfolio_7.html#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="co"># For flu and dengue they&#39;re characters, for gapminder it&#39;s a factor</span></span>
-<span id="cb55-3"><a href="Workflows_Portfolio_7.html#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Turning the &#39;country&#39; column of both dengue and flu into a factor</span></span>
-<span id="cb55-4"><a href="Workflows_Portfolio_7.html#cb55-4" aria-hidden="true" tabindex="-1"></a>flu_df_tidy<span class="sc">$</span>country <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(flu_df_tidy<span class="sc">$</span>country)</span>
-<span id="cb55-5"><a href="Workflows_Portfolio_7.html#cb55-5" aria-hidden="true" tabindex="-1"></a>dengue_df_tidy<span class="sc">$</span>country <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(dengue_df_tidy<span class="sc">$</span>country)</span>
-<span id="cb55-6"><a href="Workflows_Portfolio_7.html#cb55-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-7"><a href="Workflows_Portfolio_7.html#cb55-7" aria-hidden="true" tabindex="-1"></a><span class="co"># All &#39;date&#39; columns should be the same in type, class and values</span></span>
-<span id="cb55-8"><a href="Workflows_Portfolio_7.html#cb55-8" aria-hidden="true" tabindex="-1"></a><span class="co"># For flu and dengue the dates are specified to the day instead of the year</span></span>
-<span id="cb55-9"><a href="Workflows_Portfolio_7.html#cb55-9" aria-hidden="true" tabindex="-1"></a><span class="co"># We&#39;ll create a new &#39;year&#39; column for both which matches the column of gapminder</span></span>
-<span id="cb55-10"><a href="Workflows_Portfolio_7.html#cb55-10" aria-hidden="true" tabindex="-1"></a>flu_df_tidy <span class="ot">&lt;-</span> flu_df_tidy <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">substr</span>(flu_df_tidy<span class="sc">$</span>Date, <span class="at">start=</span><span class="dv">1</span>, <span class="at">stop=</span><span class="dv">4</span>))</span>
-<span id="cb55-11"><a href="Workflows_Portfolio_7.html#cb55-11" aria-hidden="true" tabindex="-1"></a>dengue_df_tidy <span class="ot">&lt;-</span> dengue_df_tidy <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">substr</span>(dengue_df_tidy<span class="sc">$</span>Date, <span class="at">start=</span><span class="dv">1</span>, <span class="at">stop=</span><span class="dv">4</span>))</span>
-<span id="cb55-12"><a href="Workflows_Portfolio_7.html#cb55-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Now they&#39;re characters, they should be integers</span></span>
-<span id="cb55-13"><a href="Workflows_Portfolio_7.html#cb55-13" aria-hidden="true" tabindex="-1"></a>flu_df_tidy<span class="sc">$</span>year <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(flu_df_tidy<span class="sc">$</span>year)</span>
-<span id="cb55-14"><a href="Workflows_Portfolio_7.html#cb55-14" aria-hidden="true" tabindex="-1"></a>dengue_df_tidy<span class="sc">$</span>year <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(dengue_df_tidy<span class="sc">$</span>year)</span></code></pre></div>
-<p>We export the dataframes to .csv and .rds.</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="Workflows_Portfolio_7.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Export the three dataframes as csv</span></span>
-<span id="cb56-2"><a href="Workflows_Portfolio_7.html#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(flu_df_tidy, <span class="st">&quot;data/data070/flu.csv&quot;</span>, <span class="at">row.names=</span><span class="cn">FALSE</span>)</span>
-<span id="cb56-3"><a href="Workflows_Portfolio_7.html#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(dengue_df_tidy, <span class="st">&quot;data/data070/dengue.csv&quot;</span>, <span class="at">row.names=</span><span class="cn">FALSE</span>)</span>
-<span id="cb56-4"><a href="Workflows_Portfolio_7.html#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(gapminder, <span class="st">&quot;data/data070/gapminder.csv&quot;</span>, <span class="at">row.names=</span><span class="cn">FALSE</span>)</span>
-<span id="cb56-5"><a href="Workflows_Portfolio_7.html#cb56-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-6"><a href="Workflows_Portfolio_7.html#cb56-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Export the three dataframes as rds</span></span>
-<span id="cb56-7"><a href="Workflows_Portfolio_7.html#cb56-7" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(flu_df_tidy, <span class="at">file=</span><span class="st">&quot;data/data070/flu.rds&quot;</span>)</span>
-<span id="cb56-8"><a href="Workflows_Portfolio_7.html#cb56-8" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(dengue_df_tidy, <span class="at">file=</span><span class="st">&quot;data/data070/dengue.rds&quot;</span>)</span>
-<span id="cb56-9"><a href="Workflows_Portfolio_7.html#cb56-9" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(gapminder, <span class="at">file=</span><span class="st">&quot;data/data070/gapminder.rds&quot;</span>)</span></code></pre></div>
-<p>We now move from R to SQL (PostgreSQL). To do this we created a database in DBeaver called ‘workflowsdb’ and connected to it through R. We imported the three R dataframes to the database using RPostgreSQL.</p>
+<p>So far I have been working with R, BASH, HTML and CSS. Another important language to understand is SQL. With this assignment I’ll focus on learning the basics of SQL and applying it to relational data. To start the dataframes will be created and tidied up.</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="Workflows_Portfolio_7.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the flu dataframe</span></span>
+<span id="cb53-2"><a href="Workflows_Portfolio_7.html#cb53-2" aria-hidden="true" tabindex="-1"></a>flu_df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data-raw/data070/flu_data.csv&quot;</span>, <span class="at">skip=</span><span class="dv">11</span>) <span class="do">## First 11 rows are metadata</span></span>
+<span id="cb53-3"><a href="Workflows_Portfolio_7.html#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Making the flu dataframe tidy</span></span>
+<span id="cb53-4"><a href="Workflows_Portfolio_7.html#cb53-4" aria-hidden="true" tabindex="-1"></a>flu_df_tidy <span class="ot">&lt;-</span> flu_df <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="fu">ncol</span>(flu_df)), <span class="at">names_to =</span> <span class="st">&#39;country&#39;</span>, <span class="at">values_to =</span> <span class="st">&#39;cases&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>()</span>
+<span id="cb53-5"><a href="Workflows_Portfolio_7.html#cb53-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-6"><a href="Workflows_Portfolio_7.html#cb53-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing the dengue dataframe</span></span>
+<span id="cb53-7"><a href="Workflows_Portfolio_7.html#cb53-7" aria-hidden="true" tabindex="-1"></a>dengue_df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data-raw/data070/dengue_data.csv&quot;</span>, <span class="at">skip=</span><span class="dv">11</span>) <span class="do">## First 11 rows are metadata</span></span>
+<span id="cb53-8"><a href="Workflows_Portfolio_7.html#cb53-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-9"><a href="Workflows_Portfolio_7.html#cb53-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Making the dengue dataframe tidy</span></span>
+<span id="cb53-10"><a href="Workflows_Portfolio_7.html#cb53-10" aria-hidden="true" tabindex="-1"></a>dengue_df_tidy <span class="ot">&lt;-</span> dengue_df <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="fu">ncol</span>(dengue_df)), <span class="at">names_to =</span> <span class="st">&#39;country&#39;</span>, <span class="at">values_to =</span> <span class="st">&#39;cases&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>()</span>
+<span id="cb53-11"><a href="Workflows_Portfolio_7.html#cb53-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-12"><a href="Workflows_Portfolio_7.html#cb53-12" aria-hidden="true" tabindex="-1"></a><span class="co"># The third dataframe is the gapminder dataframe from the dslabs package</span></span>
+<span id="cb53-13"><a href="Workflows_Portfolio_7.html#cb53-13" aria-hidden="true" tabindex="-1"></a><span class="co"># This dataframe is already tidy</span></span></code></pre></div>
+<p>To make the data more relational a couple things have to be changed. The columns describing the countries and dates should be comparable across the different dataframes so they can be joined later. This was achieved with the following code.</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="Workflows_Portfolio_7.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># All &#39;country&#39; columns should be the same in type, class and values</span></span>
+<span id="cb54-2"><a href="Workflows_Portfolio_7.html#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="co"># For flu and dengue they&#39;re characters, for gapminder it&#39;s a factor</span></span>
+<span id="cb54-3"><a href="Workflows_Portfolio_7.html#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Turning the &#39;country&#39; column of both dengue and flu into a factor</span></span>
+<span id="cb54-4"><a href="Workflows_Portfolio_7.html#cb54-4" aria-hidden="true" tabindex="-1"></a>flu_df_tidy<span class="sc">$</span>country <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(flu_df_tidy<span class="sc">$</span>country)</span>
+<span id="cb54-5"><a href="Workflows_Portfolio_7.html#cb54-5" aria-hidden="true" tabindex="-1"></a>dengue_df_tidy<span class="sc">$</span>country <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(dengue_df_tidy<span class="sc">$</span>country)</span>
+<span id="cb54-6"><a href="Workflows_Portfolio_7.html#cb54-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-7"><a href="Workflows_Portfolio_7.html#cb54-7" aria-hidden="true" tabindex="-1"></a><span class="co"># All &#39;date&#39; columns should be the same in type, class and values</span></span>
+<span id="cb54-8"><a href="Workflows_Portfolio_7.html#cb54-8" aria-hidden="true" tabindex="-1"></a><span class="co"># For flu and dengue the dates are specified to the day instead of the year</span></span>
+<span id="cb54-9"><a href="Workflows_Portfolio_7.html#cb54-9" aria-hidden="true" tabindex="-1"></a><span class="co"># We&#39;ll create a new &#39;year&#39; column for both which matches the column of gapminder</span></span>
+<span id="cb54-10"><a href="Workflows_Portfolio_7.html#cb54-10" aria-hidden="true" tabindex="-1"></a>flu_df_tidy <span class="ot">&lt;-</span> flu_df_tidy <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">substr</span>(flu_df_tidy<span class="sc">$</span>Date, <span class="at">start=</span><span class="dv">1</span>, <span class="at">stop=</span><span class="dv">4</span>))</span>
+<span id="cb54-11"><a href="Workflows_Portfolio_7.html#cb54-11" aria-hidden="true" tabindex="-1"></a>dengue_df_tidy <span class="ot">&lt;-</span> dengue_df_tidy <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">substr</span>(dengue_df_tidy<span class="sc">$</span>Date, <span class="at">start=</span><span class="dv">1</span>, <span class="at">stop=</span><span class="dv">4</span>))</span>
+<span id="cb54-12"><a href="Workflows_Portfolio_7.html#cb54-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Now they&#39;re characters, they should be integers</span></span>
+<span id="cb54-13"><a href="Workflows_Portfolio_7.html#cb54-13" aria-hidden="true" tabindex="-1"></a>flu_df_tidy<span class="sc">$</span>year <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(flu_df_tidy<span class="sc">$</span>year)</span>
+<span id="cb54-14"><a href="Workflows_Portfolio_7.html#cb54-14" aria-hidden="true" tabindex="-1"></a>dengue_df_tidy<span class="sc">$</span>year <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(dengue_df_tidy<span class="sc">$</span>year)</span></code></pre></div>
+<p>The dataframes were exported to .csv and .rds for later use.</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="Workflows_Portfolio_7.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Export the three dataframes as csv</span></span>
+<span id="cb55-2"><a href="Workflows_Portfolio_7.html#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(flu_df_tidy, <span class="st">&quot;data/data070/flu.csv&quot;</span>, <span class="at">row.names=</span><span class="cn">FALSE</span>)</span>
+<span id="cb55-3"><a href="Workflows_Portfolio_7.html#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(dengue_df_tidy, <span class="st">&quot;data/data070/dengue.csv&quot;</span>, <span class="at">row.names=</span><span class="cn">FALSE</span>)</span>
+<span id="cb55-4"><a href="Workflows_Portfolio_7.html#cb55-4" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(gapminder, <span class="st">&quot;data/data070/gapminder.csv&quot;</span>, <span class="at">row.names=</span><span class="cn">FALSE</span>)</span>
+<span id="cb55-5"><a href="Workflows_Portfolio_7.html#cb55-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-6"><a href="Workflows_Portfolio_7.html#cb55-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Export the three dataframes as rds</span></span>
+<span id="cb55-7"><a href="Workflows_Portfolio_7.html#cb55-7" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(flu_df_tidy, <span class="at">file=</span><span class="st">&quot;data/data070/flu.rds&quot;</span>)</span>
+<span id="cb55-8"><a href="Workflows_Portfolio_7.html#cb55-8" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(dengue_df_tidy, <span class="at">file=</span><span class="st">&quot;data/data070/dengue.rds&quot;</span>)</span>
+<span id="cb55-9"><a href="Workflows_Portfolio_7.html#cb55-9" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(gapminder, <span class="at">file=</span><span class="st">&quot;data/data070/gapminder.rds&quot;</span>)</span></code></pre></div>
+<hr />
+<div id="connecting-to-dbeaver" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Connecting to DBeaver</h2>
+<p>To move from R to SQL (PostgreSQL) a database has been created in DBeaver called ‘workflowsdb’. The three R dataframes were imported into the database using RPostgreSQL. The tables were inserted into the hierarchy of this database as shown in figure 4.1.</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="Workflows_Portfolio_7.html#cb56-1" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RPostgres<span class="sc">::</span><span class="fu">Postgres</span>(), </span>
+<span id="cb56-2"><a href="Workflows_Portfolio_7.html#cb56-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">dbname =</span> <span class="st">&quot;workflowsdb&quot;</span>, </span>
+<span id="cb56-3"><a href="Workflows_Portfolio_7.html#cb56-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">host=</span><span class="st">&quot;localhost&quot;</span>, </span>
+<span id="cb56-4"><a href="Workflows_Portfolio_7.html#cb56-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">port=</span><span class="st">&quot;5432&quot;</span>, </span>
+<span id="cb56-5"><a href="Workflows_Portfolio_7.html#cb56-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">user=</span><span class="st">&quot;postgres&quot;</span>, </span>
+<span id="cb56-6"><a href="Workflows_Portfolio_7.html#cb56-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">password=</span><span class="st">&quot;insertpassword&quot;</span>) </span>
+<span id="cb56-7"><a href="Workflows_Portfolio_7.html#cb56-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Password changed after connecting for privacy reasons</span></span></code></pre></div>
 <div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="Workflows_Portfolio_7.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using the DBI library</span></span>
 <span id="cb57-2"><a href="Workflows_Portfolio_7.html#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">&quot;gapminder&quot;</span>, gapminder)</span>
 <span id="cb57-3"><a href="Workflows_Portfolio_7.html#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">&quot;flu&quot;</span>, flu_df_tidy)</span>
 <span id="cb57-4"><a href="Workflows_Portfolio_7.html#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">&quot;dengue&quot;</span>, dengue_df_tidy)</span></code></pre></div>
-<p>In DBeaver a database was created called “workflowsdb”. The tables were inserted into this database.</p>
-<p>Inspect the contents of the tables with SQL (in DBeaver) and save the SQL script.</p>
-<p>Inspect the contents of the tables with dplyr (in R) and save a RMarkdown showing what you are doing.</p>
-<p>Load the gapminder data in R and change the dataframe in such as way that you could join it to dengue and flue.</p>
-<p>Save this clean gapminder data in the “workflowsdb” database</p>
-<p>Perform some joins (your choice) with SQL (can be done in DBeaver or with dplyr.</p>
-<p>Generate a joined table, and export this from the database to R.</p>
-<p>Show some descriptive statistics with this table, and at least 3 visualisations using ggplot2.</p>
-<p>Write a short report to show at least te actions listed in this assignment in a Rmd file for your portfolio. Include pictures and provide text explaining and showcasing your skills.</p>
+<div class="figure">
+<img src="images/sql_tree.png" alt="" />
+<p class="caption">Figure 4.1. The hierarchy of the workflowsdb database including the three tables.</p>
+</div>
+<hr />
+</div>
+<div id="data-inspection" class="section level2 tabset" number="5.2">
+<h2><span class="header-section-number">5.2</span> Data inspection</h2>
+<p>The data was inspected using the SQL editor. A script was created for the inspection of the <a href="SQL/gapminder_inspection.sql">gapminder</a>, <a href="SQL/flu_inspection.sql">flu</a> and <a href="SQL/dengue_inspection.sql">dengue</a> data. R can also be used for the same inspections.</p>
+<details>
+<summary>
+<i>SQL script Gapminder</i>
+</summary>
+<div class="sourceCode" id="cb58"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb58-1"><a href="Workflows_Portfolio_7.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- Checking the columnnames and types</span></span>
+<span id="cb58-2"><a href="Workflows_Portfolio_7.html#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="kw">select</span></span>
+<span id="cb58-3"><a href="Workflows_Portfolio_7.html#cb58-3" aria-hidden="true" tabindex="-1"></a>    column_name, data_type </span>
+<span id="cb58-4"><a href="Workflows_Portfolio_7.html#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="kw">from</span></span>
+<span id="cb58-5"><a href="Workflows_Portfolio_7.html#cb58-5" aria-hidden="true" tabindex="-1"></a>    information_schema.<span class="kw">columns</span></span>
+<span id="cb58-6"><a href="Workflows_Portfolio_7.html#cb58-6" aria-hidden="true" tabindex="-1"></a><span class="kw">where</span></span>
+<span id="cb58-7"><a href="Workflows_Portfolio_7.html#cb58-7" aria-hidden="true" tabindex="-1"></a>    table_schema <span class="op">=</span> <span class="st">&#39;public&#39;</span></span>
+<span id="cb58-8"><a href="Workflows_Portfolio_7.html#cb58-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">and</span> table_name <span class="op">=</span> <span class="st">&#39;gapminder&#39;</span>;</span>
+<span id="cb58-9"><a href="Workflows_Portfolio_7.html#cb58-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-10"><a href="Workflows_Portfolio_7.html#cb58-10" aria-hidden="true" tabindex="-1"></a><span class="co">-- Checking the timeframe in which the data has been collected</span></span>
+<span id="cb58-11"><a href="Workflows_Portfolio_7.html#cb58-11" aria-hidden="true" tabindex="-1"></a><span class="kw">select</span></span>
+<span id="cb58-12"><a href="Workflows_Portfolio_7.html#cb58-12" aria-hidden="true" tabindex="-1"></a>   <span class="kw">distinct</span> <span class="dt">year</span></span>
+<span id="cb58-13"><a href="Workflows_Portfolio_7.html#cb58-13" aria-hidden="true" tabindex="-1"></a><span class="kw">from</span></span>
+<span id="cb58-14"><a href="Workflows_Portfolio_7.html#cb58-14" aria-hidden="true" tabindex="-1"></a>   gapminder</span>
+<span id="cb58-15"><a href="Workflows_Portfolio_7.html#cb58-15" aria-hidden="true" tabindex="-1"></a><span class="kw">order</span> <span class="kw">by</span></span>
+<span id="cb58-16"><a href="Workflows_Portfolio_7.html#cb58-16" aria-hidden="true" tabindex="-1"></a>    <span class="dt">year</span> <span class="kw">desc</span>; <span class="co">-- from 1960 to 2016</span></span>
+<span id="cb58-17"><a href="Workflows_Portfolio_7.html#cb58-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb58-18"><a href="Workflows_Portfolio_7.html#cb58-18" aria-hidden="true" tabindex="-1"></a><span class="co">-- Checking the countries with the highest and lowest average population over this timeframe</span></span>
+<span id="cb58-19"><a href="Workflows_Portfolio_7.html#cb58-19" aria-hidden="true" tabindex="-1"></a><span class="kw">select</span></span>
+<span id="cb58-20"><a href="Workflows_Portfolio_7.html#cb58-20" aria-hidden="true" tabindex="-1"></a>    country,</span>
+<span id="cb58-21"><a href="Workflows_Portfolio_7.html#cb58-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span> (population):: <span class="dt">NUMERIC</span>(<span class="dv">11</span>,<span class="dv">0</span>)</span>
+<span id="cb58-22"><a href="Workflows_Portfolio_7.html#cb58-22" aria-hidden="true" tabindex="-1"></a><span class="kw">from</span> </span>
+<span id="cb58-23"><a href="Workflows_Portfolio_7.html#cb58-23" aria-hidden="true" tabindex="-1"></a>    gapminder </span>
+<span id="cb58-24"><a href="Workflows_Portfolio_7.html#cb58-24" aria-hidden="true" tabindex="-1"></a><span class="kw">group</span> <span class="kw">by</span></span>
+<span id="cb58-25"><a href="Workflows_Portfolio_7.html#cb58-25" aria-hidden="true" tabindex="-1"></a>    country</span>
+<span id="cb58-26"><a href="Workflows_Portfolio_7.html#cb58-26" aria-hidden="true" tabindex="-1"></a><span class="kw">order</span> <span class="kw">by</span> </span>
+<span id="cb58-27"><a href="Workflows_Portfolio_7.html#cb58-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">avg</span> <span class="kw">desc</span>; <span class="co">-- China has the highest with around 1,000,000,000 and Greenland the lowest with around 51,000    </span></span>
+<span id="cb58-28"><a href="Workflows_Portfolio_7.html#cb58-28" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb58-29"><a href="Workflows_Portfolio_7.html#cb58-29" aria-hidden="true" tabindex="-1"></a><span class="co">-- Checking the countries with the highest and lowest average life expectancy per year over this timeframe</span></span>
+<span id="cb58-30"><a href="Workflows_Portfolio_7.html#cb58-30" aria-hidden="true" tabindex="-1"></a><span class="kw">select</span></span>
+<span id="cb58-31"><a href="Workflows_Portfolio_7.html#cb58-31" aria-hidden="true" tabindex="-1"></a>    country,</span>
+<span id="cb58-32"><a href="Workflows_Portfolio_7.html#cb58-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span> (life_expectancy):: <span class="dt">NUMERIC</span>(<span class="dv">6</span>,<span class="dv">2</span>)</span>
+<span id="cb58-33"><a href="Workflows_Portfolio_7.html#cb58-33" aria-hidden="true" tabindex="-1"></a><span class="kw">from</span></span>
+<span id="cb58-34"><a href="Workflows_Portfolio_7.html#cb58-34" aria-hidden="true" tabindex="-1"></a>    gapminder</span>
+<span id="cb58-35"><a href="Workflows_Portfolio_7.html#cb58-35" aria-hidden="true" tabindex="-1"></a><span class="kw">where</span> life_expectancy <span class="kw">is</span> <span class="kw">not</span> <span class="kw">null</span></span>
+<span id="cb58-36"><a href="Workflows_Portfolio_7.html#cb58-36" aria-hidden="true" tabindex="-1"></a><span class="kw">group</span> <span class="kw">by</span></span>
+<span id="cb58-37"><a href="Workflows_Portfolio_7.html#cb58-37" aria-hidden="true" tabindex="-1"></a>    country</span>
+<span id="cb58-38"><a href="Workflows_Portfolio_7.html#cb58-38" aria-hidden="true" tabindex="-1"></a><span class="kw">order</span> <span class="kw">by</span> </span>
+<span id="cb58-39"><a href="Workflows_Portfolio_7.html#cb58-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">avg</span> <span class="kw">desc</span>; <span class="co">-- Iceland has the highest with 78.17 and Central Africa Republic the lowest with 46.31</span></span>
+<span id="cb58-40"><a href="Workflows_Portfolio_7.html#cb58-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-41"><a href="Workflows_Portfolio_7.html#cb58-41" aria-hidden="true" tabindex="-1"></a><span class="co">-- Checking how many countries are noted in the data</span></span>
+<span id="cb58-42"><a href="Workflows_Portfolio_7.html#cb58-42" aria-hidden="true" tabindex="-1"></a><span class="kw">select</span></span>
+<span id="cb58-43"><a href="Workflows_Portfolio_7.html#cb58-43" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(<span class="kw">distinct</span> country)</span>
+<span id="cb58-44"><a href="Workflows_Portfolio_7.html#cb58-44" aria-hidden="true" tabindex="-1"></a><span class="kw">from</span> gapminder; <span class="co">-- 185 different countries</span></span></code></pre></div>
+</details>
+<details>
+<summary>
+<i>SQL script flu data inspection</i>
+</summary>
+<div class="sourceCode" id="cb59"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb59-1"><a href="Workflows_Portfolio_7.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- First we check the columnnames and types</span></span>
+<span id="cb59-2"><a href="Workflows_Portfolio_7.html#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="kw">select</span></span>
+<span id="cb59-3"><a href="Workflows_Portfolio_7.html#cb59-3" aria-hidden="true" tabindex="-1"></a>    column_name, data_type </span>
+<span id="cb59-4"><a href="Workflows_Portfolio_7.html#cb59-4" aria-hidden="true" tabindex="-1"></a><span class="kw">from</span></span>
+<span id="cb59-5"><a href="Workflows_Portfolio_7.html#cb59-5" aria-hidden="true" tabindex="-1"></a>    information_schema.<span class="kw">columns</span></span>
+<span id="cb59-6"><a href="Workflows_Portfolio_7.html#cb59-6" aria-hidden="true" tabindex="-1"></a><span class="kw">where</span> </span>
+<span id="cb59-7"><a href="Workflows_Portfolio_7.html#cb59-7" aria-hidden="true" tabindex="-1"></a>    table_schema <span class="op">=</span> <span class="st">&#39;public&#39;</span></span>
+<span id="cb59-8"><a href="Workflows_Portfolio_7.html#cb59-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">and</span> table_name <span class="op">=</span> <span class="st">&#39;flu&#39;</span>;</span>
+<span id="cb59-9"><a href="Workflows_Portfolio_7.html#cb59-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-10"><a href="Workflows_Portfolio_7.html#cb59-10" aria-hidden="true" tabindex="-1"></a><span class="co">-- We check in which timeframe the data has been collected</span></span>
+<span id="cb59-11"><a href="Workflows_Portfolio_7.html#cb59-11" aria-hidden="true" tabindex="-1"></a><span class="kw">select</span></span>
+<span id="cb59-12"><a href="Workflows_Portfolio_7.html#cb59-12" aria-hidden="true" tabindex="-1"></a>   <span class="kw">distinct</span> <span class="dt">year</span></span>
+<span id="cb59-13"><a href="Workflows_Portfolio_7.html#cb59-13" aria-hidden="true" tabindex="-1"></a><span class="kw">from</span></span>
+<span id="cb59-14"><a href="Workflows_Portfolio_7.html#cb59-14" aria-hidden="true" tabindex="-1"></a>   flu</span>
+<span id="cb59-15"><a href="Workflows_Portfolio_7.html#cb59-15" aria-hidden="true" tabindex="-1"></a><span class="kw">order</span> <span class="kw">by</span></span>
+<span id="cb59-16"><a href="Workflows_Portfolio_7.html#cb59-16" aria-hidden="true" tabindex="-1"></a>    <span class="dt">year</span> <span class="kw">desc</span>; <span class="co">-- from 2002 to 2015</span></span>
+<span id="cb59-17"><a href="Workflows_Portfolio_7.html#cb59-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb59-18"><a href="Workflows_Portfolio_7.html#cb59-18" aria-hidden="true" tabindex="-1"></a><span class="co">-- We check which countries had the most and least flu cases on average over this timeframe</span></span>
+<span id="cb59-19"><a href="Workflows_Portfolio_7.html#cb59-19" aria-hidden="true" tabindex="-1"></a><span class="kw">select</span> </span>
+<span id="cb59-20"><a href="Workflows_Portfolio_7.html#cb59-20" aria-hidden="true" tabindex="-1"></a>    country,</span>
+<span id="cb59-21"><a href="Workflows_Portfolio_7.html#cb59-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span> (cases):: <span class="dt">NUMERIC</span>(<span class="dv">6</span>,<span class="dv">1</span>)</span>
+<span id="cb59-22"><a href="Workflows_Portfolio_7.html#cb59-22" aria-hidden="true" tabindex="-1"></a><span class="kw">from</span></span>
+<span id="cb59-23"><a href="Workflows_Portfolio_7.html#cb59-23" aria-hidden="true" tabindex="-1"></a>    flu</span>
+<span id="cb59-24"><a href="Workflows_Portfolio_7.html#cb59-24" aria-hidden="true" tabindex="-1"></a><span class="kw">group</span> <span class="kw">by</span></span>
+<span id="cb59-25"><a href="Workflows_Portfolio_7.html#cb59-25" aria-hidden="true" tabindex="-1"></a>    country</span>
+<span id="cb59-26"><a href="Workflows_Portfolio_7.html#cb59-26" aria-hidden="true" tabindex="-1"></a><span class="kw">order</span> <span class="kw">by</span> </span>
+<span id="cb59-27"><a href="Workflows_Portfolio_7.html#cb59-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">avg</span> <span class="kw">desc</span>; <span class="co">-- South Africa had the most with 2698.8 on average, Sweden the least 5.5</span></span>
+<span id="cb59-28"><a href="Workflows_Portfolio_7.html#cb59-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-29"><a href="Workflows_Portfolio_7.html#cb59-29" aria-hidden="true" tabindex="-1"></a><span class="co">-- We check how many countries are noted in the data and if they are spelled correctly</span></span>
+<span id="cb59-30"><a href="Workflows_Portfolio_7.html#cb59-30" aria-hidden="true" tabindex="-1"></a><span class="kw">select</span></span>
+<span id="cb59-31"><a href="Workflows_Portfolio_7.html#cb59-31" aria-hidden="true" tabindex="-1"></a>    <span class="kw">distinct</span> country</span>
+<span id="cb59-32"><a href="Workflows_Portfolio_7.html#cb59-32" aria-hidden="true" tabindex="-1"></a><span class="kw">from</span> flu; <span class="co">-- 29 different countries, all spelled correctly</span></span></code></pre></div>
+</details>
+<details>
+<summary>
+<i>SQL script dengue data inspection</i>
+</summary>
+<div class="sourceCode" id="cb60"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb60-1"><a href="Workflows_Portfolio_7.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- First we check the columnnames and types</span></span>
+<span id="cb60-2"><a href="Workflows_Portfolio_7.html#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="kw">select</span></span>
+<span id="cb60-3"><a href="Workflows_Portfolio_7.html#cb60-3" aria-hidden="true" tabindex="-1"></a>    column_name, data_type </span>
+<span id="cb60-4"><a href="Workflows_Portfolio_7.html#cb60-4" aria-hidden="true" tabindex="-1"></a><span class="kw">from</span></span>
+<span id="cb60-5"><a href="Workflows_Portfolio_7.html#cb60-5" aria-hidden="true" tabindex="-1"></a>    information_schema.<span class="kw">columns</span></span>
+<span id="cb60-6"><a href="Workflows_Portfolio_7.html#cb60-6" aria-hidden="true" tabindex="-1"></a><span class="kw">where</span> </span>
+<span id="cb60-7"><a href="Workflows_Portfolio_7.html#cb60-7" aria-hidden="true" tabindex="-1"></a>    table_schema <span class="op">=</span> <span class="st">&#39;public&#39;</span></span>
+<span id="cb60-8"><a href="Workflows_Portfolio_7.html#cb60-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">and</span> table_name <span class="op">=</span> <span class="st">&#39;dengue&#39;</span>;</span>
+<span id="cb60-9"><a href="Workflows_Portfolio_7.html#cb60-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-10"><a href="Workflows_Portfolio_7.html#cb60-10" aria-hidden="true" tabindex="-1"></a><span class="co">-- We check in which timeframe the data has been collected</span></span>
+<span id="cb60-11"><a href="Workflows_Portfolio_7.html#cb60-11" aria-hidden="true" tabindex="-1"></a><span class="kw">select</span></span>
+<span id="cb60-12"><a href="Workflows_Portfolio_7.html#cb60-12" aria-hidden="true" tabindex="-1"></a>   <span class="kw">distinct</span> <span class="dt">year</span></span>
+<span id="cb60-13"><a href="Workflows_Portfolio_7.html#cb60-13" aria-hidden="true" tabindex="-1"></a><span class="kw">from</span></span>
+<span id="cb60-14"><a href="Workflows_Portfolio_7.html#cb60-14" aria-hidden="true" tabindex="-1"></a>   dengue</span>
+<span id="cb60-15"><a href="Workflows_Portfolio_7.html#cb60-15" aria-hidden="true" tabindex="-1"></a><span class="kw">order</span> <span class="kw">by</span></span>
+<span id="cb60-16"><a href="Workflows_Portfolio_7.html#cb60-16" aria-hidden="true" tabindex="-1"></a>    <span class="dt">year</span> <span class="kw">desc</span>; <span class="co">-- from 2002 to 2015</span></span>
+<span id="cb60-17"><a href="Workflows_Portfolio_7.html#cb60-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb60-18"><a href="Workflows_Portfolio_7.html#cb60-18" aria-hidden="true" tabindex="-1"></a><span class="co">-- We check which countries had the most and least dengue cases on average over this timeframe</span></span>
+<span id="cb60-19"><a href="Workflows_Portfolio_7.html#cb60-19" aria-hidden="true" tabindex="-1"></a><span class="kw">select</span> </span>
+<span id="cb60-20"><a href="Workflows_Portfolio_7.html#cb60-20" aria-hidden="true" tabindex="-1"></a>    country,</span>
+<span id="cb60-21"><a href="Workflows_Portfolio_7.html#cb60-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span> (cases):: <span class="dt">NUMERIC</span>(<span class="dv">6</span>,<span class="dv">4</span>)</span>
+<span id="cb60-22"><a href="Workflows_Portfolio_7.html#cb60-22" aria-hidden="true" tabindex="-1"></a><span class="kw">from</span></span>
+<span id="cb60-23"><a href="Workflows_Portfolio_7.html#cb60-23" aria-hidden="true" tabindex="-1"></a>    dengue</span>
+<span id="cb60-24"><a href="Workflows_Portfolio_7.html#cb60-24" aria-hidden="true" tabindex="-1"></a><span class="kw">group</span> <span class="kw">by</span></span>
+<span id="cb60-25"><a href="Workflows_Portfolio_7.html#cb60-25" aria-hidden="true" tabindex="-1"></a>    country</span>
+<span id="cb60-26"><a href="Workflows_Portfolio_7.html#cb60-26" aria-hidden="true" tabindex="-1"></a><span class="kw">order</span> <span class="kw">by</span> </span>
+<span id="cb60-27"><a href="Workflows_Portfolio_7.html#cb60-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">avg</span> <span class="kw">desc</span>; <span class="co">-- Venezuela had the most with 0.2774 on average, Bolivia the least with 0.0447</span></span>
+<span id="cb60-28"><a href="Workflows_Portfolio_7.html#cb60-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-29"><a href="Workflows_Portfolio_7.html#cb60-29" aria-hidden="true" tabindex="-1"></a><span class="co">-- We check how many countries are noted in the data and if they are spelled correctly</span></span>
+<span id="cb60-30"><a href="Workflows_Portfolio_7.html#cb60-30" aria-hidden="true" tabindex="-1"></a><span class="kw">select</span></span>
+<span id="cb60-31"><a href="Workflows_Portfolio_7.html#cb60-31" aria-hidden="true" tabindex="-1"></a>    <span class="kw">distinct</span> country</span>
+<span id="cb60-32"><a href="Workflows_Portfolio_7.html#cb60-32" aria-hidden="true" tabindex="-1"></a><span class="kw">from</span> dengue; <span class="co">-- 10 different countries, all spelled correctly</span></span></code></pre></div>
+</details>
+<details>
+<summary>
+<i>R script data inspection</i>
+</summary>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="Workflows_Portfolio_7.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking the columnnames and columntypes</span></span>
+<span id="cb61-2"><a href="Workflows_Portfolio_7.html#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(gapminder_df)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    10545 obs. of  9 variables:
+##  $ country         : Factor w/ 185 levels &quot;Albania&quot;,&quot;Algeria&quot;,..: 1 2 3 4 5 6 7 8 9 10 ...
+##  $ year            : int  1960 1960 1960 1960 1960 1960 1960 1960 1960 1960 ...
+##  $ infant_mortality: num  115.4 148.2 208 NA 59.9 ...
+##  $ life_expectancy : num  62.9 47.5 36 63 65.4 ...
+##  $ fertility       : num  6.19 7.65 7.32 4.43 3.11 4.55 4.82 3.45 2.7 5.57 ...
+##  $ population      : num  1636054 11124892 5270844 54681 20619075 ...
+##  $ gdp             : num  NA 1.38e+10 NA NA 1.08e+11 ...
+##  $ continent       : Factor w/ 5 levels &quot;Africa&quot;,&quot;Americas&quot;,..: 4 1 1 2 2 3 2 5 4 3 ...
+##  $ region          : Factor w/ 22 levels &quot;Australia and New Zealand&quot;,..: 19 11 10 2 15 21 2 1 22 21 ...</code></pre>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="Workflows_Portfolio_7.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(flu_df_tidy)</span></code></pre></div>
+<pre><code>## tibble [17,266 × 4] (S3: tbl_df/tbl/data.frame)
+##  $ Date   : Date[1:17266], format: &quot;2002-12-29&quot; &quot;2002-12-29&quot; ...
+##  $ country: Factor w/ 29 levels &quot;Argentina&quot;,&quot;Australia&quot;,..: 6 19 6 19 6 9 19 6 9 19 ...
+##  $ cases  : num [1:17266] 174 329 162 315 174 1 314 162 0 267 ...
+##  $ year   : int [1:17266] 2002 2002 2003 2003 2003 2003 2003 2003 2003 2003 ...
+##  - attr(*, &quot;na.action&quot;)= &#39;omit&#39; Named int [1:1845] 1 2 3 4 5 7 8 9 10 11 ...
+##   ..- attr(*, &quot;names&quot;)= chr [1:1845] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...</code></pre>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="Workflows_Portfolio_7.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(dengue_df_tidy)</span></code></pre></div>
+<pre><code>## tibble [6,263 × 4] (S3: tbl_df/tbl/data.frame)
+##  $ Date   : Date[1:6263], format: &quot;2002-12-29&quot; &quot;2002-12-29&quot; ...
+##  $ country: Factor w/ 10 levels &quot;Argentina&quot;,&quot;Bolivia&quot;,..: 2 3 4 5 8 2 3 4 5 8 ...
+##  $ cases  : num [1:6263] 0.101 0.073 0.062 0.101 0.059 0.143 0.098 0.047 0.039 0.059 ...
+##  $ year   : int [1:6263] 2002 2002 2002 2002 2002 2003 2003 2003 2003 2003 ...
+##  - attr(*, &quot;na.action&quot;)= &#39;omit&#39; Named int [1:327] 1 6 7 9 10 11 16 17 19 20 ...
+##   ..- attr(*, &quot;names&quot;)= chr [1:327] &quot;1&quot; &quot;6&quot; &quot;7&quot; &quot;9&quot; ...</code></pre>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="Workflows_Portfolio_7.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking the timeframes</span></span>
+<span id="cb67-2"><a href="Workflows_Portfolio_7.html#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;From&quot;</span>, <span class="fu">min</span>(<span class="fu">unique</span>(gapminder_df<span class="sc">$</span>year)), <span class="st">&quot;to&quot;</span>, <span class="fu">max</span>(<span class="fu">unique</span>(gapminder_df<span class="sc">$</span>year)))</span></code></pre></div>
+<pre><code>## [1] &quot;From 1960 to 2016&quot;</code></pre>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="Workflows_Portfolio_7.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;From&quot;</span>, <span class="fu">min</span>(<span class="fu">unique</span>(flu_df_tidy<span class="sc">$</span>year)), <span class="st">&quot;to&quot;</span>, <span class="fu">max</span>(<span class="fu">unique</span>(flu_df_tidy<span class="sc">$</span>year)))</span></code></pre></div>
+<pre><code>## [1] &quot;From 2002 to 2015&quot;</code></pre>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="Workflows_Portfolio_7.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;From&quot;</span>, <span class="fu">min</span>(<span class="fu">unique</span>(dengue_df_tidy<span class="sc">$</span>year)), <span class="st">&quot;to&quot;</span>, <span class="fu">max</span>(<span class="fu">unique</span>(dengue_df_tidy<span class="sc">$</span>year)))</span></code></pre></div>
+<pre><code>## [1] &quot;From 2002 to 2015&quot;</code></pre>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="Workflows_Portfolio_7.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking the highest and lowest average population in the gapminder data</span></span>
+<span id="cb73-2"><a href="Workflows_Portfolio_7.html#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">999</span>)</span>
+<span id="cb73-3"><a href="Workflows_Portfolio_7.html#cb73-3" aria-hidden="true" tabindex="-1"></a>gapminder_pop <span class="ot">&lt;-</span> gapminder_df <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(country) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">average =</span> <span class="fu">mean</span>(population, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb73-4"><a href="Workflows_Portfolio_7.html#cb73-4" aria-hidden="true" tabindex="-1"></a>gapminder_pop <span class="sc">%&gt;%</span> <span class="fu">filter</span>(average <span class="sc">==</span> <span class="fu">max</span>(gapminder_pop<span class="sc">$</span>average) <span class="sc">|</span> average <span class="sc">==</span> <span class="fu">min</span>(gapminder_pop<span class="sc">$</span>average))</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 2
+##   country       average
+##   &lt;fct&gt;           &lt;dbl&gt;
+## 1 China     1068197798.
+## 2 Greenland      50984.</code></pre>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="Workflows_Portfolio_7.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking the highest and lowest average life expectancy in the gapminder data</span></span>
+<span id="cb75-2"><a href="Workflows_Portfolio_7.html#cb75-2" aria-hidden="true" tabindex="-1"></a>gapminder_life <span class="ot">&lt;-</span> gapminder_df <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(country) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">average =</span> <span class="fu">mean</span>(life_expectancy, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb75-3"><a href="Workflows_Portfolio_7.html#cb75-3" aria-hidden="true" tabindex="-1"></a>gapminder_life <span class="sc">%&gt;%</span> <span class="fu">filter</span>(average <span class="sc">==</span> <span class="fu">max</span>(gapminder_life<span class="sc">$</span>average) <span class="sc">|</span> average <span class="sc">==</span> <span class="fu">min</span>(gapminder_life<span class="sc">$</span>average)) </span></code></pre></div>
+<pre><code>## # A tibble: 2 × 2
+##   country                  average
+##   &lt;fct&gt;                      &lt;dbl&gt;
+## 1 Central African Republic    46.3
+## 2 Iceland                     78.2</code></pre>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="Workflows_Portfolio_7.html#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking the most and least average flu cases in the flu data</span></span>
+<span id="cb77-2"><a href="Workflows_Portfolio_7.html#cb77-2" aria-hidden="true" tabindex="-1"></a>flu_cases <span class="ot">&lt;-</span> flu_df_tidy <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(country) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">average =</span> <span class="fu">mean</span>(cases, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb77-3"><a href="Workflows_Portfolio_7.html#cb77-3" aria-hidden="true" tabindex="-1"></a>flu_cases <span class="sc">%&gt;%</span> <span class="fu">filter</span>(average <span class="sc">==</span> <span class="fu">max</span>(flu_cases<span class="sc">$</span>average) <span class="sc">|</span> average <span class="sc">==</span> <span class="fu">min</span>(flu_cases<span class="sc">$</span>average))</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 2
+##   country      average
+##   &lt;fct&gt;          &lt;dbl&gt;
+## 1 South Africa 2699.  
+## 2 Sweden          5.55</code></pre>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="Workflows_Portfolio_7.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking the most and least average dengue cases in the dengue data</span></span>
+<span id="cb79-2"><a href="Workflows_Portfolio_7.html#cb79-2" aria-hidden="true" tabindex="-1"></a>dengue_cases <span class="ot">&lt;-</span> dengue_df_tidy <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(country) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">average =</span> <span class="fu">mean</span>(cases, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb79-3"><a href="Workflows_Portfolio_7.html#cb79-3" aria-hidden="true" tabindex="-1"></a>dengue_cases <span class="sc">%&gt;%</span> <span class="fu">filter</span>(average <span class="sc">==</span> <span class="fu">max</span>(dengue_cases<span class="sc">$</span>average) <span class="sc">|</span> average <span class="sc">==</span> <span class="fu">min</span>(dengue_cases<span class="sc">$</span>average)) </span></code></pre></div>
+<pre><code>## # A tibble: 2 × 2
+##   country   average
+##   &lt;fct&gt;       &lt;dbl&gt;
+## 1 Bolivia    0.0447
+## 2 Venezuela  0.277</code></pre>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="Workflows_Portfolio_7.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking how many countries took part</span></span>
+<span id="cb81-2"><a href="Workflows_Portfolio_7.html#cb81-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(gapminder_df<span class="sc">$</span>country)) <span class="co"># 185 countries</span></span></code></pre></div>
+<pre><code>## [1] 185</code></pre>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="Workflows_Portfolio_7.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(flu_df_tidy<span class="sc">$</span>country)) <span class="co"># 29 countries</span></span></code></pre></div>
+<pre><code>## [1] 29</code></pre>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="Workflows_Portfolio_7.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(dengue_df_tidy<span class="sc">$</span>country)) <span class="co"># 10 countries</span></span></code></pre></div>
+<pre><code>## [1] 10</code></pre>
+</details>
+<hr />
+</div>
+<div id="joining-datasets" class="section level2" number="5.3">
+<h2><span class="header-section-number">5.3</span> Joining datasets</h2>
+<p>The three datasets have two variables in common, country and year. Both the flu and dengue datasets have multiple observations per country per year. Sadly, the flu and dengue databases are very unclear. Since the data is old and the links in the metadata are no longer working it is hard to estimate the details of this data. Per how many inhabitants are these numbers? What were the criteria to be considered a case? Other factors, like the opportunity to get a diagnosis, should also be considered. To combine the datasets the average amount of weekly cases per year per country was used. The dengue dataset has the least amount of countries. When joining the data only the countries seen in all three datasets will be kept, these are Argentina, Bolivia, Brazil and Mexico. <a href="SQL/joining_gapminder_flu_dengue.sql">Click here</a> for the full SQL script written to join the three datasets based on country and year. The joined table has been imported into R using the following code.</p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="Workflows_Portfolio_7.html#cb87-1" aria-hidden="true" tabindex="-1"></a>gapminder_flu_dengue <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/data070/gapminder_flu_dengue.csv&quot;</span>)</span></code></pre></div>
+<hr />
+</div>
+<div id="descriptive-statistics" class="section level2" number="5.4">
+<h2><span class="header-section-number">5.4</span> Descriptive statistics</h2>
+<p>With this new joined table we can perform some descriptive statistics. For example, looking at the mean per country per variable, the highest/lowest values and the median.</p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="Workflows_Portfolio_7.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the average values per country</span></span>
+<span id="cb88-2"><a href="Workflows_Portfolio_7.html#cb88-2" aria-hidden="true" tabindex="-1"></a>gfd_population_summ <span class="ot">&lt;-</span> gapminder_flu_dengue <span class="sc">%&gt;%</span> </span>
+<span id="cb88-3"><a href="Workflows_Portfolio_7.html#cb88-3" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">group_by</span>(country)<span class="sc">%&gt;%</span> </span>
+<span id="cb88-4"><a href="Workflows_Portfolio_7.html#cb88-4" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">summarize</span>(<span class="at">average =</span> <span class="fu">mean</span>(population),</span>
+<span id="cb88-5"><a href="Workflows_Portfolio_7.html#cb88-5" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">max =</span> <span class="fu">max</span>(population),</span>
+<span id="cb88-6"><a href="Workflows_Portfolio_7.html#cb88-6" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">min =</span> <span class="fu">min</span>(population),</span>
+<span id="cb88-7"><a href="Workflows_Portfolio_7.html#cb88-7" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">median =</span> <span class="fu">median</span>(population))</span>
+<span id="cb88-8"><a href="Workflows_Portfolio_7.html#cb88-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb88-9"><a href="Workflows_Portfolio_7.html#cb88-9" aria-hidden="true" tabindex="-1"></a>gfd_life_summ <span class="ot">&lt;-</span> gapminder_flu_dengue <span class="sc">%&gt;%</span> </span>
+<span id="cb88-10"><a href="Workflows_Portfolio_7.html#cb88-10" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">group_by</span>(country)<span class="sc">%&gt;%</span> </span>
+<span id="cb88-11"><a href="Workflows_Portfolio_7.html#cb88-11" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">summarize</span>(<span class="at">average =</span> <span class="fu">mean</span>(life_expectancy),</span>
+<span id="cb88-12"><a href="Workflows_Portfolio_7.html#cb88-12" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">max =</span> <span class="fu">max</span>(life_expectancy),</span>
+<span id="cb88-13"><a href="Workflows_Portfolio_7.html#cb88-13" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">min =</span> <span class="fu">min</span>(life_expectancy),</span>
+<span id="cb88-14"><a href="Workflows_Portfolio_7.html#cb88-14" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">median =</span> <span class="fu">median</span>(life_expectancy))</span>
+<span id="cb88-15"><a href="Workflows_Portfolio_7.html#cb88-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb88-16"><a href="Workflows_Portfolio_7.html#cb88-16" aria-hidden="true" tabindex="-1"></a>gfd_gdp_summ <span class="ot">&lt;-</span> gapminder_flu_dengue <span class="sc">%&gt;%</span> </span>
+<span id="cb88-17"><a href="Workflows_Portfolio_7.html#cb88-17" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">group_by</span>(country)<span class="sc">%&gt;%</span> </span>
+<span id="cb88-18"><a href="Workflows_Portfolio_7.html#cb88-18" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">summarize</span>(<span class="at">average =</span> <span class="fu">mean</span>(gdp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb88-19"><a href="Workflows_Portfolio_7.html#cb88-19" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">max =</span> <span class="fu">max</span>(gdp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb88-20"><a href="Workflows_Portfolio_7.html#cb88-20" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">min =</span> <span class="fu">min</span>(gdp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb88-21"><a href="Workflows_Portfolio_7.html#cb88-21" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">median =</span> <span class="fu">median</span>(gdp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb88-22"><a href="Workflows_Portfolio_7.html#cb88-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb88-23"><a href="Workflows_Portfolio_7.html#cb88-23" aria-hidden="true" tabindex="-1"></a>gfd_flu_deng_summ <span class="ot">&lt;-</span> gapminder_flu_dengue <span class="sc">%&gt;%</span> </span>
+<span id="cb88-24"><a href="Workflows_Portfolio_7.html#cb88-24" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">group_by</span>(country)<span class="sc">%&gt;%</span> </span>
+<span id="cb88-25"><a href="Workflows_Portfolio_7.html#cb88-25" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">summarize</span>(<span class="at">avg_flu =</span> <span class="fu">mean</span>(flu_cases),</span>
+<span id="cb88-26"><a href="Workflows_Portfolio_7.html#cb88-26" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">max_flu =</span> <span class="fu">max</span>(flu_cases),</span>
+<span id="cb88-27"><a href="Workflows_Portfolio_7.html#cb88-27" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">min_flu =</span> <span class="fu">min</span>(flu_cases),</span>
+<span id="cb88-28"><a href="Workflows_Portfolio_7.html#cb88-28" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">median_flu =</span> <span class="fu">median</span>(flu_cases),</span>
+<span id="cb88-29"><a href="Workflows_Portfolio_7.html#cb88-29" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">avg_dengue =</span> <span class="fu">mean</span>(dengue_cases),</span>
+<span id="cb88-30"><a href="Workflows_Portfolio_7.html#cb88-30" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">max_dengue =</span> <span class="fu">max</span>(dengue_cases),</span>
+<span id="cb88-31"><a href="Workflows_Portfolio_7.html#cb88-31" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">min_dengue =</span> <span class="fu">min</span>(dengue_cases),</span>
+<span id="cb88-32"><a href="Workflows_Portfolio_7.html#cb88-32" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">median_dengue =</span> <span class="fu">median</span>(dengue_cases))</span></code></pre></div>
+<hr />
+</div>
+<div id="visualisations" class="section level2" number="5.5">
+<h2><span class="header-section-number">5.5</span> Visualisations</h2>
+<p>We can also create visualizations to get an overall look of how the countries compare to each other and how the numbers changed through the years.</p>
+<div id="dengue-cases" class="section level3" number="5.5.1">
+<h3><span class="header-section-number">5.5.1</span> Dengue cases</h3>
+<p>In figure 4.2 a scatterplot shows the average amount of weekly dengue cases per year with a different color for each country. In 2009 three of the four countries had a steep increase in cases compared to the years before. It is noteworthy that the guidelines for the classification of dengue were revised in 2009 by the <span class="citation">World Health Organization (2009)</span>. This revision is considered an improvement but, being less stringent, will have increased the amount of diagnoses <span class="citation">(van de Weg et al. 2012)</span>.</p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="Workflows_Portfolio_7.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualising the weekly dengue cases per country per year in a scatterplot</span></span>
+<span id="cb89-2"><a href="Workflows_Portfolio_7.html#cb89-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gapminder_flu_dengue, <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>dengue_cases, <span class="at">group =</span> country, <span class="at">color =</span> country)) <span class="sc">+</span> </span>
+<span id="cb89-3"><a href="Workflows_Portfolio_7.html#cb89-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb89-4"><a href="Workflows_Portfolio_7.html#cb89-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb89-5"><a href="Workflows_Portfolio_7.html#cb89-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Dengue cases&quot;</span>,</span>
+<span id="cb89-6"><a href="Workflows_Portfolio_7.html#cb89-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Average dengue cases per week&quot;</span>,</span>
+<span id="cb89-7"><a href="Workflows_Portfolio_7.html#cb89-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Year&quot;</span>,</span>
+<span id="cb89-8"><a href="Workflows_Portfolio_7.html#cb89-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">&quot;Figure 4.2. Scatterplot to show the average amount of weekly dengue cases per year per country.&quot;</span>) <span class="sc">+</span></span>
+<span id="cb89-9"><a href="Workflows_Portfolio_7.html#cb89-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">round</span>(<span class="fu">seq</span>(<span class="fu">min</span>(gapminder_flu_dengue<span class="sc">$</span>year), <span class="fu">max</span>(gapminder_flu_dengue<span class="sc">$</span>year), <span class="at">by =</span> <span class="dv">1</span>),<span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb89-10"><a href="Workflows_Portfolio_7.html#cb89-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="bookdown_site_files/figure-html/dengue%20graph-1.png" width="672" /></p>
+<p>After seeing this graph I have decided to remake it without the joined table. Joining the tables has decreased the amount of countries in the table since 6 of the 10 countries in the dengue database were not seen in the flu database. It would be a waste of information not to make this graph with all the data I currently have access to. In figure 4.3 the new scatterplot is shown. Here we see how the added countries did not show a significant increase in cases in 2009, unlike what the previous graph showed. Letting out this information by joining the databases with other could therefore have been misleading.</p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="Workflows_Portfolio_7.html#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The tidy dengue data will be used and modified to get the average amount of weekly cases per year</span></span>
+<span id="cb90-2"><a href="Workflows_Portfolio_7.html#cb90-2" aria-hidden="true" tabindex="-1"></a>dengue_graph <span class="ot">&lt;-</span> dengue_df_tidy <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(year, country) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">avg_cases =</span> <span class="fu">mean</span>(cases))</span>
+<span id="cb90-3"><a href="Workflows_Portfolio_7.html#cb90-3" aria-hidden="true" tabindex="-1"></a><span class="fu">view</span>(dengue_graph)</span>
+<span id="cb90-4"><a href="Workflows_Portfolio_7.html#cb90-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-5"><a href="Workflows_Portfolio_7.html#cb90-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualising the weekly dengue cases per country per year in a scatterplot</span></span>
+<span id="cb90-6"><a href="Workflows_Portfolio_7.html#cb90-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dengue_graph, <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>avg_cases, <span class="at">group =</span> country, <span class="at">color =</span> country)) <span class="sc">+</span> </span>
+<span id="cb90-7"><a href="Workflows_Portfolio_7.html#cb90-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb90-8"><a href="Workflows_Portfolio_7.html#cb90-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb90-9"><a href="Workflows_Portfolio_7.html#cb90-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Dengue cases&quot;</span>,</span>
+<span id="cb90-10"><a href="Workflows_Portfolio_7.html#cb90-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Average dengue cases per week&quot;</span>,</span>
+<span id="cb90-11"><a href="Workflows_Portfolio_7.html#cb90-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Year&quot;</span>,</span>
+<span id="cb90-12"><a href="Workflows_Portfolio_7.html#cb90-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">&quot;Figure 4.3. Scatterplot to show the average amount of weekly dengue cases per year per country.&quot;</span>) <span class="sc">+</span></span>
+<span id="cb90-13"><a href="Workflows_Portfolio_7.html#cb90-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">round</span>(<span class="fu">seq</span>(<span class="fu">min</span>(gapminder_flu_dengue<span class="sc">$</span>year), <span class="fu">max</span>(gapminder_flu_dengue<span class="sc">$</span>year), <span class="at">by =</span> <span class="dv">1</span>),<span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb90-14"><a href="Workflows_Portfolio_7.html#cb90-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="bookdown_site_files/figure-html/dengue%20full%20graph-1.png" width="672" /></p>
+</div>
+<div id="flu-cases" class="section level3" number="5.5.2">
+<h3><span class="header-section-number">5.5.2</span> Flu cases</h3>
+<p>To prevent the misleading visualizations, seen for the dengue cases, a new joined table was made to analyse the flu cases. This time only the flu and gapminder data have been joined using <a href="SQL/joining_gapminder_flu.sql">this SQL script</a>. The table was imported to R and the descriptive statistics were executed again, this time based on the the continent</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="Workflows_Portfolio_7.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">999</span>)</span>
+<span id="cb91-2"><a href="Workflows_Portfolio_7.html#cb91-2" aria-hidden="true" tabindex="-1"></a>gf_continent <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/data070/gapminder_flu_continent.csv&quot;</span>)</span>
+<span id="cb91-3"><a href="Workflows_Portfolio_7.html#cb91-3" aria-hidden="true" tabindex="-1"></a><span class="co"># In 2002 not all countries were noted so this year will be left out of the analysis</span></span>
+<span id="cb91-4"><a href="Workflows_Portfolio_7.html#cb91-4" aria-hidden="true" tabindex="-1"></a>gf_continent <span class="ot">&lt;-</span> gf_continent <span class="sc">%&gt;%</span> <span class="fu">filter</span>(year <span class="sc">!=</span> <span class="dv">2002</span>)</span>
+<span id="cb91-5"><a href="Workflows_Portfolio_7.html#cb91-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-6"><a href="Workflows_Portfolio_7.html#cb91-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the average value per continent per variable</span></span>
+<span id="cb91-7"><a href="Workflows_Portfolio_7.html#cb91-7" aria-hidden="true" tabindex="-1"></a>gf_continent_summ <span class="ot">&lt;-</span> gf_continent <span class="sc">%&gt;%</span> </span>
+<span id="cb91-8"><a href="Workflows_Portfolio_7.html#cb91-8" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">group_by</span>(continent)<span class="sc">%&gt;%</span> </span>
+<span id="cb91-9"><a href="Workflows_Portfolio_7.html#cb91-9" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">summarize</span>(<span class="at">population =</span> <span class="fu">mean</span>(population),</span>
+<span id="cb91-10"><a href="Workflows_Portfolio_7.html#cb91-10" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">life_expectancy =</span> <span class="fu">mean</span>(life_expectancy),</span>
+<span id="cb91-11"><a href="Workflows_Portfolio_7.html#cb91-11" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">flu_cases =</span> <span class="fu">mean</span>(flu_cases),</span>
+<span id="cb91-12"><a href="Workflows_Portfolio_7.html#cb91-12" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">gdp =</span> <span class="fu">mean</span>(gdp, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span>
+<span id="cb91-13"><a href="Workflows_Portfolio_7.html#cb91-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-14"><a href="Workflows_Portfolio_7.html#cb91-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Make it useable for the bar graph</span></span>
+<span id="cb91-15"><a href="Workflows_Portfolio_7.html#cb91-15" aria-hidden="true" tabindex="-1"></a>gf_continent_bar <span class="ot">&lt;-</span> gf_continent_summ <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="st">&quot;Population&quot;</span> <span class="ot">=</span> <span class="fu">round</span>(population<span class="sc">/</span><span class="fu">max</span>(population)<span class="sc">*</span><span class="dv">100</span>, <span class="dv">1</span>),</span>
+<span id="cb91-16"><a href="Workflows_Portfolio_7.html#cb91-16" aria-hidden="true" tabindex="-1"></a>                                                 <span class="st">&quot;Weekly flu cases&quot;</span> <span class="ot">=</span> <span class="fu">round</span>(flu_cases<span class="sc">/</span><span class="fu">max</span>(flu_cases)<span class="sc">*</span><span class="dv">100</span>, <span class="dv">1</span>))</span>
+<span id="cb91-17"><a href="Workflows_Portfolio_7.html#cb91-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-18"><a href="Workflows_Portfolio_7.html#cb91-18" aria-hidden="true" tabindex="-1"></a>gf_continent_bar <span class="ot">&lt;-</span> gf_continent_bar <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="st">&quot;continent&quot;</span>, <span class="st">&quot;Population&quot;</span>, <span class="st">&quot;Weekly flu cases&quot;</span>)</span>
+<span id="cb91-19"><a href="Workflows_Portfolio_7.html#cb91-19" aria-hidden="true" tabindex="-1"></a>gf_continent_bar <span class="ot">&lt;-</span> gf_continent_bar <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="st">&quot;Population&quot;</span>, <span class="st">&quot;Weekly flu cases&quot;</span>), <span class="at">names_to =</span> <span class="st">&quot;Statistics&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;Percentage&quot;</span>)</span></code></pre></div>
+<p>Because of the incomplete metadata of the flu database the relation between the population and the amount of weekly flu cases should first be looked at. This can give us an insight to wether the values for flu cases are per a certain amount of inhabitants. The bar graph (shown in figure 4.4) shows how a smaller population compared to other continents also results in a smaller amount of weekly flu cases. This indicates the data in the flu database has not been normalized for the number of inhabitants. Africa is an outlier in this with relatively more weekly flu cases than Asia but a smaller population.</p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="Workflows_Portfolio_7.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make a bar graph with the relative average population and weekly flu cases</span></span>
+<span id="cb92-2"><a href="Workflows_Portfolio_7.html#cb92-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gf_continent_bar, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(continent, <span class="sc">-</span>Percentage), <span class="at">y=</span>Percentage, <span class="at">fill=</span>Statistics)) <span class="sc">+</span></span>
+<span id="cb92-3"><a href="Workflows_Portfolio_7.html#cb92-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">&quot;identity&quot;</span>, <span class="at">position=</span><span class="fu">position_dodge</span>()) <span class="sc">+</span></span>
+<span id="cb92-4"><a href="Workflows_Portfolio_7.html#cb92-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Population and flu cases&quot;</span>,</span>
+<span id="cb92-5"><a href="Workflows_Portfolio_7.html#cb92-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Percentage&quot;</span>,</span>
+<span id="cb92-6"><a href="Workflows_Portfolio_7.html#cb92-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="cn">NULL</span>,</span>
+<span id="cb92-7"><a href="Workflows_Portfolio_7.html#cb92-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">&quot;Figure 4.4. The relative average population and weekly flu cases from 2003 to 2015 per continent.&quot;</span>) <span class="sc">+</span></span>
+<span id="cb92-8"><a href="Workflows_Portfolio_7.html#cb92-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="bookdown_site_files/figure-html/flu%20bargraph-1.png" width="672" /></p>
+<p>For further analysis a scatterplot has been made, shown in figure 4.5. The sudden increase in 2009, only to go back down again in 2010, is noteworthy. In 2009 there was a pandemic called the Swine Flu which might be the cause of this sudden jump in flu cases for all continents <span class="citation">(Akin and Gözel 2020)</span>. This also explains why Oceania was affected less, as it is more secluded from other continents being surrounded by ocean.</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="Workflows_Portfolio_7.html#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualising the weekly dengue cases per continent per year in a scatterplot</span></span>
+<span id="cb93-2"><a href="Workflows_Portfolio_7.html#cb93-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gf_continent, <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>flu_cases, <span class="at">group =</span> continent, <span class="at">color =</span> continent)) <span class="sc">+</span> </span>
+<span id="cb93-3"><a href="Workflows_Portfolio_7.html#cb93-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb93-4"><a href="Workflows_Portfolio_7.html#cb93-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb93-5"><a href="Workflows_Portfolio_7.html#cb93-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Weekly flu cases across the world&quot;</span>,</span>
+<span id="cb93-6"><a href="Workflows_Portfolio_7.html#cb93-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Weekly flu cases&quot;</span>,</span>
+<span id="cb93-7"><a href="Workflows_Portfolio_7.html#cb93-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Year&quot;</span>,</span>
+<span id="cb93-8"><a href="Workflows_Portfolio_7.html#cb93-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">&quot;Figure 4.5. Scatterplot to show the average amount of weekly flu cases per year per continent.&quot;</span>) <span class="sc">+</span></span>
+<span id="cb93-9"><a href="Workflows_Portfolio_7.html#cb93-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">round</span>(<span class="fu">seq</span>(<span class="fu">min</span>(gf_continent<span class="sc">$</span>year), <span class="fu">max</span>(gf_continent<span class="sc">$</span>year), <span class="at">by =</span> <span class="dv">1</span>),<span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb93-10"><a href="Workflows_Portfolio_7.html#cb93-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="bookdown_site_files/figure-html/flu%20scatterplot-1.png" width="672" /></p>
 
+</div>
+</div>
 </div>
             </section>
 

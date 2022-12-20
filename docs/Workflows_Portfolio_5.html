@@ -194,7 +194,18 @@ div.csl-indent {
 <li class="chapter" data-level="4.4" data-path="Workflows_Portfolio_5.html"><a href="Workflows_Portfolio_5.html#sbtab-and-phymdos"><i class="fa fa-check"></i><b>4.4</b> SBtab and Phymdos</a></li>
 <li class="chapter" data-level="4.5" data-path="Workflows_Portfolio_5.html"><a href="Workflows_Portfolio_5.html#the-goal"><i class="fa fa-check"></i><b>4.5</b> The Goal</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="Workflows_Portfolio_7.html"><a href="Workflows_Portfolio_7.html"><i class="fa fa-check"></i><b>5</b> Relational data</a></li>
+<li class="chapter" data-level="5" data-path="Workflows_Portfolio_7.html"><a href="Workflows_Portfolio_7.html"><i class="fa fa-check"></i><b>5</b> Relational data</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="Workflows_Portfolio_7.html"><a href="Workflows_Portfolio_7.html#connecting-to-dbeaver"><i class="fa fa-check"></i><b>5.1</b> Connecting to DBeaver</a></li>
+<li class="chapter" data-level="5.2" data-path="Workflows_Portfolio_7.html"><a href="Workflows_Portfolio_7.html#data-inspection"><i class="fa fa-check"></i><b>5.2</b> Data inspection</a></li>
+<li class="chapter" data-level="5.3" data-path="Workflows_Portfolio_7.html"><a href="Workflows_Portfolio_7.html#joining-datasets"><i class="fa fa-check"></i><b>5.3</b> Joining datasets</a></li>
+<li class="chapter" data-level="5.4" data-path="Workflows_Portfolio_7.html"><a href="Workflows_Portfolio_7.html#descriptive-statistics"><i class="fa fa-check"></i><b>5.4</b> Descriptive statistics</a></li>
+<li class="chapter" data-level="5.5" data-path="Workflows_Portfolio_7.html"><a href="Workflows_Portfolio_7.html#visualisations"><i class="fa fa-check"></i><b>5.5</b> Visualisations</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="Workflows_Portfolio_7.html"><a href="Workflows_Portfolio_7.html#dengue-cases"><i class="fa fa-check"></i><b>5.5.1</b> Dengue cases</a></li>
+<li class="chapter" data-level="5.5.2" data-path="Workflows_Portfolio_7.html"><a href="Workflows_Portfolio_7.html#flu-cases"><i class="fa fa-check"></i><b>5.5.2</b> Flu cases</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="6" data-path="Workflows_Portfolio_8.html"><a href="Workflows_Portfolio_8.html"><i class="fa fa-check"></i><b>6</b> R packages</a></li>
 <li class="chapter" data-level="7" data-path="Workflows_Portfolio_9.html"><a href="Workflows_Portfolio_9.html"><i class="fa fa-check"></i><b>7</b> Parameters</a></li>
 <li class="chapter" data-level="8" data-path="Workflows_Portfolio_Free.html"><a href="Workflows_Portfolio_Free.html"><i class="fa fa-check"></i><b>8</b> Free assignment</a></li>
@@ -221,25 +232,30 @@ div.csl-indent {
 <p><em>As part of assignment 5 from the <a href="https://lesmaterialen.rstudio.hu.nl/workflows-reader/#course-introduction">DSFB2 Workflows course</a>.</em></p>
 <hr />
 <p>Alongside the subject of Workflows we will be working in groups of three students on a project. With this project we will learn about agile methods of collaboration, apply our data science skills, create a working product and present this product. In our case we are working on a project revolving around <a href="https://ontox-project.eu/">ONTOX</a> with Marc Teunis as our cliënt.</p>
+<hr />
 <div id="technology-to-reduce-animaltesting" class="section level2" number="4.1">
 <h2><span class="header-section-number">4.1</span> Technology to reduce animaltesting</h2>
 <p>A goal I have within my career is reducing the need for animaltesting in biomedical research. Within the field of animaltesting there’s a focus on replacement, reduction and refinement, as described by <span class="citation">Simmonds (2018)</span>.</p>
 <p>In the past replacement focussed on insentient material and animal species “lower” on the pylogenic scale. In recent years the use of computer software as a replacement is becoming more and more relevant <span class="citation">(Grafström et al. 2015)</span>. Reduction focuses on properly designing the research so less animals are used and to prevent the need for more animals than initially expected. This becomes complicated when using less animals for the inital research may create the need for more animals in repetitive or supporting studies. In this case using software would not only reduce the amount of animals needed, it would also make reproduction a lot easier. The third R, refinement, is all about reducing the amount of discomfort the animals go through. This can include training the animals to get used to the treatment with positive reinforcement or the use of anesthesia <span class="citation">(Simmonds 2018)</span>. This takes more time and resources which can be prevented by using computer software instead.</p>
 <p>One project with a focus on reducing the need for animals in human risk assessment of chemicals is ONTOX.</p>
+<hr />
 </div>
 <div id="ontox" class="section level2" number="4.2">
 <h2><span class="header-section-number">4.2</span> ONTOX</h2>
 <p>In their own words “The vision of the ONTOX consortium is to provide a functional and sustainable solution for advancing human risk assessment of chemicals without the use of animals in line with the principles of 21st century toxicity testing and next generation risk assessment” <span class="citation">(<span>“<span>ONTOX Project</span>,”</span> n.d.)</span>. One of the ways to achieve this is by collecting and combining existing data to be used in the risk assessment. Platforms like SysRev are able to extract useful data from articles. This data consists of metabolic pathways and interactions between compounds. To make the data useful for computerbased analysis it is formatted into what is called an SBtab file. This file, in turn, can be used to create visualisations of the metabolic pathways or it can be turned into other formats like SBML. Different apps (i.e. Phymdos) and functions have been created to execute these possibilities.</p>
+<hr />
 </div>
 <div id="sysrev" class="section level2" number="4.3">
 <h2><span class="header-section-number">4.3</span> SYSREV</h2>
 <p>Our current knowledge within the biomedical industry consists of big and complex datasets. Combining the datasets from multiple sources
 can help with identifying clusters and correlation between datasets, as well as developing predictive models <span class="citation">(Ristevski and Chen 2018)</span>. The amount of existing literature and data is hard to grasp. One way to make this easier is by using software platforms like SysRev. SysRev is a collaborative platform for the extraction of data from documents <span class="citation">(<span>“Built for Data Miners | <span>Sysrev</span>,”</span> n.d.)</span>. It speeds up the extraction of useful data from documents by presenting it in a shorter format. This researcher will be able to go over more data in the same amount of time.</p>
 <p>Existing data about risk assessment on humans may be more accurate than performing the same risk assessment on a new samplegroup of animals. As shown by <span class="citation">Perel et al. (2007)</span> the treatment effects in animal experiments can differ greatly from the ones in clinical trials. Simon Festing, executive director of RDS, once stated “Animals are better used for understanding disease mechanisms and potential new treatments, rather than predicting what will happen in humans,” <span class="citation">(<span>“The <span>Trouble</span> with <span>Animal Models</span>,”</span> n.d.)</span>. In order to predict risk in humans it is important to look at our specific biological systems instead of other organisms. Aside from performing clinical trials the existing data should be used more optimally.</p>
+<hr />
 </div>
 <div id="sbtab-and-phymdos" class="section level2" number="4.4">
 <h2><span class="header-section-number">4.4</span> SBtab and Phymdos</h2>
 <p>One of the possible output formats used by SysRev is called SBtab. This format is a set of syntax rules, created to simplify data processing, and can be interconverted with the well known SBML format <span class="citation">(<span>“<span>SBtab</span> - <span>Standardised</span> Data Tables for <span>Systems Biology</span>,”</span> n.d.)</span>. One app which can perform this conversion is <a href="https://rstudio-connect.hu.nl/phymdos/">Phymdos</a>. The app was created by D. Roodzant for University of Applied Sciences Utrecht. It can take SBtab files, SBML files or extract them directly from SysRev. It allows the user to create SBML style physiological maps in the desired format. This app demonstrates the range of possiblities with this type of data.</p>
+<hr />
 </div>
 <div id="the-goal" class="section level2" number="4.5">
 <h2><span class="header-section-number">4.5</span> The Goal</h2>

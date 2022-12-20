@@ -23,6 +23,13 @@ sysrev
 sbtab-and-phymdos
 the-goal
 relational-data
+connecting-to-dbeaver
+data-inspection
+joining-datasets
+descriptive-statistics
+visualisations
+dengue-cases
+flu-cases
 r-packages
 parameters
 free-assignment
