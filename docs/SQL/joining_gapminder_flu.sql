@@ -36,4 +36,3 @@ group by
 order by 
 	continent desc,
 	year desc;
-	

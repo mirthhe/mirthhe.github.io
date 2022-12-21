@@ -38,10 +38,10 @@ rename column avg to dengue_cases;
 -- The columns we want to bring to the joined table are 
 -- flu.flu_cases, flu.country, flu.year
 -- dengue.dengue_cases, dengue.country, dengue.year
--- gapminder.life_expectancy, gapminder.gdp, gapminder.country, gapminder.year
+-- gapminder.life_expectancy, gapminder.gdp, gapminder.population, gapminder.country, gapminder.year
 
 -- We join the flu and dengue data first
-create table flu_dengue_year as
+create table flu_dengue as
 select
 	flu_per_year.flu_cases, 
 	flu_per_year.country, 
@@ -52,10 +52,11 @@ from
 inner join
 	dengue_per_year
 on
-	flu_per_year.year = dengue_per_year.year;
+	flu_per_year.country = dengue_per_year.country
+	and flu_per_year.year = dengue_per_year.year;
 
 -- Then we add the gapminder data
-create table gapminder_flu_dengue_year as
+create table gapminder_flu_dengue as
 select 
 	gapminder.country, 
 	gapminder.year, 
@@ -69,4 +70,5 @@ from
 inner join 
 	flu_dengue
 on 
-	gapminder.year = flu_dengue.year;
+	gapminder.country = flu_dengue.country
+	and gapminder.year = flu_dengue.year;
