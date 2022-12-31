@@ -20,7 +20,7 @@ CE.LIQ.FLOW.062_Tidydata <- read_excel(
 
 The column RawData was recognized as a double while I'd expect an integer, compName was a character while I expected a factor and compConcentration was also character while it should be a double. It had not been assigned correctly. For further analysis the types were changed to the correct ones using the following code.
 
-```{r character to double for compConcentration, echo=FALSE}
+```{r character to double for compConcentration}
 # The compConcentration has to be turned into a numeric value
 CE.LIQ.FLOW.062_Tidydata$compConcentration <- 
   as.double(CE.LIQ.FLOW.062_Tidydata$compConcentration)
@@ -40,7 +40,7 @@ CE.LIQ.FLOW.062_tbl$compName <- factor(CE.LIQ.FLOW.062_tbl$compName,
                                        levels = compName_factor)
 
 # Check if it worked
-str(CE.LIQ.FLOW.062_tbl) # it did!
+# str(CE.LIQ.FLOW.062_tbl) # it did!
 ```
 
 ### Creating the scatterplot
@@ -55,7 +55,7 @@ A few details were added on top of the given assignment. Each compound got it's 
 # Get the average counts per compound per concentration, keep the expType variable too
 CE.LIQ_summ <- CE.LIQ.FLOW.062_tbl %>% group_by(compName, compConcentration, expType) %>% 
                                       summarize(mean_counts = mean(RawData, na.rm = TRUE),
-                                      stdev_counts =  sd(RawData, na.rm = TRUE),)
+                                      stdev_counts =  sd(RawData, na.rm = TRUE))
 
 # Create a tibble containing only the data used for the graph
 CE.LIQ_summ_exp <- CE.LIQ_summ %>% filter(expType == "experiment")
@@ -63,20 +63,19 @@ CE.LIQ_summ_exp <- CE.LIQ_summ %>% filter(expType == "experiment")
 # Create the scatterplot
 CE.LIQ_summ_exp %>% ggplot(aes(x = log10(compConcentration) # log10 as suggested in question F
                                , y = mean_counts)) +
-  geom_smooth(aes(group=compName, color = compName), span= .5) +
+  geom_smooth(aes(group=compName, color = compName), span= .5, size=0.2) +
   geom_point(aes(color = compName), 
-             position = position_jitter(width = 0.2, height = 0.2, seed = 123)) +
+             position = graph_jitter(0.2)) +
   geom_errorbar(aes(ymin=mean_counts-stdev_counts, ymax=mean_counts+stdev_counts, 
                     color = compName), 
-                width=.1, position = position_jitter(
-                  width = 0.2, height = 0.2, seed = 123)) +
+                width=.1, position = graph_jitter(0.2)) +
   labs(title = str_wrap("Mean offspring count of C. Elegans with added compounds 
                         in varying concentrations", 70),
        y = "Offspring count",
        x = "Compound concentration in log10(nM)",
-       caption = str_wrap("Figure 1.1 Scatterplot with trendlines showing the mean offspring 
+       caption = graph_cap("Figure 1.1 Scatterplot with trendlines showing the mean offspring 
                           count of C. Elegans with three different compounds at 
-                          varying concentrations.", 80)) +
+                          varying concentrations.")) +
   geom_hline(yintercept = 85.9, linetype = "dashed", size = 0.2) + # Shows control negative
   geom_text(aes(0,85.9, label = "Control negative", vjust=-0.3), size = 3.5) +
   geom_hline(yintercept = 49.4, linetype = "dashed", size = 0.2) + # Shows control positive
@@ -86,30 +85,28 @@ CE.LIQ_summ_exp %>% ggplot(aes(x = log10(compConcentration) # log10 as suggested
 
 ### Normalize for the negative control
 
-In order to see how much the offspring count improved or decreased relatively to the negative control basline the data must be normalized. To do this we adjust the negative control to a value of 1 and adjust the other values in the same way. In this case that means dividing by 85.9. The scatterplot was created again with the new normalized data, further settings stayed the same, the result is shown in figure 1.2.
+In order to see how much the offspring count improved or decreased relatively to the negative control baseline the data must be normalized. To do this we adjust the negative control to a value of 1 and adjust the other values in the same way. In this case that means dividing by 85.9. The scatterplot was created again with the new normalized data, further settings stayed the same, the result is shown in figure 1.2.
 
 ```{r normalizing for controlNegative}
 # Check the mean value of controlNegative
 # view(CE.LIQ_summ) # It's 85.9
-
 # Add the column with normalized average counts
 CE.LIQ_summ_norm <- CE.LIQ_summ_exp %>% mutate(norm_counts = mean_counts/85.9, 
                                                norm_stdev = stdev_counts/85.9)
 
 CE.LIQ_summ_norm %>% ggplot(aes(x = log10(compConcentration), # log10 as requested in question F
                                 y = norm_counts)) +
-  geom_smooth(aes(group=compName, color = compName), span= .5) +
-  geom_point(aes(color = compName), 
-             position = position_jitter(width = 0.15, height = 0.15, seed = 123)) +
-  geom_errorbar(aes(ymin=norm_counts-norm_stdev, ymax=norm_counts+norm_stdev, color = compName),
-                width=.1, position = position_jitter(width = 0.15, height = 0.15, seed = 123)) +
+  geom_smooth(aes(group = compName, color = compName), span=.5, size = 0.2) +
+  geom_point(aes(color = compName), position = graph_jitter(0.15)) +
+  geom_errorbar(aes(ymin=norm_counts-norm_stdev, ymax=norm_counts+norm_stdev, 
+                    color = compName), width=.1, position = graph_jitter(0.15)) +
   labs(title = str_wrap("Mean offspring count of C. Elegans with added compounds 
                         in varying concentrations", 70),
        y = "Offspring count relative to negative control",
        x = "Compound concentration in log10(nM)",
-       caption = str_wrap("Figure 1.2 Scatterplot with trendlines showing the mean offspring
+       caption = graph_cap("Figure 1.2 Scatterplot with trendlines showing the mean offspring
                           count of C. Elegans with three different compounds at varying 
-                          concentrations. Normalized to negative control == 1.", 70)) +
+                          concentrations. Normalized to negative control == 1.")) +
   geom_hline(yintercept = 1, linetype = "dashed", size = 0.2) + # Show control negative
   geom_text(aes(0,1, label = "Control negative", vjust=-0.3), size = 3.5) +
   geom_hline(yintercept = 0.57508731, linetype = "dashed", size = 0.2) + # Show control positive

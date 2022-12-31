@@ -9,6 +9,7 @@ knitr::opts_chunk$set(message = FALSE, warning = FALSE)
 ```
 
 ```{r libraries, echo=FALSE}
+library(portrobbo)
 library(tidyverse)
 library(ggplot2)
 library(readxl)
@@ -53,7 +54,7 @@ _May 2018 - August 2019_
 
 __Management Assistant, TrainMore Black Label, Utrecht__<br>
 _August 2019 - September 2020_
-<ul><li>My responsibilities included directing the sales-team, technical maintenance, inventory management, member administration, contacting debtors/debt collection agencies, contact with externals, contactperson for employees and helping the manager when necessary.</li>
+<ul><li>My responsibilities included directing the sales-team, technical maintenance, inventory management, member administration, contacting debtors/debt collection agencies and contact with externals.</li>
 <li>Also active as kickboxing- and HIIT-instructor.</ul>
 
 __Webdeveloper, WisMon, Utrecht__<br>
@@ -82,8 +83,8 @@ _September 2020 - Present_
 
 ## Skills {-}
 
-__Design:__ _Adobe Photoshop, Adobe Illustrator and Adobe InDesign_<br>
-__Informatics:__ _Basic R, basic BASH, HTML and CSS_
+__Informatics:__ _Basic R, basic BASH, HTML and CSS_<br>
+__Design:__ _Adobe Photoshop, Adobe Illustrator and Adobe InDesign_
 
 ----
 

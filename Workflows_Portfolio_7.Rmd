@@ -7,16 +7,16 @@ _As part of assignment 7 from the [DSFB2 Workflows course](https://lesmaterialen
 So far I have been working with R, BASH, HTML and CSS. Another important language to understand is SQL. With this assignment I'll focus on learning the basics of SQL and applying it to relational data. To start, the dataframes will be created, using the files provided in the assignment, and tidied up.
 
 ```{r import and tidy}
-# Importing the flu dataframe
+# Importing the flu dataframe ----
 flu_df <- read_csv("data-raw/data070/flu_data.csv", skip=11) ## First 11 rows are metadata
-# Making the flu dataframe tidy
+# Making the flu dataframe tidy ----
 flu_df_tidy <- flu_df %>% pivot_longer(cols = c(2:ncol(flu_df)), 
                                        names_to = 'country', 
                                        values_to = 'cases') %>% na.omit()
 
-# Importing the dengue dataframe
+# Importing the dengue dataframe ----
 dengue_df <- read_csv("data-raw/data070/dengue_data.csv", skip=11) ## First 11 rows are metadata
-# Making the dengue dataframe tidy
+# Making the dengue dataframe tidy ----
 dengue_df_tidy <- dengue_df %>% pivot_longer(cols = c(2:ncol(dengue_df)),
                                              names_to = 'country', 
                                              values_to = 'cases') %>% na.omit()
@@ -50,15 +50,10 @@ dengue_df_tidy$year <- as.integer(dengue_df_tidy$year)
 The dataframes were also exported to .csv and .rds for later use.
 
 ```{r export}
-# Export the three dataframes as csv
-write.csv(flu_df_tidy, "data/data070/flu.csv", row.names=FALSE)
-write.csv(dengue_df_tidy, "data/data070/dengue.csv", row.names=FALSE)
-write.csv(gapminder, "data/data070/gapminder.csv", row.names=FALSE)
-
-# Export the three dataframes as rds
-saveRDS(flu_df_tidy, file="data/data070/flu.rds")
-saveRDS(dengue_df_tidy, file="data/data070/dengue.rds")
-saveRDS(gapminder, file="data/data070/gapminder.rds")
+# Export the dataframes as csv and rds
+save_csv_rds(flu_df_tidy, "data/data070/flu")
+save_csv_rds(dengue_df_tidy, "data/data070/dengue")
+save_csv_rds(gapminder, "data/data070/gapminder")
 ```
 
 ----
@@ -289,14 +284,13 @@ With these new joined tables we can perform some descriptive statistics. The cas
 <details><summary><i>The script used to find descriptive statistics</i></summary>
 
 ```{r descriptive stats}
-# Normalize the amount of cases for the size of the population
+# Normalize the cases for population ----
 gd_norm_country <- gd_country %>% mutate(cases_per_100000 = 
                                            cases/population*100000)
 gf_norm_continent <- gf_continent %>% mutate(cases_per_100000 = 
                                                cases/population*100000)
-view(gf_norm_continent)
 
-# Get the mean and stdev values per country/continent
+# Mean and stdev per country/continent ----
 gd_summ <- gd_norm_country %>% 
                         group_by(country)%>% 
                         summarize(avg_population = round(mean(population), 0),
@@ -324,7 +318,7 @@ flu_continent <- gf_norm_continent %>%
                                     values_from = cases_per_100000) %>% 
                         filter(year != 2002)
 
-# Shapiro wilk for dengue
+# Shapiro wilk for dengue ----
 stats_dengue_country <- data.frame(country = colnames(dengue_country[,2:length(colnames(dengue_country))]),
                                      pvalue_shap = round(c(shapiro.test(dengue_country$Venezuela)$p.value,
                                                 shapiro.test(dengue_country$Thailand)$p.value,
@@ -337,7 +331,7 @@ stats_dengue_country <- data.frame(country = colnames(dengue_country[,2:length(c
                                                 shapiro.test(dengue_country$Bolivia)$p.value,
                                                 shapiro.test(dengue_country$Argentina)$p.value), 4))
 
-# Shapiro wilk for flu
+# Shapiro wilk for flu ----
 stats_flu_continent <- data.frame(continent = colnames(flu_continent[,2:length(colnames(flu_continent))]),
                                      pvalue_shap = round(c(shapiro.test(flu_continent$Oceania)$p.value,
                                                 shapiro.test(flu_continent$Europe)$p.value,
@@ -345,30 +339,30 @@ stats_flu_continent <- data.frame(continent = colnames(flu_continent[,2:length(c
                                                 shapiro.test(flu_continent$Americas)$p.value,
                                                 shapiro.test(flu_continent$Africa)$p.value), 4))
 
-# Normality check
+# Normality check ----
 stats_dengue_country <- stats_dengue_country %>% mutate(normal_dis = pvalue_shap>0.05) 
 # 5 out of 10 are normally distributed
 stats_flu_continent <- stats_flu_continent %>% mutate(normal_dis = pvalue_shap>0.05) 
 # 3 out of 5 are normally distributed
 
-# Levene test
+# Levene test ----
 leveneTest(cases_per_100000 ~ country, data = gd_norm_country)[1,3] # P-value of .0000
 leveneTest(cases_per_100000 ~ continent, data = gf_norm_continent)[1,3] # P-value of .0015
 # The variances are not equal
 
-# Kruskal Wallis test
+# Kruskal Wallis test ----
 kruskal.test(cases_per_100000 ~ country, data = gd_norm_country) 
 # P-value of .0000, there is statistically significant difference
 kruskal.test(cases_per_100000 ~ continent, data = gf_norm_continent)
 # P-value of .0000, there is statistically significant difference
 
-# Post-Hoc Dunn test
+# Post-Hoc Dunn test ----
 dunn_dengue_country <- dunnTest(cases_per_100000 ~ country, 
                                 data = gd_norm_country, method = "holm")$res
 dunn_flu_continent <- dunnTest(cases_per_100000 ~ continent, 
                                data = gf_norm_continent, method = "holm")$res
 
-# Check for significant differences 
+# Check for significant differences ----
 dunn_dengue_country <- dunn_dengue_country %>% mutate(different = P.adj<0.05)
 dunn_flu_continent <- dunn_flu_continent %>% mutate(different = P.adj<0.05)
 ```
@@ -404,8 +398,8 @@ ggplot(gd_norm_country, aes(x=year, y=cases_per_100000,
   labs(title = "Dengue cases",
        y = "Average dengue cases per week",
        x = "Year",
-       caption = str_wrap("Figure 4.2. Scatterplot to show the average amount of 
-       weekly dengue cases per 100.000 inhabitants per year per country.", 80)) +
+       caption =graph_cap("Figure 4.2. Scatterplot to show the average amount of 
+       weekly dengue cases per 100.000 inhabitants per year per country.")) +
   scale_x_continuous(breaks = round(seq(min(gapminder_flu_dengue$year), 
                                         max(gapminder_flu_dengue$year), 
                                         by = 1),1)) +
@@ -425,7 +419,7 @@ ggplot(gf_summ, aes(x=reorder(continent, -avg_cases_per_100000),
   labs(title = "Flu cases per continent",
        y = "Flu cases per week per 100.000 inhabitants",
        x = NULL,
-       caption = str_wrap("Figure 4.3. The average amount of weekly flu cases per 100.000 inhabitants per continent from approx. 2003 to 2015.", 70)) +
+       caption = graph_cap("Figure 4.3. The average amount of weekly flu cases per 100.000 inhabitants per continent from approx. 2003 to 2015.")) +
     theme_minimal()
 ```
 

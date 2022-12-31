@@ -31,6 +31,12 @@ visualisations
 dengue-cases
 flu-cases
 r-packages
+the-demo
+rmarkdown-driven-development
+package-portrobbo
+picking-a-name
+the-functions
 parameters
+inspecting-the-data
 free-assignment
 references

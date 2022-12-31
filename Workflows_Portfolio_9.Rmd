@@ -4,4 +4,12 @@ _As part of assignment 9 from the [DSFB2 Workflows course](https://lesmaterialen
 
 ----
 
-To be added.
+After learning about reproducibility and creating packages, parameters are an important factor in creating an analysis. Working with paramaters will make it easier to re-use or apply the analysis to different datasets or different categories within the same dataset. In this assignment data about COD19 cases and COVID19-related deaths will be used. The data was taken from @DataDailyNumber2022 and the parameters have been set in the YAML of the index page as shown in figure 7.1. First the analysis will be executed with the parameters as they are in figure 7.1. Later the analysis will be repeated with different inputs to show the functionality of the parameters.
+
+## Inspecting the data
+
+Before using the parameters it is important to know what data we are working with. 
+
+```{r data inspection}
+covid19 <- read.csv("https://opendata.ecdc.europa.eu/covid19/nationalcasedeath_eueea_daily_ei/csv", na.strings = "", fileEncoding = "UTF-8-BOM")
+```

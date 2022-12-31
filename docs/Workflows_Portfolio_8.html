@@ -206,8 +206,20 @@ div.csl-indent {
 <li class="chapter" data-level="5.5.2" data-path="Workflows_Portfolio_7.html"><a href="Workflows_Portfolio_7.html#flu-cases"><i class="fa fa-check"></i><b>5.5.2</b> Flu cases</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="Workflows_Portfolio_8.html"><a href="Workflows_Portfolio_8.html"><i class="fa fa-check"></i><b>6</b> R packages</a></li>
-<li class="chapter" data-level="7" data-path="Workflows_Portfolio_9.html"><a href="Workflows_Portfolio_9.html"><i class="fa fa-check"></i><b>7</b> Parameters</a></li>
+<li class="chapter" data-level="6" data-path="Workflows_Portfolio_8.html"><a href="Workflows_Portfolio_8.html"><i class="fa fa-check"></i><b>6</b> R packages</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="Workflows_Portfolio_8.html"><a href="Workflows_Portfolio_8.html#the-demo"><i class="fa fa-check"></i><b>6.1</b> The Demo</a></li>
+<li class="chapter" data-level="6.2" data-path="Workflows_Portfolio_8.html"><a href="Workflows_Portfolio_8.html#rmarkdown-driven-development"><i class="fa fa-check"></i><b>6.2</b> RMarkdown driven development</a></li>
+<li class="chapter" data-level="6.3" data-path="Workflows_Portfolio_8.html"><a href="Workflows_Portfolio_8.html#package-portrobbo"><i class="fa fa-check"></i><b>6.3</b> Package “portrobbo”</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="Workflows_Portfolio_8.html"><a href="Workflows_Portfolio_8.html#picking-a-name"><i class="fa fa-check"></i><b>6.3.1</b> Picking a name</a></li>
+<li class="chapter" data-level="6.3.2" data-path="Workflows_Portfolio_8.html"><a href="Workflows_Portfolio_8.html#the-functions"><i class="fa fa-check"></i><b>6.3.2</b> The functions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="Workflows_Portfolio_9.html"><a href="Workflows_Portfolio_9.html"><i class="fa fa-check"></i><b>7</b> Parameters</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="Workflows_Portfolio_9.html"><a href="Workflows_Portfolio_9.html#inspecting-the-data"><i class="fa fa-check"></i><b>7.1</b> Inspecting the data</a></li>
+</ul></li>
 <li class="chapter" data-level="8" data-path="Workflows_Portfolio_Free.html"><a href="Workflows_Portfolio_Free.html"><i class="fa fa-check"></i><b>8</b> Free assignment</a></li>
 <li class="chapter" data-level="9" data-path="Workflows_Portfolio_References.html"><a href="Workflows_Portfolio_References.html"><i class="fa fa-check"></i><b>9</b> References</a></li>
 </ul>
@@ -231,7 +243,98 @@ div.csl-indent {
 <h1><span class="header-section-number">Chapter 6</span> R packages</h1>
 <p><em>As part of assignment 8 from the <a href="https://lesmaterialen.rstudio.hu.nl/workflows-reader/#course-introduction">DSFB2 Workflows course</a>.</em></p>
 <hr />
+<p>For this assignment the previous assignments will be analysed to check for any repetitive code. This code will be turned into functions, combined into my first R package.</p>
+<div id="the-demo" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> The Demo</h2>
+<p>The <a href="https://r-pkgs.org/whole-game.html">Whole Game demo</a> made by Hadley Wickham was followed to start creating the R package. This demo was a complete guide through setting up the package, connecting it to Git and writing the first function. It went over useful packages like roxygen2 and testthat. A short summary of packages and functions was made based on what I learned in the demo for later use.</p>
+<details>
+<summary>
+<i>R package building cheatsheet</i>
+</summary>
+<p><b>Useful libraries:</b><br>
+library(devtools)<br>
+library(usethis)<br>
+library(roxygen2)<br>
+library(testthat)<br></p>
+<b>How roxygen2 works:</b>
+<ol>
+<li>
+Put cursor in function
+</li>
+<li>
+Code -&gt; insert roxygen skeleton/li&gt;&gt;
+<li>
+Fill in necessary details
+</li>
+</ol>
+<p><b>Important functions:</b><br>
+create_package(“~/path/to/package/packaganame”)<br>
+– Creates package</p>
+<p>use_git()<br>
+– Connects to git</p>
+<p>use_r(“filename”)<br>
+– Opens/creates script in R/</p>
+<p>load_all()<br>
+– Loads all functions without using globalenv</p>
+<p>exists(“function”, where = globalenv(), inherits = FALSE)<br>
+– Checks if function exists in globalenv</p>
+<p>check()<br>
+– Checks entire package for errors/warnings/notes</p>
+<p>use_mit_license()<br>
+– Sets license to MIT</p>
+<p>document()<br>
+– Creates/updates the manuals in man/ based on roxygen<br>
+– Updates the NAMESPACE file</p>
+<p>install()<br>
+– Installs the package</p>
+<p>use_testthat()<br>
+– Declares our intent to write tests<br>
+– Creates test directories</p>
+<p>use_test(“functionname”)<br>
+– Opens/create a testfile</p>
+<p>test()<br>
+– Performs all tests</p>
+<p>use_package(“packagename”)<br>
+– Add a package to import in DESCRIPTION</p>
+<p>rename_files(“oldname”, “newname”)<br>
+– Rename files</p>
+<p>use_readme_rmd()<br>
+– Writes README template<br>
+– Adds readme to the ignore file</p>
+build_readme()<br>
+– Updates the readme.md file based on the readme.rmd
+</details>
+</div>
+<div id="rmarkdown-driven-development" class="section level2" number="6.2">
+<h2><span class="header-section-number">6.2</span> RMarkdown driven development</h2>
+<p>In the Workflows course the use of “Start with RMarkdown” was emphasized. This style of creating an R package does not start from zero like the demo suggested. It is based on a pre-written RMarkdown and the scripts that came with it.</p>
+<p>There are a lot of advantages to creating a complete all-in-one package when sharing a RMarkdown based analysis for others to reproduce. Usually, this sharing happens through an RMarkdown, some functions, the tidy version of the data, the steps used to get it tidy, the analysis itself and the used packages. These are multiple separate elements for someone to go over before they can reproduce the analysis. It can be made a lot more efficient by taking a few extra steps to create an R package from the RMarkdown. This way the elements are combined in one unit which is easily shared and can be used for multiple purposes and on different datasets.</p>
+</div>
+<div id="package-portrobbo" class="section level2" number="6.3">
+<h2><span class="header-section-number">6.3</span> Package “portrobbo”</h2>
+<p>For this assignment we were asked to create a package which supports our portfolio. This will make the RMarkdowns more fluid and reduce duplicated code. It can also be used for later analysis.</p>
+<div id="picking-a-name" class="section level3" number="6.3.1">
+<h3><span class="header-section-number">6.3.1</span> Picking a name</h3>
+<p>To find an available but still meaningful name I wanted to combine the word ‘portfolio’ with my partner’s name. My partner happens to work on ships so the name portrobbo, combining the words ‘portfolio’, ‘port’ and his name, came to mind. After checking the availability I decided to use that as the name for my first R package. After setting up the project for the package and the <a href="https://github.com/mirthhe/portrobbo">github repository</a> it was ready for it’s first function.</p>
+</div>
+<div id="the-functions" class="section level3" number="6.3.2">
+<h3><span class="header-section-number">6.3.2</span> The functions</h3>
+After going over my written code, it was difficult to find duplications. For most assignments no code was written, except for assignment 1 and assignment 7. In the end, three functions have been made which shorten the code slightly and will be useful for future projects. For a longer explanation and manual, visit the package’s <a href="https://github.com/mirthhe/portrobbo">github repository</a>.
+<ul>
+<li>
+save_csv_rds() -&gt; saves a dataframe in .csv and .rds format
+</li>
+<li>
+graph_cap() -&gt; wraps a string at 80 characters so it fits well in the graphs format
+</li>
+<li>
+graph_jitter -&gt; shortens the positon_jitter function to only have one number as input
+</li>
+</ul>
+<p>More functions will be added as the portfolio develops and expands.</p>
 
+</div>
+</div>
 </div>
             </section>
 
