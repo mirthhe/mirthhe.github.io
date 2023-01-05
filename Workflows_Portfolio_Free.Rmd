@@ -1,5 +1,48 @@
 # Free assignment
 
+_As part of assignment 3.2 from the [DSFB2 Workflows course](https://lesmaterialen.rstudio.hu.nl/workflows-reader/#course-introduction)._
+
 ----
 
-To be added.
+In order to prepare for the future and find direction in my career I have decided to point this free assignment at structural biology. There are two paths within three-dimensional structural bioinformatics, one focusing on the evolutionary history and the other on the physical interactions [@jumperHighlyAccurateProtein2021]. Since I am most interested in the latter, I will be doing the following:
+<ol>
+<li>Research databases and files with protein structure data</li>
+<li>Research protein folding and it's current predictability</li>
+<li>Dive into [AlphaFold](https://alphafold.ebi.ac.uk/) and it's software</li>
+<li>Learn and implement some of the coding done by [AlphaFold](https://alphafold.ebi.ac.uk/) myself</li>
+<li>Reflect and look forward</li>
+</ol>
+
+## Data and software for protein structures
+
+In the past decade the use of high-throughput technologies within the biomedical field has vastly increased. Studies about genomics, transcriptomics and proteomics are supported by more and more databases and software tools. There's a large variety of protein classes for bioinformatics databases like sequences, enzyme/pathway, chemistry or 3D structures. [@chenProteinBioinformaticsDatabases2017]
+
+### Protein Data Bank Archive
+
+When it comes to databases for 3D protein structures, the worldwide PDB (Protein Data Bank archive) was announced in 2003 [@bermanAnnouncingWorldwideProtein2003]. This international collaboration includes PDBe for Europe, PDBj for Japan, RCSB PDB (Research Collaboratory for Structural Bioinformatics) and BMRB (Biological Magnetic Resonance Bank). The archive offers three formats per file, legacy PDB, PDBx/mmCIF and PDBML. As of December 1st 2015 there are 113,971 biological macromolecular structures in the wwPDB database including 37,049 distinct protein sequences, 30,099 structures of human sequences, 8,096 Nucleic Acid containing structures. [@chenProteinBioinformaticsDatabases2017]
+
+### PDBx/MMcif format
+
+One of the file formats used and implemented by wwPDB is PDBx/MMcif. It comes from the CIF (Crystallopgrahic Information File) format which was developed for small crystallographic molecules [@kramergreenPDB101LearnGuide]. As it expanded it also included macromolecules and the name was changed to MMcif. 
+
+It's strengths lie in it's ability to archive structural models of any size and being fully machine-readable. With all it's advantages compared to other formats, like legacy PDB, PDBx/MMcif became the main format of use for wwPDB in 2007. In 2011 it was also adopted by multiple major software developers. [@burleyProteinDataBank2017]
+
+### Visualising protein structure
+
+There are multiple types of software for the visualization of protein structures, like Jmol, Chimera and OpenRasMol. It is also possible to visualise the structure using R, for example with the package r3dmol.
+
+```{r visualising proteins}
+
+```
+
+### Structure determination software
+
+CCP4 and Phenix
+
+## Applying new knowledge
+
+### Visualisation
+
+### Determination/prediction
+
+### Reflect

@@ -1,4 +1,4 @@
-# R packages
+# R packages {#package}
 
 _As part of assignment 8 from the [DSFB2 Workflows course](https://lesmaterialen.rstudio.hu.nl/workflows-reader/#course-introduction)._
 
@@ -87,7 +87,7 @@ For this assignment we were asked to create a package which supports our portfol
 
 ### Picking a name
 
-To find an available but still meaningful name I wanted to combine the word 'portfolio' with my partner's name. My partner happens to work on ships so the name portrobbo, combining the words 'portfolio', 'port' and his name, came to mind. After checking the availability I decided to use that as the name for my first R package. After setting up the project for the package and the [github repository](https://github.com/mirthhe/portrobbo) it was ready for it's first function. 
+To find an available but still meaningful name I wanted to combine the word 'portfolio' with my partner's name. My partner happens to work on ships so the name portrobbo (combining the words 'portfolio', 'port' and his name) came to mind. After checking the availability I decided to use that as the name for my first R package. After setting up the project for the package and the [github repository](https://github.com/mirthhe/portrobbo) it was ready for it's first function. 
 
 ### The functions
 

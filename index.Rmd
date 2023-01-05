@@ -1,6 +1,11 @@
 ---
 site: bookdown::bookdown_site
 bibliography: bibliography_portfolio.bib
+params:
+  country: "Netherlands"
+  year: 2020
+  fromMonth: 5
+  untilMonth: 8
 ---
 
 ```{r setup, echo=FALSE}
@@ -12,6 +17,7 @@ knitr::opts_chunk$set(message = FALSE, warning = FALSE)
 library(portrobbo)
 library(tidyverse)
 library(ggplot2)
+library(cowplot)
 library(readxl)
 library(stringi)
 library(knitr)

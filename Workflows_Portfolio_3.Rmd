@@ -1,14 +1,14 @@
-# Future planning
+# Future planning {#future}
 
 _As part of assignment 3 from the [DSFB2 Workflows course](https://lesmaterialen.rstudio.hu.nl/workflows-reader/#course-introduction)._
 
 ----
 
-In class we often focused on creating an image of what we want our future to look like. At points we are so busy studying, we lose track of why we are studying and what we are working towards. In this assignment I answered a few questions given by the teachers. With these questions I tried to look ahead and take concrete steps towards my future.
+The future of our careers was often discussed inclass. At points we are so busy studying, we lose track of why we are studying and what we are working towards. In this assignment few questions given by the teachers will be answered. With these questions I tried to look ahead and take concrete steps towards my future.
 
 #### Where do I want to be in ~2 years time? {-}
 
-In two years I will have finished my studies. Which means I completed the specialisation I'm doing currently, a minor at the professorship and a graduationproject/internship outside of school. I hope to have also started my first job in the field of Data Science or Bioinformatics, with a focus on one of my interests. This is where it gets tricky because I have a lot of interests (maybe too many for my own good). The first ones that come to mind are systembiology, structural biology, biocomplexity, statistics, forensic research and I could go on but will try to keep it short. I would also like my work to reduce the need for animaltesting. 
+In two years I will have finished my studies. Which means I completed the specialisation I'm doing currently, a minor at the professorship and a graduationproject/internship outside of school. I hope to have also started my first job in the field of Data Science or Bioinformatics, with a focus on one of my interests. This is where it gets tricky because I have a lot of interests (maybe too many for my own good). The first ones that come to mind are systembiology, structural biology, biocomplexity and statistics. I would also like my work to reduce the need for animaltesting. 
 
 #### How am I doing now with respect to this goal? {-}
 

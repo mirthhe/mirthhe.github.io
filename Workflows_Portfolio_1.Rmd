@@ -1,4 +1,4 @@
-# Reproducible Research
+# Reproducible Research {#reproducible}
 
 _As part of assignment 1 from the [DSFB2 Workflows course](https://lesmaterialen.rstudio.hu.nl/workflows-reader/#course-introduction)._
 
@@ -47,9 +47,9 @@ CE.LIQ.FLOW.062_tbl$compName <- factor(CE.LIQ.FLOW.062_tbl$compName,
 
 Now that the columntypes are corrected the data can be used to create a scatterplot. The assignment said to put the compConcentration on the x-axis, the DataRaw counts on the y-axis and to assign a colour to each level in compName. It also asked to assign a different symbol to each level in the expType variable. Since the compUnit of the controls are not nM but percentages, they have been added as dashed lines instead of measured values. This means the different shapes for expType variables are not neccessary since only "experiment" is shown out of the possible ExpType values.
 
-In the assignment the initial scatterplot was followed by a question about the x-axis, _"When creating the plot under C), what happened with the ordering of the x-axis labels. Explain why this happens."_. The compConcentration had already been changed to the correct type in the previous code chunk, so nothing went wrong when creating the scatterplot. Had the type not been changed beforehand, the x-axis would have been in random orders because they were seen as characters instead of doubles. The x-axis is shown with a log10 transformation and slight jitter has been added for better readability.
+In the assignment the initial scatterplot was followed by a question about the x-axis, _"When creating the plot under C), what happened with the ordering of the x-axis labels. Explain why this happens."_. The compConcentration had already been changed to the correct type in the previous code chunk, so nothing went wrong when creating the scatterplot. Had the type not been changed beforehand, the x-axis would have been in alphabetical orders because they were seen as characters instead of doubles. The x-axis is shown with a log10 transformation and slight jitter has been added for better readability.
 
-A few details were added on top of the given assignment. Each compound got it's own colour, the standard deviations have been added as errorbars and the control values have been added as dashed lines for comparison. The resulting plot is shown in figure 1.1.
+A few details were added on top of the given assignment. This included each compound getting it's own colour, the standard deviations being added as errorbars and the control values being added as dashed lines for comparison. The resulting plot is shown in figure 1.1.
 
 ```{r scatterplot}
 # Get the average counts per compound per concentration, keep the expType variable too
@@ -85,7 +85,7 @@ CE.LIQ_summ_exp %>% ggplot(aes(x = log10(compConcentration) # log10 as suggested
 
 ### Normalize for the negative control
 
-In order to see how much the offspring count improved or decreased relatively to the negative control baseline the data must be normalized. To do this we adjust the negative control to a value of 1 and adjust the other values in the same way. In this case that means dividing by 85.9. The scatterplot was created again with the new normalized data, further settings stayed the same, the result is shown in figure 1.2.
+In order to see how much the offspring count improved or decreased relatively to the baseline (in this case, the negative control) the data must be normalized. To do this we adjust the negative control to a value of 1 and adjust the other values in the same way. In this case that means dividing by 85.9. The scatterplot was created again with the new normalized data, further settings stayed the same, the result is shown in figure 1.2.
 
 ```{r normalizing for controlNegative}
 # Check the mean value of controlNegative
@@ -97,9 +97,9 @@ CE.LIQ_summ_norm <- CE.LIQ_summ_exp %>% mutate(norm_counts = mean_counts/85.9,
 CE.LIQ_summ_norm %>% ggplot(aes(x = log10(compConcentration), # log10 as requested in question F
                                 y = norm_counts)) +
   geom_smooth(aes(group = compName, color = compName), span=.5, size = 0.2) +
-  geom_point(aes(color = compName), position = graph_jitter(0.15)) +
+  geom_point(aes(color = compName), position = graph_jitter(0.04)) +
   geom_errorbar(aes(ymin=norm_counts-norm_stdev, ymax=norm_counts+norm_stdev, 
-                    color = compName), width=.1, position = graph_jitter(0.15)) +
+                    color = compName), width=.1, position = graph_jitter(0.04)) +
   labs(title = str_wrap("Mean offspring count of C. Elegans with added compounds 
                         in varying concentrations", 70),
        y = "Offspring count relative to negative control",
@@ -116,7 +116,7 @@ CE.LIQ_summ_norm %>% ggplot(aes(x = log10(compConcentration), # log10 as request
 
 ### Statistical analysis
 
-In order to learn wether there is indeed an effect of the different compounds a few tests need to be performed. Starting with the Shapiro-Wilk test to check the normality of the data. Followed by an ANOVA with the different concentrations as added variable. To see the actual difference, the analysis should be finished with a Post hoc test like Tukey. 
+In order to learn wether there is indeed an effect of the different compounds a few tests need to be performed. Starting with the Shapiro-Wilk test to check the normality of the data and a Levene's test to check for equality of variance. Followed by an ANOVA with the different concentrations as added variable. To see the actual difference, the analysis should be finished with a Post hoc test like Tukey. 
 
 ----
 
@@ -124,7 +124,7 @@ In order to learn wether there is indeed an effect of the different compounds a 
 
 ### Criteria for reproducibility
 
-In this first part of assignment 1.2 we will look at 'Repita' criteria. The criteria are used to check for the reproducibility of scientific research articles. In table 1.1 the different criteria are shown with a definition and the type of response it calls for. In order to further understand and apply these criteria I will look for a research article and check if this article follows the 'Repita' guidelines as shown in table 1.
+This first part of assignment 1.2 will look at 'Repita' criteria. These criteria are used to check for the reproducibility of scientific research articles. In table 1.1 the different criteria are shown with a definition and the type of response it calls for. In order to further understand and apply these criteria, a research article will be analysed to check if this article follows the 'Repita' guidelines as shown in table 1.1.
 
 ```{r repita criteria}
 # Create the different variables needed for the repita criteria table
@@ -169,9 +169,9 @@ repita_criteria %>% kable(col.names = gsub("_", " ", names(repita_criteria)),
 
 [Plosone](https://journals.plos.org/plosone/) was used to find a suitable article. The found article is a primary article describing emperical scientific findings by @brucknerMicrobiotaPromotesSocial2022. The focus is on how microbiotas play a role in developmental programs. Altered microbiota composition appears to be linked to neurodevelopmental conditions such as autism spectrum disorder. One of the findings described how the microbiota can influence forebrain neurons. Forebrain neurons are required for normal social behavior and localization of forebrain microglia.
 
-The study uses zebrafish which were kept at 28°C with a 14/10 light/dark cycle. For the controlgroup conventionalized (CVZ) fish were used. The experimental condition consisted of germ-free (GF) fish. These fish were made germ-free and therefore did not have their microbiota. When the fish were older (7 dpf) they were inoculated with normal microbiota (ex germ-free or XGF) and their optomotor respons was tested. Once the fish were adults (14 dpf) their social behavior was tested.
+The study uses zebrafish which were kept at 28°C with a 14/10 light/dark cycle. For the controlgroup conventionalized (CVZ) fish were used. The experimental condition consisted of germ-free (GF) fish. These fish were made to be germ-free and therefore did not have their microbiota. When the fish were older (7 dpf) they were inoculated with normal microbiota (making them ex germ-free or XGF) and their optomotor respons was tested. Once the fish were adults (14 dpf) their social behavior was tested.
 
-The social behavior was assessed through a dyad assay for postflexion larval and adult zebrafish. For each condition a pair of siblings were placed in isolated tanks and allowed to interact for 10 minutes via transparent tank walls. Social interaction was defined as the average relative distance from the divider and the percentage of time spent orienting at 45° to 90°. These parameters were measured and analyzed using computer vision software written in Python (available at https://github.com/stednitzs/daniopen). Compared to the CVZ siblings, the GF larvae spent significantly less time than in close proximity to and oriented at 45 to 90° to the stimulus fish. These results show that an intact microbiota is required early for later development of normal social behavior.
+The social behavior was assessed through a dyad assay for postflexion larval and adult zebrafish. For each condition a pair of siblings were placed in isolated tanks and allowed to interact for 10 minutes via transparent tank walls. Social interaction was defined as the average relative distance from the divider and the percentage of time spent orienting at 45° to 90°. These parameters were measured and analyzed using computer vision software written in Python (available at https://github.com/stednitzs/daniopen). Compared to the CVZ siblings, the GF larvae spent significantly less time in close proximity to and oriented at 45 to 90°. These results show that an intact microbiota is required during the early life-stages for later development of normal social behavior.
 
 Aside from the social behavior, the study also looked at optomotor responses. It is possible that the microbiota influences circuitry underlying the early vision and locomotion required for social behavior. To address this possibility, the vision and locomotion were assayed by comparing kinetics of the optomotor response to virtual motion in GF larvae and CVZ controls. Optomotor response was assessed using a “virtual reality” system for assessing zebrafish behavior, measuring swim response in larvae. A visual stimulus was projected on a screen underneath the dishes for 20 seconds and consisted of concentric rings moving toward the dish center, followed by a 20-second refractory period. Responses are the average of 46 to 59 stimulus trials per fish, presented over 1 hour. In this part of the study, no significant difference were found between the GF and CVZ fish. This suggests that the microbiota influences circuits specific to social behavior directly, rather than by modulating vision or locomotion.
 
@@ -179,7 +179,7 @@ The results demonstrate that the microbiota influences zebrafish social behavior
 
 ### The reproducibility
 
-To better understand the criteria (table 1.) they will be applied to the found article. The results can be found in table 1.2. While answering this assignment I noticed how this is not as black and white as I thought. For example with the study location. At first I thought it was stated, because University of Oregon came back quite a few times, looking at it more closely it was not clear if that was the actual study location.
+To better understand the criteria (table 1.1) they will be applied to the found article. The results can be found in table 1.2. While answering this assignment I noticed how this is not as black and white as I thought. For example with the study location. At first I thought it was stated, because University of Oregon came back quite a few times, looking at it more closely it was not clear if that was the actual study location.
 
 ```{r article check}
 # Create the different variables needed for the article check table
@@ -215,11 +215,11 @@ In this second part of assignment 1.2 we'll be looking at the code from an exist
 
 ### The article
 
-The article used for this assignment had to live up to a few criteria. First up, the data had to be analysed using R code. This code and the dataset had to be available. The chosen article is _"Mental Health Impacts in Argentinean College Students During COVID-19 Quarantine"_ by @lopezsteinmetzMentalHealthImpacts2021. The study aimed to analyze differences in mental health in college students from Argentina who were exposed to different spread-rates of COVID-19. They also wanted to analyze between group differences in mental health indicatores at four different quarantine sub-periods.
+The article used for this assignment had to live up to a few criteria. First up, the data had to be analysed using R code. This code and the dataset had to be available. The chosen article is _"Mental Health Impacts in Argentinean College Students During COVID-19 Quarantine"_ by @lopezsteinmetzMentalHealthImpacts2021. The study aimed to analyze differences in mental health in college students who were exposed to different spread-rates of COVID-19. They also wanted to analyze the between group differences in mental health indicators at four different quarantine sub-periods.
 
-To do this a cross-sectional design was used. The sample included 2687 college students and the data was collected online during the Argentinean quarantine. They used a one-way between-groups ANOVA with Tukey's post hoc test for the analysis.
+To do this a cross-sectional design was used. The sample included 2687 Argentinean college students and the data was collected online during the Argentinean quarantine. They used a one-way between-groups ANOVA with Tukey's post hoc test for the analysis.
 
-The results showed that the center and most populated area only differed in psychological well-being and negative alcohol related consequences, but not in the other indicators. For the sub-periods there were differences in psychological well-being, social functioning and coping, psychological distress, and negative alcohol-related consequences. Negative alcohol-related consequences were the only MHS indicator improving over time. This worsened mean mental health suggests that quarantine and its extensions contribute to negative mental health impacts.
+The results showed that the center and most populated area only differed in psychological well-being and negative alcohol related consequences, but not in the other indicators. For the sub-periods there were differences in psychological well-being, social functioning and coping, psychological distress and negative alcohol-related consequences. Negative alcohol-related consequences were the only MHS indicator improving over time. This worsened mental health suggests that quarantine and its extensions contribute to negative mental health impacts.
 
 ### The code
 
@@ -262,7 +262,7 @@ It was very easy to read the code, I would give it a 5/5 on readability. It was 
 
 ### Excuting the code
 
-To further inspect the code we will execute it on the dataset given by the study. To this we change one word in the data set in order to link the dataset as it is downloaded to the project. To this the word "clipboard" under comment "Load the dataset" will be changed into raw-data/data012/dataset.xlsx, the location of the downloaded dataset. Errors will be noted and the code will be changed accordingly.
+To further inspect the code it will be executed on the dataset given by the study. To do this one word in the code was changed in order to link the dataset. The word "clipboard" under comment "Load the dataset" was changed into raw-data/data012/dataset.xlsx, the location of the downloaded dataset. Errors will be noted and the code will be changed accordingly.
 
 #### Changes and errors when executing
 

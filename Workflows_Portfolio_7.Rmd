@@ -1,10 +1,10 @@
-# Relational data
+# Relational data {#relational}
 
 _As part of assignment 7 from the [DSFB2 Workflows course](https://lesmaterialen.rstudio.hu.nl/workflows-reader/#course-introduction)._
 
 ----
 
-So far I have been working with R, BASH, HTML and CSS. Another important language to understand is SQL. With this assignment I'll focus on learning the basics of SQL and applying it to relational data. To start, the dataframes will be created, using the files provided in the assignment, and tidied up.
+So far the subjects have been about R, BASH, HTML and CSS. Another important language to understand is SQL. With this assignment the focus is on learning the basics of SQL and applying it to relational data. To start, the dataframes will be created, using the files provided in the assignment, and tidied up.
 
 ```{r import and tidy}
 # Importing the flu dataframe ----
@@ -58,7 +58,7 @@ save_csv_rds(gapminder, "data/data070/gapminder")
 
 ----
 
-## Connecting to DBeaver
+## Connecting to DBeaver {#dbeaver}
 
 To move from R to SQL (PostgreSQL) a database has been created in DBeaver called 'workflowsdb'. The three R dataframes were imported into the database using RPostgreSQL. The tables were inserted into the hierarchy of this database as shown in figure 4.1.
 
@@ -83,7 +83,7 @@ dbWriteTable(con, "dengue", dengue_df_tidy)
 
 ----
 
-## Data inspection {.tabset}
+## Data inspection {#inspect}
 
 The data was inspected using the SQL editor. A script was created for the inspection of the [gapminder](SQL/gapminder_inspection.sql), [flu](SQL/flu_inspection.sql) and [dengue](SQL/dengue_inspection.sql) data. R can also be used for the same inspections as shown below.
 
@@ -260,7 +260,7 @@ length(unique(dengue_df_tidy$country)) # 10 countries
 
 ----
 
-## Joining datasets
+## Joining datasets {#join}
 
 The three datasets have two variables in common, country and year. Both the flu and dengue datasets have multiple observations within the same year. Sadly, the flu and dengue databases are very unclear. Since the data is old and the links provided in the metadata are no longer working it is hard to estimate the details of this data. Per how many inhabitants are the cases? What were the criteria to be considered a case? Other factors, like the option to get a diagnosis within that region, should also be considered. 
 
@@ -277,7 +277,7 @@ gf_continent <- read_csv("data/data070/gapminder_flu_continent.csv")
 
 ----
 
-## Descriptive statistics
+## Descriptive statistics {#descriptive}
 
 With these new joined tables we can perform some descriptive statistics. The cases have not been normalized for the population so it will be normalized to reflect the amount of cases per 100.000 inhabitants instead. Then the average amount of cases and standard deviation will be determined for each country/continent. After using the shapiro-wilk test both databases appeared to have at least a few non-normally distributed variables, 5 out of 10 for the dengue database and 3 out of 5 for the flu database. The Levene's test showed that neither database had an equality of variance between countries/continents. Because of this (lack of normality <i>and</i> no equality of variance) the Kruskal-Wallis test was used to check for significant differences. Both databases brought back a p-value of .0000. The Dunn test was used as Post Hoc test to see where the statistically significant difference came from.
 
@@ -381,7 +381,7 @@ Seperate tables were made to show the combinations <i>with</i> significant diffe
 
 ----
 
-## Visualisations
+## Visualisations {#visual}
 
 We can also create varying visualizations to get an overall look of how the countries/continents compare to each other and how the numbers changed through the years.
 
