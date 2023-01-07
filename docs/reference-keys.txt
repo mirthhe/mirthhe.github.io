@@ -41,9 +41,12 @@ inspecting-the-data
 creating-the-graphs
 checking-parameters
 free-assignment
-data-about-3d-protein-structures
+data-and-software-for-protein-structures
 protein-data-bank-archive
 pdbxmmcif-format
-visualising-protein-structure
-structure-determination-software
+visualising-protein-structures
+protein-structures-in-r
+cartoon-visual
+sphere-and-sticks-visual
+combining-styles
 references
