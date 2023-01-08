@@ -7,8 +7,7 @@ This repository contains the files used for [Mirthhe's portfolio website](mirthh
 ## 🚩 Table of Contents
 
 - [Introduction](#-introduction)
-- [Assignments/RMarkdowns](#-assignments)
-- [Data](#-data)
+- [Assignments](#-assignments)
 - [Styling](#-styling)
 - [Portrobbo package](#-portrobbo-package)
 
