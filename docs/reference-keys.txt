@@ -16,6 +16,10 @@ changes-and-errors-when-executing
 effort-scoring
 datamanagement
 future
+look-forward
+current-status
+next-step
+planning-ahead
 groupproject
 technology-to-reduce-animaltesting
 ontox
@@ -27,7 +31,7 @@ connecting-to-dbeaver
 data-inspection
 joining-datasets
 descriptive-statistics
-visualisations
+visualizations
 dengue-cases
 flu-cases
 package
@@ -35,8 +39,11 @@ the-demo
 rmarkdown-driven-development
 package-portrobbo
 picking-a-name
-the-functions
-installation
+an-overview
+uniq_val
+save_csv_rds
+graph_jitter
+protein-visualization-functions
 parameters
 inspecting-the-data
 creating-the-graphs
