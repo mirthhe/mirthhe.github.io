@@ -11,22 +11,17 @@ This repository contains the files used for [Mirthhe's portfolio website](mirthh
 - [Styling](#-styling)
 - [Portrobbo package](#-portrobbo-package)
 
-## 📄 Assignments
+## 📄 Chapters
 
-| Assignment | Description | Result |
+| Chapter | Description | Rmd file |
 | --- | --- | --- |
-| [1.1](https://lesmaterialen.rstudio.hu.nl/workflows-reader/represintro.html#portfolio-assignment-1.1) | First we looked at excel and it's downsides by inspecting a dataset from J. Louter | [Chapter 1](https://mirthhe.github.io/Workflows_Portfolio_1.html) |
-| [1.2](https://lesmaterialen.rstudio.hu.nl/workflows-reader/represintro.html#portfolio-assignment-1.2) | Learned about repita criteria and reproducibility | [Chapter 1](https://mirthhe.github.io/Workflows_Portfolio_1.html) |
-| [2](https://lesmaterialen.rstudio.hu.nl/workflows-reader/represdata.html#portfolio-assignment-2) | My skills in datamanagement improved a lot | [Chapter 2](https://mirthhe.github.io/Workflows_Portfolio_2.html) |
-| [3.1](https://lesmaterialen.rstudio.hu.nl/workflows-reader/gitintro.html#portfolio-assignment-3.1) | This repository was created and I made an [Rmd version](https://github.com/mirthhe/dsfb2_workflows_portfolio/blob/main/index.Rmd) of my CV | [Curriculum vitae](mirthhe.github.io) |
-| [3.2](https://lesmaterialen.rstudio.hu.nl/workflows-reader/gitintro.html#portfolio-assignment-3.2) | Took a moment to look ahead and plan for the future | [Chapter 3](https://mirthhe.github.io/Workflows_Portfolio_3.html) |
-| [4](https://lesmaterialen.rstudio.hu.nl/workflows-reader/gitbranchmerge.html) | Learned about github and agile working |
-| [5](https://lesmaterialen.rstudio.hu.nl/workflows-reader/rmarkdownsyntax.html#portfolio-assignment-5) | We started working with Zotero to describe the groupproject with references |  [Chapter 4](https://mirthhe.github.io/Workflows_Portfolio_5.html) |
-| [6](https://lesmaterialen.rstudio.hu.nl/workflows-reader/rmarkdownoutput.html#portfolio-assignment-6) | The website went online! With the [repo](https://github.com/mirthhe/mirthhe.github.io) and GitHub pages I made my [portfolio website](mirthhe.github.io) | [Portfolio](mirthhe.github.io) |
-| [7](https://lesmaterialen.rstudio.hu.nl/workflows-reader/relationaldb.html#portfolio-assignment-7) | We used SQL and DBeaver to work on three different datasets | [Chapter 5](https://mirthhe.github.io/Workflows_Portfolio_7.html) |
-| [8](https://lesmaterialen.rstudio.hu.nl/workflows-reader/rpackages.html#portfolio-assignment-8) | The [portrobbo R package](https://github.com/mirthhe/portrobbo) was created. I had so much fun with this! | [Chapter 6](https://mirthhe.github.io/Workflows_Portfolio_8.html) |
-| [9](https://lesmaterialen.rstudio.hu.nl/workflows-reader/rmarkdownparams.html#portfolio-assignment-9) | Two parameterized graphs on COVID19 data from the ECDC | [Chapter 7](https://mirthhe.github.io/Workflows_Portfolio_9.html) |
-| [Free](https://lesmaterialen.rstudio.hu.nl/workflows-reader/gitintro.html#portfolio-assignment-3.2) | Interactive 3D visualizations of my favorite protein | [Chapter 8](https://mirthhe.github.io/Workflows_Portfolio_Free.html) |
+| Index | Front page of the portfolio containing my curriculum vitae | [file](https://github.com/mirthhe/mirthhe.github.io/blob/main/1_CurrentProjects.Rmd) |
+| SBtab R package | R package created to merge and visualize SBtab files for the ONTOX project | [file](https://github.com/mirthhe/mirthhe.github.io/blob/main/2_SBtab/Rmd) |
+| 3D Protein visualizations | using R to generate 3D visualizations of different protein structures | [file](https://github.com/mirthhe/mirthhe.github.io/blob/main/3_3D_visualizations.Rmd) |
+| SQL and relational data | Joining and analysing datasets on flu and dengue cases across the globe using SQL and R | [file](https://github.com/mirthhe/mirthhe.github.io/blob/main/4_SQL.Rmd) |
+| PortRobbo Package | R package created to support the portfolio and simplify repeatitive code | [file](https://github.com/mirthhe/mirthhe.github.io/blob/main/5_package_portrobbo.Rmd) |
+| Reproducibility | Going into the downsides of Excel and the reproducibility of some existing studies | [file](https://github.com/mirthhe/mirthhe.github.io/blob/main/6_Reproducibility) |
+| Parameters | Working with parameters in R to reshape graphs | [file](https://github.com/mirthhe/mirthhe.github.io/blob/main/7_parameters.Rmd) |
 
 ## 🎨 Styling
 
