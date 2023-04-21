@@ -1,0 +1,17 @@
+# Current work {#current}
+
+## Technology to reduce animaltesting
+
+A goal within my career is reducing the need for animaltesting in biomedical research. Within the field of animaltesting there's a focus on replacement, reduction and refinement, as described by @simmondsBioethicsAnimalUse2018.
+
+In the past replacement focussed on insentient material and animal species "lower" on the pylogenic scale. In recent years the use of computer software as a replacement is becoming more and more relevant [@grafstromReplacementAnimalExperiments2015]. Reduction focuses on properly designing the research so the least amount of animals are used while also preventing the need for more animals at a later stage. This becomes complicated when using less animals for the initial research may create the need for more animals in repetitive or supporting studies. In this case using software would not only reduce the amount of animals needed, it would also make reproduction a lot easier. The third R, refinement, is all about reducing the amount of discomfort the animals go through. This can include training the animals to get used to the treatment with positive reinforcement or the use of anesthesia [@simmondsBioethicsAnimalUse2018]. This requires more time and resources which can be prevented by using computer software.
+
+One project with a focus on reducing the need for animals in human risk assessment of chemicals is the [ONTOX project](https://ontox-project.eu/).
+
+----
+
+## ONTOX
+
+In their own words "The vision of the ONTOX consortium is to provide a functional and sustainable solution for advancing human risk assessment of chemicals without the use of animals in line with the principles of 21st century toxicity testing and next generation risk assessment" [@ONTOXProject]. One of the ways to achieve this is by collecting and combining existing data to be used in the risk assessment. Platforms like SysRev are able to extract useful data from articles. This data consists of metabolic pathways and interactions between compounds. To make the data useful for computerbased analysis it is formatted into what is called an SBtab file. This file, in turn, can be used to create visualisations of the metabolic pathways or it can be turned into other formats like SBML. Different apps (i.e. Phymdos) and functions have been created to execute these possibilities.
+
+## Progress

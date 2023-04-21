@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Curriculum Vitae | bookdown_site.knit</title>
+  <title>Chapter 5 R package | bookdown_site.knit</title>
   <meta name="description" content="" />
   <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Curriculum Vitae | bookdown_site.knit" />
+  <meta property="og:title" content="Chapter 5 R package | bookdown_site.knit" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Curriculum Vitae | bookdown_site.knit" />
+  <meta name="twitter:title" content="Chapter 5 R package | bookdown_site.knit" />
   
   
   
@@ -28,8 +28,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="1_CurrentProjects.html"/>
+<link rel="prev" href="4_SQL.html"/>
+<link rel="next" href="6_Reproducibility.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -260,111 +260,160 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<!--bookdown:title:end-->
-<!--bookdown:title:start-->
-<p><img src="images/cv_photo_header.jpg" alt="Header"></p>
-<div id="curriculum-vitae" class="section level1 unnumbered">
-<h1>Curriculum Vitae</h1>
+<div id="package" class="section level1" number="5">
+<h1><span class="header-section-number">Chapter 5</span> R package</h1>
+<p><em>As part of assignment 8 from the <a href="https://lesmaterialen.rstudio.hu.nl/workflows-reader/rpackages.html">DSFB2 Workflows course</a>.</em></p>
 <hr />
-<div id="contact" class="section level2 unnumbered">
-<h2>Contact</h2>
-<p><i class="fa fa-home"></i> Utrecht, The Netherlands<br>
-<i class="fa fa-envelope"></i> <a href="mailto:mirtheklaassen@outlook.com" class="email">mirtheklaassen@outlook.com</a><br>
-<i class="fa fa-github"></i> <a href="https://github.com/mirthhe">Github</a><br>
-<i class="fa fa-briefcase"></i> <a href="https://www.linkedin.com/in/mirtheklaassen020597/">Linkedin</a></p>
+<p>For this assignment the previous assignments will be analysed to check for any repetitive code. This code will be turned into functions, combined into my first R package.</p>
 <hr />
-</div>
-<div id="profile" class="section level2 unnumbered">
-<h2>Profile</h2>
-<p>I’m goal-oriented, curious and analytical with a versatile background. I would like to combine my skills with my passion for data science, structural biology and biocomplexity within the field of bioinformatics. This would let me contribute to the rapid development of biomedical research and the reduction of need for animaltesting.</p>
-<hr />
-</div>
-<div id="job-experience" class="section level2 unnumbered">
-<h2>Job experience</h2>
-<strong>Assistant manager at Fitness Factory, Utrecht</strong><br>
-<em>June 2017 - October 2018</em>
-<ul>
+<div id="the-demo" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> The Demo</h2>
+<p>The <a href="https://r-pkgs.org/whole-game.html">Whole Game demo</a> made by Hadley Wickham was followed to start creating the R package. This demo was a complete guide through setting up the package, connecting it to Git and writing the first function. It went over useful packages like roxygen2 and testthat. A short summary of packages and functions was made based on what I learned in the demo for later use.</p>
+<details>
+<summary>
+<i>R package building cheatsheet</i>
+</summary>
+<p><b>Useful libraries:</b><br>
+library(devtools)<br>
+library(usethis)<br>
+library(roxygen2)<br>
+library(testthat)<br></p>
+<b>How roxygen2 works:</b>
+<ol>
 <li>
-My responsibilities included remodeling projects, contact with externals, hiring and teaching new employees, basic accountancy, inventory management and technical maintenance.
+Put cursor in function
 </li>
 <li>
-Also active as spinning-instructor.
-</li>
-</ul>
-<p><strong>Examtrainer Math at Lyceo, Utrecht</strong><br>
-<em>March 2018 - September 2018</em></p>
-<p><strong>Sales employee at Lens, Utrecht</strong><br>
-<em>May 2018 - August 2019</em></p>
-<strong>Assistant manager at TrainMore Black Label, Utrecht</strong><br>
-<em>August 2019 - September 2020</em>
-<ul>
+Code -&gt; insert roxygen skeleton/li&gt;&gt;
 <li>
-My responsibilities included directing the sales-team, technical maintenance, inventory management, member administration, contacting debtors/debt collection agencies and contact with externals.
+Fill in necessary details
 </li>
-<li>
-Also active as kickboxing- and HIIT-instructor.
-</ul>
-<p><strong>Webdeveloper, WisMon, Utrecht</strong><br>
-<em>March 2021 - September 2021</em></p>
-<p><strong>Sales employee, Pipoos, Utrecht</strong><br>
-<em>September 2022 - Present</em></p>
-<hr />
-</div>
-<div id="education" class="section level2 unnumbered">
-<h2>Education</h2>
-<strong>Communication &amp; Multimedia design, Avans, Den Bosch</strong><br>
-<em>September 2015 - December 2017</em>
-<ul>
-<li>
-With a personal focus on front-end webdevelopment and datavisualisation
-</li>
-</ul>
-<p><strong>Optometry, University of Applied Sciences, Utrecht</strong><br>
-<em>September 2018 - Augustus 2019</em></p>
-<strong>Biology &amp; Medical Labresearch, University of Applied Sciences, Utrecht</strong><br>
-<em>September 2020 - Present</em>
-<ul>
-<li>
-GPA of 4.0
-</li>
-<li>
-Honours star in genetic recombination and transfection
-</li>
-<li>
-Specialization in Data Science for Biology
-</li>
-</ul>
+</ol>
+<p><b>Important functions:</b><br>
+create_package(“~/path/to/package/packaganame”)<br>
+– Creates package</p>
+<p>use_git()<br>
+– Connects to git</p>
+<p>use_r(“filename”)<br>
+– Opens/creates script in R/</p>
+<p>load_all()<br>
+– Loads all functions without using globalenv</p>
+<p>exists(“function”, where = globalenv(), inherits = FALSE)<br>
+– Checks if function exists in globalenv</p>
+<p>check()<br>
+– Checks entire package for errors/warnings/notes</p>
+<p>use_mit_license()<br>
+– Sets license to MIT</p>
+<p>document()<br>
+– Creates/updates the manuals in man/ based on roxygen<br>
+– Updates the NAMESPACE file</p>
+<p>install()<br>
+– Installs the package</p>
+<p>use_testthat()<br>
+– Declares our intent to write tests<br>
+– Creates test directories</p>
+<p>use_test(“functionname”)<br>
+– Opens/create a testfile</p>
+<p>test()<br>
+– Performs all tests</p>
+<p>use_package(“packagename”)<br>
+– Add a package to import in DESCRIPTION</p>
+<p>rename_files(“oldname”, “newname”)<br>
+– Rename files</p>
+<p>use_readme_rmd()<br>
+– Writes README template<br>
+– Adds readme to the ignore file</p>
+build_readme()<br>
+– Updates the readme.md file based on the readme.rmd
+</details>
 <hr />
 </div>
-<div id="skills" class="section level2 unnumbered">
-<h2>Skills</h2>
-<p><strong>Informatics:</strong> <em>Basic R, basic BASH, HTML and CSS</em><br>
-<strong>Design:</strong> <em>Adobe Photoshop, Adobe Illustrator and Adobe InDesign</em></p>
+<div id="rmarkdown-driven-development" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> RMarkdown driven development</h2>
+<p>In the Workflows course the use of “Start with RMarkdown” was emphasized. This style of creating an R package does not start from zero like the demo suggested. It is based on a pre-written RMarkdown and the scripts that came with it.</p>
+<p>There are a lot of advantages to creating a complete all-in-one package when sharing a RMarkdown based analysis for others to reproduce. Usually, this sharing happens through an RMarkdown, some functions, the tidy version of the data, the steps used to get it tidy, the analysis itself and the used packages. These are multiple separate elements for someone to go over before they can reproduce the analysis. It can be made a lot more efficient by taking a few extra steps to create an R package from the RMarkdown. This way the elements are combined in one unit which is easily shared and can be used for multiple purposes and on different datasets.</p>
 <hr />
 </div>
-<div id="volunteering" class="section level2 unnumbered">
-<h2>Volunteering</h2>
-<strong>Design-expert, Innovation in a Week, Veghel</strong><br>
-<em>July 2016</em>
-<ul>
-<li>
-Won the ‘Teamwork-award’
-</li>
-</ul>
-<strong>Student Association Uerius Brabus, Den Bosch</strong><br>
-<em>October 2015 - December 2016</em>
-<ul>
-<li>
-Active as co-founder, captain of the PR committee and active in the committee for external contacts
-</li>
-</ul>
-<hr />
+<div id="package-portrobbo" class="section level2" number="5.3">
+<h2><span class="header-section-number">5.3</span> Package “portrobbo”</h2>
+<p>For this assignment we were asked to create a package which supports our portfolio. This will make the RMarkdowns more fluid and reduce duplicated code. It can also be used for later analysis.</p>
+<div id="picking-a-name" class="section level3" number="5.3.1">
+<h3><span class="header-section-number">5.3.1</span> Picking a name</h3>
+<p>To find an available but still meaningful name I wanted to combine the word ‘portfolio’ with my partner’s name. My partner happens to work on ships so the name portrobbo (combining the words ‘portfolio’, ‘port’ and his name) came to mind. After checking the availability I decided to use that as the name for my first R package. After setting up the project for the package and the <a href="https://github.com/mirthhe/portrobbo">github repository</a> it was ready for it’s first function.</p>
 </div>
-<div id="languages" class="section level2 unnumbered">
-<h2>Languages</h2>
-<p><strong>Dutch:</strong> <em>native speaker</em><br>
-<strong>English:</strong> <em>level C1</em></p>
+<div id="an-overview" class="section level3" number="5.3.2">
+<h3><span class="header-section-number">5.3.2</span> An overview</h3>
+The package currently contains the following functions:
+<ul>
+<li>
+uniq_val
+</li>
+<li>
+save_csv_rds
+</li>
+<li>
+graph_jitter
+</li>
+<li>
+protein visualizations:
+<ul>
+<li>
+protein_cartoon
+</li>
+<li>
+protein_sphere
+</li>
+<li>
+protein_stick
+</li>
+<li>
+protein_visual
+</li>
+</ul>
+</ul>
+<p>The package also contains two data objects:</p>
+<p><a href="https://github.com/mirthhe/portrobbo/blob/main/data/covid19.rda">COVID19</a>, a dataframe containing COVID19 cases and deaths in multiple European countries. The data came from the <a href="https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide">ECDC</a>. It was imported using <a href="https://github.com/mirthhe/portrobbo/blob/main/data-raw/covid19.R">this code</a> and is used to show the functionality of uniq_val(), save_csv_rds() and graph_jitter().</p>
+<p><a href="https://github.com/mirthhe/portrobbo/blob/main/data/kinesin.rda">Kinesin</a>, an R object containing the PDBx file 3COB. The <a href="https://github.com/mirthhe/portrobbo/blob/main/data-raw/3cob.pdb">data</a> came from the <a href="https://www.rcsb.org/structure/3COB">RCSB PDB</a>. It was imported using <a href="https://github.com/mirthhe/portrobbo/blob/main/data-raw/kinesin.R">this code</a> and is used to show the functionality of the protein visualizing functions.</p>
+</div>
+<div id="uniq_val" class="section level3" number="5.3.3">
+<h3><span class="header-section-number">5.3.3</span> uniq_val</h3>
+<p>The first function focuses on the data inspection. When working with a big dataset it can be used to check the amount of unique values within a column. For example, in chapter 7 we look at the dataset COVID19. The dataset has 28729 observations. Since there are multiple observations per country it is important to know how many countries are looked at. This is where uniq_val() comes in. The only input for the function is the column of which the amount of unique values should be checked. It’s use can be seen in <a href="Workflows_Portfolio_9.html">chapter 7</a> or in the code chunk below.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="5_package_portrobbo.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The column with the names of the countries is countriesAndTerritories</span></span>
+<span id="cb32-2"><a href="5_package_portrobbo.html#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">uniq_val</span>(covid19<span class="sc">$</span>countriesAndTerritories)</span></code></pre></div>
+<p>The 28729 observations are divided over 30 different countries. Good to know! There are other columns, also indicating a country or region. uniq_val() can also be used to check if those other columns show the same amount of unique values, by doing the following.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="5_package_portrobbo.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Another column indicating the country is geoId</span></span>
+<span id="cb33-2"><a href="5_package_portrobbo.html#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">uniq_val</span>(covid19<span class="sc">$</span>countriesAndTerritories) <span class="sc">==</span> <span class="fu">uniq_val</span>(covid19<span class="sc">$</span>geoId)</span></code></pre></div>
+</div>
+<div id="save_csv_rds" class="section level3" number="5.3.4">
+<h3><span class="header-section-number">5.3.4</span> save_csv_rds</h3>
+<p>After inspecting the data you might have made a few changes in the R object, like making it tidy or extracting data that is the most useful as shown in the following code.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="5_package_portrobbo.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let&#39;s say we only want the data of summer 2020 for the Germany and France</span></span>
+<span id="cb34-2"><a href="5_package_portrobbo.html#cb34-2" aria-hidden="true" tabindex="-1"></a>covid19_2020 <span class="ot">&lt;-</span> covid19 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(countriesAndTerritories <span class="sc">==</span> </span>
+<span id="cb34-3"><a href="5_package_portrobbo.html#cb34-3" aria-hidden="true" tabindex="-1"></a>                                     <span class="fu">c</span>(<span class="st">&quot;Germany&quot;</span>, <span class="st">&quot;France&quot;</span>), </span>
+<span id="cb34-4"><a href="5_package_portrobbo.html#cb34-4" aria-hidden="true" tabindex="-1"></a>                                   year <span class="sc">==</span> <span class="dv">2020</span>, month <span class="sc">==</span> <span class="fu">c</span>(<span class="dv">6</span><span class="sc">:</span><span class="dv">8</span>))</span>
+<span id="cb34-5"><a href="5_package_portrobbo.html#cb34-5" aria-hidden="true" tabindex="-1"></a>covid19_2020<span class="sc">$</span>dateRep <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(covid19_2020<span class="sc">$</span>dateRep, <span class="st">&quot;%d/%m/%y&quot;</span>)</span></code></pre></div>
+<p>It is important to save your changes for later reference. A good way to do that is by using the save_csv_rds() function. This saves your dataframe as both a .csv and .rds file and uses the dataframe and an outputname as inputs. It’s use can be seen in <a href="Workflows_Portfolio_7.html">chapter 5</a> or in the code chunk below.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="5_package_portrobbo.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># In this case we want the outputname to be the same as the dataframe name</span></span>
+<span id="cb35-2"><a href="5_package_portrobbo.html#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">save_csv_rds</span>(covid19_2020, <span class="st">&quot;covid19_2020&quot;</span>)</span></code></pre></div>
+</div>
+<div id="graph_jitter" class="section level3" number="5.3.5">
+<h3><span class="header-section-number">5.3.5</span> graph_jitter</h3>
+<p>With the data inspected, extracted and saved, graphs can be made. The ggplot2 package contains all the necessary functions to make a graph. It’s functions have a lot of different input options for a lot of different graphs. This means the code for a simple graph can become quite long. This is where graph_jitter() comes in. The ggplot2 function position_jitter() uses multiple inputs to create a slight jitter to the datapoints. This is useful when data overlap makes the graph hard to read. The graph_jitter() function simplifies this function by only needing one input which will work for both the height and width of the jitter. It also sets the seed to keep jitter consistent throughout the analysis. In the following code chunk the use of graph_jitter() is shown.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="5_package_portrobbo.html#cb36-1" aria-hidden="true" tabindex="-1"></a>covid19_2020 <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> dateRep, <span class="at">y =</span> deaths)) <span class="sc">+</span></span>
+<span id="cb36-2"><a href="5_package_portrobbo.html#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group=</span>countriesAndTerritories, <span class="at">color =</span> countriesAndTerritories)) <span class="sc">+</span></span>
+<span id="cb36-3"><a href="5_package_portrobbo.html#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> countriesAndTerritories), <span class="at">position =</span> <span class="fu">graph_jitter</span>(<span class="fl">0.3</span>)) <span class="sc">+</span></span>
+<span id="cb36-4"><a href="5_package_portrobbo.html#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;COVID19 in summer of 2020&quot;</span>,</span>
+<span id="cb36-5"><a href="5_package_portrobbo.html#cb36-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Date&quot;</span>,</span>
+<span id="cb36-6"><a href="5_package_portrobbo.html#cb36-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;COVID19 related deaths&quot;</span>) <span class="sc">+</span></span>
+<span id="cb36-7"><a href="5_package_portrobbo.html#cb36-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="bookdown_site_files/figure-html/graph_jitter-1.png" width="672" /></p>
+<p><em>Figure 6.1 Scatterplot showing the COVID19 related deaths in summer of 2020 in Germany and France.</em></p>
+</div>
+<div id="protein-visualization-functions" class="section level3" number="5.3.6">
+<h3><span class="header-section-number">5.3.6</span> Protein visualization functions</h3>
+<p>The last four functions use the <a href="https://github.com/swsoyee/r3dmol">r3dmol</a> package to create 3D interactive visualizations of proteins. Each function shows a different style of visualization. They have been made to support the free assignment and their use can be seen in <a href="Workflows_Portfolio_Free.html#applying-in-r">chapter 8</a>.</p>
 
+</div>
 </div>
 </div>
             </section>
@@ -372,8 +421,8 @@ Active as co-founder, captain of the PR committee and active in the committee fo
           </div>
         </div>
       </div>
-
-<a href="1_CurrentProjects.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="4_SQL.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="6_Reproducibility.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -404,7 +453,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/mirthhe/mirthhe.github.io/edit/master/index.Rmd",
+"link": "https://github.com/mirthhe/mirthhe.github.io/edit/master/5_package_portrobbo.Rmd",
 "text": "Share your feedback"
 },
 "history": {

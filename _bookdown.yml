@@ -1,0 +1,14 @@
+title: "Portfolio"
+author: "Mirthe Klaassen (1735556)"
+date: "`r Sys.Date()`"
+book_filename: bookdown_site
+delete_merged_file: true
+output_dir: docs
+github-repo: mirthhe/mirthhe.github.io
+biblio-style: apalike
+link-citations: true
+favicon: images/favicon.ico
+always_allow_html: true
+language:
+  ui:
+    chapter_name: 'Chapter '

@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 6 Reproducible Research | bookdown_site.knit</title>
+  <meta name="description" content="" />
+  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 6 Reproducible Research | bookdown_site.knit" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 6 Reproducible Research | bookdown_site.knit" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="5_package_portrobbo.html"/>
+<link rel="next" href="7_parameters.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.6.1/htmlwidgets.js"></script>
+<script src="libs/r3dmol-1.6.2/3Dmol-nojquery-min.js"></script>
+<script src="libs/r3dmol-binding-0.1.2/r3dmol.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="trial.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="toc-logo"><h3 class=".paddingtitel ">Portfolio of Mirthe Klaassen</h3></li>
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Curriculum Vitae</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#contact"><i class="fa fa-check"></i>Contact</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#profile"><i class="fa fa-check"></i>Profile</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#job-experience"><i class="fa fa-check"></i>Job experience</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#education"><i class="fa fa-check"></i>Education</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#skills"><i class="fa fa-check"></i>Skills</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#volunteering"><i class="fa fa-check"></i>Volunteering</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#languages"><i class="fa fa-check"></i>Languages</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="1_CurrentProjects.html"><a href="1_CurrentProjects.html"><i class="fa fa-check"></i><b>1</b> Current work</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="1_CurrentProjects.html"><a href="1_CurrentProjects.html#technology-to-reduce-animaltesting"><i class="fa fa-check"></i><b>1.1</b> Technology to reduce animaltesting</a></li>
+<li class="chapter" data-level="1.2" data-path="1_CurrentProjects.html"><a href="1_CurrentProjects.html#ontox"><i class="fa fa-check"></i><b>1.2</b> ONTOX</a></li>
+<li class="chapter" data-level="1.3" data-path="1_CurrentProjects.html"><a href="1_CurrentProjects.html#progress"><i class="fa fa-check"></i><b>1.3</b> Progress</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="2_SBtab.html"><a href="2_SBtab.html"><i class="fa fa-check"></i><b>2</b> SBtab merging</a></li>
+<li class="chapter" data-level="3" data-path="3_3D_visualizations.html"><a href="3_3D_visualizations.html"><i class="fa fa-check"></i><b>3</b> Protein structures in R</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="3_3D_visualizations.html"><a href="3_3D_visualizations.html#protein-structure-data"><i class="fa fa-check"></i><b>3.1</b> Protein structure data</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="3_3D_visualizations.html"><a href="3_3D_visualizations.html#protein-data-bank-archive"><i class="fa fa-check"></i><b>3.1.1</b> Protein Data Bank Archive</a></li>
+<li class="chapter" data-level="3.1.2" data-path="3_3D_visualizations.html"><a href="3_3D_visualizations.html#pdbxmmcif-format"><i class="fa fa-check"></i><b>3.1.2</b> PDBx/MMcif format</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="3_3D_visualizations.html"><a href="3_3D_visualizations.html#visualization-methods"><i class="fa fa-check"></i><b>3.2</b> Visualization methods</a></li>
+<li class="chapter" data-level="3.3" data-path="3_3D_visualizations.html"><a href="3_3D_visualizations.html#applying-in-r"><i class="fa fa-check"></i><b>3.3</b> Applying in R</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="3_3D_visualizations.html"><a href="3_3D_visualizations.html#cartoon-visual"><i class="fa fa-check"></i><b>3.3.1</b> Cartoon visual</a></li>
+<li class="chapter" data-level="3.3.2" data-path="3_3D_visualizations.html"><a href="3_3D_visualizations.html#sphere-and-sticks-visual"><i class="fa fa-check"></i><b>3.3.2</b> Sphere and sticks visual</a></li>
+<li class="chapter" data-level="3.3.3" data-path="3_3D_visualizations.html"><a href="3_3D_visualizations.html#combining-styles"><i class="fa fa-check"></i><b>3.3.3</b> Combining styles</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="3_3D_visualizations.html"><a href="3_3D_visualizations.html#looking-forward"><i class="fa fa-check"></i><b>3.4</b> Looking forward</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="4_SQL.html"><a href="4_SQL.html"><i class="fa fa-check"></i><b>4</b> SQL and relational data</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="4_SQL.html"><a href="4_SQL.html#connecting-to-dbeaver"><i class="fa fa-check"></i><b>4.1</b> Connecting to DBeaver</a></li>
+<li class="chapter" data-level="4.2" data-path="4_SQL.html"><a href="4_SQL.html#data-inspection"><i class="fa fa-check"></i><b>4.2</b> Data inspection</a></li>
+<li class="chapter" data-level="4.3" data-path="4_SQL.html"><a href="4_SQL.html#joining-datasets"><i class="fa fa-check"></i><b>4.3</b> Joining datasets</a></li>
+<li class="chapter" data-level="4.4" data-path="4_SQL.html"><a href="4_SQL.html#descriptive-statistics"><i class="fa fa-check"></i><b>4.4</b> Descriptive statistics</a></li>
+<li class="chapter" data-level="4.5" data-path="4_SQL.html"><a href="4_SQL.html#visualizations"><i class="fa fa-check"></i><b>4.5</b> Visualizations</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="4_SQL.html"><a href="4_SQL.html#dengue-cases"><i class="fa fa-check"></i><b>4.5.1</b> Dengue cases</a></li>
+<li class="chapter" data-level="4.5.2" data-path="4_SQL.html"><a href="4_SQL.html#flu-cases"><i class="fa fa-check"></i><b>4.5.2</b> Flu cases</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="5_package_portrobbo.html"><a href="5_package_portrobbo.html"><i class="fa fa-check"></i><b>5</b> R package</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="5_package_portrobbo.html"><a href="5_package_portrobbo.html#the-demo"><i class="fa fa-check"></i><b>5.1</b> The Demo</a></li>
+<li class="chapter" data-level="5.2" data-path="5_package_portrobbo.html"><a href="5_package_portrobbo.html#rmarkdown-driven-development"><i class="fa fa-check"></i><b>5.2</b> RMarkdown driven development</a></li>
+<li class="chapter" data-level="5.3" data-path="5_package_portrobbo.html"><a href="5_package_portrobbo.html#package-portrobbo"><i class="fa fa-check"></i><b>5.3</b> Package “portrobbo”</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="5_package_portrobbo.html"><a href="5_package_portrobbo.html#picking-a-name"><i class="fa fa-check"></i><b>5.3.1</b> Picking a name</a></li>
+<li class="chapter" data-level="5.3.2" data-path="5_package_portrobbo.html"><a href="5_package_portrobbo.html#an-overview"><i class="fa fa-check"></i><b>5.3.2</b> An overview</a></li>
+<li class="chapter" data-level="5.3.3" data-path="5_package_portrobbo.html"><a href="5_package_portrobbo.html#uniq_val"><i class="fa fa-check"></i><b>5.3.3</b> uniq_val</a></li>
+<li class="chapter" data-level="5.3.4" data-path="5_package_portrobbo.html"><a href="5_package_portrobbo.html#save_csv_rds"><i class="fa fa-check"></i><b>5.3.4</b> save_csv_rds</a></li>
+<li class="chapter" data-level="5.3.5" data-path="5_package_portrobbo.html"><a href="5_package_portrobbo.html#graph_jitter"><i class="fa fa-check"></i><b>5.3.5</b> graph_jitter</a></li>
+<li class="chapter" data-level="5.3.6" data-path="5_package_portrobbo.html"><a href="5_package_portrobbo.html#protein-visualization-functions"><i class="fa fa-check"></i><b>5.3.6</b> Protein visualization functions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="6_Reproducibility.html"><a href="6_Reproducibility.html"><i class="fa fa-check"></i><b>6</b> Reproducible Research</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="6_Reproducibility.html"><a href="6_Reproducibility.html#excels-downsides"><i class="fa fa-check"></i><b>6.1</b> Excel’s downsides</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="6_Reproducibility.html"><a href="6_Reproducibility.html#inspecting-an-excel-file"><i class="fa fa-check"></i><b>6.1.1</b> Inspecting an Excel file</a></li>
+<li class="chapter" data-level="6.1.2" data-path="6_Reproducibility.html"><a href="6_Reproducibility.html#creating-the-scatterplot"><i class="fa fa-check"></i><b>6.1.2</b> Creating the scatterplot</a></li>
+<li class="chapter" data-level="6.1.3" data-path="6_Reproducibility.html"><a href="6_Reproducibility.html#normalize-for-the-negative-control"><i class="fa fa-check"></i><b>6.1.3</b> Normalize for the negative control</a></li>
+<li class="chapter" data-level="6.1.4" data-path="6_Reproducibility.html"><a href="6_Reproducibility.html#statistical-analysis"><i class="fa fa-check"></i><b>6.1.4</b> Statistical analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="6_Reproducibility.html"><a href="6_Reproducibility.html#repita-criteria"><i class="fa fa-check"></i><b>6.2</b> Repita criteria</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="6_Reproducibility.html"><a href="6_Reproducibility.html#criteria-for-reproducibility"><i class="fa fa-check"></i><b>6.2.1</b> Criteria for reproducibility</a></li>
+<li class="chapter" data-level="6.2.2" data-path="6_Reproducibility.html"><a href="6_Reproducibility.html#the-article"><i class="fa fa-check"></i><b>6.2.2</b> The article</a></li>
+<li class="chapter" data-level="6.2.3" data-path="6_Reproducibility.html"><a href="6_Reproducibility.html#the-reproducibility"><i class="fa fa-check"></i><b>6.2.3</b> The reproducibility</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="6_Reproducibility.html"><a href="6_Reproducibility.html#open-source-code"><i class="fa fa-check"></i><b>6.3</b> Open source code</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="6_Reproducibility.html"><a href="6_Reproducibility.html#the-article-1"><i class="fa fa-check"></i><b>6.3.1</b> The article</a></li>
+<li class="chapter" data-level="6.3.2" data-path="6_Reproducibility.html"><a href="6_Reproducibility.html#the-code"><i class="fa fa-check"></i><b>6.3.2</b> The code</a></li>
+<li class="chapter" data-level="6.3.3" data-path="6_Reproducibility.html"><a href="6_Reproducibility.html#excuting-the-code"><i class="fa fa-check"></i><b>6.3.3</b> Excuting the code</a></li>
+<li class="chapter" data-level="6.3.4" data-path="6_Reproducibility.html"><a href="6_Reproducibility.html#effort-scoring"><i class="fa fa-check"></i><b>6.3.4</b> Effort scoring</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="7_parameters.html"><a href="7_parameters.html"><i class="fa fa-check"></i><b>7</b> Parameters</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="7_parameters.html"><a href="7_parameters.html#inspecting-the-data"><i class="fa fa-check"></i><b>7.1</b> Inspecting the data</a></li>
+<li class="chapter" data-level="7.2" data-path="7_parameters.html"><a href="7_parameters.html#creating-the-graphs"><i class="fa fa-check"></i><b>7.2</b> Creating the graphs</a></li>
+<li class="chapter" data-level="7.3" data-path="7_parameters.html"><a href="7_parameters.html#checking-parameters"><i class="fa fa-check"></i><b>7.3</b> Checking parameters</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="8_References.html"><a href="8_References.html"><i class="fa fa-check"></i><b>8</b> References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="reproducible" class="section level1" number="6">
+<h1><span class="header-section-number">Chapter 6</span> Reproducible Research</h1>
+<p><em>As part of assignment 1 from the <a href="https://lesmaterialen.rstudio.hu.nl/workflows-reader/represintro.html">DSFB2 Workflows course</a>.</em></p>
+<hr />
+<div id="excels-downsides" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> Excel’s downsides</h2>
+<div id="inspecting-an-excel-file" class="section level3" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> Inspecting an Excel file</h3>
+<p>As part of assignment 1.1 I was asked to review <a href="https://github.com/DataScienceILC/tlsc-dsfb26v-20_workflows/raw/main/data/CE.LIQ.FLOW.062_Tidydata.xlsx">a file</a>, by opening the file in Excel. The file contains the data of research done by J. Louter. This research appears to be about the effects of different substances on the reproduction of the C. elegans.</p>
+<p>The experimental condition ‘ControlVehicleA’ stood out to me. It appears to be the same as the ControlPositive but with less Ethanol. I’m guessing this shows the experimental conditions without the experimental compounds which would mean the compounds have been diluted in ethanol. There are also extra sheets with lists of inputs, logs of changes and input examples. I’m not sure what the difference in purpose is between the ExpLookup sheet and the Input example sheet.</p>
+<p>Three different compounds have been tested, <em>2,6-diisopropylnaphthalene, decane and naphthalene.</em> The positive control for this experiment uses <em>1.5% ethanol in S-medium.</em> The negative control for this experiment uses <em>just S-medium without an added compound.</em></p>
+<p>Next up, the file was opened in R and the data types per column were checked. These differed from the expectations.</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="6_Reproducibility.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the excel file ----</span></span>
+<span id="cb37-2"><a href="6_Reproducibility.html#cb37-2" aria-hidden="true" tabindex="-1"></a>CE.LIQ.FLOW<span class="fl">.062</span>_Tidydata <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(</span>
+<span id="cb37-3"><a href="6_Reproducibility.html#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;data-raw/celegans/CE.LIQ.FLOW.062_Tidydata.xlsx&quot;</span>)</span></code></pre></div>
+<p>The column RawData was recognized as a double while I’d expect an integer, compName was a character while I expected a factor and compConcentration was also character while it should be a double. It had not been assigned correctly. For further analysis the types were changed to the correct ones using the following code.</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="6_Reproducibility.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compConcentration to numeric ----</span></span>
+<span id="cb38-2"><a href="6_Reproducibility.html#cb38-2" aria-hidden="true" tabindex="-1"></a>CE.LIQ.FLOW<span class="fl">.062</span>_Tidydata<span class="sc">$</span>compConcentration <span class="ot">&lt;-</span> </span>
+<span id="cb38-3"><a href="6_Reproducibility.html#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.double</span>(CE.LIQ.FLOW<span class="fl">.062</span>_Tidydata<span class="sc">$</span>compConcentration)</span>
+<span id="cb38-4"><a href="6_Reproducibility.html#cb38-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-5"><a href="6_Reproducibility.html#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="co"># RawData to integer ----</span></span>
+<span id="cb38-6"><a href="6_Reproducibility.html#cb38-6" aria-hidden="true" tabindex="-1"></a>CE.LIQ.FLOW<span class="fl">.062</span>_Tidydata<span class="sc">$</span>RawData <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(CE.LIQ.FLOW<span class="fl">.062</span>_Tidydata<span class="sc">$</span>RawData)</span>
+<span id="cb38-7"><a href="6_Reproducibility.html#cb38-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-8"><a href="6_Reproducibility.html#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Change to tibble ----</span></span>
+<span id="cb38-9"><a href="6_Reproducibility.html#cb38-9" aria-hidden="true" tabindex="-1"></a>CE.LIQ.FLOW<span class="fl">.062</span>_tbl <span class="ot">&lt;-</span> <span class="fu">as.tibble</span>(CE.LIQ.FLOW<span class="fl">.062</span>_Tidydata)</span>
+<span id="cb38-10"><a href="6_Reproducibility.html#cb38-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-11"><a href="6_Reproducibility.html#cb38-11" aria-hidden="true" tabindex="-1"></a><span class="co"># compName to factor ----</span></span>
+<span id="cb38-12"><a href="6_Reproducibility.html#cb38-12" aria-hidden="true" tabindex="-1"></a><span class="do">## Creating a vector with the levels</span></span>
+<span id="cb38-13"><a href="6_Reproducibility.html#cb38-13" aria-hidden="true" tabindex="-1"></a>compName_factor <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;2,6-diisopropylnaphthalene&quot;</span>, <span class="st">&quot;decane&quot;</span>, <span class="st">&quot;naphthalene&quot;</span>,</span>
+<span id="cb38-14"><a href="6_Reproducibility.html#cb38-14" aria-hidden="true" tabindex="-1"></a>                     <span class="st">&quot;Ethanol&quot;</span>, <span class="st">&quot;S-medium&quot;</span>)</span>
+<span id="cb38-15"><a href="6_Reproducibility.html#cb38-15" aria-hidden="true" tabindex="-1"></a><span class="do">## Using those levels to create the factor</span></span>
+<span id="cb38-16"><a href="6_Reproducibility.html#cb38-16" aria-hidden="true" tabindex="-1"></a>CE.LIQ.FLOW<span class="fl">.062</span>_tbl<span class="sc">$</span>compName <span class="ot">&lt;-</span> <span class="fu">factor</span>(CE.LIQ.FLOW<span class="fl">.062</span>_tbl<span class="sc">$</span>compName, </span>
+<span id="cb38-17"><a href="6_Reproducibility.html#cb38-17" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">levels =</span> compName_factor)</span>
+<span id="cb38-18"><a href="6_Reproducibility.html#cb38-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-19"><a href="6_Reproducibility.html#cb38-19" aria-hidden="true" tabindex="-1"></a><span class="do">## Check if it worked</span></span>
+<span id="cb38-20"><a href="6_Reproducibility.html#cb38-20" aria-hidden="true" tabindex="-1"></a><span class="do">## str(CE.LIQ.FLOW.062_tbl) # it did!</span></span></code></pre></div>
+</div>
+<div id="creating-the-scatterplot" class="section level3" number="6.1.2">
+<h3><span class="header-section-number">6.1.2</span> Creating the scatterplot</h3>
+<p>Now that the columntypes are corrected the data can be used to create a scatterplot. The assignment asked to put the compConcentration on the x-axis, the DataRaw counts on the y-axis and to assign a colour to each level in compName. It also asked to assign a different symbol to each level in the expType variable. The controls have been added as dashed lines because they were measured in percentages, unlike the experimental conditions which were measure in nM. This also means the different shapes for expType variables are not neccessary since the only expType shown as points is “experiment”.</p>
+<p>In the assignment the first scatterplot made was followed by a question about the x-axis, <em>“When creating the plot under C), what happened with the ordering of the x-axis labels. Explain why this happens.”</em>. The compConcentration had already been changed to the correct type in the previous code chunk, so nothing went wrong when creating the first scatterplot. Had the type not been changed beforehand, the x-axis would have been in alphabetical order because they were seen as characters instead of doubles. The x-axis is shown with a log10 transformation and slight jitter has been added for better readability.</p>
+<p>A few details were added on top of the given assignment. This included each compound getting it’s own colour, the standard deviations being added as errorbars and the control values being added as dashed lines for comparison. The resulting plot is shown in figure 1.1.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="6_Reproducibility.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Summarize data ----</span></span>
+<span id="cb39-2"><a href="6_Reproducibility.html#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Get the average counts per compound per concentration, keep the expType variable too</span></span>
+<span id="cb39-3"><a href="6_Reproducibility.html#cb39-3" aria-hidden="true" tabindex="-1"></a>CE.LIQ_summ <span class="ot">&lt;-</span> CE.LIQ.FLOW<span class="fl">.062</span>_tbl <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(compName, compConcentration, expType) <span class="sc">%&gt;%</span> </span>
+<span id="cb39-4"><a href="6_Reproducibility.html#cb39-4" aria-hidden="true" tabindex="-1"></a>                                      <span class="fu">summarize</span>(<span class="at">mean_counts =</span> <span class="fu">mean</span>(RawData, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb39-5"><a href="6_Reproducibility.html#cb39-5" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">stdev_counts =</span>  <span class="fu">sd</span>(RawData, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb39-6"><a href="6_Reproducibility.html#cb39-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-7"><a href="6_Reproducibility.html#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract data ----</span></span>
+<span id="cb39-8"><a href="6_Reproducibility.html#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="do">## Create a tibble containing only the data used for the graph</span></span>
+<span id="cb39-9"><a href="6_Reproducibility.html#cb39-9" aria-hidden="true" tabindex="-1"></a>CE.LIQ_summ_exp <span class="ot">&lt;-</span> CE.LIQ_summ <span class="sc">%&gt;%</span> <span class="fu">filter</span>(expType <span class="sc">==</span> <span class="st">&quot;experiment&quot;</span>)</span>
+<span id="cb39-10"><a href="6_Reproducibility.html#cb39-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-11"><a href="6_Reproducibility.html#cb39-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the scatterplot ----</span></span>
+<span id="cb39-12"><a href="6_Reproducibility.html#cb39-12" aria-hidden="true" tabindex="-1"></a>CE.LIQ_summ_exp <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log10</span>(compConcentration) <span class="do">## log10 as suggested in question F</span></span>
+<span id="cb39-13"><a href="6_Reproducibility.html#cb39-13" aria-hidden="true" tabindex="-1"></a>                               , <span class="at">y =</span> mean_counts)) <span class="sc">+</span></span>
+<span id="cb39-14"><a href="6_Reproducibility.html#cb39-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">group=</span>compName, <span class="at">color =</span> compName), <span class="at">span=</span> .<span class="dv">5</span>, <span class="at">size=</span><span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb39-15"><a href="6_Reproducibility.html#cb39-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> compName), </span>
+<span id="cb39-16"><a href="6_Reproducibility.html#cb39-16" aria-hidden="true" tabindex="-1"></a>             <span class="at">position =</span> <span class="fu">graph_jitter</span>(<span class="fl">0.2</span>)) <span class="sc">+</span></span>
+<span id="cb39-17"><a href="6_Reproducibility.html#cb39-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin=</span>mean_counts<span class="sc">-</span>stdev_counts, <span class="at">ymax=</span>mean_counts<span class="sc">+</span>stdev_counts, </span>
+<span id="cb39-18"><a href="6_Reproducibility.html#cb39-18" aria-hidden="true" tabindex="-1"></a>                    <span class="at">color =</span> compName), </span>
+<span id="cb39-19"><a href="6_Reproducibility.html#cb39-19" aria-hidden="true" tabindex="-1"></a>                <span class="at">width=</span>.<span class="dv">1</span>, <span class="at">position =</span> <span class="fu">graph_jitter</span>(<span class="fl">0.2</span>)) <span class="sc">+</span></span>
+<span id="cb39-20"><a href="6_Reproducibility.html#cb39-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">str_wrap</span>(<span class="st">&quot;Mean offspring count of C. Elegans with added compounds </span></span>
+<span id="cb39-21"><a href="6_Reproducibility.html#cb39-21" aria-hidden="true" tabindex="-1"></a><span class="st">                        in varying concentrations&quot;</span>, <span class="dv">70</span>),</span>
+<span id="cb39-22"><a href="6_Reproducibility.html#cb39-22" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Offspring count&quot;</span>,</span>
+<span id="cb39-23"><a href="6_Reproducibility.html#cb39-23" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Compound concentration in log10(nM)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb39-24"><a href="6_Reproducibility.html#cb39-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fl">85.9</span>, <span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="at">size =</span> <span class="fl">0.2</span>) <span class="sc">+</span> <span class="do">## Shows control negative</span></span>
+<span id="cb39-25"><a href="6_Reproducibility.html#cb39-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="dv">0</span>,<span class="fl">85.9</span>, <span class="at">label =</span> <span class="st">&quot;Control negative&quot;</span>, <span class="at">vjust=</span><span class="sc">-</span><span class="fl">0.3</span>), <span class="at">size =</span> <span class="fl">3.5</span>) <span class="sc">+</span></span>
+<span id="cb39-26"><a href="6_Reproducibility.html#cb39-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fl">49.4</span>, <span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="at">size =</span> <span class="fl">0.2</span>) <span class="sc">+</span> <span class="do">## Shows control positive</span></span>
+<span id="cb39-27"><a href="6_Reproducibility.html#cb39-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="sc">-</span><span class="fl">3.5</span>,<span class="fl">49.4</span>, <span class="at">label =</span> <span class="st">&quot;Control positive&quot;</span>, <span class="at">vjust=</span><span class="sc">-</span><span class="fl">0.3</span>), <span class="at">size =</span> <span class="fl">3.5</span>) <span class="sc">+</span></span>
+<span id="cb39-28"><a href="6_Reproducibility.html#cb39-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="bookdown_site_files/figure-html/scatterplot%20C.%20elegans-1.png" width="672" /></p>
+<p><em>Figure 1.1 Scatterplot with trendlines showing the mean offspring count of C. Elegans with three different compounds at varying concentrations.</em></p>
+</div>
+<div id="normalize-for-the-negative-control" class="section level3" number="6.1.3">
+<h3><span class="header-section-number">6.1.3</span> Normalize for the negative control</h3>
+<p>In order to see how much the offspring count improved or decreased relatively to the baseline (in this case, the negative control) the data must be normalized. To do this we adjust the negative control to a value of 1 and adjust the other values in the same way. In this case that means dividing by 85.9. The scatterplot was created again with the new normalized data, further settings stayed the same, the result is shown in figure 1.2.</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="6_Reproducibility.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Normalize for negative control ----</span></span>
+<span id="cb40-2"><a href="6_Reproducibility.html#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Check the mean value of controlNegative</span></span>
+<span id="cb40-3"><a href="6_Reproducibility.html#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="do">## view(CE.LIQ_summ) # It&#39;s 85.9</span></span>
+<span id="cb40-4"><a href="6_Reproducibility.html#cb40-4" aria-hidden="true" tabindex="-1"></a>CE.LIQ_summ_norm <span class="ot">&lt;-</span> CE.LIQ_summ_exp <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">norm_counts =</span> mean_counts<span class="sc">/</span><span class="fl">85.9</span>, </span>
+<span id="cb40-5"><a href="6_Reproducibility.html#cb40-5" aria-hidden="true" tabindex="-1"></a>                                               <span class="at">norm_stdev =</span> stdev_counts<span class="sc">/</span><span class="fl">85.9</span>)</span>
+<span id="cb40-6"><a href="6_Reproducibility.html#cb40-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-7"><a href="6_Reproducibility.html#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create normalized plot ----</span></span>
+<span id="cb40-8"><a href="6_Reproducibility.html#cb40-8" aria-hidden="true" tabindex="-1"></a>CE.LIQ_summ_norm <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log10</span>(compConcentration), <span class="do">## log10 as requested in question F</span></span>
+<span id="cb40-9"><a href="6_Reproducibility.html#cb40-9" aria-hidden="true" tabindex="-1"></a>                                <span class="at">y =</span> norm_counts)) <span class="sc">+</span></span>
+<span id="cb40-10"><a href="6_Reproducibility.html#cb40-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">group =</span> compName, <span class="at">color =</span> compName), <span class="at">span=</span>.<span class="dv">5</span>, <span class="at">size =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb40-11"><a href="6_Reproducibility.html#cb40-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> compName), <span class="at">position =</span> <span class="fu">graph_jitter</span>(<span class="fl">0.04</span>)) <span class="sc">+</span></span>
+<span id="cb40-12"><a href="6_Reproducibility.html#cb40-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin=</span>norm_counts<span class="sc">-</span>norm_stdev, <span class="at">ymax=</span>norm_counts<span class="sc">+</span>norm_stdev, </span>
+<span id="cb40-13"><a href="6_Reproducibility.html#cb40-13" aria-hidden="true" tabindex="-1"></a>                    <span class="at">color =</span> compName), <span class="at">width=</span>.<span class="dv">1</span>, <span class="at">position =</span> <span class="fu">graph_jitter</span>(<span class="fl">0.04</span>)) <span class="sc">+</span></span>
+<span id="cb40-14"><a href="6_Reproducibility.html#cb40-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">str_wrap</span>(<span class="st">&quot;Mean offspring count of C. Elegans with added compounds </span></span>
+<span id="cb40-15"><a href="6_Reproducibility.html#cb40-15" aria-hidden="true" tabindex="-1"></a><span class="st">                        in varying concentrations&quot;</span>, <span class="dv">70</span>),</span>
+<span id="cb40-16"><a href="6_Reproducibility.html#cb40-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Offspring count relative to negative control&quot;</span>,</span>
+<span id="cb40-17"><a href="6_Reproducibility.html#cb40-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Compound concentration in log10(nM)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb40-18"><a href="6_Reproducibility.html#cb40-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">1</span>, <span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="at">size =</span> <span class="fl">0.2</span>) <span class="sc">+</span> <span class="do">## Show control negative</span></span>
+<span id="cb40-19"><a href="6_Reproducibility.html#cb40-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="dv">0</span>,<span class="dv">1</span>, <span class="at">label =</span> <span class="st">&quot;Control negative&quot;</span>, <span class="at">vjust=</span><span class="sc">-</span><span class="fl">0.3</span>), <span class="at">size =</span> <span class="fl">3.5</span>) <span class="sc">+</span></span>
+<span id="cb40-20"><a href="6_Reproducibility.html#cb40-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fl">0.57508731</span>, <span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="at">size =</span> <span class="fl">0.2</span>) <span class="sc">+</span> <span class="do">## Show control positive</span></span>
+<span id="cb40-21"><a href="6_Reproducibility.html#cb40-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="sc">-</span><span class="fl">3.5</span>,<span class="fl">0.57508731</span>, <span class="at">label =</span> <span class="st">&quot;Control positive&quot;</span>, <span class="at">vjust=</span><span class="sc">-</span><span class="fl">0.3</span>), <span class="at">size =</span> <span class="fl">3.5</span>) <span class="sc">+</span></span>
+<span id="cb40-22"><a href="6_Reproducibility.html#cb40-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="bookdown_site_files/figure-html/normalized%20plot%20C.%20elegans-1.png" width="672" /></p>
+<p><em>Figure 1.2 Scatterplot with trendlines showing the mean offspring count of C. Elegans with three different compounds at varying concentrations. Normalized to negative control == 1.</em></p>
+</div>
+<div id="statistical-analysis" class="section level3" number="6.1.4">
+<h3><span class="header-section-number">6.1.4</span> Statistical analysis</h3>
+<p>In order to learn wether there is indeed an effect of the different compounds a few tests need to be performed. Starting with the Shapiro-Wilk test to check the normality of the data and a Levene’s test to check for equality of variance. Followed by an ANOVA with the different concentrations as added variable. To see the actual difference, the analysis should be finished with a Post hoc test like Tukey.</p>
+<hr />
+</div>
+</div>
+<div id="repita-criteria" class="section level2" number="6.2">
+<h2><span class="header-section-number">6.2</span> Repita criteria</h2>
+<div id="criteria-for-reproducibility" class="section level3" number="6.2.1">
+<h3><span class="header-section-number">6.2.1</span> Criteria for reproducibility</h3>
+<p>This first part of assignment 1.2 will look at ‘Repita’ criteria. These criteria are used to check for the reproducibility of scientific research articles. In table 1.1 the different criteria are shown with a definition and the type of response it calls for. In order to further understand and apply these criteria, a research article will be analysed to check if this article follows the ‘Repita’ guidelines as shown in table 1.1.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="6_Reproducibility.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create variables ----</span></span>
+<span id="cb41-2"><a href="6_Reproducibility.html#cb41-2" aria-hidden="true" tabindex="-1"></a>Transparency_Criteria <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Study Purpose&quot;</span>, </span>
+<span id="cb41-3"><a href="6_Reproducibility.html#cb41-3" aria-hidden="true" tabindex="-1"></a>                           <span class="st">&quot;Data Availability Statement&quot;</span>, </span>
+<span id="cb41-4"><a href="6_Reproducibility.html#cb41-4" aria-hidden="true" tabindex="-1"></a>                           <span class="st">&quot;Data Location&quot;</span>, </span>
+<span id="cb41-5"><a href="6_Reproducibility.html#cb41-5" aria-hidden="true" tabindex="-1"></a>                           <span class="st">&quot;Study Location&quot;</span>, </span>
+<span id="cb41-6"><a href="6_Reproducibility.html#cb41-6" aria-hidden="true" tabindex="-1"></a>                           <span class="st">&quot;Author Review&quot;</span>, </span>
+<span id="cb41-7"><a href="6_Reproducibility.html#cb41-7" aria-hidden="true" tabindex="-1"></a>                           <span class="st">&quot;Ethics Statement&quot;</span>, </span>
+<span id="cb41-8"><a href="6_Reproducibility.html#cb41-8" aria-hidden="true" tabindex="-1"></a>                           <span class="st">&quot;Funding Statement&quot;</span>, </span>
+<span id="cb41-9"><a href="6_Reproducibility.html#cb41-9" aria-hidden="true" tabindex="-1"></a>                           <span class="st">&quot;Code Availability&quot;</span>)</span>
+<span id="cb41-10"><a href="6_Reproducibility.html#cb41-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-11"><a href="6_Reproducibility.html#cb41-11" aria-hidden="true" tabindex="-1"></a>Definition <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;A concise statement in the introduction of the article, often in the last paragraph, that establishes the reason the research was conducted. Also called the study objective.&quot;</span>,</span>
+<span id="cb41-12"><a href="6_Reproducibility.html#cb41-12" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;A statement, in an individual section offset from the main body of text, that explains how or if one can access a study’s data. The title of the section may vary, but it must explicitly mention data; it is therefore distinct from a supplementary materials section.&quot;</span>, </span>
+<span id="cb41-13"><a href="6_Reproducibility.html#cb41-13" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;Where the article’s data can be accessed, either raw or processed.&quot;</span>, </span>
+<span id="cb41-14"><a href="6_Reproducibility.html#cb41-14" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;Author has stated in the methods section where the study took place or the data’s country/region of origin.&quot;</span>, </span>
+<span id="cb41-15"><a href="6_Reproducibility.html#cb41-15" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;The professionalism of the contact information that the author has provided in the manuscript.&quot;</span>, </span>
+<span id="cb41-16"><a href="6_Reproducibility.html#cb41-16" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;A statement within the manuscript indicating any ethical concerns, including the presence of sensitive data.&quot;</span>, </span>
+<span id="cb41-17"><a href="6_Reproducibility.html#cb41-17" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;A statement within the manuscript indicating whether or not the authors received funding for their research.&quot;</span>, </span>
+<span id="cb41-18"><a href="6_Reproducibility.html#cb41-18" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;Authors have shared access to the most updated code that they used in their study, including code used for analysis.&quot;</span>)</span>
+<span id="cb41-19"><a href="6_Reproducibility.html#cb41-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-20"><a href="6_Reproducibility.html#cb41-20" aria-hidden="true" tabindex="-1"></a>Response_Type <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Binary&quot;</span>, </span>
+<span id="cb41-21"><a href="6_Reproducibility.html#cb41-21" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;Binary&quot;</span>, </span>
+<span id="cb41-22"><a href="6_Reproducibility.html#cb41-22" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;Found Value&quot;</span>, </span>
+<span id="cb41-23"><a href="6_Reproducibility.html#cb41-23" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;Binary;Found Value&quot;</span>, </span>
+<span id="cb41-24"><a href="6_Reproducibility.html#cb41-24" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;Found Value&quot;</span>, </span>
+<span id="cb41-25"><a href="6_Reproducibility.html#cb41-25" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;Binary&quot;</span>, </span>
+<span id="cb41-26"><a href="6_Reproducibility.html#cb41-26" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;Binary&quot;</span>, </span>
+<span id="cb41-27"><a href="6_Reproducibility.html#cb41-27" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;Binary&quot;</span>)</span>
+<span id="cb41-28"><a href="6_Reproducibility.html#cb41-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-29"><a href="6_Reproducibility.html#cb41-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Create dataframe ----</span></span>
+<span id="cb41-30"><a href="6_Reproducibility.html#cb41-30" aria-hidden="true" tabindex="-1"></a>repita_criteria <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(Transparency_Criteria, </span>
+<span id="cb41-31"><a href="6_Reproducibility.html#cb41-31" aria-hidden="true" tabindex="-1"></a>                              Definition, </span>
+<span id="cb41-32"><a href="6_Reproducibility.html#cb41-32" aria-hidden="true" tabindex="-1"></a>                              Response_Type)</span>
+<span id="cb41-33"><a href="6_Reproducibility.html#cb41-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-34"><a href="6_Reproducibility.html#cb41-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Create table ----</span></span>
+<span id="cb41-35"><a href="6_Reproducibility.html#cb41-35" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(repita_criteria, <span class="at">col.names =</span> <span class="fu">gsub</span>(<span class="st">&quot;_&quot;</span>, <span class="st">&quot; &quot;</span>, <span class="fu">names</span>(repita_criteria)), </span>
+<span id="cb41-36"><a href="6_Reproducibility.html#cb41-36" aria-hidden="true" tabindex="-1"></a>                          <span class="at">caption =</span> <span class="st">&quot;Table 1.1 The repita criteria as given in portfolio assignment 1.2 in [lesson 1 of the reader](https://lesmaterialen.rstudio.hu.nl/workflows-reader/represintro.html).&quot;</span>)</span></code></pre></div>
+<table>
+<caption>(#tab:repita criteria table)Table 1.1 The repita criteria as given in portfolio assignment 1.2 in <a href="https://lesmaterialen.rstudio.hu.nl/workflows-reader/represintro.html">lesson 1 of the reader</a>.</caption>
+<colgroup>
+<col width="8%" />
+<col width="84%" />
+<col width="6%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Transparency Criteria</th>
+<th align="left">Definition</th>
+<th align="left">Response Type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Study Purpose</td>
+<td align="left">A concise statement in the introduction of the article, often in the last paragraph, that establishes the reason the research was conducted. Also called the study objective.</td>
+<td align="left">Binary</td>
+</tr>
+<tr class="even">
+<td align="left">Data Availability Statement</td>
+<td align="left">A statement, in an individual section offset from the main body of text, that explains how or if one can access a study’s data. The title of the section may vary, but it must explicitly mention data; it is therefore distinct from a supplementary materials section.</td>
+<td align="left">Binary</td>
+</tr>
+<tr class="odd">
+<td align="left">Data Location</td>
+<td align="left">Where the article’s data can be accessed, either raw or processed.</td>
+<td align="left">Found Value</td>
+</tr>
+<tr class="even">
+<td align="left">Study Location</td>
+<td align="left">Author has stated in the methods section where the study took place or the data’s country/region of origin.</td>
+<td align="left">Binary;Found Value</td>
+</tr>
+<tr class="odd">
+<td align="left">Author Review</td>
+<td align="left">The professionalism of the contact information that the author has provided in the manuscript.</td>
+<td align="left">Found Value</td>
+</tr>
+<tr class="even">
+<td align="left">Ethics Statement</td>
+<td align="left">A statement within the manuscript indicating any ethical concerns, including the presence of sensitive data.</td>
+<td align="left">Binary</td>
+</tr>
+<tr class="odd">
+<td align="left">Funding Statement</td>
+<td align="left">A statement within the manuscript indicating whether or not the authors received funding for their research.</td>
+<td align="left">Binary</td>
+</tr>
+<tr class="even">
+<td align="left">Code Availability</td>
+<td align="left">Authors have shared access to the most updated code that they used in their study, including code used for analysis.</td>
+<td align="left">Binary</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="the-article" class="section level3" number="6.2.2">
+<h3><span class="header-section-number">6.2.2</span> The article</h3>
+<p><a href="https://journals.plos.org/plosone/">Plosone</a> was used to find a suitable article. The found article is a primary article describing emperical scientific findings by <span class="citation">Bruckner et al. (2022)</span>. The focus is on how microbiotas play a role in developmental programs. Altered microbiota composition appears to be linked to neurodevelopmental conditions such as autism spectrum disorder. One of the findings described how the microbiota can influence forebrain neurons. Forebrain neurons are required for normal social behavior and localization of forebrain microglia.</p>
+<p>The study uses zebrafish which were kept at 28°C with a 14/10 light/dark cycle. For the controlgroup conventionalized (CVZ) fish were used. The experimental condition consisted of germ-free (GF) fish. These fish were made to be germ-free and therefore did not have their microbiota. When the fish were older (7 dpf) they were inoculated with normal microbiota (making them ex germ-free or XGF) and their optomotor respons was tested. Once the fish were adults (14 dpf) their social behavior was tested.</p>
+<p>The social behavior was assessed through a dyad assay for postflexion larval and adult zebrafish. For each condition a pair of siblings were placed in isolated tanks and allowed to interact for 10 minutes via transparent tank walls. Social interaction was defined as the average relative distance from the divider and the percentage of time spent orienting at 45° to 90°. These parameters were measured and analyzed using computer vision software written in Python (available at <a href="https://github.com/stednitzs/daniopen" class="uri">https://github.com/stednitzs/daniopen</a>). Compared to the CVZ siblings, the GF larvae spent significantly less time in close proximity to and oriented at 45 to 90°. These results show that an intact microbiota is required during the early life-stages for later development of normal social behavior.</p>
+<p>Aside from the social behavior, the study also looked at optomotor responses. It is possible that the microbiota influences circuitry underlying the early vision and locomotion required for social behavior. To address this possibility, the vision and locomotion were assayed by comparing kinetics of the optomotor response to virtual motion in GF larvae and CVZ controls. Optomotor response was assessed using a “virtual reality” system for assessing zebrafish behavior, measuring swim response in larvae. A visual stimulus was projected on a screen underneath the dishes for 20 seconds and consisted of concentric rings moving toward the dish center, followed by a 20-second refractory period. Responses are the average of 46 to 59 stimulus trials per fish, presented over 1 hour. In this part of the study, no significant difference were found between the GF and CVZ fish. This suggests that the microbiota influences circuits specific to social behavior directly, rather than by modulating vision or locomotion.</p>
+<p>The results demonstrate that the microbiota influences zebrafish social behavior by stimulating microglial remodeling of forebrain circuits during early neurodevelopment. This conclusion suggests pathways for new interventions in multiple neurodevelopmental disorders.</p>
+</div>
+<div id="the-reproducibility" class="section level3" number="6.2.3">
+<h3><span class="header-section-number">6.2.3</span> The reproducibility</h3>
+<p>To better understand the criteria (table 1.1) they will be applied to the found article. The results can be found in table 1.2. While answering this assignment I noticed how this is not as black and white as I thought. For example with the study location. At first I thought it was stated, because University of Oregon came back quite a few times, looking at it more closely it was not clear if that was the actual study location.</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="6_Reproducibility.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create variables ----</span></span>
+<span id="cb42-2"><a href="6_Reproducibility.html#cb42-2" aria-hidden="true" tabindex="-1"></a>Score <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;TRUE&quot;</span>, </span>
+<span id="cb42-3"><a href="6_Reproducibility.html#cb42-3" aria-hidden="true" tabindex="-1"></a>           <span class="st">&quot;TRUE&quot;</span>, </span>
+<span id="cb42-4"><a href="6_Reproducibility.html#cb42-4" aria-hidden="true" tabindex="-1"></a>           <span class="st">&quot;[Link](https://figshare.com/projects/Bruckner_et_al_Data/136756)&quot;</span>, </span>
+<span id="cb42-5"><a href="6_Reproducibility.html#cb42-5" aria-hidden="true" tabindex="-1"></a>           <span class="st">&quot;FALSE&quot;</span>, </span>
+<span id="cb42-6"><a href="6_Reproducibility.html#cb42-6" aria-hidden="true" tabindex="-1"></a>           <span class="st">&quot;Non professional&quot;</span>, </span>
+<span id="cb42-7"><a href="6_Reproducibility.html#cb42-7" aria-hidden="true" tabindex="-1"></a>           <span class="st">&quot;TRUE&quot;</span>, </span>
+<span id="cb42-8"><a href="6_Reproducibility.html#cb42-8" aria-hidden="true" tabindex="-1"></a>           <span class="st">&quot;TRUE&quot;</span>, </span>
+<span id="cb42-9"><a href="6_Reproducibility.html#cb42-9" aria-hidden="true" tabindex="-1"></a>           <span class="st">&quot;FALSE&quot;</span>)</span>
+<span id="cb42-10"><a href="6_Reproducibility.html#cb42-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-11"><a href="6_Reproducibility.html#cb42-11" aria-hidden="true" tabindex="-1"></a>Explanation <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;In the second to last paragraph of the introduction the study objective is described.&quot;</span>, </span>
+<span id="cb42-12"><a href="6_Reproducibility.html#cb42-12" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&quot;On the left-hand side of the webpage the </span><span class="sc">\&quot;</span><span class="st">Accesibble Data</span><span class="sc">\&quot;</span><span class="st"> can be found&quot;</span>, </span>
+<span id="cb42-13"><a href="6_Reproducibility.html#cb42-13" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&quot;The data can be accessed through the given link, found under the </span><span class="sc">\&quot;</span><span class="st">Accesibble Data</span><span class="sc">\&quot;</span><span class="st"> header.&quot;</span>, </span>
+<span id="cb42-14"><a href="6_Reproducibility.html#cb42-14" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&quot;The origin of the zebrafish has been given. The workplace of the authors has also been given (University of Oregon) but the location where the research has been performed is not speficially stated anywhere in the article. &quot;</span>, </span>
+<span id="cb42-15"><a href="6_Reproducibility.html#cb42-15" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&quot;Only the email adresses of P. Washbourne and J.S. Eisen were given. Both were part of the funding acquisition. The contact information of the researchers has not been given.&quot;</span>, </span>
+<span id="cb42-16"><a href="6_Reproducibility.html#cb42-16" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&quot;There is an ethics statement in the methods paragraph.&quot;</span>, </span>
+<span id="cb42-17"><a href="6_Reproducibility.html#cb42-17" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&quot;The funding is stated under the abstract.&quot;</span>, </span>
+<span id="cb42-18"><a href="6_Reproducibility.html#cb42-18" aria-hidden="true" tabindex="-1"></a>                 <span class="st">&quot;The data analysis is explained but the code has not been shared.&quot;</span>)</span>
+<span id="cb42-19"><a href="6_Reproducibility.html#cb42-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-20"><a href="6_Reproducibility.html#cb42-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Create dataframe ----</span></span>
+<span id="cb42-21"><a href="6_Reproducibility.html#cb42-21" aria-hidden="true" tabindex="-1"></a>article_repita_check <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(Transparency_Criteria, Score, Explanation)</span>
+<span id="cb42-22"><a href="6_Reproducibility.html#cb42-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-23"><a href="6_Reproducibility.html#cb42-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Create table ----</span></span>
+<span id="cb42-24"><a href="6_Reproducibility.html#cb42-24" aria-hidden="true" tabindex="-1"></a>article_repita_check <span class="sc">%&gt;%</span> <span class="fu">kable</span>(<span class="at">col.names =</span> <span class="fu">gsub</span>(<span class="st">&quot;_&quot;</span>, <span class="st">&quot; &quot;</span>, <span class="fu">names</span>(repita_criteria)), </span>
+<span id="cb42-25"><a href="6_Reproducibility.html#cb42-25" aria-hidden="true" tabindex="-1"></a>                               <span class="at">caption =</span> <span class="st">&quot;Table 1.2 The score for each repita criterium when looking at the research done by Bruckner et al.(2022)&quot;</span>)</span></code></pre></div>
+<table>
+<caption>(#tab:article repita check table)Table 1.2 The score for each repita criterium when looking at the research done by Bruckner et al.(2022)</caption>
+<colgroup>
+<col width="10%" />
+<col width="6%" />
+<col width="83%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Transparency Criteria</th>
+<th align="left">Definition</th>
+<th align="left">Response Type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Study Purpose</td>
+<td align="left">TRUE</td>
+<td align="left">In the second to last paragraph of the introduction the study objective is described.</td>
+</tr>
+<tr class="even">
+<td align="left">Data Availability Statement</td>
+<td align="left">TRUE</td>
+<td align="left">On the left-hand side of the webpage the “Accesibble Data” can be found</td>
+</tr>
+<tr class="odd">
+<td align="left">Data Location</td>
+<td align="left"><a href="https://figshare.com/projects/Bruckner_et_al_Data/136756">Link</a></td>
+<td align="left">The data can be accessed through the given link, found under the “Accesibble Data” header.</td>
+</tr>
+<tr class="even">
+<td align="left">Study Location</td>
+<td align="left">FALSE</td>
+<td align="left">The origin of the zebrafish has been given. The workplace of the authors has also been given (University of Oregon) but the location where the research has been performed is not speficially stated anywhere in the article.</td>
+</tr>
+<tr class="odd">
+<td align="left">Author Review</td>
+<td align="left">Non professional</td>
+<td align="left">Only the email adresses of P. Washbourne and J.S. Eisen were given. Both were part of the funding acquisition. The contact information of the researchers has not been given.</td>
+</tr>
+<tr class="even">
+<td align="left">Ethics Statement</td>
+<td align="left">TRUE</td>
+<td align="left">There is an ethics statement in the methods paragraph.</td>
+</tr>
+<tr class="odd">
+<td align="left">Funding Statement</td>
+<td align="left">TRUE</td>
+<td align="left">The funding is stated under the abstract.</td>
+</tr>
+<tr class="even">
+<td align="left">Code Availability</td>
+<td align="left">FALSE</td>
+<td align="left">The data analysis is explained but the code has not been shared.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="open-source-code" class="section level2" number="6.3">
+<h2><span class="header-section-number">6.3</span> Open source code</h2>
+<p>In this second part of assignment 1.2 we’ll be looking at the code from an existing study. The focus will be on understanding the code, noting what it tries to achieve, the readability, reproducibility, fixing errors, etc.</p>
+<div id="the-article-1" class="section level3" number="6.3.1">
+<h3><span class="header-section-number">6.3.1</span> The article</h3>
+<p>The article used for this assignment had to live up to a few criteria. First up, the data had to be analysed using R code. This code and the dataset had to be available. The chosen article is <em>“Mental Health Impacts in Argentinean College Students During COVID-19 Quarantine”</em> by <span class="citation">López Steinmetz et al. (2021)</span>. The study aimed to analyze differences in mental health in college students who were exposed to different spread-rates of COVID-19. They also wanted to analyze the between group differences in mental health indicators at four different quarantine sub-periods.</p>
+<p>To do this a cross-sectional design was used. The sample included 2687 Argentinean college students and the data was collected online during the Argentinean quarantine. They used a one-way between-groups ANOVA with Tukey’s post hoc test for the analysis.</p>
+<p>The results showed that the center and most populated area only differed in psychological well-being and negative alcohol related consequences, but not in the other indicators. For the sub-periods there were differences in psychological well-being, social functioning and coping, psychological distress and negative alcohol-related consequences. Negative alcohol-related consequences were the only MHS indicator improving over time. This worsened mental health suggests that quarantine and its extensions contribute to negative mental health impacts.</p>
+</div>
+<div id="the-code" class="section level3" number="6.3.2">
+<h3><span class="header-section-number">6.3.2</span> The code</h3>
+<p>The code, as well as the dataset, for the study were made available through OSF. The original can be found <a href="https://osf.io/zrx6t/">here</a> and the version with my adjustments can be found at the bottom of this page. The <a href="https://osf.io/bmwzq">dataset</a> and the <a href="https://osf.io/t523v">code</a> were added to the repository as well. After reading the code it appears to consist of a few parts.</p>
+<ol style="list-style-type: decimal">
+<li>Reference to the manuscript</li>
+<li>Loading the data and packages</li>
+<li>Methods in general
+<ul>
+<li>Sample size</li>
+<li>Distribution by sex, also noted in percentages</li>
+<li>Mean, median and stdev of the age of the students</li>
+<li>Distribution by province in percentages</li>
+</ul></li>
+<li>Methods for data analysis
+<ul>
+<li>Test of skewness per mental health indicator</li>
+<li>Test or Kurtosis per mental health indicator
+<ul>
+<li>with criteria and criteria reference</li>
+</ul></li>
+<li>Division based on region for first aim</li>
+<li>Division based on sub-periods for second aim</li>
+</ul></li>
+<li>Results for aim 1 (differences in MHS based on region)
+<ul>
+<li>Anova per mental health indicator
+<ul>
+<li>Summary</li>
+<li>Plot</li>
+<li>TukeyHSD test</li>
+<li>Plot of Tukey HSD</li>
+</ul></li>
+<li>Significant differences</li>
+<li>Mean and stdev for indicator per region</li>
+</ul></li>
+<li>Results for aim 2 (differences in MHS based on sub-period)
+<ul>
+<li>Anova per mental health indicator
+<ul>
+<li>Summary</li>
+<li>Plot</li>
+<li>TukeyHSD test</li>
+<li>Plot of Tukey HSD</li>
+</ul></li>
+<li>Significant differences</li>
+<li>Mean and stdev for indicator per sub-period</li>
+<li>Plot with means per sub-period and 95% confidence interval</li>
+</ul></li>
+</ol>
+<p>The code is used to make the data clear and tidy by first noting details like sample size, distributions in percentages and tests of skewness. Then it moves on to perform statistical tests for the two different aims of the study. It shows the significant differences and creates plots for the second aim.</p>
+<p>It was very easy to read the code, I would give it a 5/5 on readability. It was made especially easy by the clear headers and comments.</p>
+</div>
+<div id="excuting-the-code" class="section level3" number="6.3.3">
+<h3><span class="header-section-number">6.3.3</span> Excuting the code</h3>
+<p>To further inspect the code it will be executed on the dataset given by the study. To do this one word in the code was changed in order to link the dataset. The word “clipboard” under comment “Load the dataset” was changed into raw-data/reproducibility/dataset.xlsx, the location of the downloaded dataset. Errors will be noted and the code will be changed accordingly.</p>
+<div id="changes-and-errors-when-executing" class="section level4" number="6.3.3.1">
+<h4><span class="header-section-number">6.3.3.1</span> Changes and errors when executing</h4>
+<blockquote>
+<ol style="list-style-type: decimal">
+<li>The original code uses read.table and the clipboard to load the data. This can very quickly be done wrong. To fix this the readxl package was added and the excel file was added using table&lt;-read_excel(“data-raw/reproducibility/dataset.xlsx”).</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="2" style="list-style-type: decimal">
+<li>“Error in model.frame.default(formula = table$PSYCH.WELLBEING ~ table$REGIONS,:invalid type (NULL) for variable ’table$PSYCH.WELLBEING_. In the table the column”PSYCH WELLBEING” uses a space instead of a period. This also happens for other column names. To change this colnames(table) &lt;- str_replace_all(colnames(table), ” “,”.”) was added before testing skewness.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="3" style="list-style-type: decimal">
+<li>The rest of the code stayed the same. To make the knitting of this rmarkdown easier the code has been adjusted to only look at “PSYCH.WELLBEING” as an example. All other indicators would have been analysed in the exact same manner.</li>
+</ol>
+</blockquote>
+</div>
+</div>
+<div id="effort-scoring" class="section level3" number="6.3.4">
+<h3><span class="header-section-number">6.3.4</span> Effort scoring</h3>
+<p>Thanks to the great readability and consistency of the code it was very easy to reproduce. The only issue was adjusting the columnnames to use periods instead of spaces which was easily fixed. Therefore the score is a 5/5 on reproducibility.</p>
+<details>
+<summary>
+The code including my adjustments
+</summary>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="6_Reproducibility.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># R Code for the manuscript entitled:</span></span>
+<span id="cb43-2"><a href="6_Reproducibility.html#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="co"># &quot;Mental health impacts in Argentinean college students during COVID-19 quarantine&quot;.</span></span>
+<span id="cb43-3"><a href="6_Reproducibility.html#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="co"># López Steinmetz L.C., Leyes C.A., Dutto Florio M.A., Fong S.B., López Steinmetz R.L. &amp; Godoy J.C.</span></span>
+<span id="cb43-4"><a href="6_Reproducibility.html#cb43-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-5"><a href="6_Reproducibility.html#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="do">##########################################################################</span></span>
+<span id="cb43-6"><a href="6_Reproducibility.html#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="do">################## LOAD THE DATASET &amp; PACKAGES ###########################</span></span>
+<span id="cb43-7"><a href="6_Reproducibility.html#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="do">##########################################################################</span></span>
+<span id="cb43-8"><a href="6_Reproducibility.html#cb43-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-9"><a href="6_Reproducibility.html#cb43-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the dataset</span></span>
+<span id="cb43-10"><a href="6_Reproducibility.html#cb43-10" aria-hidden="true" tabindex="-1"></a>table<span class="ot">&lt;-</span><span class="fu">read_excel</span>(<span class="st">&quot;data-raw/reproducibility/dataset.xlsx&quot;</span>) <span class="co"># Changed by Mirthe Klaassen for this portfolio assignment</span></span>
+<span id="cb43-11"><a href="6_Reproducibility.html#cb43-11" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(table)</span></code></pre></div>
+<pre><code>##  SUB PERIODS IN PRE AND POST   REGIONS            PROVINCE        
+##  Length:2687                 Length:2687        Length:2687       
+##  Class :character            Class :character   Class :character  
+##  Mode  :character            Mode  :character   Mode  :character  
+##                                                                   
+##                                                                   
+##                                                                   
+##      SEX                 AGE        PSYCH WELLBEING SOC FUNC AND COPING
+##  Length:2687        Min.   :18.00   Min.   :0.000   Min.   :0.000      
+##  Class :character   1st Qu.:20.00   1st Qu.:2.000   1st Qu.:0.000      
+##  Mode  :character   Median :22.00   Median :3.000   Median :2.000      
+##                     Mean   :22.74   Mean   :3.086   Mean   :2.149      
+##                     3rd Qu.:24.00   3rd Qu.:5.000   3rd Qu.:4.000      
+##                     Max.   :39.00   Max.   :6.000   Max.   :6.000      
+##       K10            BDI         STAIR           YAACQ             ISO       
+##  Min.   :10.0   Min.   : 0   Min.   : 1.00   Min.   : 0.000   Min.   : 1.00  
+##  1st Qu.:19.0   1st Qu.:10   1st Qu.:21.00   1st Qu.: 0.000   1st Qu.:22.00  
+##  Median :25.0   Median :16   Median :29.00   Median : 3.000   Median :32.00  
+##  Mean   :25.5   Mean   :18   Mean   :29.24   Mean   : 3.699   Mean   :34.56  
+##  3rd Qu.:32.0   3rd Qu.:25   3rd Qu.:38.00   3rd Qu.: 6.000   3rd Qu.:46.00  
+##  Max.   :49.0   Max.   :57   Max.   :58.00   Max.   :21.000   Max.   :82.00</code></pre>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="6_Reproducibility.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the packages:</span></span>
+<span id="cb45-2"><a href="6_Reproducibility.html#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moments)</span>
+<span id="cb45-3"><a href="6_Reproducibility.html#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gplots)</span>
+<span id="cb45-4"><a href="6_Reproducibility.html#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl) <span class="do">## Added by Mirthe Klaassen for this portfolio assignment</span></span>
+<span id="cb45-5"><a href="6_Reproducibility.html#cb45-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-6"><a href="6_Reproducibility.html#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="do">##########################################################################</span></span>
+<span id="cb45-7"><a href="6_Reproducibility.html#cb45-7" aria-hidden="true" tabindex="-1"></a><span class="do">###################### METHODS ###########################################</span></span>
+<span id="cb45-8"><a href="6_Reproducibility.html#cb45-8" aria-hidden="true" tabindex="-1"></a><span class="do">##########################################################################</span></span>
+<span id="cb45-9"><a href="6_Reproducibility.html#cb45-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-10"><a href="6_Reproducibility.html#cb45-10" aria-hidden="true" tabindex="-1"></a><span class="do">###### SUB-TITLE: METHOD &gt; Sample and procedure</span></span>
+<span id="cb45-11"><a href="6_Reproducibility.html#cb45-11" aria-hidden="true" tabindex="-1"></a><span class="co"># SAMPLE N = 2687</span></span>
+<span id="cb45-12"><a href="6_Reproducibility.html#cb45-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-13"><a href="6_Reproducibility.html#cb45-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Distribution by sex:</span></span>
+<span id="cb45-14"><a href="6_Reproducibility.html#cb45-14" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(table<span class="sc">$</span>SEX)</span></code></pre></div>
+<pre><code>## 
+##   man other woman 
+##   473    22  2192</code></pre>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="6_Reproducibility.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Absolute frequencies: Women = 2192, Men = 473, Other = 22</span></span>
+<span id="cb47-2"><a href="6_Reproducibility.html#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(table<span class="sc">$</span>SEX))<span class="sc">*</span><span class="dv">100</span></span></code></pre></div>
+<pre><code>## 
+##       man     other     woman 
+## 17.603275  0.818757 81.577968</code></pre>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="6_Reproducibility.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Percentages: Women = 81.577968%, Men = 17.603275%, Other = 0.818757%</span></span>
+<span id="cb49-2"><a href="6_Reproducibility.html#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-3"><a href="6_Reproducibility.html#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Central tendency measures by age (total sample)</span></span>
+<span id="cb49-4"><a href="6_Reproducibility.html#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="co"># mean</span></span>
+<span id="cb49-5"><a href="6_Reproducibility.html#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(table<span class="sc">$</span>AGE)</span></code></pre></div>
+<pre><code>## [1] 22.74023</code></pre>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="6_Reproducibility.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mean age = 22.74023</span></span>
+<span id="cb51-2"><a href="6_Reproducibility.html#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="co"># standard deviation</span></span>
+<span id="cb51-3"><a href="6_Reproducibility.html#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(table<span class="sc">$</span>AGE)</span></code></pre></div>
+<pre><code>## [1] 3.635612</code></pre>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="6_Reproducibility.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sd age = 3.635612</span></span>
+<span id="cb53-2"><a href="6_Reproducibility.html#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="co"># median</span></span>
+<span id="cb53-3"><a href="6_Reproducibility.html#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(table<span class="sc">$</span>AGE)</span></code></pre></div>
+<pre><code>## [1] 22</code></pre>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="6_Reproducibility.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># median age = 22</span></span>
+<span id="cb55-2"><a href="6_Reproducibility.html#cb55-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-3"><a href="6_Reproducibility.html#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Distribution by provinces</span></span>
+<span id="cb55-4"><a href="6_Reproducibility.html#cb55-4" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(table<span class="sc">$</span>PROVINCE))<span class="sc">*</span><span class="dv">100</span></span></code></pre></div>
+<pre><code>## 
+##       CABA        CBA        JUJ      PCIAB        SAL      STACR      TDELF 
+## 11.9464086 39.0026051  6.6989207 31.9315221  7.1082992  0.9676219  2.3446223</code></pre>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="6_Reproducibility.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># JUJ (JUJUY) = 6.6989207%</span></span>
+<span id="cb57-2"><a href="6_Reproducibility.html#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="co"># SAL (SALTA) = 7.1082992%</span></span>
+<span id="cb57-3"><a href="6_Reproducibility.html#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="co"># CBA (CÓRDOBA) = 39.0026051%</span></span>
+<span id="cb57-4"><a href="6_Reproducibility.html#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="co"># STACR (SANTA CRUZ) = 0.9676219%</span></span>
+<span id="cb57-5"><a href="6_Reproducibility.html#cb57-5" aria-hidden="true" tabindex="-1"></a><span class="co"># TDELF (TIERRA DEL FUEGO) = 2.3446223%</span></span>
+<span id="cb57-6"><a href="6_Reproducibility.html#cb57-6" aria-hidden="true" tabindex="-1"></a><span class="co"># CABA (CIUDAD AUTÓNOMA DE BUENOS AIRES) = 11.9464086%</span></span>
+<span id="cb57-7"><a href="6_Reproducibility.html#cb57-7" aria-hidden="true" tabindex="-1"></a><span class="co"># PCIAB (PROVINCIA DE BUENOS AIRES) = 31.9315221%</span></span>
+<span id="cb57-8"><a href="6_Reproducibility.html#cb57-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-9"><a href="6_Reproducibility.html#cb57-9" aria-hidden="true" tabindex="-1"></a><span class="do">###### SUB-TITLE: METHOD &gt; Data analysis</span></span>
+<span id="cb57-10"><a href="6_Reproducibility.html#cb57-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-11"><a href="6_Reproducibility.html#cb57-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Adjustment of colnames to be the same as the names in the code == added by Mirthe Klaassen for this assignment</span></span>
+<span id="cb57-12"><a href="6_Reproducibility.html#cb57-12" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(table) <span class="ot">&lt;-</span> <span class="fu">str_replace_all</span>(<span class="fu">colnames</span>(table), <span class="st">&quot; &quot;</span>, <span class="st">&quot;.&quot;</span>)</span>
+<span id="cb57-13"><a href="6_Reproducibility.html#cb57-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-14"><a href="6_Reproducibility.html#cb57-14" aria-hidden="true" tabindex="-1"></a><span class="do">### To test Skewness and Kurtosis # Criteria: range of acceptable values or near to (-3 and +3; Brown, 2006).</span></span>
+<span id="cb57-15"><a href="6_Reproducibility.html#cb57-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Reference: Brown T.A. (2006). Confirmatory factor analysis for applied research. New York: Guilford Press.</span></span>
+<span id="cb57-16"><a href="6_Reproducibility.html#cb57-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-17"><a href="6_Reproducibility.html#cb57-17" aria-hidden="true" tabindex="-1"></a><span class="co"># PSYCH.WELLBEING</span></span>
+<span id="cb57-18"><a href="6_Reproducibility.html#cb57-18" aria-hidden="true" tabindex="-1"></a><span class="fu">skewness</span>(table<span class="sc">$</span>PSYCH.WELLBEING)</span></code></pre></div>
+<pre><code>## [1] -0.05214941</code></pre>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="6_Reproducibility.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># skewness PSYCH.WELLBEING = -0.05214941</span></span>
+<span id="cb59-2"><a href="6_Reproducibility.html#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="fu">kurtosis</span>(table<span class="sc">$</span>PSYCH.WELLBEING) </span></code></pre></div>
+<pre><code>## [1] 1.951112</code></pre>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="6_Reproducibility.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># kurtosis PSYCH.WELLBEING = 1.951112</span></span>
+<span id="cb61-2"><a href="6_Reproducibility.html#cb61-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-3"><a href="6_Reproducibility.html#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="do">### For analyses corresponding to the first aim, we divided the entire sample into four groups: </span></span>
+<span id="cb61-4"><a href="6_Reproducibility.html#cb61-4" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(table<span class="sc">$</span>REGIONS)</span></code></pre></div>
+<pre><code>## 
+##         CENTER MOST POPULATED          NORTH          SOUTH 
+##           1048           1179            371             89</code></pre>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="6_Reproducibility.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># NORTH = 371</span></span>
+<span id="cb63-2"><a href="6_Reproducibility.html#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="co"># CENTER = 1048</span></span>
+<span id="cb63-3"><a href="6_Reproducibility.html#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="co"># SOUTH = 89</span></span>
+<span id="cb63-4"><a href="6_Reproducibility.html#cb63-4" aria-hidden="true" tabindex="-1"></a><span class="co"># MOST POPULATED = 1179</span></span>
+<span id="cb63-5"><a href="6_Reproducibility.html#cb63-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-6"><a href="6_Reproducibility.html#cb63-6" aria-hidden="true" tabindex="-1"></a><span class="do">### For analyses corresponding to the second aim, we divided the entire sample into four groups: </span></span>
+<span id="cb63-7"><a href="6_Reproducibility.html#cb63-7" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(table<span class="sc">$</span>SUB.PERIODS.IN.PRE.AND.POST)</span></code></pre></div>
+<pre><code>## 
+##         1. ONE WEEK PRE         2. TWO WEEK PRE        3. ONE WEEK POST 
+##                    1508                     525                     364 
+## 4. REMAINING WEEKS POST 
+##                     290</code></pre>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="6_Reproducibility.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># first week pre-quarantine extension (ONE WEEK PRE) = 1508</span></span>
+<span id="cb65-2"><a href="6_Reproducibility.html#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="co"># second week pre-quarantine extension (TWO WEEK PRE) = 525</span></span>
+<span id="cb65-3"><a href="6_Reproducibility.html#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="co"># first week post-quarantine extension (ONE WEEK POST) = 364</span></span>
+<span id="cb65-4"><a href="6_Reproducibility.html#cb65-4" aria-hidden="true" tabindex="-1"></a><span class="co"># remaining weeks post-quarantine extension (REMAINING WEEKS POST) = 290</span></span>
+<span id="cb65-5"><a href="6_Reproducibility.html#cb65-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-6"><a href="6_Reproducibility.html#cb65-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-7"><a href="6_Reproducibility.html#cb65-7" aria-hidden="true" tabindex="-1"></a><span class="do">##########################################################################</span></span>
+<span id="cb65-8"><a href="6_Reproducibility.html#cb65-8" aria-hidden="true" tabindex="-1"></a><span class="do">###################### RESULTS ###########################################</span></span>
+<span id="cb65-9"><a href="6_Reproducibility.html#cb65-9" aria-hidden="true" tabindex="-1"></a><span class="do">##########################################################################</span></span>
+<span id="cb65-10"><a href="6_Reproducibility.html#cb65-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-11"><a href="6_Reproducibility.html#cb65-11" aria-hidden="true" tabindex="-1"></a><span class="do">##########################################################################</span></span>
+<span id="cb65-12"><a href="6_Reproducibility.html#cb65-12" aria-hidden="true" tabindex="-1"></a><span class="do">####################### AIM 1 ############################################</span></span>
+<span id="cb65-13"><a href="6_Reproducibility.html#cb65-13" aria-hidden="true" tabindex="-1"></a><span class="do">##########################################################################</span></span>
+<span id="cb65-14"><a href="6_Reproducibility.html#cb65-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-15"><a href="6_Reproducibility.html#cb65-15" aria-hidden="true" tabindex="-1"></a><span class="do">### Differences in mental health aspects (both general and specific) by four regions</span></span>
+<span id="cb65-16"><a href="6_Reproducibility.html#cb65-16" aria-hidden="true" tabindex="-1"></a>table<span class="sc">$</span>PSYCH.WELLBEING</span></code></pre></div>
+<pre><code>##    [1] 6 2 3 4 0 4 0 4 2 2 2 3 0 4 4 5 3 6 3 5 2 6 5 5 5 2 3 6 6 3 4 4 2 1 4 0 2
+##   [38] 5 0 1 4 5 4 1 6 3 5 5 0 5 5 6 3 3 5 4 3 4 0 6 4 1 5 2 2 1 5 2 3 4 4 4 1 2
+##   [75] 4 1 5 4 5 6 1 3 2 4 2 2 2 6 5 2 2 2 4 5 4 4 4 5 6 3 3 2 2 2 4 5 1 1 5 0 0
+##  [112] 5 2 2 5 3 3 1 0 4 4 2 6 1 6 4 1 2 3 4 4 4 6 1 2 0 1 3 6 2 6 6 5 2 6 4 4 2
+##  [149] 3 3 2 4 3 5 1 2 0 4 3 2 1 3 6 1 5 0 2 4 2 1 1 3 1 1 5 4 4 1 1 0 6 3 1 5 5
+##  [186] 0 1 3 3 0 3 6 1 0 1 3 1 3 4 2 4 2 3 0 3 4 5 1 4 2 3 5 2 2 6 5 1 1 1 1 5 1
+##  [223] 0 0 1 0 0 3 6 6 1 4 3 3 2 0 3 2 1 6 6 2 5 0 3 5 5 2 2 4 4 1 6 0 1 6 2 1 5
+##  [260] 1 0 0 4 5 2 4 5 6 6 5 3 5 1 1 5 5 5 4 1 1 1 2 3 6 5 1 0 6 3 1 1 1 3 2 4 6
+##  [297] 3 3 1 2 4 5 3 2 4 4 4 6 3 2 5 3 3 1 5 6 6 5 5 2 2 2 2 0 4 4 4 2 2 5 4 0 4
+##  [334] 4 0 1 0 5 1 3 0 0 4 6 2 4 0 1 4 3 4 2 1 3 5 4 2 6 0 0 4 1 5 6 3 0 2 5 2 6
+##  [371] 5 2 3 6 3 4 3 5 2 5 2 1 3 4 5 5 1 4 0 0 0 0 3 2 3 6 2 3 5 0 3 6 1 2 6 2 5
+##  [408] 4 2 4 1 4 6 2 3 4 2 1 4 2 2 2 6 3 3 0 4 1 0 0 0 4 5 2 2 1 5 0 4 3 4 1 4 3
+##  [445] 5 5 3 1 0 2 2 1 3 2 1 5 1 3 0 6 3 4 4 3 6 2 2 3 6 0 4 0 2 1 1 5 4 5 3 0 1
+##  [482] 3 6 4 1 4 4 2 6 6 5 3 4 2 0 6 0 0 5 0 0 5 0 3 1 3 2 0 3 2 1 4 1 2 4 3 2 6
+##  [519] 4 4 0 2 4 3 4 2 4 1 3 3 2 4 4 3 0 5 2 0 1 4 0 3 0 2 2 4 3 4 5 4 6 2 2 4 5
+##  [556] 2 2 2 6 2 2 4 3 6 6 4 6 5 1 1 4 3 0 1 4 4 1 2 4 0 4 1 2 6 0 2 1 3 1 4 0 1
+##  [593] 3 3 3 4 6 4 0 3 5 3 2 3 1 3 0 3 0 2 0 3 4 2 2 2 4 2 6 6 3 5 6 1 3 1 2 6 4
+##  [630] 0 3 0 2 3 5 2 4 0 5 6 4 3 4 5 4 2 2 1 0 1 6 1 4 2 4 2 5 4 3 6 3 2 3 1 5 2
+##  [667] 3 1 2 0 6 0 4 0 3 4 4 0 3 2 0 2 4 3 2 3 1 2 0 1 3 0 0 5 0 2 4 2 6 3 3 0 5
+##  [704] 0 5 3 2 3 4 1 2 1 5 4 5 4 5 2 4 5 5 6 4 5 3 0 5 4 4 4 6 6 6 3 6 3 4 3 3 6
+##  [741] 5 6 5 4 5 5 2 5 5 4 2 5 6 4 3 2 1 3 5 0 5 5 6 2 1 4 3 0 3 1 6 5 4 2 6 1 3
+##  [778] 3 1 4 1 4 3 4 6 2 2 5 5 4 3 0 4 3 2 3 2 0 5 2 0 4 1 0 2 1 6 2 1 5 0 3 5 4
+##  [815] 0 0 4 4 1 1 1 5 5 3 2 0 6 2 4 3 1 4 2 2 6 5 0 1 1 5 3 2 2 3 4 1 4 4 4 3 2
+##  [852] 4 2 2 5 6 6 6 3 0 5 4 4 1 5 0 5 6 1 2 3 2 3 6 2 5 1 2 3 4 2 5 4 2 4 3 1 0
+##  [889] 0 1 5 3 3 6 3 0 2 3 0 5 5 2 4 6 4 3 6 0 2 0 6 5 2 6 1 4 4 3 1 5 2 0 4 0 4
+##  [926] 4 1 4 2 4 5 0 3 3 4 3 6 4 4 3 1 3 6 5 1 0 3 5 1 2 2 3 1 1 1 1 3 4 5 0 1 0
+##  [963] 1 5 4 4 1 3 4 2 5 2 3 3 2 1 6 6 4 4 2 5 3 3 4 6 2 3 3 0 2 6 4 5 6 3 6 6 1
+## [1000] 5 2 4 1 1 5 1 3 2 5 3 1 0 5 1 5 3 5 4 2 1 2 2 6 0 3 0 4 6 4 3 0 3 3 3 1 1
+## [1037] 4 3 3 4 0 4 4 2 5 5 0 4 4 0 2 0 6 1 3 3 6 0 0 3 2 3 6 3 3 6 1 4 3 2 5 4 4
+## [1074] 1 5 2 3 2 2 5 5 5 4 5 6 3 3 4 3 6 2 6 5 5 1 0 3 3 1 6 2 4 5 5 3 4 4 0 3 0
+## [1111] 0 3 3 4 3 1 1 2 1 4 1 4 0 2 1 3 2 2 6 1 3 2 1 3 2 1 2 1 2 0 3 4 1 6 1 3 2
+## [1148] 5 2 4 1 3 1 0 0 2 1 3 4 0 0 4 1 5 4 3 2 4 5 4 5 5 3 3 6 1 0 4 2 3 4 2 2 0
+## [1185] 5 4 6 1 2 6 1 0 5 3 5 3 4 3 2 1 5 5 5 2 5 3 1 5 6 6 4 3 3 1 3 3 6 6 3 4 4
+## [1222] 2 3 0 4 2 0 4 4 1 2 2 2 3 1 0 1 6 5 1 5 3 6 6 1 4 1 6 4 1 1 4 2 2 3 5 0 1
+## [1259] 5 4 6 2 0 0 3 1 3 4 6 0 4 2 3 0 3 2 6 6 0 2 0 5 0 2 4 4 5 2 4 1 3 4 5 4 3
+## [1296] 6 3 4 0 3 4 4 2 0 4 2 5 3 5 1 0 6 0 0 2 6 2 0 1 1 3 1 0 4 5 3 1 2 4 3 2 1
+## [1333] 0 4 5 1 2 6 3 3 3 4 4 3 0 4 6 2 2 3 6 6 1 4 1 5 3 6 4 2 3 6 3 6 4 2 1 6 1
+## [1370] 3 2 1 1 4 3 1 4 4 5 3 6 0 5 1 4 5 0 0 1 3 2 0 1 2 2 3 5 3 4 3 6 2 4 0 0 0
+## [1407] 3 3 1 2 3 3 2 2 5 3 2 1 0 4 5 3 6 2 3 2 0 0 0 0 6 5 2 2 5 4 2 4 5 0 5 5 1
+## [1444] 2 1 2 6 2 4 0 6 0 3 4 3 6 0 2 3 2 4 1 4 0 2 5 1 4 4 2 2 2 4 3 0 6 3 0 3 5
+## [1481] 1 5 3 2 2 6 0 2 4 6 2 3 6 4 3 3 2 3 1 3 4 6 6 5 3 1 6 5 3 6 3 6 2 6 2 0 0
+## [1518] 4 2 1 2 3 1 0 5 2 2 3 3 6 4 1 5 3 2 3 2 5 1 6 3 1 0 3 6 2 2 4 6 6 4 0 1 5
+## [1555] 2 3 5 3 5 6 5 5 3 1 4 5 3 6 5 6 5 1 0 1 4 5 5 4 6 4 2 2 2 5 1 6 5 0 4 2 4
+## [1592] 5 4 3 3 4 0 3 2 0 3 1 4 0 6 4 2 5 2 1 3 2 2 3 1 4 1 1 5 6 6 5 5 3 6 1 0 3
+## [1629] 3 4 4 2 0 6 3 0 4 6 2 6 3 5 2 3 6 6 0 2 3 2 1 6 2 1 4 2 2 4 2 5 5 5 2 4 4
+## [1666] 5 1 0 2 3 5 4 2 6 2 4 1 3 2 2 4 1 3 5 3 3 4 5 6 3 6 4 1 1 4 6 3 2 5 3 3 0
+## [1703] 3 3 3 6 1 4 4 5 6 0 3 5 5 5 4 6 3 1 5 5 2 2 6 6 3 2 2 5 2 6 2 3 5 3 1 6 2
+## [1740] 6 5 5 6 1 6 1 2 3 1 3 4 5 4 1 4 3 2 5 5 3 3 1 1 2 3 5 6 2 4 4 4 1 1 6 2 4
+## [1777] 3 3 4 4 2 3 3 1 2 5 4 5 5 2 4 2 5 1 6 1 5 1 6 2 3 0 2 3 3 0 5 6 1 1 3 3 3
+## [1814] 3 4 4 2 5 3 4 4 2 5 2 0 2 6 0 5 5 6 1 4 5 0 5 5 5 5 1 3 1 2 4 5 4 2 6 3 4
+## [1851] 1 3 3 0 0 5 4 6 2 6 4 5 3 4 5 1 6 5 3 1 3 3 4 5 1 2 4 3 3 6 2 2 0 0 2 2 6
+## [1888] 3 6 3 6 4 0 4 5 3 3 1 0 5 4 2 4 4 2 4 4 0 4 5 4 0 2 1 2 1 1 2 0 3 0 6 2 0
+## [1925] 3 2 5 5 3 5 1 1 6 3 5 4 5 6 3 5 5 5 1 0 3 3 4 6 3 5 4 3 4 0 6 0 2 1 3 3 3
+## [1962] 3 4 2 0 4 4 6 5 1 3 0 2 3 5 3 2 3 3 1 4 5 3 3 2 3 6 4 2 1 6 0 4 2 0 4 5 2
+## [1999] 4 2 2 3 2 4 0 4 1 1 3 4 3 4 3 3 0 4 0 5 5 4 1 1 3 0 4 2 1 5 0 1 1 4 4 5 5
+## [2036] 4 3 1 5 3 1 6 4 5 4 0 5 3 2 6 2 6 6 5 1 1 0 3 2 2 4 2 0 3 3 3 5 3 1 5 6 3
+## [2073] 1 2 3 5 4 0 0 6 5 3 2 6 6 3 2 4 6 1 1 5 2 6 6 5 4 4 5 0 0 4 5 1 3 2 4 3 3
+## [2110] 4 6 6 3 0 2 4 6 0 1 0 5 1 5 0 3 3 6 5 4 6 5 5 3 5 2 1 6 0 3 0 4 6 4 2 2 2
+## [2147] 2 1 2 5 3 3 6 5 3 4 5 1 5 5 0 0 5 2 6 6 1 3 2 6 5 5 1 3 6 3 4 1 1 2 6 5 3
+## [2184] 2 5 4 5 4 4 1 5 5 6 6 6 5 2 2 3 3 6 2 1 1 5 3 5 0 3 6 4 3 0 5 5 1 5 6 1 6
+## [2221] 2 2 2 2 2 5 3 3 1 2 1 0 1 3 2 3 4 5 4 0 3 5 4 5 6 3 6 5 2 3 6 2 5 6 2 5 2
+## [2258] 4 5 6 5 3 2 0 0 6 2 1 1 5 6 4 4 6 3 1 5 6 2 2 5 4 3 2 6 0 2 4 1 0 4 6 3 5
+## [2295] 4 2 1 3 3 0 3 5 6 6 5 2 4 6 4 5 6 6 5 2 4 4 4 4 4 3 1 5 6 3 4 3 6 1 6 4 5
+## [2332] 1 3 5 3 2 3 2 3 3 3 5 0 4 4 4 6 6 5 3 0 4 2 1 5 4 5 3 5 4 5 6 0 4 2 5 2 5
+## [2369] 3 5 0 3 3 2 3 2 2 2 3 0 3 5 6 5 5 6 2 4 4 6 2 6 6 1 3 1 3 4 3 2 3 2 5 4 4
+## [2406] 6 4 5 2 3 6 1 2 2 5 1 1 6 3 4 2 5 5 4 4 2 3 0 5 2 5 1 1 1 2 6 1 1 4 5 3 3
+## [2443] 1 0 4 6 3 5 1 2 6 2 1 1 4 4 5 3 0 5 5 1 4 2 5 2 0 1 4 2 4 5 2 4 1 5 5 2 1
+## [2480] 6 1 6 1 3 1 2 4 5 0 3 4 5 3 5 1 4 0 0 6 4 5 6 0 4 4 2 5 4 2 4 6 3 2 2 2 0
+## [2517] 4 2 6 3 3 6 6 3 4 2 3 5 3 4 5 1 0 5 0 2 5 3 4 5 0 5 5 1 4 6 6 6 5 4 5 2 1
+## [2554] 5 1 0 4 5 4 4 6 3 3 6 2 4 5 2 6 2 2 6 2 4 3 6 1 3 3 4 6 2 5 5 6 0 2 2 5 3
+## [2591] 3 6 1 2 6 3 2 3 0 2 3 1 4 3 3 2 4 4 2 1 5 5 3 3 3 2 5 2 0 4 1 3 3 3 6 0 1
+## [2628] 1 4 1 2 1 2 6 6 2 2 3 5 2 2 1 4 2 5 4 4 6 4 4 0 4 5 4 5 5 5 6 5 5 5 3 5 3
+## [2665] 6 5 2 3 3 4 5 4 5 5 5 4 5 2 5 3 3 5 5 4 6 4 0</code></pre>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="6_Reproducibility.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># PSYCHOLOGICAL WELL-BEING/DISCOMFORT (OF GENERAL HEALTH)</span></span>
+<span id="cb67-2"><a href="6_Reproducibility.html#cb67-2" aria-hidden="true" tabindex="-1"></a>anovaregpsychwellbeing <span class="ot">&lt;-</span> <span class="fu">aov</span>(table<span class="sc">$</span>PSYCH.WELLBEING<span class="sc">~</span>table<span class="sc">$</span>REGIONS)</span>
+<span id="cb67-3"><a href="6_Reproducibility.html#cb67-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(anovaregpsychwellbeing)</span></code></pre></div>
+<pre><code>##                 Df Sum Sq Mean Sq F value  Pr(&gt;F)   
+## table$REGIONS    3     46  15.340   4.569 0.00338 **
+## Residuals     2683   9008   3.358                   
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="6_Reproducibility.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(anovaregpsychwellbeing)</span></code></pre></div>
+<p><img src="bookdown_site_files/figure-html/code%20from%20article-1.png" width="672" /><img src="bookdown_site_files/figure-html/code%20from%20article-2.png" width="672" /><img src="bookdown_site_files/figure-html/code%20from%20article-3.png" width="672" /><img src="bookdown_site_files/figure-html/code%20from%20article-4.png" width="672" /></p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="6_Reproducibility.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">TukeyHSD</span>(anovaregpsychwellbeing)</span></code></pre></div>
+<pre><code>##   Tukey multiple comparisons of means
+##     95% family-wise confidence level
+## 
+## Fit: aov(formula = table$PSYCH.WELLBEING ~ table$REGIONS)
+## 
+## $`table$REGIONS`
+##                              diff         lwr       upr     p adj
+## MOST POPULATED-CENTER  0.28148855  0.08151381 0.4814633 0.0017158
+## NORTH-CENTER           0.22902049 -0.05554103 0.5135820 0.1636105
+## SOUTH-CENTER           0.17650527 -0.34355917 0.6965697 0.8191275
+## NORTH-MOST POPULATED  -0.05246806 -0.33286583 0.2279297 0.9633105
+## SOUTH-MOST POPULATED  -0.10498327 -0.62278119 0.4128146 0.9540137
+## SOUTH-NORTH           -0.05251522 -0.60848288 0.5034524 0.9949688</code></pre>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="6_Reproducibility.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">TukeyHSD</span>(anovaregpsychwellbeing))</span></code></pre></div>
+<p><img src="bookdown_site_files/figure-html/code%20from%20article-5.png" width="672" /></p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="6_Reproducibility.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># significant differences</span></span>
+<span id="cb73-2"><a href="6_Reproducibility.html#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="co"># MOST POPULATED-CENTER p adj 0.0017158 #### MOST POPULATED mean = 3.206107, CENTER mean = 2.924618</span></span>
+<span id="cb73-3"><a href="6_Reproducibility.html#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(table<span class="sc">$</span>PSYCH.WELLBEING,<span class="fu">factor</span>(table<span class="sc">$</span>REGIONS),mean)</span></code></pre></div>
+<pre><code>##         CENTER MOST POPULATED          NORTH          SOUTH 
+##       2.924618       3.206107       3.153639       3.101124</code></pre>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="6_Reproducibility.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(table<span class="sc">$</span>PSYCH.WELLBEING,<span class="fu">factor</span>(table<span class="sc">$</span>REGIONS),sd)</span></code></pre></div>
+<pre><code>##         CENTER MOST POPULATED          NORTH          SOUTH 
+##       1.836446       1.834613       1.838215       1.725774</code></pre>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="6_Reproducibility.html#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="do">##########################################################################</span></span>
+<span id="cb77-2"><a href="6_Reproducibility.html#cb77-2" aria-hidden="true" tabindex="-1"></a><span class="do">####################### AIM 2 ############################################</span></span>
+<span id="cb77-3"><a href="6_Reproducibility.html#cb77-3" aria-hidden="true" tabindex="-1"></a><span class="do">##########################################################################</span></span>
+<span id="cb77-4"><a href="6_Reproducibility.html#cb77-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-5"><a href="6_Reproducibility.html#cb77-5" aria-hidden="true" tabindex="-1"></a><span class="do">### Differences in mental health aspects (both general and specific) by four sub-periods of quarantine</span></span>
+<span id="cb77-6"><a href="6_Reproducibility.html#cb77-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-7"><a href="6_Reproducibility.html#cb77-7" aria-hidden="true" tabindex="-1"></a><span class="co"># PSYCHOLOGICAL WELL-BEING (OF GENERAL HEALTH)</span></span>
+<span id="cb77-8"><a href="6_Reproducibility.html#cb77-8" aria-hidden="true" tabindex="-1"></a>anovatemppsychwellbeing <span class="ot">&lt;-</span> <span class="fu">aov</span>(table<span class="sc">$</span>PSYCH.WELLBEING<span class="sc">~</span>table<span class="sc">$</span>SUB.PERIODS.IN.PRE.AND.POST)</span>
+<span id="cb77-9"><a href="6_Reproducibility.html#cb77-9" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(anovatemppsychwellbeing)</span></code></pre></div>
+<pre><code>##                                     Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+## table$SUB.PERIODS.IN.PRE.AND.POST    3     83  27.791   8.312 1.68e-05 ***
+## Residuals                         2683   8971   3.344                     
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="6_Reproducibility.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(anovatemppsychwellbeing)</span></code></pre></div>
+<p><img src="bookdown_site_files/figure-html/code%20from%20article-6.png" width="672" /><img src="bookdown_site_files/figure-html/code%20from%20article-7.png" width="672" /><img src="bookdown_site_files/figure-html/code%20from%20article-8.png" width="672" /><img src="bookdown_site_files/figure-html/code%20from%20article-9.png" width="672" /></p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="6_Reproducibility.html#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">TukeyHSD</span>(anovatemppsychwellbeing)</span></code></pre></div>
+<pre><code>##   Tukey multiple comparisons of means
+##     95% family-wise confidence level
+## 
+## Fit: aov(formula = table$PSYCH.WELLBEING ~ table$SUB.PERIODS.IN.PRE.AND.POST)
+## 
+## $`table$SUB.PERIODS.IN.PRE.AND.POST`
+##                                                diff         lwr       upr
+## 2. TWO WEEK PRE-1. ONE WEEK PRE          -0.1360136 -0.37421192 0.1021846
+## 3. ONE WEEK POST-1. ONE WEEK PRE          0.2031072 -0.07139874 0.4776132
+## 4. REMAINING WEEKS POST-1. ONE WEEK PRE   0.4771883  0.17578682 0.7785898
+## 3. ONE WEEK POST-2. TWO WEEK PRE          0.3391209  0.01851552 0.6597262
+## 4. REMAINING WEEKS POST-2. TWO WEEK PRE   0.6132020  0.26928754 0.9571164
+## 4. REMAINING WEEKS POST-3. ONE WEEK POST  0.2740811 -0.09590843 0.6440706
+##                                              p adj
+## 2. TWO WEEK PRE-1. ONE WEEK PRE          0.4571940
+## 3. ONE WEEK POST-1. ONE WEEK PRE         0.2273681
+## 4. REMAINING WEEKS POST-1. ONE WEEK PRE  0.0002823
+## 3. ONE WEEK POST-2. TWO WEEK PRE         0.0333276
+## 4. REMAINING WEEKS POST-2. TWO WEEK PRE  0.0000283
+## 4. REMAINING WEEKS POST-3. ONE WEEK POST 0.2264068</code></pre>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="6_Reproducibility.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">TukeyHSD</span>(anovatemppsychwellbeing))</span></code></pre></div>
+<p><img src="bookdown_site_files/figure-html/code%20from%20article-10.png" width="672" /></p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="6_Reproducibility.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="co"># significant differences</span></span>
+<span id="cb83-2"><a href="6_Reproducibility.html#cb83-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. REMAINING WEEKS POST-1. ONE WEEK PRE p adj 0.0002823</span></span>
+<span id="cb83-3"><a href="6_Reproducibility.html#cb83-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. ONE WEEK POST-2. TWO WEEK PRE p adj 0.0333276</span></span>
+<span id="cb83-4"><a href="6_Reproducibility.html#cb83-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. REMAINING WEEKS POST-2. TWO WEEK PRE p adj 0.0000283</span></span>
+<span id="cb83-5"><a href="6_Reproducibility.html#cb83-5" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(table<span class="sc">$</span>PSYCH.WELLBEING,<span class="fu">factor</span>(table<span class="sc">$</span>SUB.PERIODS.IN.PRE.AND.POST),mean)</span></code></pre></div>
+<pre><code>##         1. ONE WEEK PRE         2. TWO WEEK PRE        3. ONE WEEK POST 
+##                3.033156                2.897143                3.236264 
+## 4. REMAINING WEEKS POST 
+##                3.510345</code></pre>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="6_Reproducibility.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(table<span class="sc">$</span>PSYCH.WELLBEING,<span class="fu">factor</span>(table<span class="sc">$</span>SUB.PERIODS.IN.PRE.AND.POST),sd)</span></code></pre></div>
+<pre><code>##         1. ONE WEEK PRE         2. TWO WEEK PRE        3. ONE WEEK POST 
+##                1.823743                1.819344                1.886359 
+## 4. REMAINING WEEKS POST 
+##                1.796256</code></pre>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="6_Reproducibility.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Figure S1:</span></span>
+<span id="cb87-2"><a href="6_Reproducibility.html#cb87-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotmeans</span>(table<span class="sc">$</span>PSYCH.WELLBEING<span class="sc">~</span>table<span class="sc">$</span>SUB.PERIODS.IN.PRE.AND.POST, <span class="at">main=</span><span class="st">&quot;Fig. S1: Psychological well-being/discomfort by quarantine sub-periods. Mean plot with 95% Confidence Interval&quot;</span>, <span class="at">cex.main =</span> <span class="fl">0.8</span>, <span class="at">ylab =</span> <span class="st">&quot;Psychological well-being/discomfort&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Quarantine&#39;s sub periods&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown_site_files/figure-html/code%20from%20article-11.png" width="672" /></p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="6_Reproducibility.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="do">##########################################################################</span></span>
+<span id="cb88-2"><a href="6_Reproducibility.html#cb88-2" aria-hidden="true" tabindex="-1"></a><span class="do">############################# THE </span><span class="re">END</span><span class="do"> ####################################</span></span>
+<span id="cb88-3"><a href="6_Reproducibility.html#cb88-3" aria-hidden="true" tabindex="-1"></a><span class="do">##########################################################################</span></span></code></pre></div>
+</details>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="5_package_portrobbo.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="7_parameters.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/mirthhe/mirthhe.github.io/edit/master/6_Reproducibility.Rmd",
+"text": "Share your feedback"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown_site.pdf", "bookdown_site.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+</body>
+
+</html>

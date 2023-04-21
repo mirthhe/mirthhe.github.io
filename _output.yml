@@ -1,0 +1,21 @@
+bookdown::gitbook:
+  css: trial.css
+  highlight: tango
+  number_sections: true
+  anchor_sections: false
+  split_bib: true
+  split_by: rmd
+  config:
+      toc:
+          collapse: section
+          scroll_highlight: yes
+          before: <li class="toc-logo"><h3 class=".paddingtitel ">Portfolio of Mirthe Klaassen</h3></li>
+      edit:
+        link: https://github.com/mirthhe/mirthhe.github.io/edit/master/%s
+        text: "Share your feedback"
+      download: ["pdf", "epub"]
+      sharing:
+        github: yes
+        facebook: no
+        twitter: no
+        all: no
