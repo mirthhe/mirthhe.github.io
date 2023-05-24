@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Curriculum Vitae | bookdown_site.knit</title>
   <meta name="description" content="" />
-  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Curriculum Vitae | bookdown_site.knit" />
   <meta property="og:type" content="book" />
@@ -47,9 +47,17 @@
 
 
 
-<script src="libs/htmlwidgets-1.6.1/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
 <script src="libs/r3dmol-1.6.2/3Dmol-nojquery-min.js"></script>
 <script src="libs/r3dmol-binding-0.1.2/r3dmol.js"></script>
+<script src="libs/plotly-binding-4.10.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -117,6 +125,10 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </style>
 
 <style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
 div.csl-entry {
@@ -166,18 +178,12 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="1" data-path="1_CurrentProjects.html"><a href="1_CurrentProjects.html"><i class="fa fa-check"></i><b>1</b> Current work</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="1_CurrentProjects.html"><a href="1_CurrentProjects.html#technology-to-reduce-animaltesting"><i class="fa fa-check"></i><b>1.1</b> Technology to reduce animaltesting</a></li>
-<li class="chapter" data-level="1.2" data-path="1_CurrentProjects.html"><a href="1_CurrentProjects.html#ontox"><i class="fa fa-check"></i><b>1.2</b> ONTOX</a></li>
-<li class="chapter" data-level="1.3" data-path="1_CurrentProjects.html"><a href="1_CurrentProjects.html#progress"><i class="fa fa-check"></i><b>1.3</b> Progress</a></li>
+<li class="chapter" data-level="" data-path="1_CurrentProjects.html"><a href="1_CurrentProjects.html#progress"><i class="fa fa-check"></i>Progress</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="2_SBtab.html"><a href="2_SBtab.html"><i class="fa fa-check"></i><b>2</b> SBtab merging</a></li>
+<li class="chapter" data-level="2" data-path="2_SBtab.html"><a href="2_SBtab.html"><i class="fa fa-check"></i><b>2</b> SBtabr package</a></li>
 <li class="chapter" data-level="3" data-path="3_3D_visualizations.html"><a href="3_3D_visualizations.html"><i class="fa fa-check"></i><b>3</b> Protein structures in R</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="3_3D_visualizations.html"><a href="3_3D_visualizations.html#protein-structure-data"><i class="fa fa-check"></i><b>3.1</b> Protein structure data</a>
-<ul>
-<li class="chapter" data-level="3.1.1" data-path="3_3D_visualizations.html"><a href="3_3D_visualizations.html#protein-data-bank-archive"><i class="fa fa-check"></i><b>3.1.1</b> Protein Data Bank Archive</a></li>
-<li class="chapter" data-level="3.1.2" data-path="3_3D_visualizations.html"><a href="3_3D_visualizations.html#pdbxmmcif-format"><i class="fa fa-check"></i><b>3.1.2</b> PDBx/MMcif format</a></li>
-</ul></li>
+<li class="chapter" data-level="3.1" data-path="3_3D_visualizations.html"><a href="3_3D_visualizations.html#protein-structure-data"><i class="fa fa-check"></i><b>3.1</b> Protein structure data</a></li>
 <li class="chapter" data-level="3.2" data-path="3_3D_visualizations.html"><a href="3_3D_visualizations.html#visualization-methods"><i class="fa fa-check"></i><b>3.2</b> Visualization methods</a></li>
 <li class="chapter" data-level="3.3" data-path="3_3D_visualizations.html"><a href="3_3D_visualizations.html#applying-in-r"><i class="fa fa-check"></i><b>3.3</b> Applying in R</a>
 <ul>
@@ -242,7 +248,7 @@ div.csl-indent {
 <li class="chapter" data-level="7.2" data-path="7_parameters.html"><a href="7_parameters.html#creating-the-graphs"><i class="fa fa-check"></i><b>7.2</b> Creating the graphs</a></li>
 <li class="chapter" data-level="7.3" data-path="7_parameters.html"><a href="7_parameters.html#checking-parameters"><i class="fa fa-check"></i><b>7.3</b> Checking parameters</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="8_References.html"><a href="8_References.html"><i class="fa fa-check"></i><b>8</b> References</a></li>
+<li class="chapter" data-level="" data-path="8_References.html"><a href="8_References.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
 
       </nav>
@@ -271,12 +277,13 @@ div.csl-indent {
 <p><i class="fa fa-home"></i> Utrecht, The Netherlands<br>
 <i class="fa fa-envelope"></i> <a href="mailto:mirtheklaassen@outlook.com" class="email">mirtheklaassen@outlook.com</a><br>
 <i class="fa fa-github"></i> <a href="https://github.com/mirthhe">Github</a><br>
-<i class="fa fa-briefcase"></i> <a href="https://www.linkedin.com/in/mirtheklaassen020597/">Linkedin</a></p>
+<i class="fa fa-briefcase"></i> <a href="https://www.linkedin.com/in/mirtheklaassen020597/">Linkedin</a><br>
+<i class="fa fa-medium"></i> <a href="https://medium.com/@mirthhe">Medium</a></p>
 <hr />
 </div>
 <div id="profile" class="section level2 unnumbered">
 <h2>Profile</h2>
-<p>I’m goal-oriented, curious and analytical with a versatile background. I would like to combine my skills with my passion for data science, structural biology and biocomplexity within the field of bioinformatics. This would let me contribute to the rapid development of biomedical research and the reduction of need for animaltesting.</p>
+<p>I am goal-oriented, curious, and analytical with a versatile background. I am eager to combine my skills with my passion for data science, structural biology, and biocomplexity in the dynamic field of bioinformatics. By doing so, I aim to make valuable contributions to the rapid advancement of biomedical research and promote the reduction of animal testing.</p>
 <hr />
 </div>
 <div id="job-experience" class="section level2 unnumbered">
@@ -404,7 +411,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/mirthhe/mirthhe.github.io/edit/master/index.Rmd",
+"link": "https://github.com/mirthhe/mirthhe.github.io/edit/main/index.Rmd",
 "text": "Share your feedback"
 },
 "history": {

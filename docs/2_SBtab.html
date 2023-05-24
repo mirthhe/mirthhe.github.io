@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 SBtab merging | bookdown_site.knit</title>
+  <title>Chapter 2 SBtabr package | bookdown_site.knit</title>
   <meta name="description" content="" />
-  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 SBtab merging | bookdown_site.knit" />
+  <meta property="og:title" content="Chapter 2 SBtabr package | bookdown_site.knit" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 SBtab merging | bookdown_site.knit" />
+  <meta name="twitter:title" content="Chapter 2 SBtabr package | bookdown_site.knit" />
   
   
   
@@ -47,9 +47,17 @@
 
 
 
-<script src="libs/htmlwidgets-1.6.1/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
 <script src="libs/r3dmol-1.6.2/3Dmol-nojquery-min.js"></script>
 <script src="libs/r3dmol-binding-0.1.2/r3dmol.js"></script>
+<script src="libs/plotly-binding-4.10.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -117,6 +125,10 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </style>
 
 <style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
 div.csl-entry {
@@ -166,18 +178,12 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="1" data-path="1_CurrentProjects.html"><a href="1_CurrentProjects.html"><i class="fa fa-check"></i><b>1</b> Current work</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="1_CurrentProjects.html"><a href="1_CurrentProjects.html#technology-to-reduce-animaltesting"><i class="fa fa-check"></i><b>1.1</b> Technology to reduce animaltesting</a></li>
-<li class="chapter" data-level="1.2" data-path="1_CurrentProjects.html"><a href="1_CurrentProjects.html#ontox"><i class="fa fa-check"></i><b>1.2</b> ONTOX</a></li>
-<li class="chapter" data-level="1.3" data-path="1_CurrentProjects.html"><a href="1_CurrentProjects.html#progress"><i class="fa fa-check"></i><b>1.3</b> Progress</a></li>
+<li class="chapter" data-level="" data-path="1_CurrentProjects.html"><a href="1_CurrentProjects.html#progress"><i class="fa fa-check"></i>Progress</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="2_SBtab.html"><a href="2_SBtab.html"><i class="fa fa-check"></i><b>2</b> SBtab merging</a></li>
+<li class="chapter" data-level="2" data-path="2_SBtab.html"><a href="2_SBtab.html"><i class="fa fa-check"></i><b>2</b> SBtabr package</a></li>
 <li class="chapter" data-level="3" data-path="3_3D_visualizations.html"><a href="3_3D_visualizations.html"><i class="fa fa-check"></i><b>3</b> Protein structures in R</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="3_3D_visualizations.html"><a href="3_3D_visualizations.html#protein-structure-data"><i class="fa fa-check"></i><b>3.1</b> Protein structure data</a>
-<ul>
-<li class="chapter" data-level="3.1.1" data-path="3_3D_visualizations.html"><a href="3_3D_visualizations.html#protein-data-bank-archive"><i class="fa fa-check"></i><b>3.1.1</b> Protein Data Bank Archive</a></li>
-<li class="chapter" data-level="3.1.2" data-path="3_3D_visualizations.html"><a href="3_3D_visualizations.html#pdbxmmcif-format"><i class="fa fa-check"></i><b>3.1.2</b> PDBx/MMcif format</a></li>
-</ul></li>
+<li class="chapter" data-level="3.1" data-path="3_3D_visualizations.html"><a href="3_3D_visualizations.html#protein-structure-data"><i class="fa fa-check"></i><b>3.1</b> Protein structure data</a></li>
 <li class="chapter" data-level="3.2" data-path="3_3D_visualizations.html"><a href="3_3D_visualizations.html#visualization-methods"><i class="fa fa-check"></i><b>3.2</b> Visualization methods</a></li>
 <li class="chapter" data-level="3.3" data-path="3_3D_visualizations.html"><a href="3_3D_visualizations.html#applying-in-r"><i class="fa fa-check"></i><b>3.3</b> Applying in R</a>
 <ul>
@@ -242,7 +248,7 @@ div.csl-indent {
 <li class="chapter" data-level="7.2" data-path="7_parameters.html"><a href="7_parameters.html#creating-the-graphs"><i class="fa fa-check"></i><b>7.2</b> Creating the graphs</a></li>
 <li class="chapter" data-level="7.3" data-path="7_parameters.html"><a href="7_parameters.html#checking-parameters"><i class="fa fa-check"></i><b>7.3</b> Checking parameters</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="8_References.html"><a href="8_References.html"><i class="fa fa-check"></i><b>8</b> References</a></li>
+<li class="chapter" data-level="" data-path="8_References.html"><a href="8_References.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
 
       </nav>
@@ -261,20 +267,16 @@ div.csl-indent {
 
             <section class="normal" id="section-">
 <div id="SBTAB" class="section level1" number="2">
-<h1><span class="header-section-number">Chapter 2</span> SBtab merging</h1>
-<p>Our team, including C. Niemel, J. Nijdam, and myself, developed an R package for the ONTOX project in collaboration with the Life Sciences and Chemistry mentorship at the University of Applied Sciences in Utrecht. The project’s goal is to reduce animal testing in toxicology by optimizing the utilization of existing data with artificial intelligence and SysRev, a software platform that extracts relevant data from scientific documents and presents it in SBtab format. The package we created can merge multiple SBtab files and visualize the data as a network using six functions, including four for merging files and two for visualizing them. Figure 2.1 depicts the workflow. These functions streamline the identification of correlations and the development of predictive models, which could improve human risk assessment.</p>
-<div class="figure">
-<img src="images/sbtab_pipeline.jpg" alt="" />
-<p class="caption"><em>Figure 2.1 A diagram showing how the functions can be combined into one workflow.</em></p>
+<h1><span class="header-section-number">Chapter 2</span> SBtabr package</h1>
+<p>Our team, including C. Niemel, J. Nijdam, and myself, developed an R package for the ONTOX project in collaboration with the Life Sciences and Chemistry mentorship at the University of Applied Sciences in Utrecht. The ONTOX project’s goal is to reduce animal testing in toxicology through ways like optimizing the utilization of existing data with artificial intelligence and SysRev, a software platform that extracts relevant data from scientific documents and presents it in SBtab format. We created SBtabr, an R package which can merge multiple SBtab files and visualize the data as a network using six functions, including four for merging files and two for visualizing them. Figure <a href="2_SBtab.html#fig:img-sbtabrworkflow">2.1</a> depicts the workflow. These functions streamline the identification of correlations and the development of predictive models, which could improve human risk assessment.</p>
+
+<div class="figure"><span style="display:block;" id="fig:img-sbtabrworkflow"></span>
+<img src="images/sbtab_pipeline.jpg" alt="A diagram showing how the functions can be combined into one workflow."  />
+<p class="caption">
+Figure 2.1: A diagram showing how the functions can be combined into one workflow.
+</p>
 </div>
-<p>My contribution within this project consists of the merging functions.</p>
-<ul>
-<li>sep_sbtab(), separates tables in the SBtab and creates an edges table for visualisations purposes</li>
-<li>prep_merge(), prepares the tables for merging by making the identifiers unique across files</li>
-<li>merge_prep(), merges the prepped tables</li>
-<li>merge_sbtab(), performs all three of the above functions at once</li>
-</ul>
-<p>Had we been given an additional sprint for this project, I would have included a function to convert merged tables back into a single SBtab file. Moreover, I would have expanded the input and output options to include various formats, as well as added an SBML-SBtab converter.</p>
+<p>My role in this project involved handling the merging functions. Firstly, I have developed the “<a href="https://github.com/ProjecticumDataScience/sbtabr/blob/main/R/sep_sbtab.R">sep_sbtab()</a>” function, which separates tables in the SBtab format and creates an edges table specifically designed for visualization purposes. Secondly, the “<a href="https://github.com/ProjecticumDataScience/sbtabr/blob/main/R/prep_merge.R">prep_merge()</a>” function has been created to prepare the tables for merging by ensuring that the identifiers are made unique across multiple files. Next, the “<a href="https://github.com/ProjecticumDataScience/sbtabr/blob/main/R/merge_prepped.R">merge_prepped()</a>” function performs the actual merging of the prepared tables. Lastly, the comprehensive “<a href="https://github.com/ProjecticumDataScience/sbtabr/blob/main/R/merge_sbtab.R">merge_sbtab()</a>” function combines all three of the aforementioned functions into a single step, streamlining the merging process.</p>
 
 </div>
             </section>
@@ -314,7 +316,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/mirthhe/mirthhe.github.io/edit/master/2_SBtab.Rmd",
+"link": "https://github.com/mirthhe/mirthhe.github.io/edit/main/2_SBtab.Rmd",
 "text": "Share your feedback"
 },
 "history": {

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 7 Parameters | bookdown_site.knit</title>
   <meta name="description" content="" />
-  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 7 Parameters | bookdown_site.knit" />
   <meta property="og:type" content="book" />
@@ -47,9 +47,17 @@
 
 
 
-<script src="libs/htmlwidgets-1.6.1/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
 <script src="libs/r3dmol-1.6.2/3Dmol-nojquery-min.js"></script>
 <script src="libs/r3dmol-binding-0.1.2/r3dmol.js"></script>
+<script src="libs/plotly-binding-4.10.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -117,6 +125,10 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </style>
 
 <style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
 div.csl-entry {
@@ -166,18 +178,12 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="1" data-path="1_CurrentProjects.html"><a href="1_CurrentProjects.html"><i class="fa fa-check"></i><b>1</b> Current work</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="1_CurrentProjects.html"><a href="1_CurrentProjects.html#technology-to-reduce-animaltesting"><i class="fa fa-check"></i><b>1.1</b> Technology to reduce animaltesting</a></li>
-<li class="chapter" data-level="1.2" data-path="1_CurrentProjects.html"><a href="1_CurrentProjects.html#ontox"><i class="fa fa-check"></i><b>1.2</b> ONTOX</a></li>
-<li class="chapter" data-level="1.3" data-path="1_CurrentProjects.html"><a href="1_CurrentProjects.html#progress"><i class="fa fa-check"></i><b>1.3</b> Progress</a></li>
+<li class="chapter" data-level="" data-path="1_CurrentProjects.html"><a href="1_CurrentProjects.html#progress"><i class="fa fa-check"></i>Progress</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="2_SBtab.html"><a href="2_SBtab.html"><i class="fa fa-check"></i><b>2</b> SBtab merging</a></li>
+<li class="chapter" data-level="2" data-path="2_SBtab.html"><a href="2_SBtab.html"><i class="fa fa-check"></i><b>2</b> SBtabr package</a></li>
 <li class="chapter" data-level="3" data-path="3_3D_visualizations.html"><a href="3_3D_visualizations.html"><i class="fa fa-check"></i><b>3</b> Protein structures in R</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="3_3D_visualizations.html"><a href="3_3D_visualizations.html#protein-structure-data"><i class="fa fa-check"></i><b>3.1</b> Protein structure data</a>
-<ul>
-<li class="chapter" data-level="3.1.1" data-path="3_3D_visualizations.html"><a href="3_3D_visualizations.html#protein-data-bank-archive"><i class="fa fa-check"></i><b>3.1.1</b> Protein Data Bank Archive</a></li>
-<li class="chapter" data-level="3.1.2" data-path="3_3D_visualizations.html"><a href="3_3D_visualizations.html#pdbxmmcif-format"><i class="fa fa-check"></i><b>3.1.2</b> PDBx/MMcif format</a></li>
-</ul></li>
+<li class="chapter" data-level="3.1" data-path="3_3D_visualizations.html"><a href="3_3D_visualizations.html#protein-structure-data"><i class="fa fa-check"></i><b>3.1</b> Protein structure data</a></li>
 <li class="chapter" data-level="3.2" data-path="3_3D_visualizations.html"><a href="3_3D_visualizations.html#visualization-methods"><i class="fa fa-check"></i><b>3.2</b> Visualization methods</a></li>
 <li class="chapter" data-level="3.3" data-path="3_3D_visualizations.html"><a href="3_3D_visualizations.html#applying-in-r"><i class="fa fa-check"></i><b>3.3</b> Applying in R</a>
 <ul>
@@ -242,7 +248,7 @@ div.csl-indent {
 <li class="chapter" data-level="7.2" data-path="7_parameters.html"><a href="7_parameters.html#creating-the-graphs"><i class="fa fa-check"></i><b>7.2</b> Creating the graphs</a></li>
 <li class="chapter" data-level="7.3" data-path="7_parameters.html"><a href="7_parameters.html#checking-parameters"><i class="fa fa-check"></i><b>7.3</b> Checking parameters</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="8_References.html"><a href="8_References.html"><i class="fa fa-check"></i><b>8</b> References</a></li>
+<li class="chapter" data-level="" data-path="8_References.html"><a href="8_References.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
 
       </nav>
@@ -264,10 +270,13 @@ div.csl-indent {
 <h1><span class="header-section-number">Chapter 7</span> Parameters</h1>
 <p><em>As part of assignment 9 from the <a href="https://lesmaterialen.rstudio.hu.nl/workflows-reader/rmarkdownparams.html">DSFB2 Workflows course</a>.</em></p>
 <hr />
-<p>After learning about reproducibility and creating packages, parameters are the next step in learning to create a reproducible analysis. Working with parameters will make it easier to re-use or apply the analysis to different datasets or different categories within the same dataset. In this assignment data about COVID19 cases and COVID19-related deaths will be used. The data was taken from <span class="citation"><span>“Data on the Daily Number of New Reported <span>COVID-19</span> Cases and Deaths by <span>EU</span>/<span>EEA</span> Country”</span> (2022)</span> and the parameters have been set in the YAML of the index page as shown in figure 7.1. First the analysis will be executed with the parameters as they are in figure 7.1. Later the analysis will be repeated with different inputs to show the functionality of the parameters.</p>
-<div class="figure">
-<img src="images/params_covid19.png" alt="" />
-<p class="caption"><em>Figure 7.1 The parameters as set in the YAML of the index page of this website.</em></p>
+<p>After learning about reproducibility and creating packages, parameters are the next step in learning to create a reproducible analysis. Working with parameters will make it easier to re-use or apply the analysis to different datasets or different categories within the same dataset. In this assignment data about COVID19 cases and COVID19-related deaths will be used. The data was taken from <span class="citation"><span>“Data on the Daily Number of New Reported <span>COVID-19</span> Cases and Deaths by <span>EU</span>/<span>EEA</span> Country”</span> (2022)</span> and the parameters have been set in the YAML of the index page as shown in figure <a href="7_parameters.html#fig:parameters">7.1</a>. First the analysis will be executed with the parameters as they are in figure <a href="7_parameters.html#fig:parameters">7.1</a>. The analysis will later be repeated with different inputs to show the functionality of the parameters.</p>
+
+<div class="figure"><span style="display:block;" id="fig:parameters"></span>
+<img src="images/params_covid19.png" alt="The parameters as set in the YAML of the index page of this website."  />
+<p class="caption">
+Figure 7.1: The parameters as set in the YAML of the index page of this website.
+</p>
 </div>
 <hr />
 <div id="inspecting-the-data" class="section level2" number="7.1">
@@ -301,46 +310,41 @@ div.csl-indent {
 <span id="cb91-7"><a href="7_parameters.html#cb91-7" aria-hidden="true" tabindex="-1"></a><span class="co"># dateRep to date type ----</span></span>
 <span id="cb91-8"><a href="7_parameters.html#cb91-8" aria-hidden="true" tabindex="-1"></a><span class="do">## To use the dateRep column as the x-axis in the graphs, it&#39;s class will be changed to &#39;date&#39;</span></span>
 <span id="cb91-9"><a href="7_parameters.html#cb91-9" aria-hidden="true" tabindex="-1"></a>covid19_cases_graph<span class="sc">$</span>dateRep <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(covid19_cases_graph<span class="sc">$</span>dateRep, <span class="st">&quot;%d/%m/%y&quot;</span>)</span></code></pre></div>
-<p>Now that only the data specified by the parameters has been extracted, it can be used for the graphs. It is important to refer to the newly created dataset, not just for the values themselves but also when writing captions or labels. This was achieved using the paste function to adjust the strings to the extracted data. The first graph looks at the COVID19 cases and the second graph is the same except it looks at COVID19 related deaths (figure 7.2).</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="7_parameters.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="co"># COVID19 cases graph ----</span></span>
-<span id="cb92-2"><a href="7_parameters.html#cb92-2" aria-hidden="true" tabindex="-1"></a>cases <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(covid19_cases_graph, <span class="fu">aes</span>(<span class="at">x=</span>dateRep, <span class="at">y=</span>cases)) <span class="sc">+</span> </span>
-<span id="cb92-3"><a href="7_parameters.html#cb92-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb92-4"><a href="7_parameters.html#cb92-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb92-5"><a href="7_parameters.html#cb92-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Cases&quot;</span>,</span>
-<span id="cb92-6"><a href="7_parameters.html#cb92-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
-<span id="cb92-7"><a href="7_parameters.html#cb92-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb92-8"><a href="7_parameters.html#cb92-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb92-9"><a href="7_parameters.html#cb92-9" aria-hidden="true" tabindex="-1"></a><span class="co"># COVID19 deaths graph ----</span></span>
-<span id="cb92-10"><a href="7_parameters.html#cb92-10" aria-hidden="true" tabindex="-1"></a>deaths <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(covid19_cases_graph, <span class="fu">aes</span>(<span class="at">x=</span>dateRep, <span class="at">y=</span>deaths)) <span class="sc">+</span> </span>
-<span id="cb92-11"><a href="7_parameters.html#cb92-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb92-12"><a href="7_parameters.html#cb92-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb92-13"><a href="7_parameters.html#cb92-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Related deaths&quot;</span>,</span>
-<span id="cb92-14"><a href="7_parameters.html#cb92-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
-<span id="cb92-15"><a href="7_parameters.html#cb92-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb92-16"><a href="7_parameters.html#cb92-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb92-17"><a href="7_parameters.html#cb92-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating graph grid ----</span></span>
-<span id="cb92-18"><a href="7_parameters.html#cb92-18" aria-hidden="true" tabindex="-1"></a><span class="do">## Combining the plots in one grid</span></span>
-<span id="cb92-19"><a href="7_parameters.html#cb92-19" aria-hidden="true" tabindex="-1"></a>plots <span class="ot">&lt;-</span> <span class="fu">plot_grid</span>(cases, deaths, <span class="at">labels =</span> <span class="cn">NULL</span>, <span class="at">ncol=</span><span class="dv">1</span>, <span class="at">align =</span> <span class="st">&quot;v&quot;</span>)</span>
+<p>Now that only the data specified by the parameters has been extracted, it can be used for the graphs. It is important to refer to the newly created dataset, not just for the values themselves but also when writing captions or labels. This was achieved using the paste function to adjust the strings to the extracted data. The first graph looks at the COVID19 cases and the second graph is the same except it looks at COVID19 related deaths (figure <a href="7_parameters.html#fig:casesgraph">7.2</a>).</p>
+
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="7_parameters.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Covid19 cases graph ----</span></span>
+<span id="cb92-2"><a href="7_parameters.html#cb92-2" aria-hidden="true" tabindex="-1"></a>cases <span class="ot">&lt;-</span> <span class="fu">plot_ly</span>(</span>
+<span id="cb92-3"><a href="7_parameters.html#cb92-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> covid19_cases_graph, </span>
+<span id="cb92-4"><a href="7_parameters.html#cb92-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="sc">~</span>dateRep, </span>
+<span id="cb92-5"><a href="7_parameters.html#cb92-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="sc">~</span>cases, </span>
+<span id="cb92-6"><a href="7_parameters.html#cb92-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&#39;scatter&#39;</span>, </span>
+<span id="cb92-7"><a href="7_parameters.html#cb92-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">mode =</span> <span class="st">&#39;lines+markers&#39;</span>,</span>
+<span id="cb92-8"><a href="7_parameters.html#cb92-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">marker =</span> <span class="fu">list</span>(<span class="at">line =</span> <span class="fu">list</span>(<span class="at">width =</span> <span class="dv">3</span>)),</span>
+<span id="cb92-9"><a href="7_parameters.html#cb92-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="st">&#39;Cases&#39;</span>)</span>
+<span id="cb92-10"><a href="7_parameters.html#cb92-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-11"><a href="7_parameters.html#cb92-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Covid19 deaths graph ----</span></span>
+<span id="cb92-12"><a href="7_parameters.html#cb92-12" aria-hidden="true" tabindex="-1"></a>deaths <span class="ot">&lt;-</span> <span class="fu">plot_ly</span>(</span>
+<span id="cb92-13"><a href="7_parameters.html#cb92-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> covid19_cases_graph, </span>
+<span id="cb92-14"><a href="7_parameters.html#cb92-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="sc">~</span>dateRep, </span>
+<span id="cb92-15"><a href="7_parameters.html#cb92-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="sc">~</span>deaths, </span>
+<span id="cb92-16"><a href="7_parameters.html#cb92-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&#39;scatter&#39;</span>, </span>
+<span id="cb92-17"><a href="7_parameters.html#cb92-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">mode =</span> <span class="st">&#39;lines+markers&#39;</span>,</span>
+<span id="cb92-18"><a href="7_parameters.html#cb92-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">marker =</span> <span class="fu">list</span>(<span class="at">line =</span> <span class="fu">list</span>(<span class="at">width =</span> <span class="dv">3</span>)),</span>
+<span id="cb92-19"><a href="7_parameters.html#cb92-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="st">&#39;Deaths&#39;</span>)</span>
 <span id="cb92-20"><a href="7_parameters.html#cb92-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb92-21"><a href="7_parameters.html#cb92-21" aria-hidden="true" tabindex="-1"></a><span class="do">## Creating the title for the grid</span></span>
-<span id="cb92-22"><a href="7_parameters.html#cb92-22" aria-hidden="true" tabindex="-1"></a>title <span class="ot">&lt;-</span> <span class="fu">ggdraw</span>() <span class="sc">+</span> </span>
-<span id="cb92-23"><a href="7_parameters.html#cb92-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">draw_label</span>(<span class="fu">paste0</span>(<span class="st">&quot;COVID19 in &quot;</span>, covid19_cases_graph<span class="sc">$</span>countriesAndTerritories[<span class="dv">1</span>]),</span>
-<span id="cb92-24"><a href="7_parameters.html#cb92-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">fontface =</span> <span class="st">&#39;bold&#39;</span>, <span class="at">x =</span> <span class="dv">0</span>, <span class="at">hjust =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
-<span id="cb92-25"><a href="7_parameters.html#cb92-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb92-26"><a href="7_parameters.html#cb92-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.margin =</span> <span class="fu">margin</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">22</span>)</span>
-<span id="cb92-27"><a href="7_parameters.html#cb92-27" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb92-28"><a href="7_parameters.html#cb92-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb92-29"><a href="7_parameters.html#cb92-29" aria-hidden="true" tabindex="-1"></a><span class="do">## Final grid</span></span>
-<span id="cb92-30"><a href="7_parameters.html#cb92-30" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_grid</span>(title, plots,</span>
-<span id="cb92-31"><a href="7_parameters.html#cb92-31" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="dv">1</span>, <span class="at">rel_heights =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="dv">1</span>)</span>
-<span id="cb92-32"><a href="7_parameters.html#cb92-32" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p><img src="bookdown_site_files/figure-html/cases%20graph%20unparameterized-1.png" width="672" /></p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="7_parameters.html#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Parameterized caption ----</span></span>
-<span id="cb93-2"><a href="7_parameters.html#cb93-2" aria-hidden="true" tabindex="-1"></a><span class="do">## To paramterize the caption the following line has been coded into the text chunk below</span></span>
-<span id="cb93-3"><a href="7_parameters.html#cb93-3" aria-hidden="true" tabindex="-1"></a><span class="do">## paste0(&quot;Figure 7.1. Scatterplot to show the COVID19 cases and related deaths in &quot;, </span></span>
-<span id="cb93-4"><a href="7_parameters.html#cb93-4" aria-hidden="true" tabindex="-1"></a><span class="do">## covid19_cases_graph$countriesAndTerritories[1], &quot; from &quot;, min(covid19_cases_graph$dateRep),</span></span>
-<span id="cb93-5"><a href="7_parameters.html#cb93-5" aria-hidden="true" tabindex="-1"></a><span class="do">## &quot; until &quot;, max(covid19_cases_graph$dateRep), &quot;.&quot;)</span></span></code></pre></div>
-<p><em>Figure 7.2. Scatterplot to show the COVID19 cases and related deaths in Netherlands from 2020-05-02 until 2020-08-31.</em></p>
+<span id="cb92-21"><a href="7_parameters.html#cb92-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating graph grid ----</span></span>
+<span id="cb92-22"><a href="7_parameters.html#cb92-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Grid</span></span>
+<span id="cb92-23"><a href="7_parameters.html#cb92-23" aria-hidden="true" tabindex="-1"></a>plots <span class="ot">&lt;-</span> <span class="fu">subplot</span>(cases, deaths, <span class="at">nrows =</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb92-24"><a href="7_parameters.html#cb92-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layout</span>(<span class="at">title =</span> <span class="fu">paste0</span>(<span class="st">&quot;COVID19 in &quot;</span>, covid19_cases_graph<span class="sc">$</span>countriesAndTerritories[<span class="dv">1</span>]))</span>
+<span id="cb92-25"><a href="7_parameters.html#cb92-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-26"><a href="7_parameters.html#cb92-26" aria-hidden="true" tabindex="-1"></a>plots</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:casesgraph"></span>
+<div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-634bf78fbe6f0ea810c5" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-634bf78fbe6f0ea810c5">{"x":{"data":[{"x":["2020-08-31","2020-08-27","2020-08-23","2020-08-19","2020-08-15","2020-08-11","2020-08-07","2020-08-03","2020-07-31","2020-07-27","2020-07-23","2020-07-19","2020-07-15","2020-07-11","2020-07-07","2020-07-03","2020-06-30","2020-06-26","2020-06-22","2020-06-18","2020-06-14","2020-06-10","2020-06-06","2020-06-02","2020-05-30","2020-05-26","2020-05-22","2020-05-18","2020-05-14","2020-05-10","2020-05-06","2020-05-02"],"y":[526,508,455,553,656,620,517,372,341,209,164,145,109,84,34,76,57,93,68,124,144,181,190,95,141,129,184,148,274,242,319,437],"mode":"lines+markers","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)","width":3}},"name":"Cases","type":"scatter","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2020-08-31","2020-08-27","2020-08-23","2020-08-19","2020-08-15","2020-08-11","2020-08-07","2020-08-03","2020-07-31","2020-07-27","2020-07-23","2020-07-19","2020-07-15","2020-07-11","2020-07-07","2020-07-03","2020-06-30","2020-06-26","2020-06-22","2020-06-18","2020-06-14","2020-06-10","2020-06-06","2020-06-02","2020-05-30","2020-05-26","2020-05-22","2020-05-18","2020-05-14","2020-05-10","2020-05-06","2020-05-02"],"y":[0,3,1,9,2,2,1,0,0,1,0,0,1,4,4,2,5,3,0,4,2,12,7,4,21,23,13,16,29,18,40,93],"mode":"lines+markers","marker":{"color":"rgba(255,127,14,1)","line":{"color":"rgba(255,127,14,1)","width":3}},"name":"Deaths","type":"scatter","error_y":{"color":"rgba(255,127,14,1)"},"error_x":{"color":"rgba(255,127,14,1)"},"line":{"color":"rgba(255,127,14,1)"},"xaxis":"x2","yaxis":"y2","frame":null}],"layout":{"xaxis":{"domain":[0,1],"automargin":true,"anchor":"y"},"xaxis2":{"domain":[0,1],"automargin":true,"anchor":"y2"},"yaxis2":{"domain":[0,0.48],"automargin":true,"anchor":"x2"},"yaxis":{"domain":[0.52,1],"automargin":true,"anchor":"x"},"annotations":[],"shapes":[],"images":[],"margin":{"b":40,"l":60,"t":25,"r":10},"hovermode":"closest","showlegend":true,"title":"COVID19 in Netherlands"},"attrs":{"293422ea1c9f":{"x":{},"y":{},"mode":"lines+markers","marker":{"line":{"width":3}},"name":"Cases","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"},"29343ba83f06":{"x":{},"y":{},"mode":"lines+markers","marker":{"line":{"width":3}},"name":"Deaths","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"subplot":true,"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p class="caption">
+Figure 7.2: Scatterplot to show the COVID19 cases and related deaths in Netherlands from 2020-05-02 until 2020-08-31.
+</p>
+</div>
 <hr />
 </div>
 <div id="checking-parameters" class="section level2" number="7.3">
@@ -354,7 +358,7 @@ Germany from August 2020 until December 2020
 </details>
 <details>
 <summary>
-Austria for all of 2021
+Austria for all of 2020
 </summary>
 <img src="images/covid19_austria.png" />
 </details>
@@ -404,7 +408,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/mirthhe/mirthhe.github.io/edit/master/7_parameters.Rmd",
+"link": "https://github.com/mirthhe/mirthhe.github.io/edit/main/7_parameters.Rmd",
 "text": "Share your feedback"
 },
 "history": {

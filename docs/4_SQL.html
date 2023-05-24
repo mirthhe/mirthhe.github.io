@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 SQL and relational data | bookdown_site.knit</title>
   <meta name="description" content="" />
-  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 SQL and relational data | bookdown_site.knit" />
   <meta property="og:type" content="book" />
@@ -47,9 +47,17 @@
 
 
 
-<script src="libs/htmlwidgets-1.6.1/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
 <script src="libs/r3dmol-1.6.2/3Dmol-nojquery-min.js"></script>
 <script src="libs/r3dmol-binding-0.1.2/r3dmol.js"></script>
+<script src="libs/plotly-binding-4.10.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -117,6 +125,10 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </style>
 
 <style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
 div.csl-entry {
@@ -166,18 +178,12 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="1" data-path="1_CurrentProjects.html"><a href="1_CurrentProjects.html"><i class="fa fa-check"></i><b>1</b> Current work</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="1_CurrentProjects.html"><a href="1_CurrentProjects.html#technology-to-reduce-animaltesting"><i class="fa fa-check"></i><b>1.1</b> Technology to reduce animaltesting</a></li>
-<li class="chapter" data-level="1.2" data-path="1_CurrentProjects.html"><a href="1_CurrentProjects.html#ontox"><i class="fa fa-check"></i><b>1.2</b> ONTOX</a></li>
-<li class="chapter" data-level="1.3" data-path="1_CurrentProjects.html"><a href="1_CurrentProjects.html#progress"><i class="fa fa-check"></i><b>1.3</b> Progress</a></li>
+<li class="chapter" data-level="" data-path="1_CurrentProjects.html"><a href="1_CurrentProjects.html#progress"><i class="fa fa-check"></i>Progress</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="2_SBtab.html"><a href="2_SBtab.html"><i class="fa fa-check"></i><b>2</b> SBtab merging</a></li>
+<li class="chapter" data-level="2" data-path="2_SBtab.html"><a href="2_SBtab.html"><i class="fa fa-check"></i><b>2</b> SBtabr package</a></li>
 <li class="chapter" data-level="3" data-path="3_3D_visualizations.html"><a href="3_3D_visualizations.html"><i class="fa fa-check"></i><b>3</b> Protein structures in R</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="3_3D_visualizations.html"><a href="3_3D_visualizations.html#protein-structure-data"><i class="fa fa-check"></i><b>3.1</b> Protein structure data</a>
-<ul>
-<li class="chapter" data-level="3.1.1" data-path="3_3D_visualizations.html"><a href="3_3D_visualizations.html#protein-data-bank-archive"><i class="fa fa-check"></i><b>3.1.1</b> Protein Data Bank Archive</a></li>
-<li class="chapter" data-level="3.1.2" data-path="3_3D_visualizations.html"><a href="3_3D_visualizations.html#pdbxmmcif-format"><i class="fa fa-check"></i><b>3.1.2</b> PDBx/MMcif format</a></li>
-</ul></li>
+<li class="chapter" data-level="3.1" data-path="3_3D_visualizations.html"><a href="3_3D_visualizations.html#protein-structure-data"><i class="fa fa-check"></i><b>3.1</b> Protein structure data</a></li>
 <li class="chapter" data-level="3.2" data-path="3_3D_visualizations.html"><a href="3_3D_visualizations.html#visualization-methods"><i class="fa fa-check"></i><b>3.2</b> Visualization methods</a></li>
 <li class="chapter" data-level="3.3" data-path="3_3D_visualizations.html"><a href="3_3D_visualizations.html#applying-in-r"><i class="fa fa-check"></i><b>3.3</b> Applying in R</a>
 <ul>
@@ -242,7 +248,7 @@ div.csl-indent {
 <li class="chapter" data-level="7.2" data-path="7_parameters.html"><a href="7_parameters.html#creating-the-graphs"><i class="fa fa-check"></i><b>7.2</b> Creating the graphs</a></li>
 <li class="chapter" data-level="7.3" data-path="7_parameters.html"><a href="7_parameters.html#checking-parameters"><i class="fa fa-check"></i><b>7.3</b> Checking parameters</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="8_References.html"><a href="8_References.html"><i class="fa fa-check"></i><b>8</b> References</a></li>
+<li class="chapter" data-level="" data-path="8_References.html"><a href="8_References.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
 
       </nav>
@@ -264,7 +270,7 @@ div.csl-indent {
 <h1><span class="header-section-number">Chapter 4</span> SQL and relational data</h1>
 <p><em>As part of assignment 7 from the <a href="https://lesmaterialen.rstudio.hu.nl/workflows-reader/relationaldb.html">DSFB2 Workflows course</a>.</em></p>
 <hr />
-<p>So far the subjects have been about a couple different things, like R, BASH, HTML and CSS. Another important language to understand is SQL. With this assignment the focus is on learning the basics of SQL and applying it to relational data. To start, the dataframes will be created, using the files provided in the assignment, and tidied up.</p>
+<p>With this assignment the focus was on learning the basics of SQL and applying it to relational data. To start, the files provided in the assignment were imported and tidied up.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="4_SQL.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import flu data ----</span></span>
 <span id="cb9-2"><a href="4_SQL.html#cb9-2" aria-hidden="true" tabindex="-1"></a>flu_df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data-raw/relationaldata/flu_data.csv&quot;</span>, <span class="at">skip=</span><span class="dv">11</span>) <span class="do">## First 11 rows are metadata</span></span>
 <span id="cb9-3"><a href="4_SQL.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Make flu dataframe tidy ----</span></span>
@@ -282,7 +288,6 @@ div.csl-indent {
 <span id="cb9-15"><a href="4_SQL.html#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Gapminder data ----</span></span>
 <span id="cb9-16"><a href="4_SQL.html#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="do">## The third dataframe is the gapminder dataframe from the dslabs package</span></span>
 <span id="cb9-17"><a href="4_SQL.html#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="do">## This dataframe is already tidy</span></span></code></pre></div>
-<p>To make the data more relational a couple things have to be changed. The columns describing the countries and dates should be comparable across the different dataframes so they can be joined later. This was achieved with the following code.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="4_SQL.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change country column ----</span></span>
 <span id="cb10-2"><a href="4_SQL.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="do">## All &#39;country&#39; columns should be the same in type, class and values</span></span>
 <span id="cb10-3"><a href="4_SQL.html#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="do">## For flu and dengue they&#39;re characters, for gapminder it&#39;s a factor</span></span>
@@ -303,14 +308,13 @@ div.csl-indent {
 <span id="cb10-18"><a href="4_SQL.html#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="do">## Now they&#39;re characters, they should be integers</span></span>
 <span id="cb10-19"><a href="4_SQL.html#cb10-19" aria-hidden="true" tabindex="-1"></a>flu_df_tidy<span class="sc">$</span>year <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(flu_df_tidy<span class="sc">$</span>year)</span>
 <span id="cb10-20"><a href="4_SQL.html#cb10-20" aria-hidden="true" tabindex="-1"></a>dengue_df_tidy<span class="sc">$</span>year <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(dengue_df_tidy<span class="sc">$</span>year)</span></code></pre></div>
-<p>The dataframes were also exported to .csv and .rds for later use.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="4_SQL.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save_csv_rds</span>(flu_df_tidy, <span class="st">&quot;data/relationaldata/flu&quot;</span>)</span>
 <span id="cb11-2"><a href="4_SQL.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">save_csv_rds</span>(dengue_df_tidy, <span class="st">&quot;data/relationaldata/dengue&quot;</span>)</span>
 <span id="cb11-3"><a href="4_SQL.html#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">save_csv_rds</span>(gapminder, <span class="st">&quot;data/relationaldata/gapminder&quot;</span>)</span></code></pre></div>
 <hr />
 <div id="connecting-to-dbeaver" class="section level2" number="4.1">
 <h2><span class="header-section-number">4.1</span> Connecting to DBeaver</h2>
-<p>To move from R to SQL (PostgreSQL) a database has been created in DBeaver called ‘workflowsdb’. The three R dataframes were imported into the database using RPostgreSQL. The tables were inserted into the hierarchy of this database as shown in figure 4.1.</p>
+<p>The three R dataframes were imported into a DBeaver database using RPostgreSQL. The tables were inserted into the hierarchy of this database as shown in figure <a href="4_SQL.html#fig:img-sqltree">4.1</a>.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="4_SQL.html#cb12-1" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RPostgres<span class="sc">::</span><span class="fu">Postgres</span>(), </span>
 <span id="cb12-2"><a href="4_SQL.html#cb12-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">dbname =</span> <span class="st">&quot;workflowsdb&quot;</span>, </span>
 <span id="cb12-3"><a href="4_SQL.html#cb12-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">host=</span><span class="st">&quot;localhost&quot;</span>, </span>
@@ -322,15 +326,18 @@ div.csl-indent {
 <span id="cb13-2"><a href="4_SQL.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">&quot;gapminder&quot;</span>, gapminder)</span>
 <span id="cb13-3"><a href="4_SQL.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">&quot;flu&quot;</span>, flu_df_tidy)</span>
 <span id="cb13-4"><a href="4_SQL.html#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">&quot;dengue&quot;</span>, dengue_df_tidy)</span></code></pre></div>
-<div class="figure">
-<img src="images/sql_tree.png" alt="" />
-<p class="caption"><em>Figure 4.1. The hierarchy of the workflowsdb database including the three tables.</em></p>
+
+<div class="figure"><span style="display:block;" id="fig:img-sqltree"></span>
+<img src="images/sql_tree.png" alt="The hierarchy of the workflowsdb database including the three tables."  />
+<p class="caption">
+Figure 4.1: The hierarchy of the workflowsdb database including the three tables.
+</p>
 </div>
 <hr />
 </div>
 <div id="data-inspection" class="section level2" number="4.2">
 <h2><span class="header-section-number">4.2</span> Data inspection</h2>
-<p>The data was inspected using the SQL editor. A script was created for the inspection of the <a href="SQL/gapminder_inspection.sql">gapminder</a>, <a href="SQL/flu_inspection.sql">flu</a> and <a href="SQL/dengue_inspection.sql">dengue</a> data. R can also be used for the same inspections as shown below.</p>
+<p>The data was inspected using the SQL editor. A script was created for the inspection of the <a href="SQL/gapminder_inspection.sql">gapminder</a>, <a href="SQL/flu_inspection.sql">flu</a> and <a href="SQL/dengue_inspection.sql">dengue</a> data. The same inspection can also be done using R as shown below.</p>
 <details>
 <summary>
 <i>SQL script Gapminder</i>
@@ -508,17 +515,15 @@ div.csl-indent {
 </div>
 <div id="joining-datasets" class="section level2" number="4.3">
 <h2><span class="header-section-number">4.3</span> Joining datasets</h2>
-<p>The three datasets have two variables in common, country and year. Both the flu and dengue datasets have multiple observations within the same year. Sadly, the flu and dengue databases are very unclear. Since the data is old and the links provided in the metadata are no longer working it is hard to estimate the details of this data. Per how many inhabitants are the cases? What were the criteria to be considered a case? Other factors, like the option to get a diagnosis within that region, should also be considered.</p>
-<p>To combine the datasets the average amount of weekly cases per year per country was used. This was a better option than total average per year because not every country has data for every week of each year, therefore taking the sum would not be accurate. The dengue dataset incorporates the least amount of countries. When joining the data only the countries seen in all three datasets will be kept, these are Argentina, Bolivia, Brazil and Mexico. Therefore, joining the three datasets would waste a lot of data. Since dengue and flu will be looked at separately those two datasets will not be joined. Two joined tables have been made, one joining the flu and gapminder data and one joining the dengue and gapminder data.</p>
-<p><a href="SQL/joining_gapminder_dengue.sql">Click here</a> for the full SQL script written to join the dengue and gapminder datasets based on country and year. <a href="SQL/joining_gapminder_flu.sql">This SQL script</a> was used to combine the flu and gapminder datasets, this time with a focus on continents instead of countries.</p>
-<p>The joined tables were imported into R using the following code.</p>
+<p>The three datasets share two common variables, country and year. However, the data provided in the flu and dengue databases is very outdated and unclear, as the links in the metadata are no longer functional. It is difficult to estimate the details of the data, such as the criteria for considering a case.</p>
+<p>To merge the datasets, the average weekly cases per year per country were used instead of the total average per year, as not every country has data for every week of each year. We did not combine the flu and dengue datasets, since the dengue dataset has a significantly smaller amount of countries to look at. Two tables were created instead: one merging the flu and gapminder data based on continents and another merging the dengue and gapminder data based on country. SQL scripts for both joins are provided (<a href="SQL/joining_gapminder_dengue.sql">joining_gapminder_dengue.sql</a> and <a href="SQL/joining_gapminder_flu.sql">joining_gapminder_flu</a>), and the resulting tables were imported into R using the provided code.</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="4_SQL.html#cb18-1" aria-hidden="true" tabindex="-1"></a>gd_country <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/relationaldata/gapminder_dengue_country.csv&quot;</span>)</span>
 <span id="cb18-2"><a href="4_SQL.html#cb18-2" aria-hidden="true" tabindex="-1"></a>gf_continent <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/relationaldata/gapminder_flu_continent.csv&quot;</span>)</span></code></pre></div>
 <hr />
 </div>
 <div id="descriptive-statistics" class="section level2" number="4.4">
 <h2><span class="header-section-number">4.4</span> Descriptive statistics</h2>
-<p>With these new joined tables we can perform some descriptive statistics. The cases have not been normalized for the population so it will be normalized to reflect the amount of cases per 100.000 inhabitants instead. Then the average amount of cases and standard deviation will be determined for each country/continent. After using the shapiro-wilk test both databases appeared to have at least a few non-normally distributed variables, 5 out of 10 for the dengue database and 3 out of 5 for the flu database. The Levene’s test showed that neither database had an equality of variance between countries/continents. Because of this (lack of normality <i>and</i> no equality of variance) the Kruskal-Wallis test was used to check for significant differences. Both databases brought back a p-value of .0000. The Dunn test was used as Post Hoc test to see where the statistically significant difference came from.</p>
+<p>The new joined tables were used to perform descriptive statistics. Since the cases were not normalized for population, they were normalized to reflect the number of cases per 100,000 inhabitants. The average number of cases and standard deviation were then calculated for each country/continent. However, the Shapiro-Wilk test revealed that both databases had at least a few non-normally distributed variables (5 out of 10 for dengue and 3 out of 5 for flu). Additionally, the Levene’s test showed that neither database had an equality of variance between countries/continents. Therefore, the Kruskal-Wallis test was used to check for significant differences, which returned a p-value of .0000 for both databases. To determine where the statistically significant differences came from, the Dunn test was used as a post-hoc test.</p>
 <details>
 <summary>
 <i>The script used to find descriptive statistics</i>
@@ -632,53 +637,93 @@ div.csl-indent {
 <p>We can also create varying visualizations to get an overall look of how the countries/continents compare to each other and how the numbers changed through the years.</p>
 <div id="dengue-cases" class="section level3" number="4.5.1">
 <h3><span class="header-section-number">4.5.1</span> Dengue cases</h3>
-<p>In figure 4.2 a scatterplot shows the average amount of weekly dengue cases per year with a different color for each country. Singapore has a clear higher number of cases for each year, except 2009. Singapore’s climate is a natural breeding ground for the dengue-carrying Aedes mosquitoes, which prefer a tropical climate according to <span class="citation">Khetarpal and Khanna (2016)</span>. By the end of 2016 27% of outbreak-associated dengue cases reported in literature had been in Singapore, second to China with 27.9% <span class="citation">(Guo et al. 2017)</span>.</p>
+<p>In figure <a href="4_SQL.html#fig:denguevisual">4.2</a> a scatterplot shows the average amount of weekly dengue cases per year with a different color for each country. Singapore has a clear higher number of cases for each year, except 2009. Singapore’s climate is a natural breeding ground for the dengue-carrying Aedes mosquitoes, which prefer a tropical climate according to <span class="citation">Khetarpal and Khanna (2016)</span>. By the end of 2016 27% of outbreak-associated dengue cases reported in literature had been in Singapore, second to China with 27.9% <span class="citation">(Guo et al. 2017)</span>.</p>
+
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="4_SQL.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dengue scatterplot ----</span></span>
 <span id="cb29-2"><a href="4_SQL.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Visualising the weekly dengue cases per country per year in a scatterplot</span></span>
-<span id="cb29-3"><a href="4_SQL.html#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gd_norm_country, <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>cases_per_100000, </span>
-<span id="cb29-4"><a href="4_SQL.html#cb29-4" aria-hidden="true" tabindex="-1"></a>                            <span class="at">group =</span> country, <span class="at">color =</span> country)) <span class="sc">+</span> </span>
-<span id="cb29-5"><a href="4_SQL.html#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb29-6"><a href="4_SQL.html#cb29-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb29-7"><a href="4_SQL.html#cb29-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Dengue cases&quot;</span>,</span>
-<span id="cb29-8"><a href="4_SQL.html#cb29-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Average dengue cases per week&quot;</span>,</span>
-<span id="cb29-9"><a href="4_SQL.html#cb29-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Year&quot;</span>) <span class="sc">+</span></span>
-<span id="cb29-10"><a href="4_SQL.html#cb29-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">round</span>(<span class="fu">seq</span>(<span class="fu">min</span>(gd_norm_country<span class="sc">$</span>year), </span>
-<span id="cb29-11"><a href="4_SQL.html#cb29-11" aria-hidden="true" tabindex="-1"></a>                                        <span class="fu">max</span>(gd_norm_country<span class="sc">$</span>year), </span>
-<span id="cb29-12"><a href="4_SQL.html#cb29-12" aria-hidden="true" tabindex="-1"></a>                                        <span class="at">by =</span> <span class="dv">1</span>),<span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb29-13"><a href="4_SQL.html#cb29-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
-<p><img src="bookdown_site_files/figure-html/dengue%20visualization-1.png" width="672" /></p>
-<p><em>Figure 4.2. Scatterplot to show the average amount of weekly dengue cases per 100.000 inhabitants per year per country.</em></p>
+<span id="cb29-3"><a href="4_SQL.html#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_ly</span>(</span>
+<span id="cb29-4"><a href="4_SQL.html#cb29-4" aria-hidden="true" tabindex="-1"></a>   <span class="at">data =</span> gd_norm_country,</span>
+<span id="cb29-5"><a href="4_SQL.html#cb29-5" aria-hidden="true" tabindex="-1"></a>   <span class="at">x =</span> <span class="sc">~</span>year,</span>
+<span id="cb29-6"><a href="4_SQL.html#cb29-6" aria-hidden="true" tabindex="-1"></a>   <span class="at">y =</span> <span class="sc">~</span>cases_per_100000,</span>
+<span id="cb29-7"><a href="4_SQL.html#cb29-7" aria-hidden="true" tabindex="-1"></a>   <span class="at">type =</span> <span class="st">&quot;scatter&quot;</span>,</span>
+<span id="cb29-8"><a href="4_SQL.html#cb29-8" aria-hidden="true" tabindex="-1"></a>   <span class="at">mode =</span> <span class="st">&quot;lines&quot;</span>,</span>
+<span id="cb29-9"><a href="4_SQL.html#cb29-9" aria-hidden="true" tabindex="-1"></a>   <span class="at">color =</span> <span class="sc">~</span>country) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-10"><a href="4_SQL.html#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="fu">layout</span>(</span>
+<span id="cb29-11"><a href="4_SQL.html#cb29-11" aria-hidden="true" tabindex="-1"></a>   <span class="at">title =</span> <span class="fu">list</span>(</span>
+<span id="cb29-12"><a href="4_SQL.html#cb29-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">text =</span> <span class="st">&quot;Dengue cases&quot;</span>), </span>
+<span id="cb29-13"><a href="4_SQL.html#cb29-13" aria-hidden="true" tabindex="-1"></a>   <span class="at">legend =</span> <span class="fu">list</span>(</span>
+<span id="cb29-14"><a href="4_SQL.html#cb29-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">title =</span> <span class="fu">list</span>(<span class="at">text =</span> <span class="st">&quot;Countries&quot;</span>)),</span>
+<span id="cb29-15"><a href="4_SQL.html#cb29-15" aria-hidden="true" tabindex="-1"></a>   <span class="at">xaxis =</span> <span class="fu">list</span>(</span>
+<span id="cb29-16"><a href="4_SQL.html#cb29-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">title =</span> <span class="st">&quot;Year&quot;</span>),</span>
+<span id="cb29-17"><a href="4_SQL.html#cb29-17" aria-hidden="true" tabindex="-1"></a>   <span class="at">yaxis =</span> <span class="fu">list</span>(</span>
+<span id="cb29-18"><a href="4_SQL.html#cb29-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">title =</span> <span class="st">&quot;Average dengue cases per week per 100000 inhabitants&quot;</span>))</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:denguevisual"></span>
+<div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-edffc6274ae1ca5206e5" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-edffc6274ae1ca5206e5">{"x":{"visdat":{"29346c67ad6":["function () ","plotlyVisDat"]},"cur_data":"29346c67ad6","attrs":{"29346c67ad6":{"x":{},"y":{},"mode":"lines","color":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":{"text":"Dengue cases"},"legend":{"title":{"text":"Countries"}},"xaxis":{"domain":[0,1],"automargin":true,"title":"Year"},"yaxis":{"domain":[0,1],"automargin":true,"title":"Average dengue cases per week per 100000 inhabitants"},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[2015,2014,2013,2012,2011,2010,2009,2008,2007,2006,2005,2004,2003],"y":[0.000152448058359037,0.000123806346696952,0.000192722775219247,9.33193751386143e-05,0.000147084609191711,0.000308874623616135,0.000789006673040899,6.96228455053829e-05,0.000267941605962867,4.80298290517269e-05,5.08462136801401e-05,7.61216891480542e-05,7.92754272931174e-05],"mode":"lines","type":"scatter","name":"Argentina","marker":{"color":"rgba(102,194,165,1)","line":{"color":"rgba(102,194,165,1)"}},"textfont":{"color":"rgba(102,194,165,1)"},"error_y":{"color":"rgba(102,194,165,1)"},"error_x":{"color":"rgba(102,194,165,1)"},"line":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[2015,2014,2013,2012,2011,2010,2009,2008,2007,2006,2005,2004,2003,2002],"y":[0.000124423002777233,0.000165690089280448,0.000104289153456884,0.000278813004931651,0.000414635971089391,0.000258846197084262,0.00204194184140897,0.000299085950335399,0.000531410217167178,0.000217066154494958,0.000312950493704115,0.000314159420322177,0.000861082672562715,0.00116717897349036],"mode":"lines","type":"scatter","name":"Bolivia","marker":{"color":"rgba(228,156,113,1)","line":{"color":"rgba(228,156,113,1)"}},"textfont":{"color":"rgba(228,156,113,1)"},"error_y":{"color":"rgba(228,156,113,1)"},"error_x":{"color":"rgba(228,156,113,1)"},"line":{"color":"rgba(228,156,113,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[2015,2014,2013,2012,2011,2010,2009,2008,2007,2006,2005,2004,2003,2002],"y":[0.000175985253959816,6.36239991151307e-05,7.82377790176066e-05,5.158803500273e-05,8.44639141472999e-05,0.000121263228056676,8.02760335623205e-05,9.53100014080219e-05,7.92335397093421e-05,4.59878389753999e-05,2.74258321500023e-05,2.45916045544045e-05,4.54932258208022e-05,4.0321335191635e-05],"mode":"lines","type":"scatter","name":"Brazil","marker":{"color":"rgba(201,152,157,1)","line":{"color":"rgba(201,152,157,1)"}},"textfont":{"color":"rgba(201,152,157,1)"},"error_y":{"color":"rgba(201,152,157,1)"},"error_x":{"color":"rgba(201,152,157,1)"},"line":{"color":"rgba(201,152,157,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[2015,2014,2013,2012,2011,2010,2009,2008,2007,2006,2005,2004,2003,2002],"y":[4.24758610390307e-06,7.45747168056667e-06,1.26401830659212e-05,1.25443415415659e-05,4.87612285129989e-06,1.46755706032836e-05,7.20493195311937e-06,7.15045838639347e-06,7.48402775111872e-06,1.42781748414549e-05,9.5303237081174e-06,6.38856229278049e-06,1.53656328659768e-05,5.68708541732069e-06],"mode":"lines","type":"scatter","name":"India","marker":{"color":"rgba(175,154,200,1)","line":{"color":"rgba(175,154,200,1)"}},"textfont":{"color":"rgba(175,154,200,1)"},"error_y":{"color":"rgba(175,154,200,1)"},"error_x":{"color":"rgba(175,154,200,1)"},"line":{"color":"rgba(175,154,200,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[2015,2014,2013,2012,2011,2010,2009,2008,2007,2006,2005,2004,2003,2002],"y":[4.18707884102431e-05,3.62390522688476e-05,3.79996239557118e-05,3.80953950605273e-05,4.0636293251779e-05,5.75858614568813e-05,7.44184166270155e-05,8.74678496222597e-05,0.000123962948611912,8.89393964110716e-05,7.80178257775265e-05,7.19725011406216e-05,2.74702019300641e-05,4.6464748688023e-05],"mode":"lines","type":"scatter","name":"Indonesia","marker":{"color":"rgba(226,148,184,1)","line":{"color":"rgba(226,148,184,1)"}},"textfont":{"color":"rgba(226,148,184,1)"},"error_y":{"color":"rgba(226,148,184,1)"},"error_x":{"color":"rgba(226,148,184,1)"},"line":{"color":"rgba(226,148,184,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[2015,2014,2013,2012,2011,2010,2009,2008,2007,2006,2005,2004,2003],"y":[0.000118758696852011,0.00015424709105693,0.000184661224114487,0.000125584329174171,7.38136501183967e-05,0.000127234975076452,0.000234228109852303,9.94548094109998e-05,0.000130336588215523,8.19542633926153e-05,8.24270852147284e-05,6.80708318702366e-05,8.09713546326413e-05],"mode":"lines","type":"scatter","name":"Mexico","marker":{"color":"rgba(176,208,99,1)","line":{"color":"rgba(176,208,99,1)"}},"textfont":{"color":"rgba(176,208,99,1)"},"error_y":{"color":"rgba(176,208,99,1)"},"error_x":{"color":"rgba(176,208,99,1)"},"line":{"color":"rgba(176,208,99,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[2015,2014,2013,2012,2011,2010,2009,2008,2007,2006,2005,2004,2003],"y":[6.96071709268958e-05,7.94926783882256e-05,0.000136546798683667,0.000173180210129168,0.000201584671387303,0.000298985686653955,0.000148529251598404,0.000119477792839782,0.000151247380052053,0.000158279953720906,0.000144842130621716,0.000103887584897529,0.000107325706848552],"mode":"lines","type":"scatter","name":"Philippines","marker":{"color":"rgba(227,217,62,1)","line":{"color":"rgba(227,217,62,1)"}},"textfont":{"color":"rgba(227,217,62,1)"},"error_y":{"color":"rgba(227,217,62,1)"},"error_x":{"color":"rgba(227,217,62,1)"},"line":{"color":"rgba(227,217,62,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[2015,2014,2013,2012,2011,2010,2009,2008,2007,2006,2005,2004,2003,2002],"y":[0.00196242152562396,0.0023272859081834,0.00351560931720928,0.00216538315516639,0.00208844105939392,0.00209840162190653,0.00210817293894087,0.00247758545426352,0.00389385953513629,0.00271858869939282,0.00608297440280136,0.00367717811406486,0.00309804578765384,0.00142646385413126],"mode":"lines","type":"scatter","name":"Singapore","marker":{"color":"rgba(245,207,100,1)","line":{"color":"rgba(245,207,100,1)"}},"textfont":{"color":"rgba(245,207,100,1)"},"error_y":{"color":"rgba(245,207,100,1)"},"error_x":{"color":"rgba(245,207,100,1)"},"line":{"color":"rgba(245,207,100,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[2015,2014,2013,2012,2011,2010,2009,2008],"y":[0.000292638133917655,0.00023712614032497,0.000491863611118532,0.000253785763323369,0.000203192809501786,0.000299338643553538,0.000184915603348352,0.000179732354720623],"mode":"lines","type":"scatter","name":"Thailand","marker":{"color":"rgba(219,192,155,1)","line":{"color":"rgba(219,192,155,1)"}},"textfont":{"color":"rgba(219,192,155,1)"},"error_y":{"color":"rgba(219,192,155,1)"},"error_x":{"color":"rgba(219,192,155,1)"},"line":{"color":"rgba(219,192,155,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[2015,2014,2013,2012,2011,2010,2009,2008,2007,2006,2005,2004,2003],"y":[0.000529103641648378,0.00142937861740082,0.00100015705485971,0.00073520885041514,0.000782427916130932,0.0018468882244619,0.00106252381287365,0.00107040238980968,0.00106062164981326,0.000669220359933799,0.00074037561570489,0.000730441863516756,0.000753880307235569],"mode":"lines","type":"scatter","name":"Venezuela","marker":{"color":"rgba(179,179,179,1)","line":{"color":"rgba(179,179,179,1)"}},"textfont":{"color":"rgba(179,179,179,1)"},"error_y":{"color":"rgba(179,179,179,1)"},"error_x":{"color":"rgba(179,179,179,1)"},"line":{"color":"rgba(179,179,179,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p class="caption">
+Figure 4.2: Scatterplot to show the average amount of weekly dengue cases per 100.000 inhabitants per year per country.
+</p>
+</div>
 </div>
 <div id="flu-cases" class="section level3" number="4.5.2">
 <h3><span class="header-section-number">4.5.2</span> Flu cases</h3>
-<p>For the flu cases we will be comparing continents instead of countries, first comparing the average amount of weekly flu cases per 100.000 inhabitants per continent per year. In figure 4.3 a bar graph shows the average per continent with the standard deviation as error bars. Africa has a clear higher average of 5.2 per 100.000 inhabitants per week. In less tropical continents, like Europe and North America, most flu cases occur in the colder months. In more tropical continents, like Africa, they occur all throughout the year <span class="citation">(Yazdanbakhsh and Kremsner 2009)</span>. Multiple factors like, access to health care, poor nutrition, chronic infections and indoor air pollution could contribute to the increase in flu cases <span class="citation">(Ortiz et al. 2012)</span>.</p>
+<p>For the flu cases we will be comparing continents instead of countries, first comparing the average amount of weekly flu cases per 100.000 inhabitants per continent per year. In figure <a href="4_SQL.html#fig:flubargraph">4.3</a> a bar graph shows the average per continent with the standard deviation as error bars. Africa has a clear higher average of 5.2 per 100.000 inhabitants per week. In less tropical continents, like Europe and North America, most flu cases occur in the colder months. In more tropical continents, like Africa, they occur all throughout the year <span class="citation">(Yazdanbakhsh and Kremsner 2009)</span>. Multiple factors like, access to health care, poor nutrition, chronic infections and indoor air pollution could contribute to the increase in flu cases <span class="citation">(Ortiz et al. 2012)</span>.</p>
+
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="4_SQL.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Flu bargraph ----</span></span>
 <span id="cb30-2"><a href="4_SQL.html#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Make a bar graph with the relative average population and weekly flu cases</span></span>
-<span id="cb30-3"><a href="4_SQL.html#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gf_summ, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(continent, <span class="sc">-</span>avg_cases_per_100000), </span>
-<span id="cb30-4"><a href="4_SQL.html#cb30-4" aria-hidden="true" tabindex="-1"></a>                             <span class="at">y=</span>avg_cases_per_100000, <span class="at">fill=</span>continent)) <span class="sc">+</span></span>
-<span id="cb30-5"><a href="4_SQL.html#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">&quot;identity&quot;</span>, <span class="at">position=</span><span class="fu">position_dodge</span>(), <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb30-6"><a href="4_SQL.html#cb30-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin=</span>avg_cases_per_100000<span class="sc">-</span>sd_cases_per_100000, <span class="at">ymax=</span>avg_cases_per_100000<span class="sc">+</span>sd_cases_per_100000), <span class="at">width=</span>.<span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb30-7"><a href="4_SQL.html#cb30-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Flu cases per continent&quot;</span>,</span>
-<span id="cb30-8"><a href="4_SQL.html#cb30-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Flu cases per week per 100.000 inhabitants&quot;</span>,</span>
-<span id="cb30-9"><a href="4_SQL.html#cb30-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
-<span id="cb30-10"><a href="4_SQL.html#cb30-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
-<p><img src="bookdown_site_files/figure-html/flu%20bar%20visualization-1.png" width="672" /></p>
-<p><em>Figure 4.3. The average amount of weekly flu cases per 100.000 inhabitants per continent from approx. 2003 to 2015.</em></p>
-<p>For further analysis a scatterplot has been made, shown in figure 4.4. One points which stands out for all continents except Oceania is the increase in 2009, only to go back down again in 2010. In 2009 there was a pandemic called the Swine Flu which might be the cause of this sudden jump in flu cases for all continents <span class="citation">(Akin and Gözel 2020)</span>. This also explains why Oceania was affected less, as it is separated from other continents by oceans.</p>
+<span id="cb30-3"><a href="4_SQL.html#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_ly</span>(</span>
+<span id="cb30-4"><a href="4_SQL.html#cb30-4" aria-hidden="true" tabindex="-1"></a>   <span class="at">data =</span> gf_summ,</span>
+<span id="cb30-5"><a href="4_SQL.html#cb30-5" aria-hidden="true" tabindex="-1"></a>   <span class="at">x =</span> <span class="sc">~</span><span class="fu">reorder</span>(continent,<span class="sc">-</span>avg_cases_per_100000),</span>
+<span id="cb30-6"><a href="4_SQL.html#cb30-6" aria-hidden="true" tabindex="-1"></a>   <span class="at">y =</span> <span class="sc">~</span>avg_cases_per_100000,</span>
+<span id="cb30-7"><a href="4_SQL.html#cb30-7" aria-hidden="true" tabindex="-1"></a>   <span class="at">type =</span> <span class="st">&quot;bar&quot;</span>,</span>
+<span id="cb30-8"><a href="4_SQL.html#cb30-8" aria-hidden="true" tabindex="-1"></a>   <span class="at">text =</span> <span class="sc">~</span><span class="fu">round</span>(avg_cases_per_100000,<span class="dv">3</span>),</span>
+<span id="cb30-9"><a href="4_SQL.html#cb30-9" aria-hidden="true" tabindex="-1"></a>   <span class="at">textposition =</span> <span class="st">&quot;outside&quot;</span>,</span>
+<span id="cb30-10"><a href="4_SQL.html#cb30-10" aria-hidden="true" tabindex="-1"></a>   <span class="at">color =</span> <span class="sc">~</span>continent,</span>
+<span id="cb30-11"><a href="4_SQL.html#cb30-11" aria-hidden="true" tabindex="-1"></a>   <span class="at">showlegend=</span><span class="cn">FALSE</span>,</span>
+<span id="cb30-12"><a href="4_SQL.html#cb30-12" aria-hidden="true" tabindex="-1"></a>   <span class="at">error_y =</span> <span class="sc">~</span><span class="fu">list</span>(<span class="at">array =</span> sd_cases_per_100000,</span>
+<span id="cb30-13"><a href="4_SQL.html#cb30-13" aria-hidden="true" tabindex="-1"></a>                        <span class="at">color =</span> <span class="st">&#39;#000000&#39;</span>, <span class="at">thickness =</span> <span class="dv">1</span>)</span>
+<span id="cb30-14"><a href="4_SQL.html#cb30-14" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-15"><a href="4_SQL.html#cb30-15" aria-hidden="true" tabindex="-1"></a><span class="fu">layout</span>(</span>
+<span id="cb30-16"><a href="4_SQL.html#cb30-16" aria-hidden="true" tabindex="-1"></a>   <span class="at">title =</span> <span class="fu">list</span>(</span>
+<span id="cb30-17"><a href="4_SQL.html#cb30-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">text =</span> <span class="st">&quot;Flu cases per continent&quot;</span>), </span>
+<span id="cb30-18"><a href="4_SQL.html#cb30-18" aria-hidden="true" tabindex="-1"></a>   <span class="at">xaxis =</span> <span class="fu">list</span>(</span>
+<span id="cb30-19"><a href="4_SQL.html#cb30-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">title =</span> <span class="st">&quot; &quot;</span>),</span>
+<span id="cb30-20"><a href="4_SQL.html#cb30-20" aria-hidden="true" tabindex="-1"></a>   <span class="at">yaxis =</span> <span class="fu">list</span>(</span>
+<span id="cb30-21"><a href="4_SQL.html#cb30-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">title =</span> <span class="st">&quot;Flu cases per week per 100.000 inhabitants&quot;</span>))</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:flubargraph"></span>
+<div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-3c54111426c43d8f5681" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-3c54111426c43d8f5681">{"x":{"visdat":{"29342b814fc9":["function () ","plotlyVisDat"]},"cur_data":"29342b814fc9","attrs":{"29342b814fc9":{"x":{},"y":{},"text":{},"textposition":"outside","showlegend":false,"error_y":{},"color":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":{"text":"Flu cases per continent"},"xaxis":{"domain":[0,1],"automargin":true,"title":" ","type":"category","categoryorder":"array","categoryarray":["Africa","Oceania","Europe","Americas","Asia"]},"yaxis":{"domain":[0,1],"automargin":true,"title":"Flu cases per week per 100.000 inhabitants"},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":["Africa"],"y":[5.23318896814671],"text":5.233,"textposition":"outside","showlegend":false,"error_y":{"color":"#000000","array":[0.351774543101911],"thickness":1},"type":"bar","name":"Africa","marker":{"color":"rgba(102,194,165,1)","line":{"color":"rgba(102,194,165,1)"}},"textfont":{"color":"rgba(102,194,165,1)"},"error_x":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["Americas"],"y":[0.783569253133634],"text":0.784,"textposition":"outside","showlegend":false,"error_y":{"color":"#000000","array":[0.22148703156578],"thickness":1},"type":"bar","name":"Americas","marker":{"color":"rgba(252,141,98,1)","line":{"color":"rgba(252,141,98,1)"}},"textfont":{"color":"rgba(252,141,98,1)"},"error_x":{"color":"rgba(252,141,98,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["Asia"],"y":[0.206842236420812],"text":0.207,"textposition":"outside","showlegend":false,"error_y":{"color":"#000000","array":[0.187245026052147],"thickness":1},"type":"bar","name":"Asia","marker":{"color":"rgba(141,160,203,1)","line":{"color":"rgba(141,160,203,1)"}},"textfont":{"color":"rgba(141,160,203,1)"},"error_x":{"color":"rgba(141,160,203,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["Europe"],"y":[0.899354812132042],"text":0.899,"textposition":"outside","showlegend":false,"error_y":{"color":"#000000","array":[0.189290942305652],"thickness":1},"type":"bar","name":"Europe","marker":{"color":"rgba(231,138,195,1)","line":{"color":"rgba(231,138,195,1)"}},"textfont":{"color":"rgba(231,138,195,1)"},"error_x":{"color":"rgba(231,138,195,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["Oceania"],"y":[1.80419802994669],"text":1.804,"textposition":"outside","showlegend":false,"error_y":{"color":"#000000","array":[0.506597997195155],"thickness":1},"type":"bar","name":"Oceania","marker":{"color":"rgba(166,216,84,1)","line":{"color":"rgba(166,216,84,1)"}},"textfont":{"color":"rgba(166,216,84,1)"},"error_x":{"color":"rgba(166,216,84,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p class="caption">
+Figure 4.3: The average amount of weekly flu cases per 100.000 inhabitants per continent from approx. 2003 to 2015.
+</p>
+</div>
+<p>For further analysis a scatterplot has been made, shown in figure <a href="4_SQL.html#fig:fluscatter">4.4</a>. One points which stands out for all continents except Oceania is the increase in 2009, only to go back down again in 2010. In 2009 there was a pandemic called the Swine Flu which might be the cause of this sudden jump in flu cases for all continents <span class="citation">(Akin and Gözel 2020)</span>. This also explains why Oceania was affected less, as it is separated from other continents by oceans.</p>
+
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="4_SQL.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Flu scatterplot ----</span></span>
 <span id="cb31-2"><a href="4_SQL.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Visualising the weekly dengue cases per continent per year in a scatterplot</span></span>
-<span id="cb31-3"><a href="4_SQL.html#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gf_norm_continent, <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>cases_per_100000, </span>
-<span id="cb31-4"><a href="4_SQL.html#cb31-4" aria-hidden="true" tabindex="-1"></a>                              <span class="at">group =</span> continent, <span class="at">color =</span> continent)) <span class="sc">+</span> </span>
-<span id="cb31-5"><a href="4_SQL.html#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb31-6"><a href="4_SQL.html#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb31-7"><a href="4_SQL.html#cb31-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Weekly flu cases across the world&quot;</span>,</span>
-<span id="cb31-8"><a href="4_SQL.html#cb31-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Weekly flu cases&quot;</span>,</span>
-<span id="cb31-9"><a href="4_SQL.html#cb31-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Year&quot;</span>) <span class="sc">+</span></span>
-<span id="cb31-10"><a href="4_SQL.html#cb31-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">round</span>(<span class="fu">seq</span>(<span class="fu">min</span>(gf_norm_continent<span class="sc">$</span>year), </span>
-<span id="cb31-11"><a href="4_SQL.html#cb31-11" aria-hidden="true" tabindex="-1"></a>                                        <span class="fu">max</span>(gf_norm_continent<span class="sc">$</span>year), <span class="at">by =</span> <span class="dv">1</span>),<span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb31-12"><a href="4_SQL.html#cb31-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
-<p><img src="bookdown_site_files/figure-html/flu%20scatter%20visualization-1.png" width="672" /></p>
-<p><em>Figure 4.4. Scatterplot to show the average amount of weekly flu cases per year per continent.</em></p>
+<span id="cb31-3"><a href="4_SQL.html#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_ly</span>(</span>
+<span id="cb31-4"><a href="4_SQL.html#cb31-4" aria-hidden="true" tabindex="-1"></a>   <span class="at">data =</span> gf_norm_continent,</span>
+<span id="cb31-5"><a href="4_SQL.html#cb31-5" aria-hidden="true" tabindex="-1"></a>   <span class="at">x =</span> <span class="sc">~</span>year,</span>
+<span id="cb31-6"><a href="4_SQL.html#cb31-6" aria-hidden="true" tabindex="-1"></a>   <span class="at">y =</span> <span class="sc">~</span>cases_per_100000,</span>
+<span id="cb31-7"><a href="4_SQL.html#cb31-7" aria-hidden="true" tabindex="-1"></a>   <span class="at">type =</span> <span class="st">&quot;scatter&quot;</span>,</span>
+<span id="cb31-8"><a href="4_SQL.html#cb31-8" aria-hidden="true" tabindex="-1"></a>   <span class="at">mode =</span> <span class="st">&quot;lines&quot;</span>,</span>
+<span id="cb31-9"><a href="4_SQL.html#cb31-9" aria-hidden="true" tabindex="-1"></a>   <span class="at">color =</span> <span class="sc">~</span>continent) <span class="sc">%&gt;%</span></span>
+<span id="cb31-10"><a href="4_SQL.html#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="fu">layout</span>(</span>
+<span id="cb31-11"><a href="4_SQL.html#cb31-11" aria-hidden="true" tabindex="-1"></a>   <span class="at">title =</span> <span class="fu">list</span>(</span>
+<span id="cb31-12"><a href="4_SQL.html#cb31-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">text =</span> <span class="st">&quot;Weekly flu cases across the world&quot;</span>), </span>
+<span id="cb31-13"><a href="4_SQL.html#cb31-13" aria-hidden="true" tabindex="-1"></a>   <span class="at">legend =</span> <span class="fu">list</span>(</span>
+<span id="cb31-14"><a href="4_SQL.html#cb31-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">title =</span> <span class="fu">list</span>(<span class="at">text =</span> <span class="st">&quot;Continents&quot;</span>)),</span>
+<span id="cb31-15"><a href="4_SQL.html#cb31-15" aria-hidden="true" tabindex="-1"></a>   <span class="at">xaxis =</span> <span class="fu">list</span>(</span>
+<span id="cb31-16"><a href="4_SQL.html#cb31-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">title =</span> <span class="st">&quot;Year&quot;</span>),</span>
+<span id="cb31-17"><a href="4_SQL.html#cb31-17" aria-hidden="true" tabindex="-1"></a>   <span class="at">yaxis =</span> <span class="fu">list</span>(</span>
+<span id="cb31-18"><a href="4_SQL.html#cb31-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">title =</span> <span class="st">&quot;Average weekly flu cases per 100000 inhabitants&quot;</span>))</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:fluscatter"></span>
+<div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-2ec95ed108984cbf10a8" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-2ec95ed108984cbf10a8">{"x":{"visdat":{"293456992d39":["function () ","plotlyVisDat"]},"cur_data":"293456992d39","attrs":{"293456992d39":{"x":{},"y":{},"mode":"lines","color":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":{"text":"Weekly flu cases across the world"},"legend":{"title":{"text":"Continents"}},"xaxis":{"domain":[0,1],"automargin":true,"title":"Year"},"yaxis":{"domain":[0,1],"automargin":true,"title":"Average weekly flu cases per 100000 inhabitants"},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[2015,2014,2013,2012,2011,2010,2009,2008,2007,2006],"y":[5.67420987834079,5.5437325249392,5.06434244075658,4.87496762228877,4.75465104686171,4.82569368160154,5.66990522480433,5.17072786485464,5.2445406428758,5.5091187541437],"mode":"lines","type":"scatter","name":"Africa","marker":{"color":"rgba(102,194,165,1)","line":{"color":"rgba(102,194,165,1)"}},"textfont":{"color":"rgba(102,194,165,1)"},"error_y":{"color":"rgba(102,194,165,1)"},"error_x":{"color":"rgba(102,194,165,1)"},"line":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[2015,2014,2013,2012,2011,2010,2009,2008,2007,2006,2005,2004,2003,2002],"y":[0.810715332210328,0.824475846569746,0.84364187485691,0.794095647710148,0.633964507606879,0.632421605893899,1.02224560518756,0.793316933419668,0.804196161301775,0.802390554433921,0.835071533516515,0.677001822613831,1.25419415374928,0.242237964800416],"mode":"lines","type":"scatter","name":"Americas","marker":{"color":"rgba(252,141,98,1)","line":{"color":"rgba(252,141,98,1)"}},"textfont":{"color":"rgba(252,141,98,1)"},"error_y":{"color":"rgba(252,141,98,1)"},"error_x":{"color":"rgba(252,141,98,1)"},"line":{"color":"rgba(252,141,98,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[2015,2014,2013,2012,2011,2010,2009,2008,2007,2006,2005,2004,2003],"y":[0.595938417779629,0.512088199617138,0.372957541650364,0.233837044650236,0.106638041254855,0.031809663040475,0.318043967717391,0.0724956977769819,0.116777982305149,0.0879369285515444,0.143567324656533,0.0606595654167307,0.0361986990535321],"mode":"lines","type":"scatter","name":"Asia","marker":{"color":"rgba(141,160,203,1)","line":{"color":"rgba(141,160,203,1)"}},"textfont":{"color":"rgba(141,160,203,1)"},"error_y":{"color":"rgba(141,160,203,1)"},"error_x":{"color":"rgba(141,160,203,1)"},"line":{"color":"rgba(141,160,203,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[2015,2014,2013,2012,2011,2010,2009,2008,2007,2006,2005,2004,2003],"y":[1.15162674987213,0.849959019944033,0.894988364422065,0.72286376470515,0.751341604459087,0.675115552153536,1.04297049764456,0.86348846692463,0.881065773165139,0.80914740307424,0.924066191043598,0.765578775198559,1.35940039510983],"mode":"lines","type":"scatter","name":"Europe","marker":{"color":"rgba(231,138,195,1)","line":{"color":"rgba(231,138,195,1)"}},"textfont":{"color":"rgba(231,138,195,1)"},"error_y":{"color":"rgba(231,138,195,1)"},"error_x":{"color":"rgba(231,138,195,1)"},"line":{"color":"rgba(231,138,195,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[2015,2014,2013,2012,2011,2010,2009,2008,2007,2006],"y":[2.32055451602963,2.32734846050558,1.47931868847492,2.05797597696998,1.05726627679803,1.03761925742946,1.8743428593016,2.02177073283596,2.36218255197416,1.50360097914754],"mode":"lines","type":"scatter","name":"Oceania","marker":{"color":"rgba(166,216,84,1)","line":{"color":"rgba(166,216,84,1)"}},"textfont":{"color":"rgba(166,216,84,1)"},"error_y":{"color":"rgba(166,216,84,1)"},"error_x":{"color":"rgba(166,216,84,1)"},"line":{"color":"rgba(166,216,84,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p class="caption">
+Figure 4.4: Scatterplot to show the average amount of weekly flu cases per year per continent.
+</p>
+</div>
 
 </div>
 </div>
@@ -720,7 +765,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/mirthhe/mirthhe.github.io/edit/master/4_SQL.Rmd",
+"link": "https://github.com/mirthhe/mirthhe.github.io/edit/main/4_SQL.Rmd",
 "text": "Share your feedback"
 },
 "history": {
